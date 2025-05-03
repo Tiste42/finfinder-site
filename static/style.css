@@ -1,0 +1,11 @@
+/* Basic styling */
+body {
+    font-family: sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+    padding: 20px;
+}
+
+h1 {
+    color: #0056b3; /* A blue color */
+}
