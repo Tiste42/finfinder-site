@@ -19,8 +19,7 @@ def ask():
     # You could eventually process the question and return a response page
     # For now, let's just redirect back to the main page or show a simple confirmation
     # return render_template('response.html', question=user_question, answer="Thinking...")
-    return f"Okay, I received your question: '{user_question}'. We'll process this later."
+    return render_template('response.html', user_question=user_question)
 
 if __name__ == '__main__':
     app.run(debug=True)
-    

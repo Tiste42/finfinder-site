@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fin Finder Response</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h1>Fin Finder Response</h1>
+
+    <p>You asked:</p>
+    <blockquote>
+        {{ user_question }}
+    </blockquote>
+
+    <p><em>(AI answer will go here later...)</em></p>
+
+    <br>
+    <a href="/">Ask another question</a>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
