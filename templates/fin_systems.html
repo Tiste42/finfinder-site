@@ -1,0 +1,164 @@
+{% extends "base.html" %}
+
+{% block title %}Fin Systems - Fin Finder AI{% endblock %}
+
+{% block content %}
+<div class="container mx-auto px-4 py-8">
+    <h1 class="text-3xl font-bold mb-6 text-gray-800 dark:text-gray-200">Fin Systems Guide</h1>
+    
+    <div class="bg-white dark:bg-gray-800 shadow-lg rounded-lg overflow-hidden mb-8">
+        <div class="p-6">
+            <h2 class="text-2xl font-semibold mb-4 text-gray-800 dark:text-gray-200">Understanding Fin Box Systems</h2>
+            <p class="text-gray-600 dark:text-gray-400 mb-4">
+                Fin box systems are the mechanisms that connect fins to your surfboard. Different systems have unique characteristics, affecting how fins perform and how easily they can be changed.
+            </p>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8">
+                <!-- FCS System -->
+                <div class="bg-gray-50 dark:bg-gray-700 p-4 rounded-lg">
+                    <h3 class="text-xl font-semibold mb-2 text-gray-800 dark:text-gray-200">FCS (Fin Control System)</h3>
+                    <p class="text-gray-600 dark:text-gray-400 mb-3">
+                        The original removable fin system, FCS uses two plugs per fin with tabs that insert into the plugs.
+                    </p>
+                    <h4 class="font-medium text-gray-700 dark:text-gray-300 mb-1">Variations:</h4>
+                    <ul class="list-disc pl-5 text-gray-600 dark:text-gray-400 mb-3">
+                        <li>FCS I - The original system (being phased out)</li>
+                        <li>FCS II - Tool-less fin installation with improved connection</li>
+                        <li>FCS Fusion - Molded directly into surfboard foam</li>
+                    </ul>
+                    <h4 class="font-medium text-gray-700 dark:text-gray-300 mb-1">Pros:</h4>
+                    <ul class="list-disc pl-5 text-gray-600 dark:text-gray-400 mb-3">
+                        <li>Widely available fins</li>
+                        <li>FCS II allows quick changes without tools</li>
+                        <li>Slightly more flex than Futures</li>
+                    </ul>
+                    <h4 class="font-medium text-gray-700 dark:text-gray-300 mb-1">Cons:</h4>
+                    <ul class="list-disc pl-5 text-gray-600 dark:text-gray-400">
+                        <li>FCS I fins can pop out in powerful waves</li>
+                        <li>Two plugs per fin create more potential failure points</li>
+                    </ul>
+                </div>
+                
+                <!-- Futures System -->
+                <div class="bg-gray-50 dark:bg-gray-700 p-4 rounded-lg">
+                    <h3 class="text-xl font-semibold mb-2 text-gray-800 dark:text-gray-200">Futures Fins</h3>
+                    <p class="text-gray-600 dark:text-gray-400 mb-3">
+                        Futures uses a single, longer box per fin with a solid base and screw lock system.
+                    </p>
+                    <h4 class="font-medium text-gray-700 dark:text-gray-300 mb-1">Characteristics:</h4>
+                    <ul class="list-disc pl-5 text-gray-600 dark:text-gray-400 mb-3">
+                        <li>Single box per fin</li>
+                        <li>Requires hex key for installation</li>
+                        <li>Solid connection from base to tip</li>
+                    </ul>
+                    <h4 class="font-medium text-gray-700 dark:text-gray-300 mb-1">Pros:</h4>
+                    <ul class="list-disc pl-5 text-gray-600 dark:text-gray-400 mb-3">
+                        <li>Very secure connection</li>
+                        <li>Less prone to breakage</li>
+                        <li>More direct energy transfer</li>
+                    </ul>
+                    <h4 class="font-medium text-gray-700 dark:text-gray-300 mb-1">Cons:</h4>
+                    <ul class="list-disc pl-5 text-gray-600 dark:text-gray-400">
+                        <li>Requires tool for installation/removal</li>
+                        <li>Slightly less flex than FCS</li>
+                        <li>Can be harder to repair if damaged</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
+                <!-- Longboard Systems -->
+                <div class="bg-gray-50 dark:bg-gray-700 p-4 rounded-lg">
+                    <h3 class="text-xl font-semibold mb-2 text-gray-800 dark:text-gray-200">Longboard Fin Systems</h3>
+                    <p class="text-gray-600 dark:text-gray-400 mb-3">
+                        Longboards often use different fin systems than shortboards.
+                    </p>
+                    <h4 class="font-medium text-gray-700 dark:text-gray-300 mb-1">Common Types:</h4>
+                    <ul class="list-disc pl-5 text-gray-600 dark:text-gray-400">
+                        <li>Single Fin Box - Traditional longboard setup</li>
+                        <li>2+1 Setup - Center fin box with FCS/Futures side fins</li>
+                        <li>Pivot Fin Box - Allows fin rotation for traditional longboarding</li>
+                        <li>Tuttle Box - Deep box used for larger center fins</li>
+                    </ul>
+                </div>
+                
+                <!-- Alternative Systems -->
+                <div class="bg-gray-50 dark:bg-gray-700 p-4 rounded-lg">
+                    <h3 class="text-xl font-semibold mb-2 text-gray-800 dark:text-gray-200">Other Fin Systems</h3>
+                    <p class="text-gray-600 dark:text-gray-400 mb-3">
+                        Less common but still found in the market.
+                    </p>
+                    <h4 class="font-medium text-gray-700 dark:text-gray-300 mb-1">Systems:</h4>
+                    <ul class="list-disc pl-5 text-gray-600 dark:text-gray-400">
+                        <li>LokBox - Similar to Futures but with different locking mechanism</li>
+                        <li>ProBox - Used on some older boards</li>
+                        <li>Glass-On Fins - Permanently attached fins (no box system)</li>
+                        <li>Soft Board Fin Systems - Used on foam boards with unique attachment methods</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- AI Chat Section -->
+    <div class="bg-white dark:bg-gray-800 shadow-lg rounded-lg overflow-hidden mb-8">
+        <div class="p-6">
+            <h2 class="text-2xl font-semibold mb-4 text-gray-800 dark:text-gray-200">Ask Our AI Fin Expert</h2>
+            <p class="text-gray-600 dark:text-gray-400 mb-6">
+                Not sure which fin system is right for you? Chat with our AI Fin Expert to get personalized recommendations.
+            </p>
+            
+            <div class="bg-gray-50 dark:bg-gray-700 p-4 rounded-lg mb-4">
+                <p class="text-gray-700 dark:text-gray-300 italic mb-2">Example question:</p>
+                <p class="text-gray-600 dark:text-gray-400">"What's the difference between FCS II and Futures fin systems for a performance shortboard?"</p>
+            </div>
+            
+            <a href="{{ url_for('recommender_page') }}" class="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-cyan-600 hover:bg-cyan-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-cyan-500 transition-colors">
+                Chat with AI Fin Expert
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2" viewBox="0 0 20 20" fill="currentColor">
+                    <path fill-rule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+                </svg>
+            </a>
+        </div>
+    </div>
+    
+    <!-- Compatibility Section -->
+    <div class="bg-white dark:bg-gray-800 shadow-lg rounded-lg overflow-hidden">
+        <div class="p-6">
+            <h2 class="text-2xl font-semibold mb-4 text-gray-800 dark:text-gray-200">Fin System Compatibility</h2>
+            <p class="text-gray-600 dark:text-gray-400 mb-4">
+                Understanding fin system compatibility is crucial when buying new fins or boards.
+            </p>
+            
+            <div class="overflow-x-auto">
+                <table class="min-w-full divide-y divide-gray-200 dark:divide-gray-700">
+                    <thead class="bg-gray-50 dark:bg-gray-700">
+                        <tr>
+                            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">Fin System</th>
+                            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">Compatible With</th>
+                            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">Not Compatible With</th>
+                        </tr>
+                    </thead>
+                    <tbody class="bg-white dark:bg-gray-800 divide-y divide-gray-200 dark:divide-gray-700">
+                        <tr>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900 dark:text-gray-200">FCS I</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-400">FCS I fins</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-400">FCS II, Futures, other systems</td>
+                        </tr>
+                        <tr>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900 dark:text-gray-200">FCS II</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-400">FCS II fins, FCS I fins (with less security)</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-400">Futures, other systems</td>
+                        </tr>
+                        <tr>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900 dark:text-gray-200">Futures</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-400">Futures fins only</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-400">FCS I, FCS II, other systems</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

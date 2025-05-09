@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>{% block title %}Fin Finder AI{% endblock %}</title>
+    
+    <meta name="description" content="Fin Finder AI - Your personal AI expert for surfboard fin recommendations.">
+    <meta property="og:title" content="Fin Finder AI">
+    <meta property="og:description" content="Get personalized surfboard fin advice from our AI expert.">
+    <meta property="og:image" content="https://cdn.simulationtheory.ai/gasset/?asset=img&prompt=surfer+on+a+tropical+wave+logo&w=1200&h=630&style=realistic">
+    <meta property="og:type" content="website">
+    <link rel="icon" href="https://cdn.simulationtheory.ai/gasset/?asset=sprite&prompt=stylized+F+letter+with+wave+icon&w=32&h=32&transparent=true&style=pixel_art" type="image/png">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="/chat/cdn/aos.css" rel="stylesheet">
+    <link href="/chat/cdn/animate.min.css" rel="stylesheet">
+    
+    <!-- FONTAWESOME STYLES - INCLUDE THEM ALL!! -->
+    <link href="/chat/cdn/all.min.css" rel="stylesheet"> <!-- Font Awesome 6 Core CSS -->
+    <style>
+    @font-face {
+        font-family: 'Font Awesome 6 Free';
+        font-style: normal;
+        font-weight: 400;
+        font-display: block;
+        src: url('/chat/webfonts/fa-regular-400.woff2') format('woff2'),
+             url('/chat/webfonts/fa-regular-400.ttf') format('truetype');
+    }
+    @font-face {
+        font-family: 'Font Awesome 6 Free';
+        font-style: normal;
+        font-weight: 900;
+        font-display: block;
+        src: url('/chat/webfonts/fa-solid-900.woff2') format('woff2'),
+             url('/chat/webfonts/fa-solid-900.ttf') format('truetype');
+    }
+    @font-face {
+        font-family: 'Font Awesome 6 Brands';
+        font-style: normal;
+        font-weight: 400;
+        font-display: block;
+        src: url('/chat/webfonts/fa-brands-400.woff2') format('woff2'),
+             url('/chat/webfonts/fa-brands-400.ttf') format('truetype');
+    }
+    /* Basic dark mode support */
+    .dark {
+        --text-color: #e5e7eb; /* gray-200 */
+        --bg-color: #111827; /* gray-900 */
+        --bg-secondary-color: #1f2937; /* gray-800 */
+        --border-color: #374151; /* gray-700 */
+    }
+    html.dark body {
+        background-color: var(--bg-color);
+        color: var(--text-color);
+    }
+    /* Additional dark mode styles can be added here or with dark: prefixes in Tailwind */
+    </style>
+    <script>
+        // Tailwind dark mode setup
+        if (localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+          document.documentElement.classList.add('dark');
+        } else {
+          document.documentElement.classList.remove('dark');
+        }
+    </script>
+</head>
+<body class="bg-gray-50 dark:bg-gray-900 text-gray-800 dark:text-gray-200 font-sans antialiased flex flex-col min-h-screen">
+
+    <!-- Header -->
+    <header class="bg-white dark:bg-gray-800 shadow-md sticky top-0 z-50" data-aos="fade-down">
+        <nav class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <div class="flex items-center">
+                    <a href="{{ url_for('index_page') if index_page else '/' }}" class="flex-shrink-0 flex items-center">
+                        <!-- Using the filename you provided for the logo -->
+                        <img class="h-16 sm:h-20 w-auto" src="{{ url_for('static', filename='fin_finder_logo_transparent.png') }}" alt="Fin Finder Logo" onerror="this.onerror=null; this.src='https://cdn.simulationtheory.ai/gasset/?asset=img&prompt=modern+F+logo+wave+theme&w=160&h=80&style=professional';">
+                        <span class="ml-3 text-2xl font-bold text-cyan-600 dark:text-cyan-400 hidden sm:inline">Fin Finder AI</span>
+                    </a>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <a href="{{ url_for('home') }}" class="text-gray-600 dark:text-gray-300 hover:text-cyan-600 dark:hover:text-cyan-400 px-3 py-2 rounded-md text-sm font-medium transition-colors">Home</a>
+<a href="{{ url_for('fundamentals') }}" class="text-gray-600 dark:text-gray-300 hover:text-cyan-600 dark:hover:text-cyan-400 px-3 py-2 rounded-md text-sm font-medium transition-colors">Fundamentals</a>
+<a href="{{ url_for('setups') }}" class="text-gray-600 dark:text-gray-300 hover:text-cyan-600 dark:hover:text-cyan-400 px-3 py-2 rounded-md text-sm font-medium transition-colors">Setups</a>
+<a href="{{ url_for('longboards') }}" class="text-gray-600 dark:text-gray-300 hover:text-cyan-600 dark:hover:text-cyan-400 px-3 py-2 rounded-md text-sm font-medium transition-colors">Longboards</a>
+<a href="{{ url_for('fin_systems') }}" class="text-gray-600 dark:text-gray-300 hover:text-cyan-600 dark:hover:text-cyan-400 px-3 py-2 rounded-md text-sm font-medium transition-colors">Fin Systems</a><a href="{{ url_for('recommender_page') }}" class="text-gray-600 dark:text-gray-300 hover:text-cyan-600 dark:hover:text-cyan-400 px-3 py-2 rounded-md text-sm font-medium transition-colors">AI Recommender</a>
+                        <i id="theme-toggle-dark-icon" class="fas fa-moon w-5 h-5 hidden"></i>
+                        <i id="theme-toggle-light-icon" class="fas fa-sun w-5 h-5 hidden"></i>
+                    </button>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main class="flex-grow container mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        {% block content %}{% endblock %}
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 dark:bg-black text-white py-8" data-aos="fade-up">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <div class="mb-4">
+                <a href="#" class="text-gray-400 hover:text-white mx-2"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" class="text-gray-400 hover:text-white mx-2"><i class="fab fa-instagram"></i></a>
+                <a href="#" class="text-gray-400 hover:text-white mx-2"><i class="fab fa-twitter"></i></a>
+            </div>
+            <p class="text-sm text-gray-400">&copy; <span id="currentYear"></span> Fin Finder AI. All rights reserved.</p>
+            <p class="text-xs text-gray-500 mt-1">Your AI-Powered Surf Fin Advisor</p>
+        </div>
+    </footer>
+
+    <script src="/chat/cdn/papaparse.min.js"></script>
+    <script src="/chat/cdn/aos.js"></script>
+    <script src="/chat/cdn/all.min.js" crossorigin="anonymous"></script> <!-- Essential JS for FONTAWESOME -->
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Initialize AOS
+            AOS.init({
+                duration: 800,
+                easing: 'ease-in-out',
+                once: true,
+                mirror: false
+            });
+
+            // Set current year in footer
+            document.getElementById('currentYear').textContent = new Date().getFullYear();
+
+            // Dark mode toggle logic
+            const themeToggleBtn = document.getElementById('theme-toggle');
+            const themeToggleDarkIcon = document.getElementById('theme-toggle-dark-icon');
+            const themeToggleLightIcon = document.getElementById('theme-toggle-light-icon');
+
+            // Function to set icon based on theme
+            function updateThemeIcon() {
+                if (localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+                    themeToggleLightIcon.classList.remove('hidden');
+                    themeToggleDarkIcon.classList.add('hidden');
+                } else {
+                    themeToggleDarkIcon.classList.remove('hidden');
+                    themeToggleLightIcon.classList.add('hidden');
+                }
+            }
+            updateThemeIcon(); // Set initial icon
+
+            themeToggleBtn.addEventListener('click', function() {
+                // toggle icons inside button
+                themeToggleDarkIcon.classList.toggle('hidden');
+                themeToggleLightIcon.classList.toggle('hidden');
+
+                // if set via local storage previously
+                if (localStorage.getItem('theme')) {
+                    if (localStorage.getItem('theme') === 'light') {
+                        document.documentElement.classList.add('dark');
+                        localStorage.setItem('theme', 'dark');
+                    } else {
+                        document.documentElement.classList.remove('dark');
+                        localStorage.setItem('theme', 'light');
+                    }
+                // if NOT set via local storage previously
+                } else {
+                    if (document.documentElement.classList.contains('dark')) {
+                        document.documentElement.classList.remove('dark');
+                        localStorage.setItem('theme', 'light');
+                    } else {
+                        document.documentElement.classList.add('dark');
+                        localStorage.setItem('theme', 'dark');
+                    }
+                }
+                updateThemeIcon(); // Update icon after toggle
+            });
+        });
+    </script>
+</body>
+</html>

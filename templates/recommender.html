@@ -1,0 +1,110 @@
+{% extends "base.html" %}
+
+{% block title %}AI Fin Recommender - Fin Finder{% endblock %}
+
+{% block content %}
+    <h1 class="text-3xl font-bold mb-6 text-gray-800 dark:text-gray-100">AI Fin Recommender</h1>
+    <p class="text-gray-700 dark:text-gray-300 mb-6">Ask the Fin Finder AI anything about surfboard fins! Enter your question below.</p>
+
+    <!-- AI Chat Interface Placeholder -->
+    <div id="chat-interface" class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg">
+        <div class="mb-4">
+            <label for="user-question" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Your Question:</label>
+            <input type="text" id="user-question" name="question" class="w-full p-2 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-700 focus:ring-blue-500 focus:border-blue-500 text-gray-800 dark:text-gray-200" placeholder="e.g., What's the difference between thruster and quad fins?">
+        </div>
+        <button id="ask-button" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded transition duration-200">
+            Ask AI
+        </button>
+        <div id="loading-indicator" class="mt-4 hidden">
+             <i class="fas fa-spinner fa-spin text-blue-500"></i> Loading...
+        </div>
+        <div id="ai-answer" class="mt-6 p-4 bg-gray-100 dark:bg-gray-700 rounded border border-gray-200 dark:border-gray-600 min-h-[100px]">
+            <!-- AI's answer will appear here -->
+            <p class="text-gray-500 dark:text-gray-400 italic">AI response will load here...</p>
+        </div>
+         <div id="error-message" class="mt-4 text-red-500 font-semibold hidden"></div>
+    </div>
+    <!-- End AI Chat Interface Placeholder -->
+
+{% endblock %}
+
+{% block scripts %}
+    <!-- Add JavaScript for handling the chat interaction here later -->
+    <script>
+        // Basic structure for chat JS will go here
+        document.addEventListener('DOMContentLoaded', () => {
+            const askButton = document.getElementById('ask-button');
+            const questionInput = document.getElementById('user-question');
+            const answerDiv = document.getElementById('ai-answer');
+            const loadingIndicator = document.getElementById('loading-indicator');
+            const errorMessageDiv = document.getElementById('error-message');
+
+            askButton.addEventListener('click', () => {
+                const question = questionInput.value.trim();
+                if (!question) {
+                    errorMessageDiv.textContent = 'Please enter a question.';
+                    errorMessageDiv.classList.remove('hidden');
+                    return;
+                }
+
+                // Clear previous answer/error, show loading
+                answerDiv.innerHTML = '<p class="text-gray-500 dark:text-gray-400 italic">Getting response...</p>';
+                errorMessageDiv.classList.add('hidden');
+                loadingIndicator.classList.remove('hidden');
+                askButton.disabled = true; // Prevent multiple clicks
+
+                // Fetch call to the /ask endpoint
+                fetch('/ask', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ question: question })
+                })
+                .then(response => {
+                    if (!response.ok) {
+                        // Try to get error message from JSON response body
+                        return response.json().then(errData => {
+                            throw new Error(errData.error || `HTTP error! status: ${response.status}`);
+                        }).catch(() => {
+                            // Fallback if response body isn't JSON or doesn't have 'error'
+                            throw new Error(`HTTP error! status: ${response.status}`);
+                        });
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    if (data.answer) {
+                         // Simple display, replace special chars for safety
+                         const formattedAnswer = data.answer
+                            .replace(/</g, "&lt;")
+                            .replace(/>/g, "&gt;")
+                            .replace(/\n/g, "<br>"); // Convert newlines to <br>
+                        answerDiv.innerHTML = `<p>${formattedAnswer}</p>`; // Display the answer
+                    } else if (data.error) {
+                        throw new Error(data.error); // Handle error from backend JSON
+                    }
+                })
+                .catch(error => {
+                    console.error('Fetch Error:', error);
+                    errorMessageDiv.textContent = `Error: ${error.message}`;
+                    errorMessageDiv.classList.remove('hidden');
+                    answerDiv.innerHTML = '<p class="text-red-500 dark:text-red-400 italic">Failed to get response.</p>';
+                })
+                .finally(() => {
+                    // Hide loading, re-enable button
+                    loadingIndicator.classList.add('hidden');
+                    askButton.disabled = false;
+                });
+            });
+
+             // Optional: Allow pressing Enter in the input field to submit
+            questionInput.addEventListener('keypress', (event) => {
+                if (event.key === 'Enter') {
+                    event.preventDefault(); // Prevent default form submission if it were in a form
+                    askButton.click(); // Trigger the button click event
+                }
+            });
+        });
+    </script>
+{% endblock %}

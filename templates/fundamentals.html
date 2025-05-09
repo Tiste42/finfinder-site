@@ -1,0 +1,221 @@
+{% extends "base.html" %}
+
+{% block title %}Fin Fundamentals - Fin Finder{% endblock %}
+
+{% block content %}
+<div class="container mx-auto px-4 py-8">
+    <h1 class="text-4xl font-bold mb-4 text-center">Fin Fundamentals</h1>
+    <h2 class="text-2xl text-cyan-700 mb-8 text-center">The Anatomy of Performance</h2>
+
+    <p class="text-lg mb-10 text-gray-700 text-center max-w-3xl mx-auto">
+        Understanding the key design elements of surfboard fins is crucial for optimizing your board's stability, control, and maneuverability. Explore the core concepts below to learn how each factor influences performance in the water.
+    </p>
+
+    <!-- Fin Concepts Grid -->
+    <div id="fin-fundamentals-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
+
+        <!-- Template -->
+        <div class="p-4 border rounded-lg shadow-sm bg-white flex flex-col">
+            <h3 class="text-xl font-semibold mb-2 text-cyan-800">Template</h3>
+            <p class="text-gray-700 flex-grow">The "template" refers to the overall outline or shape of the fin. All the other elements discussed here—like base, depth, rake, and foil—contribute to the fin's template and its specific performance characteristics.</p>
+        </div>
+
+        <!-- Base -->
+        <div class="p-4 border rounded-lg shadow-sm bg-white flex flex-col">
+            <h3 class="text-xl font-semibold mb-2 text-cyan-800">Base</h3>
+            <p class="text-gray-700 flex-grow">The length of the fin where it meets the board. A longer base provides more drive and acceleration, especially in drawn-out turns. A shorter base allows for tighter, quicker turns.</p>
+        </div>
+
+        <!-- Depth (Height) -->
+        <div class="p-4 border rounded-lg shadow-sm bg-white flex flex-col">
+            <h3 class="text-xl font-semibold mb-2 text-cyan-800">Depth (Height)</h3>
+            <p class="text-gray-700 flex-grow">How far the fin extends into the water. More depth equals more grip and stability, particularly in larger waves or powerful turns. Less depth results in a looser feel, easier release, and sliding.</p>
+        </div>
+
+        <!-- Area -->
+        <div class="p-4 border rounded-lg shadow-sm bg-white flex flex-col">
+            <h3 class="text-xl font-semibold mb-2 text-cyan-800">Area</h3>
+            <p class="text-gray-700 flex-grow">The total surface area of the fin. More area generally means more hold and drive, suitable for powerful surfers or bigger waves. Less area offers less drag and a faster, looser feel.</p>
+        </div>
+
+        <!-- Rake (Sweep) -->
+        <div class="p-4 border rounded-lg shadow-sm bg-white flex flex-col">
+            <h3 class="text-xl font-semibold mb-2 text-cyan-800">Rake (Sweep)</h3>
+            <p class="text-gray-700 flex-grow">How far the fin tip curves back relative to the base. More rake leads to longer, drawn-out turns and stability at speed. Less rake (more upright) results in tighter turning arcs and pivot.</p>
+        </div>
+
+        <!-- Foil -->
+        <div class="p-4 border rounded-lg shadow-sm bg-white flex flex-col">
+            <h3 class="text-xl font-semibold mb-2 text-cyan-800">Foil</h3>
+            <p class="text-gray-700 flex-grow">The cross-sectional shape of the fin, similar to an airplane wing. Affects water flow, lift, and drag. Common foils include flat, inside foil (e.g., 80/20), and 50/50 (symmetrical, often center fins).</p>
+        </div>
+
+        <!-- Cant -->
+        <div class="p-4 border rounded-lg shadow-sm bg-white flex flex-col">
+            <h3 class="text-xl font-semibold mb-2 text-cyan-800">Cant</h3>
+            <p class="text-gray-700 flex-grow">The outward angle of the side fins relative to the bottom of the board. More cant increases responsiveness and lift during turns but can reduce drive. Less cant (more vertical) offers more speed and drive.</p>
+        </div>
+
+        <!-- Toe -->
+        <div class="p-4 border rounded-lg shadow-sm bg-white flex flex-col">
+            <h3 class="text-xl font-semibold mb-2 text-cyan-800">Toe</h3>
+            <p class="text-gray-700 flex-grow">The angle of the side fins pointing towards the nose (stringer/center) of the board. Creates pressure on the outside fin during turns, increasing responsiveness and maneuverability.</p>
+        </div>
+
+        <!-- Flex -->
+        <div class="p-4 border rounded-lg shadow-sm bg-white flex flex-col">
+            <h3 class="text-xl font-semibold mb-2 text-cyan-800">Flex</h3>
+            <p class="text-gray-700 flex-grow">How much the fin bends under pressure. More flex provides a springy, lively feel out of turns (often preferred in smaller waves). Stiffer fins offer more control and drive, especially at high speeds or in powerful waves.</p>
+        </div>
+    </div> <!-- End of Fin Concepts Grid -->
+
+    <!-- Fin Diagrams Section -->
+    <section id="fin-diagrams" class="my-12 py-8 border-t border-b border-gray-200">
+        <h3 class="text-2xl font-semibold mb-6 text-center text-cyan-700">Visualizing Fin Concepts</h3>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div class="p-3 bg-white rounded-lg shadow-md text-center">
+                <img src="{{ url_for('static', filename='anatomyofafin.jpg') }}" alt="Anatomy of a Fin Template" class="rounded-md mb-2 mx-auto max-h-60 w-auto">
+                <p class="text-sm text-gray-600">Fin Template & Key Measurements</p>
+            </div>
+            <div class="p-3 bg-white rounded-lg shadow-md text-center">
+                <img src="{{ url_for('static', filename='FinFoilDiagram.jpg') }}" alt="Fin Foil Types" class="rounded-md mb-2 mx-auto max-h-60 w-auto">
+                <p class="text-sm text-gray-600">Common Fin Foils</p>
+            </div>
+            <div class="p-3 bg-white rounded-lg shadow-md text-center">
+                <img src="{{ url_for('static', filename='FinCantandFlex.jpg') }}" alt="Fin Cant and Flex" class="rounded-md mb-2 mx-auto max-h-60 w-auto">
+                <p class="text-sm text-gray-600">Fin Cant & Flex</p>
+            </div>
+            <div class="p-3 bg-white rounded-lg shadow-md text-center">
+                <img src="{{ url_for('static', filename='FinToe.jpg') }}" alt="Fin Toe Angle" class="rounded-md mb-2 mx-auto max-h-60 w-auto">
+                <p class="text-sm text-gray-600">Fin Toe Angle</p>
+            </div>
+        </div>
+    </section> <!-- End of Fin Diagrams Section -->
+
+
+    <!-- Inline AI Chat Section -->
+    <section id="inline-ai-chat-section" class="my-12 py-8">
+        <div class="text-center mb-6">
+            <button id="toggle-chat-btn"
+               class="bg-green-500 hover:bg-green-600 text-white font-bold py-3 px-8 rounded-lg text-xl shadow-lg transition duration-150 ease-in-out transform hover:scale-105 inline-block">
+                <i class="fas fa-comments mr-2"></i> Have More Questions? Ask the AI Expert!
+            </button>
+        </div>
+
+        <div id="chat-interface" class="hidden max-w-2xl mx-auto bg-white p-6 rounded-lg shadow-xl border border-gray-200">
+            <div id="chat-log" class="h-64 overflow-y-auto mb-4 p-3 border rounded-md bg-gray-50 text-sm">
+                <p class="text-gray-500">Ask a question about surfboard fins, and I'll do my best to answer!</p>
+            </div>
+            <div class="flex gap-3">
+                <input type="text" id="chat-input" placeholder="Type your question here..." class="flex-grow p-3 border border-gray-300 rounded-md focus:ring-cyan-500 focus:border-cyan-500">
+                <button id="send-chat-btn" class="bg-cyan-600 hover:bg-cyan-700 text-white font-semibold py-3 px-5 rounded-md transition duration-150">
+                    <i class="fas fa-paper-plane mr-1"></i> Send
+                </button>
+            </div>
+            <div id="chat-loading" class="text-center mt-3 text-gray-500 hidden">
+                <i class="fas fa-spinner fa-spin mr-2"></i>Thinking...
+            </div>
+            <div id="chat-error" class="text-center mt-3 text-red-500 font-semibold hidden"></div>
+        </div>
+    </section> <!-- End of Inline AI Chat Section -->
+
+</div>
+{% endblock %}
+
+{% block scripts %}
+{{ super() }}
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const toggleChatBtn = document.getElementById('toggle-chat-btn');
+    const chatInterface = document.getElementById('chat-interface');
+    const chatInput = document.getElementById('chat-input');
+    const sendChatBtn = document.getElementById('send-chat-btn');
+    const chatLog = document.getElementById('chat-log');
+    const chatLoading = document.getElementById('chat-loading');
+    const chatError = document.getElementById('chat-error');
+
+    if (toggleChatBtn) {
+        toggleChatBtn.addEventListener('click', () => {
+            chatInterface.classList.toggle('hidden');
+            if (!chatInterface.classList.contains('hidden')) {
+                chatInput.focus();
+            }
+        });
+    }
+
+    function appendMessage(message, sender) {
+        const messageDiv = document.createElement('div');
+        messageDiv.classList.add('mb-2', 'p-2', 'rounded-md');
+        if (sender === 'user') {
+            messageDiv.classList.add('bg-blue-100', 'text-blue-800', 'text-right', 'ml-auto');
+            messageDiv.style.maxWidth = '80%';
+            messageDiv.innerHTML = `<strong>You:</strong> ${message}`;
+        } else { // AI
+            messageDiv.classList.add('bg-gray-200', 'text-gray-800', 'mr-auto');
+            messageDiv.style.maxWidth = '80%';
+            messageDiv.innerHTML = `<strong>AI:</strong> ${message}`; // Using innerHTML to render potential markdown later
+        }
+        chatLog.appendChild(messageDiv);
+        chatLog.scrollTop = chatLog.scrollHeight; // Auto-scroll to bottom
+    }
+
+    async function handleSendMessage() {
+        const question = chatInput.value.trim();
+        if (!question) return;
+
+        appendMessage(question, 'user');
+        chatInput.value = '';
+        chatLoading.classList.remove('hidden');
+        chatError.classList.add('hidden');
+
+        try {
+            const response = await fetch("{{ url_for('ask') }}", {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ question: question }),
+            });
+
+            chatLoading.classList.add('hidden');
+
+            if (!response.ok) {
+                const errorData = await response.json();
+                throw new Error(errorData.error || `Server error: ${response.status}`);
+            }
+
+            const data = await response.json();
+            appendMessage(data.answer, 'ai');
+
+        } catch (error) {
+            console.error('Chat Error:', error);
+            chatLoading.classList.add('hidden');
+            chatError.textContent = `Error: ${error.message}`;
+            chatError.classList.remove('hidden');
+            appendMessage(`Sorry, I encountered an error trying to respond. Details: ${error.message}`, 'ai');
+        }
+    }
+
+    if (sendChatBtn) {
+        sendChatBtn.addEventListener('click', handleSendMessage);
+    }
+
+    if (chatInput) {
+        chatInput.addEventListener('keypress', function(event) {
+            if (event.key === 'Enter') {
+                event.preventDefault(); // Prevent form submission if it were in a form
+                handleSendMessage();
+            }
+        });
+    }
+
+    // Ensure AOS is initialized if you're using it on this page
+    if (typeof AOS !== 'undefined' && typeof AOS.init === 'function') {
+        AOS.init({
+            duration: 800,
+            once: true,
+        });
+    }
+});
+</script>
+{% endblock %}
