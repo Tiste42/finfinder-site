@@ -134,7 +134,7 @@
                     <span class="ml-3 sm:ml-4 text-lg sm:text-xl font-bold text-gray-800">Fin Finder</span>
                 </a>
             </div>
-            <div class="block">
+            <div class="hidden md:block">
                 <div class="ml-10 flex items-baseline space-x-2 lg:space-x-4">
                     <a href="{{ url_for('home') }}" class="{% if active_page == 'home' %}bg-blue-600 text-white{% else %}text-gray-700 hover:bg-gray-200{% endif %} px-3 py-2 rounded-md text-sm font-medium transition-all duration-200">Home</a>
                     <a href="{{ url_for('recommender_page') }}" class="{% if active_page == 'recommender' %}bg-blue-600 text-white{% else %}text-gray-700 hover:bg-gray-200{% endif %} px-3 py-2 rounded-md text-sm font-medium transition-all duration-200">Fin Recommender</a>
