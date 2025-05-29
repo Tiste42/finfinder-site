@@ -1,233 +1,374 @@
 {% extends "base.html" %}
 
-{% block title %}Home - Fin Finder AI{% endblock %}
+{% block title %}Fin Finder - Stop Guessing, Start Ripping!{% endblock %}
+
+{% block description %}Get personalized surfboard fin recommendations from our expert system. Find the perfect fins for your unique surfing style, board, and wave conditions.{% endblock %}
 
 {% block content %}
-<!-- Hero Section with Large Logo - REDUCED HEIGHT -->
-<div class="relative overflow-hidden bg-gradient-to-r from-blue-900 to-cyan-700 shadow-2xl rounded-lg mb-10">
-    <!-- Background Image -->
-    <img src="{{ url_for('static', filename='surfer_arm_drag.jpg') }}" 
-         alt="Surfer in action" 
-         class="absolute inset-0 w-full h-full object-cover mix-blend-overlay opacity-60">
-    
-         <div class="relative z-10 px-4 py-4 sm:px-6 sm:py-8 lg:py-12 lg:px-8 flex flex-col items-center justify-center text-center">        <img src="{{ url_for('static', filename='fin_finder_logo_transparent.png') }}" 
-             alt="Fin Finder Logo" 
-             class="h-64 md:h-80 w-auto mb-6">
-        
-        <h1 class="text-4xl font-extrabold tracking-tight text-white sm:text-5xl lg:text-6xl mb-4">
-            Unlock Your Surf Potential
-        </h1>
-        
-        <p class="max-w-lg mx-auto text-xl text-cyan-100 sm:max-w-xl mb-6">
-            Stop guessing. Start ripping. Get personalized surfboard fin recommendations from our AI expert.
-        </p>
-        
-        <a href="#ai-chat" 
-           class="inline-flex items-center px-8 py-4 border border-transparent text-lg font-medium rounded-md text-white bg-cyan-600 hover:bg-cyan-700 shadow-lg transition-all duration-300 transform hover:scale-105">
-            Your Personal AI Fin Expert is Here
-        </a>
-    </div>
-</div>
+    <!-- Additional styles specific to the homepage -->
+    <style>
+        /* Basic scrollbar styling for chat */
+        #chat-messages::-webkit-scrollbar {
+            width: 8px;
+        }
+        #chat-messages::-webkit-scrollbar-track {
+            background: #1f2937;
+            border-radius: 4px;
+        }
+        #chat-messages::-webkit-scrollbar-thumb {
+            background: #4b5563;
+            border-radius: 4px;
+        }
+        #chat-messages::-webkit-scrollbar-thumb:hover {
+            background: #6b7280;
+        }
 
-<!-- AI Chat Interface -->
-<div id="ai-chat" class="max-w-4xl mx-auto mb-16 bg-white dark:bg-gray-800 rounded-xl shadow-xl overflow-hidden">
-    <div class="bg-gradient-to-r from-blue-600 to-cyan-500 p-4">
-        <h2 class="text-2xl font-bold text-white flex items-center">
-            <i class="fas fa-comments mr-2"></i> Chat with Your AI Fin Expert
-        </h2>
-        <p class="text-blue-100">Ask any question about surfboard fins and get expert advice instantly</p>
-    </div>
-    
-    <div class="p-6">
-        <!-- Example Messages -->
-        <div class="mb-6 space-y-4">
-            <div class="flex items-start">
-                <div class="flex-shrink-0 mr-3">
-                    <div class="w-10 h-10 rounded-full bg-blue-500 flex items-center justify-center text-white">
-                        <i class="fas fa-user"></i>
-                    </div>
-                </div>
-                <div class="bg-gray-100 dark:bg-gray-700 rounded-lg p-3 max-w-md">
-                    <p class="text-gray-800 dark:text-gray-200">What fins should I use for my 6'2" shortboard in small waves?</p>
-                </div>
+        /* Smooth animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .message-animation {
+            animation: fadeIn 0.3s ease-out;
+        }
+
+        /* Card hover effects */
+        .feature-card {
+            transition: all 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-4px);
+        }
+    </style>
+
+    <header class="relative">
+        <!-- Hero Section with Modern Gradient -->
+        <div class="relative bg-gradient-to-br from-blue-900 via-blue-800 to-cyan-700 overflow-hidden" style="background-image: url('/static/surfer_arm_drag.jpg'); background-size: cover; background-position: center; background-blend-mode: overlay;">
+            <div class="absolute inset-0 bg-black bg-opacity-20"></div>
+            <div class="absolute inset-0 opacity-20">
+                <svg class="absolute bottom-0 w-full h-32" preserveAspectRatio="none" viewBox="0 0 1440 320">
+                    <path fill="currentColor" fill-opacity="0.3" d="M0,96L48,112C96,128,192,160,288,160C384,160,480,128,576,112C672,96,768,96,864,112C960,128,1056,160,1152,160C1248,160,1344,128,1392,112L1440,96L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path>
+                </svg>
             </div>
-            
-            <div class="flex items-start flex-row-reverse">
-                <div class="flex-shrink-0 ml-3">
-                    <div class="w-10 h-10 rounded-full bg-cyan-600 flex items-center justify-center text-white">
-                        <i class="fas fa-robot"></i>
-                    </div>
-                </div>
-                <div class="bg-cyan-50 dark:bg-cyan-900 rounded-lg p-3 max-w-md">
-                    <p class="text-gray-800 dark:text-gray-200">For a 6'2" shortboard in small waves, I'd recommend a quad fin setup with smaller fins that have a flatter foil. This will give you more speed and drive in weaker conditions. Look for fins with around 4.0-4.25" depth and a relatively flat inside foil to help generate speed.</p>
+
+            <!-- Content -->
+            <div class="relative max-w-7xl mx-auto py-24 px-4 sm:py-32 sm:px-6 lg:px-8 text-center">
+                <h1 class="text-5xl md:text-6xl font-extrabold text-white mb-6 tracking-tight">
+                    Find Your Perfect Surfboard Fins
+                </h1>
+                <p class="text-xl md:text-2xl text-blue-100 max-w-3xl mx-auto mb-4">
+                    Expert Recommendations Based on Your Unique Needs
+                </p>
+                <p class="mt-4 text-3xl font-bold text-white">
+                    Stop Guessing, Start Ripping!
+                </p>
+                <div class="mt-10 max-w-sm mx-auto sm:max-w-none sm:flex sm:justify-center">
+                    <a href="{{ url_for('recommender_page') }}" class="flex items-center justify-center px-8 py-4 border border-transparent text-lg font-medium rounded-lg shadow-lg text-white bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-700 hover:to-cyan-700 transition-all duration-300 transform hover:scale-105">
+                        <i class="fas fa-magic mr-2"></i>Find Your Fins Now
+                    </a>
                 </div>
             </div>
         </div>
-        
-        <!-- Chat Input -->
-        <form id="chat-form" class="flex items-center space-x-3">
-            <input type="text" id="question-input" 
-                   class="flex-1 px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-cyan-500 focus:border-cyan-500 dark:bg-gray-700 dark:text-white" 
-                   placeholder="Ask about fins, setups, or recommendations...">
-            <button type="submit" 
-                    class="px-4 py-3 bg-cyan-600 hover:bg-cyan-700 text-white font-medium rounded-lg transition-colors duration-300">
-                <i class="fas fa-paper-plane mr-2"></i> Ask
-            </button>
-        </form>
-        
-        <!-- Response Area -->
-        <div id="response-area" class="mt-6 hidden">
-            <div class="flex items-start">
-                <div class="flex-shrink-0 mr-3">
-                    <div class="w-10 h-10 rounded-full bg-blue-500 flex items-center justify-center text-white">
-                        <i class="fas fa-user"></i>
-                    </div>
-                </div>
-                <div class="bg-gray-100 dark:bg-gray-700 rounded-lg p-3 max-w-md">
-                    <p id="user-question" class="text-gray-800 dark:text-gray-200"></p>
-                </div>
-            </div>
-            
-            <div class="flex items-start flex-row-reverse mt-4">
-                <div class="flex-shrink-0 ml-3">
-                    <div class="w-10 h-10 rounded-full bg-cyan-600 flex items-center justify-center text-white">
-                        <i class="fas fa-robot"></i>
-                    </div>
-                </div>
-                <div id="ai-response-container" class="bg-cyan-50 dark:bg-cyan-900 rounded-lg p-3 max-w-md">
-                    <p id="ai-response" class="text-gray-800 dark:text-gray-200"></p>
-                    <div id="ai-loading" class="flex space-x-1 justify-center py-2">
-                        <div class="w-2 h-2 bg-cyan-600 rounded-full animate-bounce"></div>
-                        <div class="w-2 h-2 bg-cyan-600 rounded-full animate-bounce" style="animation-delay: 0.2s"></div>
-                        <div class="w-2 h-2 bg-cyan-600 rounded-full animate-bounce" style="animation-delay: 0.4s"></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+    </header>
 
-<!-- Resource Links -->
-<div class="bg-gray-50 dark:bg-gray-900 py-8">
+    <main class="bg-gray-50">
+        <!-- What Makes Fin Finder Different -->
+        <section class="py-16 bg-white">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-12">
+                    <h2 class="text-4xl font-bold text-gray-900 mb-4">
+                        Why Choose Fin Finder?
+                    </h2>
+                    <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                        More than just information - get personalized expert advice tailored to your specific needs.
+                    </p>
+                </div>
+               
+                <div class="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
+                    <div class="feature-card bg-gradient-to-br from-blue-50 to-cyan-50 rounded-2xl p-8 text-center shadow-lg border border-blue-100">
+                        <div class="flex items-center justify-center h-16 w-16 rounded-full bg-gradient-to-br from-blue-500 to-blue-600 text-white shadow-lg mx-auto mb-4">
+                            <i class="fas fa-brain text-2xl"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold text-gray-900 mb-3">Expert System</h3>
+                        <p class="text-gray-600">
+                            Our Fin Finder Expert combines decades of surfing knowledge with advanced technology to provide custom fin advice.
+                        </p>
+                    </div>
+                   
+                    <div class="feature-card bg-gradient-to-br from-blue-50 to-cyan-50 rounded-2xl p-8 text-center shadow-lg border border-blue-100">
+                        <div class="flex items-center justify-center h-16 w-16 rounded-full bg-gradient-to-br from-blue-500 to-blue-600 text-white shadow-lg mx-auto mb-4">
+                            <i class="fas fa-comments text-2xl"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold text-gray-900 mb-3">Real-Time Answers</h3>
+                        <p class="text-gray-600">
+                            Ask detailed questions and get immediate answers about any fin-related topic, from basic concepts to specific recommendations.
+                        </p>
+                    </div>
+                   
+                    <div class="feature-card bg-gradient-to-br from-blue-50 to-cyan-50 rounded-2xl p-8 text-center shadow-lg border border-blue-100">
+                        <div class="flex items-center justify-center h-16 w-16 rounded-full bg-gradient-to-br from-blue-500 to-blue-600 text-white shadow-lg mx-auto mb-4">
+                            <i class="fas fa-user-check text-2xl"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold text-gray-900 mb-3">Personalized Recommendations</h3>
+                        <p class="text-gray-600">
+                            Get fin recommendations based on your weight, skill level, board type, and wave conditions for optimal performance.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Introduction to Fin Guides Section -->
+        <section class="py-16 bg-gray-50">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-12">
+                    <h2 class="text-4xl font-bold text-gray-900 mb-4">
+                        Dive Deeper: Explore Our Expert Fin Guides
+                    </h2>
+                    <p class="text-xl text-gray-600">
+                        Everything you need to know about surfboard fins, from basics to advanced setups.
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+                    <!-- Link to All About Fins -->
+                    <div class="group relative bg-white rounded-2xl shadow-lg p-6 transition-all duration-300 hover:shadow-xl hover:transform hover:-translate-y-1 border border-gray-100">
+                        <h3 class="text-xl font-semibold text-gray-900 mb-3">
+                            <a href="{{ url_for('all_about_fins') }}" class="flex items-center">
+                                <span class="absolute inset-0" aria-hidden="true"></span>
+                                <i class="fas fa-book-open mr-3 text-blue-500"></i>All About Surfboard Fins
+                            </a>
+                        </h3>
+                        <p class="text-gray-600">
+                            Understand how fins work, their anatomy, and how they affect your surfboard's performance.
+                        </p>
+                    </div>
+
+                    <!-- Link to Fin Setups -->
+                    <div class="group relative bg-white rounded-2xl shadow-lg p-6 transition-all duration-300 hover:shadow-xl hover:transform hover:-translate-y-1 border border-gray-100">
+                        <h3 class="text-xl font-semibold text-gray-900 mb-3">
+                            <a href="{{ url_for('fin_setups') }}" class="flex items-center">
+                                <span class="absolute inset-0" aria-hidden="true"></span>
+                                <i class="fas fa-cogs mr-3 text-blue-500"></i>Surfboard Fin Setups
+                            </a>
+                        </h3>
+                        <p class="text-gray-600">
+                            Compare twin, thruster, quad, and other setups to find your perfect match.
+                        </p>
+                    </div>
+
+                    <!-- Link to Fin Systems -->
+                    <div class="group relative bg-white rounded-2xl shadow-lg p-6 transition-all duration-300 hover:shadow-xl hover:transform hover:-translate-y-1 border border-gray-100">
+                        <h3 class="text-xl font-semibold text-gray-900 mb-3">
+                            <a href="{{ url_for('fin_systems') }}" class="flex items-center">
+                                <span class="absolute inset-0" aria-hidden="true"></span>
+                                <i class="fas fa-plug mr-3 text-blue-500"></i>Fin Box Systems & Brands
+                            </a>
+                        </h3>
+                        <p class="text-gray-600">
+                            Learn about FCS, Futures, and other fin systems to ensure compatibility.
+                        </p>
+                    </div>
+
+                    <!-- Link to Longboard Fins -->
+                    <div class="group relative bg-white rounded-2xl shadow-lg p-6 transition-all duration-300 hover:shadow-xl hover:transform hover:-translate-y-1 border border-gray-100">
+                        <h3 class="text-xl font-semibold text-gray-900 mb-3">
+                            <a href="{{ url_for('longboard_fins') }}" class="flex items-center">
+                                <span class="absolute inset-0" aria-hidden="true"></span>
+                                <i class="fas fa-water mr-3 text-blue-500"></i>Longboard Fins Guide
+                            </a>
+                        </h3>
+                        <p class="text-gray-600">
+                            Explore types, sizing, and placement for classic longboard performance.
+                        </p>
+                    </div>
+
+                    <!-- Link to Fin Sizing Guide -->
+                    <div class="group relative bg-white rounded-2xl shadow-lg p-6 transition-all duration-300 hover:shadow-xl hover:transform hover:-translate-y-1 border border-gray-100">
+                        <h3 class="text-xl font-semibold text-gray-900 mb-3">
+                            <a href="{{ url_for('fin_sizing_guide') }}" class="flex items-center">
+                                <span class="absolute inset-0" aria-hidden="true"></span>
+                                <i class="fas fa-ruler-combined mr-3 text-blue-500"></i>Fin Sizing Guide
+                            </a>
+                        </h3>
+                        <p class="text-gray-600">
+                            Find the perfect fin size based on your weight, board, skill, and wave conditions.
+                        </p>
+                    </div>
+                     
+                    <!-- NEW: Beginner-Focused Card -->
+                    <div class="group relative bg-white rounded-2xl shadow-lg p-6 transition-all duration-300 hover:shadow-xl hover:transform hover:-translate-y-1 border border-gray-100">
+                        <h3 class="text-xl font-semibold text-gray-900 mb-3">
+                            <a href="{{ url_for('recommender_page') }}" class="flex items-center">
+                                <span class="absolute inset-0" aria-hidden="true"></span>
+                                <i class="fas fa-life-ring mr-3 text-blue-500"></i>New to Surfing? Start Here
+                            </a>
+                        </h3>
+                        <p class="text-gray-600">
+                            Get personalized fin advice for beginners from our Fin Finder Expert. We'll help you ride waves better!
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Second CTA for Fin Recommender -->
+        <section class="bg-gradient-to-r from-blue-700 to-cyan-700 py-16">
+            <div class="max-w-4xl mx-auto text-center px-4 sm:px-6 lg:px-8">
+                <h2 class="text-4xl font-bold text-white mb-4">
+                    Ready to find your ideal fins?
+                </h2>
+                <p class="text-xl text-blue-100 mb-8">
+                    Our Fin Finder Expert analyzes your needs to give you personalized recommendations in seconds.
+                </p>
+                <a href="{{ url_for('recommender_page') }}" class="inline-flex items-center justify-center px-8 py-4 border border-transparent rounded-lg shadow-lg text-lg font-medium text-blue-700 bg-white hover:bg-blue-50 transition-all duration-300 transform hover:scale-105">
+                    <i class="fas fa-rocket mr-2"></i>Use the Fin Recommender
+                </a>
+            </div>
+        </section>
+
+        <<!-- Replace the "Chat with Fin Expert Section" with this: -->
+
+<!-- Our Mission Section (moved from recommender page) -->
+<section class="py-16 bg-white">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h2 class="text-2xl font-bold text-center text-gray-900 dark:text-gray-100 mb-8">
-            Explore Our Fin Resources
-        </h2>
+        <div class="text-center mb-12">
+            <h2 class="text-4xl font-bold text-gray-900 mb-6">Our Mission: Get You The Right Fins Fast</h2>
+            <p class="text-xl text-gray-600 max-w-4xl mx-auto">
+                At Fin Finder, we understand that while <span class="text-blue-600 font-semibold">education is important</span>, what you really want is to 
+                <span class="text-blue-600 font-semibold">get out in the water as quickly as possible</span> with the right equipment for your needs.
+            </p>
+        </div>
         
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            <a href="{{ url_for('fundamentals') }}" class="group">
-                <div class="bg-white dark:bg-gray-800 overflow-hidden shadow rounded-lg transition-all duration-300 transform group-hover:scale-105">
-                    <div class="px-4 py-5 sm:p-6">
-                        <h3 class="text-lg font-medium text-gray-900 dark:text-gray-100 group-hover:text-cyan-600 dark:group-hover:text-cyan-400 transition-colors duration-300">
-                            <i class="fas fa-book mr-2"></i> Fin Fundamentals
-                        </h3>
-                        <p class="mt-2 text-sm text-gray-500 dark:text-gray-400">
-                            Learn the basics of fin design, terminology, and how fins affect your surfing.
-                        </p>
-                    </div>
+            <div class="bg-gradient-to-br from-blue-50 to-cyan-50 rounded-2xl p-6 text-center shadow-lg border border-blue-100 transform transition-all duration-300 hover:scale-105">
+                <div class="flex items-center justify-center h-16 w-16 rounded-full bg-gradient-to-br from-blue-500 to-blue-600 text-white shadow-lg mx-auto mb-4">
+                    <i class="fas fa-graduation-cap text-xl"></i>
                 </div>
-            </a>
+                <h3 class="text-lg font-semibold text-gray-900 mb-2">Educational Content</h3>
+                <p class="text-gray-600 text-sm">Learn surfboard fin fundamentals and performance characteristics</p>
+            </div>
             
-            <a href="{{ url_for('setups') }}" class="group">
-                <div class="bg-white dark:bg-gray-800 overflow-hidden shadow rounded-lg transition-all duration-300 transform group-hover:scale-105">
-                    <div class="px-4 py-5 sm:p-6">
-                        <h3 class="text-lg font-medium text-gray-900 dark:text-gray-100 group-hover:text-cyan-600 dark:group-hover:text-cyan-400 transition-colors duration-300">
-                            <i class="fas fa-th mr-2"></i> Fin Setups
-                        </h3>
-                        <p class="mt-2 text-sm text-gray-500 dark:text-gray-400">
-                            Compare single, twin, thruster, quad, and other fin configurations.
-                        </p>
-                    </div>
+            <div class="bg-gradient-to-br from-blue-50 to-cyan-50 rounded-2xl p-6 text-center shadow-lg border border-blue-100 transform transition-all duration-300 hover:scale-105">
+                <div class="flex items-center justify-center h-16 w-16 rounded-full bg-gradient-to-br from-blue-500 to-blue-600 text-white shadow-lg mx-auto mb-4">
+                    <i class="fas fa-bolt text-xl"></i>
                 </div>
-            </a>
+                <h3 class="text-lg font-semibold text-gray-900 mb-2">Fast, Actionable Advice</h3>
+                <p class="text-gray-600 text-sm">Get specific fin recommendations tailored to your situation</p>
+            </div>
             
-            <a href="{{ url_for('longboards') }}" class="group">
-                <div class="bg-white dark:bg-gray-800 overflow-hidden shadow rounded-lg transition-all duration-300 transform group-hover:scale-105">
-                    <div class="px-4 py-5 sm:p-6">
-                        <h3 class="text-lg font-medium text-gray-900 dark:text-gray-100 group-hover:text-cyan-600 dark:group-hover:text-cyan-400 transition-colors duration-300">
-                            <i class="fas fa-ruler-horizontal mr-2"></i> Longboard Fins
-                        </h3>
-                        <p class="mt-2 text-sm text-gray-500 dark:text-gray-400">
-                            Specialized guide to longboard fin options, from traditional to performance.
-                        </p>
-                    </div>
+            <div class="bg-gradient-to-br from-blue-50 to-cyan-50 rounded-2xl p-6 text-center shadow-lg border border-blue-100 transform transition-all duration-300 hover:scale-105">
+                <div class="flex items-center justify-center h-16 w-16 rounded-full bg-gradient-to-br from-blue-500 to-blue-600 text-white shadow-lg mx-auto mb-4">
+                    <i class="fas fa-gift text-xl"></i>
                 </div>
-            </a>
+                <h3 class="text-lg font-semibold text-gray-900 mb-2">100% Free Guidance</h3>
+                <p class="text-gray-600 text-sm">No cost, no signup required - just expert fin advice</p>
+            </div>
             
-            <a href="{{ url_for('recommender_page') }}" class="group">
-                <div class="bg-white dark:bg-gray-800 overflow-hidden shadow rounded-lg transition-all duration-300 transform group-hover:scale-105">
-                    <div class="px-4 py-5 sm:p-6">
-                        <h3 class="text-lg font-medium text-gray-900 dark:text-gray-100 group-hover:text-cyan-600 dark:group-hover:text-cyan-400 transition-colors duration-300">
-                            <i class="fas fa-magic mr-2"></i> Full Recommender
-                        </h3>
-                        <p class="mt-2 text-sm text-gray-500 dark:text-gray-400">
-                            Get a complete personalized fin recommendation based on your specific needs.
-                        </p>
-                    </div>
+            <div class="bg-gradient-to-br from-blue-50 to-cyan-50 rounded-2xl p-6 text-center shadow-lg border border-blue-100 transform transition-all duration-300 hover:scale-105">
+                <div class="flex items-center justify-center h-16 w-16 rounded-full bg-gradient-to-br from-blue-500 to-blue-600 text-white shadow-lg mx-auto mb-4">
+                    <i class="fas fa-brain text-xl"></i>
                 </div>
-            </a>
+                <h3 class="text-lg font-semibold text-gray-900 mb-2">Research-Based Knowledge</h3>
+                <p class="text-gray-600 text-sm">Based on extensive research and real-world testing</p>
+            </div>
         </div>
     </div>
-</div>
+</section>
 
-<!-- JavaScript for AI Chat -->
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-    const chatForm = document.getElementById('chat-form');
-    const questionInput = document.getElementById('question-input');
-    const responseArea = document.getElementById('response-area');
-    const userQuestion = document.getElementById('user-question');
-    const aiResponse = document.getElementById('ai-response');
-    const aiLoading = document.getElementById('ai-loading');
-    
-    // Initially hide the loading indicator
-    aiLoading.style.display = 'none';
-    
-    chatForm.addEventListener('submit', function(e) {
-        e.preventDefault();
-        
-        const question = questionInput.value.trim();
-        if (!question) return;
-        
-        // Display user question
-        userQuestion.textContent = question;
-        responseArea.classList.remove('hidden');
-        
-        // Show loading indicator, hide previous response
-        aiResponse.textContent = '';
-        aiLoading.style.display = 'flex';
-        
-        // Send request to backend
-        fetch('/ask', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({ question: question }),
-        })
-        .then(response => response.json())
-        .then(data => {
-            // Hide loading indicator
-            aiLoading.style.display = 'none';
-            
-            // Display AI response
-            if (data.answer) {
-                aiResponse.textContent = data.answer;
-            } else if (data.error) {
-                aiResponse.textContent = `Error: ${data.error}`;
-            } else {
-                aiResponse.textContent = 'Sorry, I couldn\'t process your question. Please try again.';
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Chat functionality
+            const chatMessages = document.getElementById('chat-messages');
+            const userInput = document.getElementById('user-input');
+            const sendButton = document.getElementById('send-button');
+
+            // Function to add a message to the chat
+            function addMessageToChat(message, sender) {
+                const messageDiv = document.createElement('div');
+                messageDiv.classList.add('flex', 'message-animation');
+               
+                const messageContentDiv = document.createElement('div');
+                messageContentDiv.classList.add('rounded-lg', 'p-4', 'max-w-[80%]', 'shadow-lg');
+                
+                if (sender === 'user') {
+                    messageDiv.classList.add('justify-end');
+                    messageContentDiv.classList.add('bg-gradient-to-r', 'from-gray-600', 'to-gray-700', 'text-white');
+                } else {
+                    messageDiv.classList.add('justify-start');
+                    messageContentDiv.classList.add('bg-gradient-to-r', 'from-blue-600', 'to-blue-700', 'text-white');
+                }
+                
+                messageContentDiv.textContent = message;
+                messageDiv.appendChild(messageContentDiv);
+                chatMessages.appendChild(messageDiv);
+                chatMessages.scrollTop = chatMessages.scrollHeight;
             }
-        })
-        .catch(error => {
-            aiLoading.style.display = 'none';
-            aiResponse.textContent = 'Sorry, there was a problem connecting to the AI. Please try again later.';
-            console.error('Error:', error);
+
+            // Handle sending a message
+            async function handleSendMessage() {
+                const messageText = userInput.value.trim();
+                if (!messageText) return;
+
+                addMessageToChat(messageText, 'user');
+                userInput.value = '';
+
+                // Show typing indicator
+                const typingDiv = document.createElement('div');
+                typingDiv.classList.add('flex', 'justify-start', 'typing-indicator', 'message-animation');
+               
+                const typingContent = document.createElement('div');
+                typingContent.classList.add('bg-gradient-to-r', 'from-blue-600', 'to-blue-700', 'text-white', 'rounded-lg', 'p-4', 'max-w-[80%]', 'shadow-lg');
+                typingContent.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i>Expert is analyzing...';
+               
+                typingDiv.appendChild(typingContent);
+                chatMessages.appendChild(typingDiv);
+                chatMessages.scrollTop = chatMessages.scrollHeight;
+
+                try {
+                    const response = await fetch('/ask', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify({ question: messageText }),
+                    });
+
+                    const data = await response.json();
+                    
+                    // Remove typing indicator
+                    const typingIndicator = document.querySelector('.typing-indicator');
+                    if (typingIndicator) {
+                        chatMessages.removeChild(typingIndicator);
+                    }
+                    
+                    if (data.answer) {
+                        addMessageToChat(data.answer, 'expert');
+                    } else {
+                        addMessageToChat("Sorry, I couldn't generate a response. Please try again.", 'expert');
+                    }
+                } catch (error) {
+                    console.error('Error:', error);
+                    
+                    const typingIndicator = document.querySelector('.typing-indicator');
+                    if (typingIndicator) {
+                        chatMessages.removeChild(typingIndicator);
+                    }
+                    
+                    addMessageToChat("Sorry, I'm having trouble connecting right now. Please try again later.", 'expert');
+                }
+            }
+
+            if (sendButton && userInput && chatMessages) {
+                sendButton.addEventListener('click', handleSendMessage);
+                userInput.addEventListener('keypress', function (e) {
+                    if (e.key === 'Enter') {
+                        handleSendMessage();
+                    }
+                });
+            }
         });
-        
-        // Clear input
-        questionInput.value = '';
-    });
-});
-</script>
+    </script>
 {% endblock %}

@@ -1,0 +1,621 @@
+{% extends "base.html" %}
+{% set active_page = "longboard-fins" %}
+
+{% block title %}Longboard Fins: Complete Guide to Types, Sizing & Placement | Fin Finder{% endblock %}
+
+{% block description %}Complete guide to longboard fins - types, sizing, placement, pivot fins, rake fins, hatchet fins, D-fins, flex fins, US box system, and 2+1 setups.{% endblock %}
+
+{% block content %}
+<!-- Hero Section - Matching Home/Recommender Style -->
+<section class="bg-gradient-to-br from-blue-900 via-blue-800 to-cyan-700 text-white py-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <h1 class="text-5xl md:text-6xl font-extrabold mb-6">The Complete Guide to Longboard Fins: Types, Sizing & Placement</h1>
+        <p class="text-xl md:text-2xl text-blue-100 max-w-4xl mx-auto">
+            Master longboard fin selection with our comprehensive guide to pivot fins, rake fins, sizing rules, and placement techniques
+        </p>
+        <p class="mt-4 text-2xl font-bold">From Traditional Logs to Modern Performance</p>
+    </div>
+</section>
+
+<!-- Quick Navigation Overview -->
+<section class="py-12 bg-white">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 class="text-3xl font-bold text-center text-gray-900 mb-8">Quick Navigation</h2>
+        <p class="text-center text-gray-600 mb-8">Jump to any section to learn about longboard fin types, sizing, and placement</p>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+            <a href="#why-different" class="nav-card bg-gradient-to-r from-blue-50 to-cyan-50 hover:from-blue-100 hover:to-cyan-100 p-4 rounded-lg border border-blue-200 hover:border-blue-300 transition-all duration-300 transform hover:scale-105 hover:shadow-lg">
+                <h3 class="font-semibold text-blue-800 mb-2">Why Longboard Fins Differ</h3>
+                <p class="text-sm text-gray-600">Understanding the unique breed</p>
+            </a>
+            
+            <a href="#fin-types" class="nav-card bg-gradient-to-r from-green-50 to-emerald-50 hover:from-green-100 hover:to-emerald-100 p-4 rounded-lg border border-green-200 hover:border-green-300 transition-all duration-300 transform hover:scale-105 hover:shadow-lg">
+                <h3 class="font-semibold text-green-800 mb-2">Longboard Fin Types</h3>
+                <p class="text-sm text-gray-600">Pivot, rake, hatchet, D-fins & flex</p>
+            </a>
+            
+            <a href="#sizing" class="nav-card bg-gradient-to-r from-purple-50 to-violet-50 hover:from-purple-100 hover:to-violet-100 p-4 rounded-lg border border-purple-200 hover:border-purple-300 transition-all duration-300 transform hover:scale-105 hover:shadow-lg">
+                <h3 class="font-semibold text-purple-800 mb-2">Sizing Your Fin</h3>
+                <p class="text-sm text-gray-600">Inch-per-foot rule & beyond</p>
+            </a>
+            
+            <a href="#placement" class="nav-card bg-gradient-to-r from-orange-50 to-red-50 hover:from-orange-100 hover:to-red-100 p-4 rounded-lg border border-orange-200 hover:border-orange-300 transition-all duration-300 transform hover:scale-105 hover:shadow-lg">
+                <h3 class="font-semibold text-orange-800 mb-2">Fin Placement</h3>
+                <p class="text-sm text-gray-600">Forward vs back positioning</p>
+            </a>
+            
+            <a href="#2plus1-setups" class="nav-card bg-gradient-to-r from-teal-50 to-cyan-50 hover:from-teal-100 hover:to-cyan-100 p-4 rounded-lg border border-teal-200 hover:border-teal-300 transition-all duration-300 transform hover:scale-105 hover:shadow-lg">
+                <h3 class="font-semibold text-teal-800 mb-2">2+1 Setups</h3>
+                <p class="text-sm text-gray-600">Center fin plus side bites</p>
+            </a>
+            
+            <a href="#us-box-system" class="nav-card bg-gradient-to-r from-indigo-50 to-blue-50 hover:from-indigo-100 hover:to-blue-100 p-4 rounded-lg border border-indigo-200 hover:border-indigo-300 transition-all duration-300 transform hover:scale-105 hover:shadow-lg">
+                <h3 class="font-semibold text-indigo-800 mb-2">US Box System</h3>
+                <p class="text-sm text-gray-600">Longboard fin box basics</p>
+            </a>
+        </div>
+        
+        <div class="mt-8 text-center">
+            <div class="bg-blue-50 p-4 rounded-lg border border-blue-200">
+                <p class="text-blue-800 font-medium">💬 Have specific questions? Our Expert Fin Finder chat is always available in the bottom right corner!</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Why Longboard Fins Are Different -->
+<section id="why-different" class="py-16 bg-gray-50">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="form-section p-8 md:p-12 form-animation hover-lift">
+            <h2 class="text-3xl font-bold text-center text-gray-900 mb-8">Why Longboard Fins Are a Different Breed</h2>
+            <div class="prose prose-lg max-w-none text-gray-700">
+                <p class="text-xl mb-6">Longboard fins are fundamentally different from shortboard fins in both design philosophy and function. While shortboard fins prioritize quick turns and radical maneuvers, longboard fins are designed for stability, flow, and the unique requirements of traditional longboard surfing.</p>
+                
+                <p class="mb-6">The key differences stem from the longboard's length, weight, and intended surfing style. Longboards require fins that can provide adequate hold and control for a much larger board while enabling the smooth, flowing turns and noseriding capabilities that define classic longboard surfing.</p>
+                
+                <div class="bg-blue-50 p-6 rounded-lg mb-8 hover:bg-blue-100 transition-colors duration-300">
+                    <h3 class="text-xl font-semibold mb-4 text-blue-800">Key Differences from Shortboard Fins:</h3>
+                    <ul class="list-disc list-inside space-y-2 text-gray-700">
+                        <li><strong>Size:</strong> Much larger (7-10+ inches) to provide adequate hold for longer boards</li>
+                        <li><strong>Base Width:</strong> Wider bases for increased stability and drive</li>
+                        <li><strong>Rake:</strong> Often more upright for pivot-style turning or highly raked for flow</li>
+                        <li><strong>Flex:</strong> Traditional logs often use flexible fins for a lively, responsive feel</li>
+                        <li><strong>Placement:</strong> Can be moved forward or back in the box to dramatically change performance</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Common Longboard Fin Types -->
+<section id="fin-types" class="bg-gradient-to-br from-blue-900 via-blue-800 to-cyan-700 py-16">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="form-section p-8 md:p-12 form-animation hover-lift">
+            <h2 class="text-3xl font-bold text-center text-gray-900 mb-8">Common Longboard Fin Types & Their Uses</h2>
+            <p class="text-center text-gray-600 mb-12 text-lg">Each fin type offers unique performance characteristics for different longboard styles</p>
+            
+            <!-- Pivot Fins -->
+            <div class="mb-12">
+                <h3 class="text-2xl font-semibold mb-6 text-gray-800">Pivot Fins</h3>
+                <div class="bg-white p-8 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 hover-card">
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                        <div class="md:col-span-2">
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                                <div>
+                                    <h4 class="text-lg font-semibold mb-4 text-cyan-700">Design Characteristics</h4>
+                                    <ul class="space-y-2 text-gray-700">
+                                        <li>• <strong>Upright stance:</strong> Minimal rake for tight turning radius</li>
+                                        <li>• <strong>Wide base:</strong> Provides stability and drive</li>
+                                        <li>• <strong>Moderate depth:</strong> Usually 8-9 inches</li>
+                                        <li>• <strong>Squared-off tip:</strong> Classic traditional look</li>
+                                    </ul>
+                                </div>
+                                <div>
+                                    <h4 class="text-lg font-semibold mb-4 text-cyan-700">Best For</h4>
+                                    <ul class="space-y-2 text-gray-700">
+                                        <li>• <strong>Traditional longboarding:</strong> Classic pivot turns</li>
+                                        <li>• <strong>Noseriding:</strong> Excellent stability for walking the board</li>
+                                        <li>• <strong>Small to medium waves:</strong> Ideal for mellow conditions</li>
+                                        <li>• <strong>Beginners:</strong> Predictable and stable performance</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="p-4 bg-blue-50 rounded-lg hover:bg-blue-100 transition-colors duration-300">
+                                <p class="text-blue-800"><strong>Pivot Fin Performance:</strong> Pivot fins excel at creating the classic longboard turning style - smooth, drawn-out arcs that maintain speed and flow.</p>
+                            </div>
+                        </div>
+                        <div class="flex flex-col justify-center">
+                            <div class="bg-gray-50 p-4 rounded-lg border border-gray-200">
+                                <img src="{{ url_for('static', filename='classic_pivot_fin.png') }}" alt="Classic Pivot Fin" class="rounded-md mb-3 mx-auto max-h-48 w-auto">
+                                <p class="text-sm text-cyan-700 text-center font-medium">Classic Pivot Fin</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Hatchet Fins -->
+            <div class="mb-12">
+                <h3 class="text-2xl font-semibold mb-6 text-gray-800">Hatchet Fins</h3>
+                <div class="bg-white p-8 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 hover-card">
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                        <div class="md:col-span-2">
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                                <div>
+                                    <h4 class="text-lg font-semibold mb-4 text-cyan-700">Design Characteristics</h4>
+                                    <ul class="space-y-2 text-gray-700">
+                                        <li>• <strong>Wide, square base:</strong> Maximum surface area</li>
+                                        <li>• <strong>Abrupt taper:</strong> Distinctive hatchet shape</li>
+                                        <li>• <strong>Large overall area:</strong> Substantial hold and drive</li>
+                                        <li>• <strong>Traditional aesthetic:</strong> Classic 1960s styling</li>
+                                    </ul>
+                                </div>
+                                <div>
+                                    <h4 class="text-lg font-semibold mb-4 text-cyan-700">Best For</h4>
+                                    <ul class="space-y-2 text-gray-700">
+                                        <li>• <strong>Heavy longboards:</strong> Provides adequate drive for big boards</li>
+                                        <li>• <strong>Powerful waves:</strong> Excellent hold in larger surf</li>
+                                        <li>• <strong>Traditional styling:</strong> Authentic vintage look</li>
+                                        <li>• <strong>Noseriding focus:</strong> Maximum stability for walking</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="p-4 bg-purple-50 rounded-lg hover:bg-purple-100 transition-colors duration-300">
+                                <p class="text-purple-800"><strong>Hatchet Fin Performance:</strong> Hatchet fins provide maximum hold and drive, making them ideal for traditional logs and powerful wave conditions.</p>
+                            </div>
+                        </div>
+                        <div class="flex flex-col justify-center">
+                            <div class="bg-gray-50 p-4 rounded-lg border border-gray-200">
+                                <img src="{{ url_for('static', filename='hatchet_fin.png') }}" alt="Hatchet Fin" class="rounded-md mb-3 mx-auto max-h-48 w-auto">
+                                <p class="text-sm text-cyan-700 text-center font-medium">Hatchet Fin</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- D-Fins -->
+            <div class="mb-12">
+                <h3 class="text-2xl font-semibold mb-6 text-gray-800">D-Fins</h3>
+                <div class="bg-white p-8 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 hover-card">
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                        <div class="md:col-span-2">
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                                <div>
+                                    <h4 class="text-lg font-semibold mb-4 text-cyan-700">Design Characteristics</h4>
+                                    <ul class="space-y-2 text-gray-700">
+                                        <li>• <strong>D-shaped profile:</strong> Curved leading edge, straight trailing edge</li>
+                                        <li>• <strong>Wide base:</strong> Substantial surface area</li>
+                                        <li>• <strong>Moderate rake:</strong> Balanced turning characteristics</li>
+                                        <li>• <strong>Unique aesthetic:</strong> Distinctive curved outline</li>
+                                    </ul>
+                                </div>
+                                <div>
+                                    <h4 class="text-lg font-semibold mb-4 text-cyan-700">Best For</h4>
+                                    <ul class="space-y-2 text-gray-700">
+                                        <li>• <strong>Smooth turning:</strong> Fluid, predictable arcs</li>
+                                        <li>• <strong>Trim and glide:</strong> Excellent for cruising</li>
+                                        <li>• <strong>Alternative styling:</strong> Unique look on the water</li>
+                                        <li>• <strong>Mellow conditions:</strong> Perfect for gentle waves</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="p-4 bg-orange-50 rounded-lg hover:bg-orange-100 transition-colors duration-300">
+                                <p class="text-orange-800"><strong>D-Fin Longboard Performance:</strong> D-fins offer a unique combination of stability and smooth turning, popular among traditional longboard enthusiasts.</p>
+                            </div>
+                        </div>
+                        <div class="flex flex-col justify-center">
+                            <div class="bg-gray-50 p-4 rounded-lg border border-gray-200">
+                                <img src="{{ url_for('static', filename='d_fin.png') }}" alt="D Fin" class="rounded-md mb-3 mx-auto max-h-48 w-auto">
+                                <p class="text-sm text-cyan-700 text-center font-medium">D Fin Design</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Flex Fins -->
+            <div class="mb-8">
+                <h3 class="text-2xl font-semibold mb-6 text-gray-800">Flex Fins for Traditional Logs</h3>
+                <div class="bg-white p-8 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 hover-card">
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                        <div class="md:col-span-2">
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                                <div>
+                                    <h4 class="text-lg font-semibold mb-4 text-cyan-700">Design Characteristics</h4>
+                                    <ul class="space-y-2 text-gray-700">
+                                        <li>• <strong>Flexible materials:</strong> Fiberglass or bamboo construction</li>
+                                        <li>• <strong>Traditional templates:</strong> Classic shapes with modern flex</li>
+                                        <li>• <strong>Variable stiffness:</strong> Different flex patterns available</li>
+                                        <li>• <strong>Lively feel:</strong> Responsive to rider input</li>
+                                    </ul>
+                                </div>
+                                <div>
+                                    <h4 class="text-lg font-semibold mb-4 text-cyan-700">Best For</h4>
+                                    <ul class="space-y-2 text-gray-700">
+                                        <li>• <strong>Traditional logs:</strong> Authentic vintage feel</li>
+                                        <li>• <strong>Small wave performance:</strong> Generates speed in weak surf</li>
+                                        <li>• <strong>Responsive turning:</strong> Lively, springy feel</li>
+                                        <li>• <strong>Style surfing:</strong> Enhanced flow and rhythm</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="p-4 bg-teal-50 rounded-lg hover:bg-teal-100 transition-colors duration-300">
+                                <p class="text-teal-800"><strong>Flex Fins Longboard Performance:</strong> Flex fins provide a lively, responsive feel that many traditional longboard surfers prefer for their authentic vintage characteristics.</p>
+                            </div>
+                        </div>
+                        <div class="flex flex-col justify-center">
+                            <div class="bg-gray-50 p-4 rounded-lg border border-gray-200">
+                                <img src="{{ url_for('static', filename='flex_fin.png') }}" alt="Flex Fin" class="rounded-md mb-3 mx-auto max-h-48 w-auto">
+                                <p class="text-sm text-cyan-700 text-center font-medium">Flex Fin</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Sizing Your Longboard Fin -->
+<section id="sizing" class="py-16 bg-gray-50">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="form-section p-8 md:p-12 form-animation hover-lift">
+            <h2 class="text-3xl font-bold text-center text-gray-900 mb-8">Sizing Your Longboard Fin (The "Inch-Per-Foot" Rule & Beyond)</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+                <div class="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 hover-card">
+                    <h3 class="text-xl font-semibold mb-4 text-cyan-700">The Traditional Rule</h3>
+                    <p class="text-gray-700 leading-relaxed mb-4">The classic "inch-per-foot" rule suggests using a fin depth equal to your board length in feet. For example, a 9-foot longboard would use a 9-inch fin.</p>
+                    <div class="p-3 bg-blue-50 rounded hover:bg-blue-100 transition-colors duration-300">
+                        <p class="text-sm text-blue-800"><strong>Example:</strong> 8ft board = 8" fin, 9ft board = 9" fin, 10ft board = 10" fin</p>
+                    </div>
+                </div>
+                
+                <div class="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 hover-card">
+                    <h3 class="text-xl font-semibold mb-4 text-cyan-700">Modern Considerations</h3>
+                    <p class="text-gray-700 leading-relaxed mb-4">While the inch-per-foot rule is a good starting point, modern longboard fin sizing considers surfing style, wave conditions, and personal preference.</p>
+                    <div class="p-3 bg-green-50 rounded hover:bg-green-100 transition-colors duration-300">
+                        <p class="text-sm text-green-800"><strong>Factors:</strong> Surfing style, wave size, board weight, personal preference</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-white p-8 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 hover-card mb-8">
+                <h3 class="text-2xl font-semibold mb-6 text-gray-800">Longboard Fin Size Guidelines</h3>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div class="p-4 bg-blue-50 rounded-lg hover:bg-blue-100 transition-colors duration-300">
+                        <h4 class="font-semibold text-blue-800 mb-2">Smaller Fins (7-8")</h4>
+                        <ul class="text-sm text-gray-700 space-y-1">
+                            <li>• More maneuverable</li>
+                            <li>• Better for performance longboarding</li>
+                            <li>• Easier to turn</li>
+                            <li>• Less stable for noseriding</li>
+                        </ul>
+                    </div>
+                    <div class="p-4 bg-green-50 rounded-lg hover:bg-green-100 transition-colors duration-300">
+                        <h4 class="font-semibold text-green-800 mb-2">Medium Fins (8-9")</h4>
+                        <ul class="text-sm text-gray-700 space-y-1">
+                            <li>• Balanced performance</li>
+                            <li>• Good all-around choice</li>
+                            <li>• Suitable for most conditions</li>
+                            <li>• Popular size range</li>
+                        </ul>
+                    </div>
+                    <div class="p-4 bg-purple-50 rounded-lg hover:bg-purple-100 transition-colors duration-300">
+                        <h4 class="font-semibold text-purple-800 mb-2">Larger Fins (9-10")</h4>
+                        <ul class="text-sm text-gray-700 space-y-1">
+                            <li>• Maximum stability</li>
+                            <li>• Excellent for noseriding</li>
+                            <li>• Better hold in larger waves</li>
+                            <li>• Traditional longboard feel</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-blue-50 p-6 rounded-lg hover:bg-blue-100 transition-colors duration-300">
+                <h3 class="text-xl font-semibold mb-4 text-blue-800">How to Size Longboard Fin: Step-by-Step</h3>
+                <ol class="list-decimal list-inside space-y-2 text-gray-700">
+                    <li><strong>Start with the inch-per-foot rule</strong> as your baseline</li>
+                    <li><strong>Consider your surfing style:</strong> Traditional = larger, performance = smaller</li>
+                    <li><strong>Factor in wave conditions:</strong> Bigger waves = larger fins</li>
+                    <li><strong>Account for board characteristics:</strong> Heavy boards need more fin</li>
+                    <li><strong>Experiment:</strong> Try different sizes to find your preference</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Mastering Longboard Fin Placement -->
+<section id="placement" class="bg-gradient-to-br from-blue-900 via-blue-800 to-cyan-700 py-16">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="form-section p-8 md:p-12 form-animation hover-lift">
+            <h2 class="text-3xl font-bold text-center text-gray-900 mb-8">Mastering Longboard Fin Placement in the Box</h2>
+            <p class="text-center text-gray-600 mb-12 text-lg">Forward for looseness, back for hold and drive</p>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+                <div class="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 hover-card">
+                    <h3 class="text-xl font-semibold mb-4 text-cyan-700">Forward Placement</h3>
+                    <div class="space-y-4">
+                        <div class="p-3 bg-blue-50 rounded hover:bg-blue-100 transition-colors duration-300">
+                            <p class="text-sm font-medium text-blue-800">Performance Characteristics:</p>
+                            <ul class="text-gray-700 text-sm mt-2 space-y-1">
+                                <li>• Looser, more pivotal turning</li>
+                                <li>• Enhanced noseriding ability</li>
+                                <li>• Tail lifts more easily</li>
+                                <li>• More maneuverable in small waves</li>
+                            </ul>
+                        </div>
+                        <div class="p-3 bg-green-50 rounded hover:bg-green-100 transition-colors duration-300">
+                            <p class="text-sm font-medium text-green-800">Best For:</p>
+                            <p class="text-gray-700 text-sm">Traditional longboarding, noseriding, small wave performance, learning to walk the board</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 hover
+                                <div class="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 hover-card">
+                    <h3 class="text-xl font-semibold mb-4 text-cyan-700">Rearward Placement</h3>
+                    <div class="space-y-4">
+                        <div class="p-3 bg-purple-50 rounded hover:bg-purple-100 transition-colors duration-300">
+                            <p class="text-sm font-medium text-purple-800">Performance Characteristics:</p>
+                            <ul class="text-gray-700 text-sm mt-2 space-y-1">
+                                <li>• More drive and hold</li>
+                                <li>• Better control in larger waves</li>
+                                <li>• Increased directional stability</li>
+                                <li>• More responsive turning</li>
+                            </ul>
+                        </div>
+                        <div class="p-3 bg-orange-50 rounded hover:bg-orange-100 transition-colors duration-300">
+                            <p class="text-sm font-medium text-orange-800">Best For:</p>
+                            <p class="text-gray-700 text-sm">Performance longboarding, larger waves, aggressive turning, modern progressive style</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-blue-800/90 backdrop-blur-sm rounded-lg p-6 border border-blue-600/50 hover:bg-blue-800/95 transition-colors duration-300">
+                <h3 class="text-xl font-semibold mb-4 text-white">Longboard Fin Placement Tips</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                        <h4 class="font-semibold text-blue-200 mb-2">Moving Longboard Fin Forward:</h4>
+                        <ul class="text-blue-100 text-sm space-y-1">
+                            <li>• Start with center position</li>
+                            <li>• Move 1/2" forward at a time</li>
+                            <li>• Test in similar wave conditions</li>
+                            <li>• Note changes in turning and stability</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-blue-200 mb-2">Fine-Tuning Process:</h4>
+                        <ul class="text-blue-100 text-sm space-y-1">
+                            <li>• Keep a fin placement log</li>
+                            <li>• Consider wave conditions</li>
+                            <li>• Factor in your surfing goals</li>
+                            <li>• Be patient with adjustments</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- 2+1 Setups on Longboards -->
+<section id="2plus1-setups" class="py-16 bg-gray-50">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="form-section p-8 md:p-12 form-animation hover-lift">
+            <h2 class="text-3xl font-bold text-center text-gray-900 mb-8">2+1 Setups on Longboards</h2>
+            <p class="text-center text-gray-600 mb-12 text-lg">Center fin plus side bites for enhanced performance</p>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
+                <div class="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 hover-card">
+                    <h3 class="text-xl font-semibold mb-4 text-cyan-700">What is a 2+1 Setup?</h3>
+                    <p class="text-gray-700 leading-relaxed mb-4">A 2+1 setup combines a large center fin (typically 6-8 inches) with two smaller side fins (side bites) usually 3-4 inches. This configuration bridges traditional single fin stability with modern maneuverability.</p>
+                    <div class="p-3 bg-blue-50 rounded hover:bg-blue-100 transition-colors duration-300">
+                        <p class="text-sm text-blue-800"><strong>Configuration:</strong> Large center fin + two small side fins</p>
+                    </div>
+                </div>
+                
+                <div class="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 hover-card">
+                    <h3 class="text-xl font-semibold mb-4 text-cyan-700">Performance Benefits</h3>
+                    <ul class="space-y-2 text-gray-700">
+                        <li>• <strong>Enhanced control:</strong> Side fins add grip during turns</li>
+                        <li>• <strong>Maintained stability:</strong> Center fin provides traditional feel</li>
+                        <li>• <strong>Improved release:</strong> Easier to break the tail free</li>
+                        <li>• <strong>Versatility:</strong> Works in various wave conditions</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="bg-blue-50 p-6 rounded-lg hover:bg-blue-100 transition-colors duration-300">
+                <h3 class="text-xl font-semibold mb-4 text-blue-800">2+1 Setup Considerations</h3>
+                <p class="text-gray-700 mb-4">For more detailed information about 2+1 setups and other fin configurations, including thruster and quad setups on longboards, visit our comprehensive fin setups guide.</p>
+                <div class="text-center">
+                    <a href="{{ url_for('fin_setups') }}" class="inline-block bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-500 hover:to-cyan-500 text-white font-bold py-3 px-6 rounded-lg transition-all duration-300 transform hover:scale-105 shadow-lg">
+                        Learn More About Fin Setups
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- The US Fin Box System -->
+<section id="us-box-system" class="bg-gradient-to-br from-blue-900 via-blue-800 to-cyan-700 py-16">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="form-section p-8 md:p-12 form-animation hover-lift">
+            <h2 class="text-3xl font-bold text-center text-gray-900 mb-8">The US Fin Box System</h2>
+            <p class="text-center text-gray-600 mb-12 text-lg">Understanding the longboard fin box standard</p>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
+                <div class="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 hover-card">
+                    <h3 class="text-xl font-semibold mb-4 text-cyan-700">US Box Characteristics</h3>
+                    <ul class="space-y-2 text-gray-700 mb-4">
+                        <li>• <strong>Deep box design:</strong> Accommodates large longboard fins</li>
+                        <li>• <strong>Adjustable placement:</strong> Fin can be moved forward or back</li>
+                        <li>• <strong>Secure connection:</strong> Plate and screw system</li>
+                        <li>• <strong>Standard sizing:</strong> Compatible with most longboard fins</li>
+                    </ul>
+                </div>
+                
+                <div class="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 hover-card">
+                    <h3 class="text-xl font-semibold mb-4 text-cyan-700">Installation Process</h3>
+                    <ol class="list-decimal list-inside space-y-2 text-gray-700">
+                        <li>Insert fin base into the box</li>
+                        <li>Position fin at desired location</li>
+                        <li>Insert plate through fin base</li>
+                        <li>Tighten screw to secure fin</li>
+                    </ol>
+                </div>
+            </div>
+            
+            <div class="bg-blue-800/90 backdrop-blur-sm rounded-lg p-6 border border-blue-600/50 hover:bg-blue-800/95 transition-colors duration-300">
+                <h3 class="text-xl font-semibold mb-4 text-white">US Box Fin System Details</h3>
+                <p class="text-blue-100 mb-4">The US Box system is the most common longboard center fin system, allowing for easy fin changes and precise placement adjustments. For complete information about all fin systems including FCS, Futures, and specialty systems, check out our detailed fin systems guide.</p>
+                <div class="text-center">
+                    <a href="{{ url_for('fin_systems') }}" class="inline-block bg-gradient-to-r from-white to-gray-100 hover:from-gray-100 hover:to-white text-blue-900 font-bold py-3 px-6 rounded-lg transition-all duration-300 transform hover:scale-105 shadow-lg">
+                        Learn About All Fin Systems
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Finding Your Perfect Longboard Fin -->
+<section class="bg-gradient-to-br from-blue-900 via-blue-800 to-cyan-700 py-16">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <div class="bg-white/20 backdrop-blur-sm rounded-2xl p-8 border border-white/30 shadow-2xl hover:bg-white/25 transition-colors duration-300 hover-lift">
+            <h2 class="text-3xl font-bold text-white mb-4">Finding Your Perfect Longboard Fin</h2>
+            <p class="text-xl text-blue-100 mb-6">Ready to find the ideal longboard fin for your board and surfing style? Our Fin Finder Expert can help you choose the perfect fin based on your board dimensions, fin box type, and longboard surfing preferences.</p>
+            <p class="text-lg text-blue-200 mb-8">💬 Don't forget - you can also chat with our Expert Fin Finder anytime using the chat box in the bottom right corner for personalized longboard fin advice!</p>
+            <a href="{{ url_for('recommender_page') }}" class="inline-block bg-gradient-to-r from-white to-gray-100 hover:from-gray-100 hover:to-white text-blue-900 font-bold py-4 px-8 rounded-lg transition-all duration-300 transform hover:scale-105 shadow-xl text-lg border-2 border-white/50">
+                Get Expert Longboard Fin Recommendations
+            </a>
+        </div>
+    </div>
+</section>
+
+<style>
+    /* Smooth animations */
+    @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(10px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+    
+    .form-animation {
+        animation: fadeIn 0.5s ease-out;
+    }
+    
+    /* Form styling to match other pages */
+    .form-section {
+        background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+        border-radius: 1rem;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    }
+    
+    /* Enhanced hover effects */
+    .hover-lift:hover {
+        transform: translateY(-5px);
+        transition: transform 0.3s ease;
+    }
+    
+    .hover-card:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+    }
+    
+    .nav-card {
+        text-decoration: none;
+        display: block;
+    }
+    
+    .nav-card:hover {
+        text-decoration: none;
+    }
+    
+    /* Smooth scrolling */
+    html {
+        scroll-behavior: smooth;
+    }
+    
+    /* Typography improvements */
+    .prose p {
+        margin-bottom: 1.5rem;
+    }
+    
+    .leading-relaxed {
+        line-height: 1.7;
+    }
+</style>
+{% endblock %}
+
+{% block scripts %}
+{{ super() }}
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Add smooth scrolling for internal links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                target.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }
+        });
+    });
+    
+    // Add animation on scroll for cards
+    const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+    };
+    
+    const observer = new IntersectionObserver(function(entries) {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.style.opacity = '1';
+                entry.target.style.transform = 'translateY(0)';
+            }
+        });
+    }, observerOptions);
+    
+    // Observe all cards for animation
+    document.querySelectorAll('.shadow-lg').forEach(card => {
+        card.style.opacity = '0';
+        card.style.transform = 'translateY(20px)';
+        card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+        observer.observe(card);
+    });
+    
+    // Enhanced hover effects for navigation cards
+    document.querySelectorAll('.nav-card').forEach(card => {
+        card.addEventListener('mouseenter', function() {
+            this.style.transform = 'scale(1.05) translateY(-2px)';
+        });
+        
+        card.addEventListener('mouseleave', function() {
+            this.style.transform = 'scale(1) translateY(0)';
+        });
+    });
+    
+    // Add pulse effect to chat reminder
+    const chatReminder = document.querySelector('.bg-blue-50 p');
+    if (chatReminder) {
+        setInterval(() => {
+            chatReminder.style.transform = 'scale(1.02)';
+            setTimeout(() => {
+                chatReminder.style.transform = 'scale(1)';
+            }, 200);
+        }, 5000);
+    }
+});
+</script>
+{% endblock %}

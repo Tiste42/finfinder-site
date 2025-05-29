@@ -1,0 +1,421 @@
+{% extends "base.html" %}
+{% set active_page = "all-about-fins" %}
+
+{% block title %}Ultimate Surfboard Fin Guide: How They Work & Affect Performance | Fin Finder{% endblock %}
+
+{% block description %}Complete guide to surfboard fins - learn how fin base, depth, rake, foil, and materials affect your surfing performance. Expert explanations with diagrams.{% endblock %}
+
+{% block content %}
+<!-- Hero Section - Matching Home/Recommender Style -->
+<section class="bg-gradient-to-br from-blue-900 via-blue-800 to-cyan-700 text-white py-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <h1 class="text-5xl md:text-6xl font-extrabold mb-6">The Ultimate Guide to Surfboard Fins: Understanding How They Work</h1>
+        <p class="text-xl md:text-2xl text-blue-100 max-w-4xl mx-auto">
+            Master the fundamentals of surfboard fins and discover how each design element affects your performance in the water
+        </p>
+        <p class="mt-4 text-2xl font-bold">From Basics to Expert Knowledge</p>
+    </div>
+</section>
+
+<!-- Quick Navigation Overview -->
+<section class="py-12 bg-white">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 class="text-3xl font-bold text-center text-gray-900 mb-8">Quick Navigation</h2>
+        <p class="text-center text-gray-600 mb-8">Jump to any section to learn about specific fin concepts</p>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+            <a href="#what-are-fins" class="nav-card bg-gradient-to-r from-blue-50 to-cyan-50 hover:from-blue-100 hover:to-cyan-100 p-4 rounded-lg border border-blue-200 hover:border-blue-300 transition-all duration-300 transform hover:scale-105 hover:shadow-lg">
+                <h3 class="font-semibold text-blue-800 mb-2">What Are Surfboard Fins?</h3>
+                <p class="text-sm text-gray-600">Essential functions and basics</p>
+            </a>
+            
+            <a href="#anatomy" class="nav-card bg-gradient-to-r from-green-50 to-emerald-50 hover:from-green-100 hover:to-emerald-100 p-4 rounded-lg border border-green-200 hover:border-green-300 transition-all duration-300 transform hover:scale-105 hover:shadow-lg">
+                <h3 class="font-semibold text-green-800 mb-2">Anatomy of a Fin</h3>
+                <p class="text-sm text-gray-600">Base, depth, rake, cant & foil</p>
+            </a>
+            
+            <a href="#visualizing" class="nav-card bg-gradient-to-r from-purple-50 to-violet-50 hover:from-purple-100 hover:to-violet-100 p-4 rounded-lg border border-purple-200 hover:border-purple-300 transition-all duration-300 transform hover:scale-105 hover:shadow-lg">
+                <h3 class="font-semibold text-purple-800 mb-2">Visualizing Fin Concepts</h3>
+                <p class="text-sm text-gray-600">Diagrams and illustrations</p>
+            </a>
+            
+            <a href="#materials" class="nav-card bg-gradient-to-r from-orange-50 to-red-50 hover:from-orange-100 hover:to-red-100 p-4 rounded-lg border border-orange-200 hover:border-orange-300 transition-all duration-300 transform hover:scale-105 hover:shadow-lg">
+                <h3 class="font-semibold text-orange-800 mb-2">Fin Materials</h3>
+                <p class="text-sm text-gray-600">Fiberglass, carbon, bamboo & more</p>
+            </a>
+            
+            <a href="#performance" class="nav-card bg-gradient-to-r from-teal-50 to-cyan-50 hover:from-teal-100 hover:to-cyan-100 p-4 rounded-lg border border-teal-200 hover:border-teal-300 transition-all duration-300 transform hover:scale-105 hover:shadow-lg">
+                <h3 class="font-semibold text-teal-800 mb-2">How Fins Affect Performance</h3>
+                <p class="text-sm text-gray-600">Drive, speed, control & flow</p>
+            </a>
+            
+            <a href="#get-recommendations" class="nav-card bg-gradient-to-r from-indigo-50 to-blue-50 hover:from-indigo-100 hover:to-blue-100 p-4 rounded-lg border border-indigo-200 hover:border-indigo-300 transition-all duration-300 transform hover:scale-105 hover:shadow-lg">
+                <h3 class="font-semibold text-indigo-800 mb-2">Get AI Recommendations</h3>
+                <p class="text-sm text-gray-600">Find your perfect fins</p>
+            </a>
+        </div>
+        
+        <div class="mt-8 text-center">
+            <div class="bg-blue-50 p-4 rounded-lg border border-blue-200">
+                <p class="text-blue-800 font-medium">💬 Have specific questions? Our Expert Fin Finder chat is always available in the bottom right corner!</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- What Are Surfboard Fins Section -->
+<section id="what-are-fins" class="py-16 bg-gray-50">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="form-section p-8 md:p-12 form-animation hover-lift">
+            <h2 class="text-3xl font-bold text-center text-gray-900 mb-8">What Are Surfboard Fins & Why Are They Essential?</h2>
+            <div class="prose prose-lg max-w-none text-gray-700">
+                <p class="text-xl mb-6">Surfboard fins are the underwater appendages that provide stability, control, and maneuverability to your surfboard. Without fins, a surfboard would slide sideways across the wave face with no directional control - essentially making surfing impossible.</p>
+                
+                <p class="mb-6">The purpose of fins extends far beyond basic stability. They create lift, generate drive through turns, provide hold in critical sections, and allow surfers to harness the wave's energy efficiently. Understanding how fins work is fundamental to improving your surfing performance.</p>
+                
+                <div class="bg-blue-50 p-6 rounded-lg mb-8 hover:bg-blue-100 transition-colors duration-300">
+                    <h3 class="text-xl font-semibold mb-4 text-blue-800">Key Functions of Surfboard Fins:</h3>
+                    <ul class="list-disc list-inside space-y-2 text-gray-700">
+                        <li><strong>Directional Control:</strong> Prevent sideways sliding and enable forward momentum</li>
+                        <li><strong>Stability:</strong> Keep the board tracking straight when paddling and riding</li>
+                        <li><strong>Maneuverability:</strong> Allow for turns, cutbacks, and directional changes</li>
+                        <li><strong>Drive & Speed:</strong> Generate forward thrust through efficient water flow</li>
+                        <li><strong>Hold:</strong> Provide grip in powerful waves and steep sections</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- The Anatomy of a Surfboard Fin -->
+<section id="anatomy" class="bg-gradient-to-br from-blue-900 via-blue-800 to-cyan-700 py-16">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="form-section p-8 md:p-12 form-animation hover-lift">
+            <h2 class="text-3xl font-bold text-center text-gray-900 mb-8">The Anatomy of a Surfboard Fin</h2>
+            <p class="text-center text-gray-600 mb-12 text-lg">Understanding each component of fin design and how it affects performance</p>
+            
+            <!-- Base & Depth Section -->
+            <div class="mb-12">
+                <h3 class="text-2xl font-semibold mb-6 text-gray-800">Base & Depth (Impact on Drive & Hold)</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div class="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 hover-card">
+                        <h4 class="text-xl font-semibold mb-4 text-cyan-700">Fin Base</h4>
+                        <p class="text-gray-700 leading-relaxed">The fin base is the length where the fin connects to the board. A longer base provides more drive and acceleration, especially in drawn-out turns and powerful waves. A shorter base allows for tighter, quicker pivot turns and increased maneuverability in smaller surf.</p>
+                        <div class="mt-4 p-3 bg-blue-50 rounded hover:bg-blue-100 transition-colors duration-300">
+                            <p class="text-sm text-blue-800"><strong>Performance Impact:</strong> Longer base = more drive, shorter base = more pivot</p>
+                        </div>
+                    </div>
+                    <div class="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 hover-card">
+                        <h4 class="text-xl font-semibold mb-4 text-cyan-700">Fin Depth</h4>
+                        <p class="text-gray-700 leading-relaxed">Fin depth (or height) determines how far the fin extends into the water. Greater depth equals more grip and stability, particularly in larger waves or during powerful turns. Less depth results in a looser feel with easier release and the ability to slide the tail.</p>
+                        <div class="mt-4 p-3 bg-blue-50 rounded hover:bg-blue-100 transition-colors duration-300">
+                            <p class="text-sm text-blue-800"><strong>Performance Impact:</strong> More depth = more hold, less depth = looser feel</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Rake/Sweep Section -->
+            <div class="mb-12">
+                <h3 class="text-2xl font-semibold mb-6 text-gray-800">Rake / Sweep (Turning Arc)</h3>
+                <div class="bg-white p-8 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 hover-card">
+                    <p class="text-gray-700 leading-relaxed mb-6">Fin rake (also called sweep) refers to how far the fin tip curves back relative to the base. This measurement significantly affects your turning style and board responsiveness.</p>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div class="p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors duration-300">
+                            <h4 class="font-semibold text-gray-800 mb-2">High Rake (More Swept Back)</h4>
+                            <ul class="text-sm text-gray-700 space-y-1">
+                                <li>• Longer, drawn-out turns</li>
+                                <li>• Better stability at high speeds</li>
+                                <li>• Smoother, more predictable feel</li>
+                                <li>• Ideal for powerful waves</li>
+                            </ul>
+                        </div>
+                        <div class="p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors duration-300">
+                            <h4 class="font-semibold text-gray-800 mb-2">Low Rake (More Upright)</h4>
+                            <ul class="text-sm text-gray-700 space-y-1">
+                                <li>• Tighter turning radius</li>
+                                <li>• More pivot and responsiveness</li>
+                                <li>• Quick direction changes</li>
+                                <li>• Better for smaller waves</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Cant & Toe Section -->
+            <div class="mb-12">
+                <h3 class="text-2xl font-semibold mb-6 text-gray-800">Cant & Toe (Responsiveness & Direction)</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div class="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 hover-card">
+                        <h4 class="text-xl font-semibold mb-4 text-cyan-700">Fin Cant</h4>
+                        <p class="text-gray-700 leading-relaxed">Cant is the outward angle of the side fins relative to the board's bottom. More cant increases responsiveness and lift during turns but can reduce straight-line drive. Less cant (more vertical) offers more speed and drive but less turning responsiveness.</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 hover-card">
+                        <h4 class="text-xl font-semibold mb-4 text-cyan-700">Fin Toe</h4>
+                        <p class="text-gray-700 leading-relaxed">Toe refers to the angle of side fins pointing toward the board's centerline. This creates pressure on the outside fin during turns, increasing responsiveness and maneuverability. Too much toe can create drag and reduce speed.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Foil Section -->
+            <div class="mb-12">
+                <h3 class="text-2xl font-semibold mb-6 text-gray-800">Foil (Water Flow)</h3>
+                <div class="bg-white p-8 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 hover-card">
+                    <p class="text-gray-700 leading-relaxed mb-6">The fin foil is the cross-sectional shape of the fin, similar to an airplane wing. It dramatically affects water flow, lift generation, and overall performance characteristics.</p>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                        <div class="p-4 bg-blue-50 rounded-lg text-center hover:bg-blue-100 transition-colors duration-300">
+                            <h4 class="font-semibold text-blue-800 mb-2">Flat Foil</h4>
+                            <p class="text-sm text-gray-700">Equal thickness both sides. Predictable, stable feel. Common on beginner fins.</p>
+                        </div>
+                        <div class="p-4 bg-blue-50 rounded-lg text-center hover:bg-blue-100 transition-colors duration-300">
+                            <h4 class="font-semibold text-blue-800 mb-2">Inside Foil (80/20)</h4>
+                            <p class="text-sm text-gray-700">Thicker on inside, thinner outside. Generates lift and speed. Most common for side fins.</p>
+                        </div>
+                        <div class="p-4 bg-blue-50 rounded-lg text-center hover:bg-blue-100 transition-colors duration-300">
+                            <h4 class="font-semibold text-blue-800 mb-2">50/50 Foil</h4>
+                            <p class="text-sm text-gray-700">Symmetrical shape. Balanced water flow. Typically used for center fins.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Area & Flex Section -->
+            <div class="mb-8">
+                <h3 class="text-2xl font-semibold mb-6 text-gray-800">Area & Flex (Overall Hold & Feel)</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div class="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 hover-card">
+                        <h4 class="text-xl font-semibold mb-4 text-cyan-700">Fin Area</h4>
+                        <p class="text-gray-700 leading-relaxed">Total surface area of the fin determines overall hold and drive. More area provides increased grip and power, suitable for larger surfers or bigger waves. Less area offers reduced drag and a faster, looser feel ideal for smaller conditions.</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 hover-card">
+                        <h4 class="text-xl font-semibold mb-4 text-cyan-700">Fin Flex</h4>
+                        <p class="text-gray-700 leading-relaxed">How much the fin bends under pressure. More flex provides a springy, lively feel and energy release out of turns. Stiffer fins offer more control, drive, and predictability, especially at high speeds or in powerful waves.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Visual Diagrams Section -->
+<section id="visualizing" class="py-16 bg-gray-50">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 class="text-3xl font-bold text-center text-gray-900 mb-12">Visualizing Fin Concepts</h2>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div class="bg-white p-6 rounded-lg shadow-lg border border-gray-200 hover:shadow-xl transition-all duration-300 hover-card">
+                <img src="{{ url_for('static', filename='anatomyofafin.jpg') }}" alt="Anatomy of a Fin Template" class="rounded-md mb-4 mx-auto max-h-60 w-auto">
+                <p class="text-sm text-cyan-700 text-center font-medium">Fin Template & Key Measurements</p>
+            </div>
+            <div class="bg-white p-6 rounded-lg shadow-lg border border-gray-200 hover:shadow-xl transition-all duration-300 hover-card">
+                <img src="{{ url_for('static', filename='FinFoilDiagram.jpg') }}" alt="Fin Foil Types" class="rounded-md mb-4 mx-auto max-h-60 w-auto">
+                <p class="text-sm text-cyan-700 text-center font-medium">Common Fin Foils</p>
+            </div>
+            <div class="bg-white p-6 rounded-lg shadow-lg border border-gray-200 hover:shadow-xl transition-all duration-300 hover-card">
+                <img src="{{ url_for('static', filename='FinCantandFlex.jpg') }}" alt="Fin Cant and Flex" class="rounded-md mb-4 mx-auto max-h-60 w-auto">
+                <p class="text-sm text-cyan-700 text-center font-medium">Fin Cant & Flex</p>
+            </div>
+            <div class="bg-white p-6 rounded-lg shadow-lg border border-gray-200 hover:shadow-xl transition-all duration-300 hover-card">
+                <img src="{{ url_for('static', filename='FinToe.jpg') }}" alt="Fin Toe Angle" class="rounded-md mb-4 mx-auto max-h-60 w-auto">
+                <p class="text-sm text-cyan-700 text-center font-medium">Fin Toe Angle</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Fin Materials Section -->
+<section id="materials" class="bg-gradient-to-br from-blue-900 via-blue-800 to-cyan-700 py-16">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="form-section p-8 md:p-12 form-animation hover-lift">
+            <h2 class="text-3xl font-bold text-center text-gray-900 mb-8">Common Surfboard Fin Materials</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="bg-white p-6 rounded-lg shadow-lg border border-gray-200 hover:shadow-xl transition-all duration-300 hover-card">
+                    <h3 class="text-xl font-semibold mb-3 text-cyan-700">Fiberglass Fins</h3>
+                    <p class="text-gray-700 leading-relaxed">Traditional construction offering excellent stiffness and control. Solid fiberglass provides maximum drive and hold, while honeycomb cores add flex and responsiveness.</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-lg border border-gray-200 hover:shadow-xl transition-all duration-300 hover-card">
+                    <h3 class="text-xl font-semibold mb-3 text-cyan-700">Carbon Fiber</h3>
+                    <p class="text-gray-700 leading-relaxed">Lightweight and extremely stiff, carbon fins provide maximum drive and response. Ideal for powerful waves and aggressive surfing but can feel harsh in smaller conditions.</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-lg border border-gray-200 hover:shadow-xl transition-all duration-300 hover-card">
+                    <h3 class="text-xl font-semibold mb-3 text-cyan-700">Performance Core</h3>
+                    <p class="text-gray-700 leading-relaxed">Flexible composite materials that provide a lively, springy feel. Great for generating speed in smaller waves and adding responsiveness to your surfing.</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-lg border border-gray-200 hover:shadow-xl transition-all duration-300 hover-card">
+                    <h3 class="text-xl font-semibold mb-3 text-cyan-700">Plastic/Composite</h3>
+                    <p class="text-gray-700 leading-relaxed">Affordable option for beginners. Softer and more forgiving than fiberglass, these fins are durable and safe for learning but lack the performance of premium materials.</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-lg border border-gray-200 hover:shadow-xl transition-all duration-300 hover-card">
+                    <h3 class="text-xl font-semibold mb-3 text-cyan-700">Bamboo/Wood</h3>
+                    <p class="text-gray-700 leading-relaxed">Eco-friendly options with unique flex patterns. Bamboo fins offer a natural, organic feel with moderate flex, while wooden fins provide classic aesthetics.</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-lg border border-gray-200 hover:shadow-xl transition-all duration-300 hover-card">
+                    <h3 class="text-xl font-semibold mb-3 text-cyan-700">Honeycomb</h3>
+                    <p class="text-gray-700 leading-relaxed">Lightweight core construction that balances stiffness with flex. Provides excellent performance characteristics while reducing overall weight.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- How Fins Affect Performance -->
+<section id="performance" class="py-16 bg-gray-50">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="form-section p-8 md:p-12 form-animation hover-lift">
+            <h2 class="text-3xl font-bold text-center text-gray-900 mb-8">How Fins Affect Surfboard Performance</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 hover-card">
+                    <h3 class="text-xl font-semibold mb-4 text-cyan-700">Drive & Speed</h3>
+                    <p class="text-gray-700 leading-relaxed">Fins generate forward momentum through efficient water flow. Larger fins with more area provide increased drive, while proper foil shapes create lift that translates to speed and acceleration.</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 hover-card">
+                    <h3 class="text-xl font-semibold mb-4 text-cyan-700">Pivot & Maneuverability</h3>
+                    <p class="text-gray-700 leading-relaxed">Fin placement and size determine turning characteristics. Smaller fins or reduced area allow for quicker pivots and tighter turns, while fin positioning affects the board's turning radius.</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 hover-card">
+                    <h3 class="text-xl font-semibold mb-4 text-cyan-700">Hold & Control</h3>
+                    <p class="text-gray-700 leading-relaxed">Fins provide grip in critical sections and powerful waves. Deeper fins with more area offer increased hold, while proper cant and toe angles enhance control during aggressive maneuvers.</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 hover-card">
+                    <h3 class="text-xl font-semibold mb-4 text-cyan-700">Release & Flow</h3>
+                    <p class="text-gray-700 leading-relaxed">The ability to release and redirect is crucial for progressive surfing. Fin design affects how easily the tail releases, allowing for slides, snaps, and fluid transitions between maneuvers.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CTA to Fin Finder AI -->
+<section id="get-recommendations" class="bg-gradient-to-br from-blue-900 via-blue-800 to-cyan-700 py-16">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <div class="bg-white/20 backdrop-blur-sm rounded-2xl p-8 border border-white/30 shadow-2xl hover:bg-white/25 transition-colors duration-300 hover-lift">
+            <h2 class="text-3xl font-bold text-white mb-4">Ready to Find Your Perfect Fins?</h2>
+            <p class="text-xl text-blue-100 mb-6">Now that you understand the basics, let our Fin Finder AI help you choose the perfect fins for your surfing style and conditions.</p>
+            <p class="text-lg text-blue-200 mb-8">💬 Don't forget - you can also chat with our Expert Fin Finder anytime using the chat box in the bottom right corner!</p>
+            <a href="{{ url_for('recommender_page') }}" class="inline-block bg-gradient-to-r from-white to-gray-100 hover:from-gray-100 hover:to-white text-blue-900 font-bold py-4 px-8 rounded-lg transition-all duration-300 transform hover:scale-105 shadow-xl text-lg border-2 border-white/50">
+                Get AI Fin Recommendations
+            </a>
+        </div>
+    </div>
+</section>
+
+<style>
+    /* Smooth animations */
+    @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(10px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+    
+    .form-animation {
+        animation: fadeIn 0.5s ease-out;
+    }
+    
+    /* Form styling to match other pages */
+    .form-section {
+        background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+        border-radius: 1rem;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    }
+    
+    /* Enhanced hover effects */
+    .hover-lift:hover {
+        transform: translateY(-5px);
+        transition: transform 0.3s ease;
+    }
+    
+    .hover-card:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+    }
+    
+    .nav-card {
+        text-decoration: none;
+        display: block;
+    }
+    
+    .nav-card:hover {
+        text-decoration: none;
+    }
+    
+    /* Smooth scrolling */
+    html {
+        scroll-behavior: smooth;
+    }
+    
+    /* Typography improvements */
+    .prose p {
+        margin-bottom: 1.5rem;
+    }
+    
+    .leading-relaxed {
+        line-height: 1.7;
+    }
+</style>
+{% endblock %}
+
+{% block scripts %}
+{{ super() }}
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Add smooth scrolling for internal links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                target.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }
+        });
+    });
+    
+    // Add animation on scroll for cards
+    const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+    };
+    
+    const observer = new IntersectionObserver(function(entries) {
+                entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.style.opacity = '1';
+                entry.target.style.transform = 'translateY(0)';
+            }
+        });
+    }, observerOptions);
+    
+    // Observe all cards for animation
+    document.querySelectorAll('.shadow-lg').forEach(card => {
+        card.style.opacity = '0';
+        card.style.transform = 'translateY(20px)';
+        card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+        observer.observe(card);
+    });
+    
+    // Enhanced hover effects for navigation cards
+    document.querySelectorAll('.nav-card').forEach(card => {
+        card.addEventListener('mouseenter', function() {
+            this.style.transform = 'scale(1.05) translateY(-2px)';
+        });
+        
+        card.addEventListener('mouseleave', function() {
+            this.style.transform = 'scale(1) translateY(0)';
+        });
+    });
+    
+    // Add pulse effect to chat reminder
+    const chatReminder = document.querySelector('.bg-blue-50 p');
+    if (chatReminder) {
+        setInterval(() => {
+            chatReminder.style.transform = 'scale(1.02)';
+            setTimeout(() => {
+                chatReminder.style.transform = 'scale(1)';
+            }, 200);
+        }, 5000);
+    }
+});
+</script>
+{% endblock %}

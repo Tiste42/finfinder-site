@@ -1,164 +1,562 @@
 {% extends "base.html" %}
+{% set active_page = "fin-systems" %}
 
-{% block title %}Fin Systems - Fin Finder AI{% endblock %}
+{% block title %}FCS vs Futures: Surfboard Fin Systems & Brands Explained | Fin Finder{% endblock %}
+
+{% block description %}Complete guide to surfboard fin systems - FCS vs Futures comparison, fin box types, installation tips, and brand compatibility. Choose the right fin system for your board.{% endblock %}
 
 {% block content %}
-<div class="container mx-auto px-4 py-8">
-    <h1 class="text-3xl font-bold mb-6 text-gray-800 dark:text-gray-200">Fin Systems Guide</h1>
-    
-    <div class="bg-white dark:bg-gray-800 shadow-lg rounded-lg overflow-hidden mb-8">
-        <div class="p-6">
-            <h2 class="text-2xl font-semibold mb-4 text-gray-800 dark:text-gray-200">Understanding Fin Box Systems</h2>
-            <p class="text-gray-600 dark:text-gray-400 mb-4">
-                Fin box systems are the mechanisms that connect fins to your surfboard. Different systems have unique characteristics, affecting how fins perform and how easily they can be changed.
-            </p>
+<!-- Hero Section - Matching Home/Recommender Style -->
+<section class="bg-gradient-to-br from-blue-900 via-blue-800 to-cyan-700 text-white py-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <h1 class="text-5xl md:text-6xl font-extrabold mb-6">Surfboard Fin Systems: FCS vs. Futures & Choosing Your Fin Box</h1>
+        <p class="text-xl md:text-2xl text-blue-100 max-w-4xl mx-auto">
+            Master the differences between FCS and Futures fin systems and discover which fin box type is best for your surfing needs
+        </p>
+        <p class="mt-4 text-2xl font-bold">From Installation to Performance</p>
+    </div>
+</section>
+
+<!-- Quick Navigation Overview -->
+<section class="py-12 bg-white">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 class="text-3xl font-bold text-center text-gray-900 mb-8">Quick Navigation</h2>
+        <p class="text-center text-gray-600 mb-8">Jump to any section to learn about specific fin systems and brands</p>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+            <a href="#what-is-fin-box" class="nav-card bg-gradient-to-r from-blue-50 to-cyan-50 hover:from-blue-100 hover:to-cyan-100 p-4 rounded-lg border border-blue-200 hover:border-blue-300 transition-all duration-300 transform hover:scale-105 hover:shadow-lg">
+                <h3 class="font-semibold text-blue-800 mb-2">What is a Fin Box System?</h3>
+                <p class="text-sm text-gray-600">Understanding fin box basics</p>
+            </a>
             
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8">
-                <!-- FCS System -->
-                <div class="bg-gray-50 dark:bg-gray-700 p-4 rounded-lg">
-                    <h3 class="text-xl font-semibold mb-2 text-gray-800 dark:text-gray-200">FCS (Fin Control System)</h3>
-                    <p class="text-gray-600 dark:text-gray-400 mb-3">
-                        The original removable fin system, FCS uses two plugs per fin with tabs that insert into the plugs.
-                    </p>
-                    <h4 class="font-medium text-gray-700 dark:text-gray-300 mb-1">Variations:</h4>
-                    <ul class="list-disc pl-5 text-gray-600 dark:text-gray-400 mb-3">
-                        <li>FCS I - The original system (being phased out)</li>
-                        <li>FCS II - Tool-less fin installation with improved connection</li>
-                        <li>FCS Fusion - Molded directly into surfboard foam</li>
-                    </ul>
-                    <h4 class="font-medium text-gray-700 dark:text-gray-300 mb-1">Pros:</h4>
-                    <ul class="list-disc pl-5 text-gray-600 dark:text-gray-400 mb-3">
-                        <li>Widely available fins</li>
-                        <li>FCS II allows quick changes without tools</li>
-                        <li>Slightly more flex than Futures</li>
-                    </ul>
-                    <h4 class="font-medium text-gray-700 dark:text-gray-300 mb-1">Cons:</h4>
-                    <ul class="list-disc pl-5 text-gray-600 dark:text-gray-400">
-                        <li>FCS I fins can pop out in powerful waves</li>
-                        <li>Two plugs per fin create more potential failure points</li>
-                    </ul>
-                </div>
-                
-                <!-- Futures System -->
-                <div class="bg-gray-50 dark:bg-gray-700 p-4 rounded-lg">
-                    <h3 class="text-xl font-semibold mb-2 text-gray-800 dark:text-gray-200">Futures Fins</h3>
-                    <p class="text-gray-600 dark:text-gray-400 mb-3">
-                        Futures uses a single, longer box per fin with a solid base and screw lock system.
-                    </p>
-                    <h4 class="font-medium text-gray-700 dark:text-gray-300 mb-1">Characteristics:</h4>
-                    <ul class="list-disc pl-5 text-gray-600 dark:text-gray-400 mb-3">
-                        <li>Single box per fin</li>
-                        <li>Requires hex key for installation</li>
-                        <li>Solid connection from base to tip</li>
-                    </ul>
-                    <h4 class="font-medium text-gray-700 dark:text-gray-300 mb-1">Pros:</h4>
-                    <ul class="list-disc pl-5 text-gray-600 dark:text-gray-400 mb-3">
-                        <li>Very secure connection</li>
-                        <li>Less prone to breakage</li>
-                        <li>More direct energy transfer</li>
-                    </ul>
-                    <h4 class="font-medium text-gray-700 dark:text-gray-300 mb-1">Cons:</h4>
-                    <ul class="list-disc pl-5 text-gray-600 dark:text-gray-400">
-                        <li>Requires tool for installation/removal</li>
-                        <li>Slightly less flex than FCS</li>
-                        <li>Can be harder to repair if damaged</li>
-                    </ul>
-                </div>
+            <a href="#fcs-systems" class="nav-card bg-gradient-to-r from-green-50 to-emerald-50 hover:from-green-100 hover:to-emerald-100 p-4 rounded-lg border border-green-200 hover:border-green-300 transition-all duration-300 transform hover:scale-105 hover:shadow-lg">
+                <h3 class="font-semibold text-green-800 mb-2">FCS & FCS II Systems</h3>
+                <p class="text-sm text-gray-600">How FCS works & compatibility</p>
+            </a>
+            
+            <a href="#futures-systems" class="nav-card bg-gradient-to-r from-purple-50 to-violet-50 hover:from-purple-100 hover:to-violet-100 p-4 rounded-lg border border-purple-200 hover:border-purple-300 transition-all duration-300 transform hover:scale-105 hover:shadow-lg">
+                <h3 class="font-semibold text-purple-800 mb-2">Futures Fin Systems</h3>
+                <p class="text-sm text-gray-600">Futures design & advantages</p>
+            </a>
+            
+            <a href="#fcs-vs-futures" class="nav-card bg-gradient-to-r from-orange-50 to-red-50 hover:from-orange-100 hover:to-red-100 p-4 rounded-lg border border-orange-200 hover:border-orange-300 transition-all duration-300 transform hover:scale-105 hover:shadow-lg">
+                <h3 class="font-semibold text-orange-800 mb-2">FCS vs Futures Comparison</h3>
+                <p class="text-sm text-gray-600">Which system is better?</p>
+            </a>
+            
+            <a href="#other-systems" class="nav-card bg-gradient-to-r from-teal-50 to-cyan-50 hover:from-teal-100 hover:to-cyan-100 p-4 rounded-lg border border-teal-200 hover:border-teal-300 transition-all duration-300 transform hover:scale-105 hover:shadow-lg">
+                <h3 class="font-semibold text-teal-800 mb-2">Other Fin Systems</h3>
+                <p class="text-sm text-gray-600">Glass-ons, US Box & more</p>
+            </a>
+            
+            <a href="#installation-tips" class="nav-card bg-gradient-to-r from-indigo-50 to-blue-50 hover:from-indigo-100 hover:to-blue-100 p-4 rounded-lg border border-indigo-200 hover:border-indigo-300 transition-all duration-300 transform hover:scale-105 hover:shadow-lg">
+                <h3 class="font-semibold text-indigo-800 mb-2">Installation & Brands</h3>
+                <p class="text-sm text-gray-600">Tips & compatibility guide</p>
+            </a>
+        </div>
+        
+        <div class="mt-8 text-center">
+            <div class="bg-blue-50 p-4 rounded-lg border border-blue-200">
+                <p class="text-blue-800 font-medium">💬 Have specific questions? Our Expert Fin Finder chat is always available in the bottom right corner!</p>
             </div>
-            
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
-                <!-- Longboard Systems -->
-                <div class="bg-gray-50 dark:bg-gray-700 p-4 rounded-lg">
-                    <h3 class="text-xl font-semibold mb-2 text-gray-800 dark:text-gray-200">Longboard Fin Systems</h3>
-                    <p class="text-gray-600 dark:text-gray-400 mb-3">
-                        Longboards often use different fin systems than shortboards.
-                    </p>
-                    <h4 class="font-medium text-gray-700 dark:text-gray-300 mb-1">Common Types:</h4>
-                    <ul class="list-disc pl-5 text-gray-600 dark:text-gray-400">
-                        <li>Single Fin Box - Traditional longboard setup</li>
-                        <li>2+1 Setup - Center fin box with FCS/Futures side fins</li>
-                        <li>Pivot Fin Box - Allows fin rotation for traditional longboarding</li>
-                        <li>Tuttle Box - Deep box used for larger center fins</li>
-                    </ul>
-                </div>
+        </div>
+    </div>
+</section>
+
+<!-- What is a Surfboard Fin Box System -->
+<section id="what-is-fin-box" class="py-16 bg-gray-50">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="form-section p-8 md:p-12 form-animation hover-lift">
+            <h2 class="text-3xl font-bold text-center text-gray-900 mb-8">What is a Surfboard Fin Box System?</h2>
+            <div class="prose prose-lg max-w-none text-gray-700">
+                <p class="text-xl mb-6">A fin box system is the mechanism that connects removable fins to your surfboard. Unlike traditional glass-on fins that are permanently attached, fin box systems allow you to change fins based on wave conditions, surfing style, or personal preference.</p>
                 
-                <!-- Alternative Systems -->
-                <div class="bg-gray-50 dark:bg-gray-700 p-4 rounded-lg">
-                    <h3 class="text-xl font-semibold mb-2 text-gray-800 dark:text-gray-200">Other Fin Systems</h3>
-                    <p class="text-gray-600 dark:text-gray-400 mb-3">
-                        Less common but still found in the market.
-                    </p>
-                    <h4 class="font-medium text-gray-700 dark:text-gray-300 mb-1">Systems:</h4>
-                    <ul class="list-disc pl-5 text-gray-600 dark:text-gray-400">
-                        <li>LokBox - Similar to Futures but with different locking mechanism</li>
-                        <li>ProBox - Used on some older boards</li>
-                        <li>Glass-On Fins - Permanently attached fins (no box system)</li>
-                        <li>Soft Board Fin Systems - Used on foam boards with unique attachment methods</li>
+                <p class="mb-6">The fin system you choose affects not only convenience but also performance characteristics. Different systems provide varying levels of connection strength, flex patterns, and ease of installation. Understanding these differences helps you make informed decisions about your surfboard setup.</p>
+                
+                <div class="bg-blue-50 p-6 rounded-lg mb-8 hover:bg-blue-100 transition-colors duration-300">
+                    <h3 class="text-xl font-semibold mb-4 text-blue-800">Key Benefits of Removable Fin Systems:</h3>
+                    <ul class="list-disc list-inside space-y-2 text-gray-700">
+                        <li><strong>Versatility:</strong> Change fins for different wave conditions and surfing styles</li>
+                        <li><strong>Travel Convenience:</strong> Remove fins for easier board transport and packing</li>
+                        <li><strong>Experimentation:</strong> Try different fin templates and materials without buying new boards</li>
+                        <li><strong>Replacement:</strong> Replace broken or damaged fins without major board repairs</li>
+                        <li><strong>Customization:</strong> Fine-tune your board's performance characteristics</li>
                     </ul>
                 </div>
             </div>
         </div>
     </div>
-    
-    <!-- AI Chat Section -->
-    <div class="bg-white dark:bg-gray-800 shadow-lg rounded-lg overflow-hidden mb-8">
-        <div class="p-6">
-            <h2 class="text-2xl font-semibold mb-4 text-gray-800 dark:text-gray-200">Ask Our AI Fin Expert</h2>
-            <p class="text-gray-600 dark:text-gray-400 mb-6">
-                Not sure which fin system is right for you? Chat with our AI Fin Expert to get personalized recommendations.
-            </p>
+</section>
+
+<!-- FCS & FCS II Fin Systems -->
+<section id="fcs-systems" class="bg-gradient-to-br from-blue-900 via-blue-800 to-cyan-700 py-16">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="form-section p-8 md:p-12 form-animation hover-lift">
+            <h2 class="text-3xl font-bold text-center text-gray-900 mb-8">FCS & FCS II Fin Systems Explained</h2>
+            <p class="text-center text-gray-600 mb-12 text-lg">The world's most popular removable fin system</p>
             
-            <div class="bg-gray-50 dark:bg-gray-700 p-4 rounded-lg mb-4">
-                <p class="text-gray-700 dark:text-gray-300 italic mb-2">Example question:</p>
-                <p class="text-gray-600 dark:text-gray-400">"What's the difference between FCS II and Futures fin systems for a performance shortboard?"</p>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+                <div class="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 hover-card">
+                    <h3 class="text-xl font-semibold mb-4 text-cyan-700">FCS I (Original System)</h3>
+                    <p class="text-gray-700 leading-relaxed mb-4">The original Fin Control System uses two plugs per fin with tabs that insert into the plugs. Fins are secured with grub screws using a fin key.</p>
+                    <div class="p-3 bg-gray-50 rounded hover:bg-gray-100 transition-colors duration-300">
+                        <p class="text-sm text-gray-600"><strong>Note:</strong> Being phased out in favor of FCS II, but still widely compatible</p>
+                    </div>
+                </div>
+                
+                <div class="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 hover-card">
+                    <h3 class="text-xl font-semibold mb-4 text-cyan-700">FCS II (Modern System)</h3>
+                    <p class="text-gray-700 leading-relaxed mb-4">The evolved FCS system features tool-less installation - simply push and click fins into place. Backward compatible with FCS I fins.</p>
+                    <div class="p-3 bg-blue-50 rounded hover:bg-blue-100 transition-colors duration-300">
+                        <p class="text-sm text-blue-800"><strong>Advantage:</strong> No fin key required for installation or removal</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- How FCS Works -->
+            <div class="mb-12">
+                <h3 class="text-2xl font-semibold mb-6 text-gray-800">How FCS Works (Pros, Cons, Compatibility)</h3>
+                <div class="bg-white p-8 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 hover-card">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                        <div>
+                            <h4 class="text-lg font-semibold mb-4 text-green-700">FCS Advantages</h4>
+                            <ul class="space-y-2 text-gray-700">
+                                <li>• <strong>Widest fin selection:</strong> Largest variety of available fins</li>
+                                <li>• <strong>Tool-less convenience:</strong> FCS II allows quick changes</li>
+                                <li>• <strong>Slight flex:</strong> Two-plug system provides natural flex</li>
+                                <li>• <strong>Travel friendly:</strong> Easy removal for board bags</li>
+                                <li>• <strong>Brand variety:</strong> Multiple manufacturers make FCS fins</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h4 class="text-lg font-semibold mb-4 text-red-700">FCS Considerations</h4>
+                            <ul class="space-y-2 text-gray-700">
+                                <li>• <strong>Potential failure points:</strong> Two plugs per fin</li>
+                                <li>• <strong>FCS I limitations:</strong> Fins can pop out in powerful waves</li>
+                                <li>• <strong>Installation precision:</strong> Requires proper alignment</li>
+                                <li>• <strong>Screw maintenance:</strong> FCS I screws can strip or loosen</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-6 p-4 bg-blue-50 rounded-lg hover:bg-blue-100 transition-colors duration-300">
+                        <h4 class="font-semibold text-blue-800 mb-2">FCS Compatibility:</h4>
+                        <p class="text-gray-700">FCS I fins work in FCS II boxes, but FCS II fins only work in FCS II boxes. Most modern boards come with FCS II systems.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Futures Fin Systems -->
+<section id="futures-systems" class="py-16 bg-gray-50">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="form-section p-8 md:p-12 form-animation hover-lift">
+            <h2 class="text-3xl font-bold text-center text-gray-900 mb-8">Futures Fins Systems Explained</h2>
+            <p class="text-center text-gray-600 mb-12 text-lg">The single-box system preferred by many pro surfers</p>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+                <div class="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 hover-card">
+                    <h3 class="text-xl font-semibold mb-4 text-cyan-700">Futures Design Philosophy</h3>
+                    <p class="text-gray-700 leading-relaxed">Futures uses a single, longer fin box per fin with a solid base that runs the entire length of the fin. This creates a more direct connection between fin and board.</p>
+                </div>
+                
+                <div class="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 hover-card">
+                    <h3 class="text-xl font-semibold mb-4 text-cyan-700">Installation Method</h3>
+                    <p class="text-gray-700 leading-relaxed">Futures fins slide into the box and are secured with a single screw using a hex key. The solid base provides maximum strength and energy transfer.</p>
+                </div>
+            </div>
+
+            <!-- How Futures Works -->
+            <div class="mb-12">
+                <h3 class="text-2xl font-semibold mb-6 text-gray-800">How Futures Works (Pros, Cons, Design)</h3>
+                <div class="bg-white p-8 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 hover-card">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                        <div>
+                            <h4 class="text-lg font-semibold mb-4 text-green-700">Futures Advantages</h4>
+                            <ul class="space-y-2 text-gray-700">
+                                <li>• <strong>Solid connection:</strong> Single box provides maximum strength</li>
+                                <li>• <strong>Energy transfer:</strong> Direct connection from base to tip</li>
+                                <li>• <strong>Durability:</strong> Less prone to breakage than dual-plug systems</li>
+                                <li>• <strong>Pro preference:</strong> Chosen by many professional surfers</li>
+                                <li>• <strong>Consistent feel:</strong> Predictable performance characteristics</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h4 class="text-lg font-semibold mb-4 text-red-700">Futures Considerations</h4>
+                            <ul class="space-y-2 text-gray-700">
+                                <li>• <strong>Tool required:</strong> Need hex key for installation</li>
+                                <li>• <strong>Less flex:</strong> Stiffer connection than FCS</li>
+                                <li>• <strong>Repair difficulty:</strong> Harder to fix if box is damaged</li>
+                                <li>• <strong>Limited selection:</strong> Fewer fin options than FCS</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-6 p-4 bg-purple-50 rounded-lg hover:bg-purple-100 transition-colors duration-300">
+                        <h4 class="font-semibold text-purple-800 mb-2">Futures Fin Box Design:</h4>
+                        <p class="text-gray-700">The single, elongated box distributes load across the entire fin base, creating a stronger connection that many surfers prefer for powerful waves and aggressive surfing.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- FCS vs Futures Comparison -->
+<section id="fcs-vs-futures" class="bg-gradient-to-br from-blue-900 via-blue-800 to-cyan-700 py-16">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="form-section p-8 md:p-12 form-animation hover-lift">
+            <h2 class="text-3xl font-bold text-center text-gray-900 mb-8">The Big Debate: FCS vs. Futures - Which is Better?</h2>
+            <p class="text-center text-gray-600 mb-12 text-lg">Detailed comparison of strength, ease of use, feel, and fin availability</p>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+                <div class="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 hover-card">
+                    <h3 class="text-xl font-semibold mb-4 text-blue-700">FCS vs Futures: Strength</h3>
+                    <div class="space-y-4">
+                        <div class="p-3 bg-blue-50 rounded hover:bg-blue-100 transition-colors duration-300">
+                            <p class="text-sm font-medium text-blue-800">FCS Strength:</p>
+                            <p class="text-gray-700">Two plugs distribute load but create potential failure points. FCS II improved significantly over FCS I.</p>
+                        </div>
+                        <div class="p-3 bg-purple-50 rounded hover:bg-purple-100 transition-colors duration-300">
+                            <p class="text-sm font-medium text-purple-800">Futures Strength:</p>
+                            <p class="text-gray-700">Single box design provides superior strength and is less likely to fail under extreme conditions.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 hover-card">
+                    <h3 class="text-xl font-semibold mb-4 text-blue-700">FCS vs Futures: Ease of Use</h3>
+                    <div class="space-y-4">
+                        <div class="p-3 bg-blue-50 rounded hover:bg-blue-100 transition-colors duration-300">
+                            <p class="text-sm font-medium text-blue-800">FCS Ease:</p>
+                            <p class="text-gray-700">FCS II wins with tool-less installation. Perfect for travel and quick fin changes.</p>
+                        </div>
+                        <div class="p-3 bg-purple-50 rounded hover:bg-purple-100 transition-colors duration-300">
+                            <p class="text-sm font-medium text-purple-800">Futures Ease:</p>
+                            <p class="text-gray-700">Requires hex key but installation is straightforward. More secure once installed.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
+                <div class="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 hover-card">
+                    <h3 class="text-xl font-semibold mb-4 text-blue-700">Feel & Performance</h3>
+                    <ul class="space-y-3 text-gray-700">
+                        <li><strong>FCS:</strong> Slightly more flex, livelier feel</li>
+                        <li><strong>Futures:</strong> Stiffer, more direct energy transfer</li>
+                        <li><strong>Wave size:</strong> Futures often preferred in larger surf</li>
+                        <li><strong>Surfing style:</strong> FCS suits varied styles, Futures for power surfing</li>
+                    </ul>
+                </div>
+                
+                <div class="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 hover-card">
+                    <h3 class="text-xl font-semibold mb-4 text-blue-700">Fin Availability</h3>
+                    <ul class="space-y-3 text-gray-700">
+                        <li><strong>FCS:</strong> Widest selection, most brands</li>
+                        <li><strong>Futures:</strong> Growing selection, quality options</li>
+                        <li><strong>Price range:</strong> Both offer budget to premium options</li>
+                        <li><strong>Specialty fins:</strong> FCS has more experimental designs</li>
+                    </ul>
+                </div>
             </div>
             
-            <a href="{{ url_for('recommender_page') }}" class="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-cyan-600 hover:bg-cyan-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-cyan-500 transition-colors">
-                Chat with AI Fin Expert
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2" viewBox="0 0 20 20" fill="currentColor">
-                    <path fill-rule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
-                </svg>
+            <div class="bg-blue-800/90 backdrop-blur-sm rounded-lg p-6 border border-blue-600/50 hover:bg-blue-800/95 transition-colors duration-300">
+    <h3 class="text-xl font-semibold mb-4 text-white">FCS vs Futures Comparison: The Verdict</h3>
+    <p class="text-blue-100 mb-4">Both systems have their merits. FCS II offers convenience and variety, while Futures provides strength and direct feel. Many surfers choose based on their primary surfing conditions and personal preferences.</p>
+    <p class="text-blue-200"><strong>Pro tip:</strong> Consider your local waves, travel frequency, and surfing style when choosing between systems.</p>
+</div>
+        </div>
+    </div>
+</section>
+
+<!-- Other Fin Systems -->
+<section id="other-systems" class="py-16 bg-gray-50">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="form-section p-8 md:p-12 form-animation hover-lift">
+            <h2 class="text-3xl font-bold text-center text-gray-900 mb-8">Other Fin Systems to Know</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
+                <div class="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 hover-card">
+                    <h3 class="text-xl font-semibold mb-4 text-cyan-700">Glass-On Fins</h3>
+                    <p class="text-gray-700 leading-relaxed mb-4">Permanently attached fins that are glassed directly onto the board during construction. Still found on some traditional longboards and high-performance boards.</p>
+                    <div class="p-3 bg-gray-50 rounded hover:bg-gray-100 transition-colors duration-300">
+                        <p class="text-sm text-gray-600"><strong>Best for:</strong> Traditional longboards, specific performance applications</p>
+                    </div>
+                </div>
+                
+                <div class="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 hover-card">
+                    <h3 class="text-xl font-semibold mb-4 text-cyan-700">US Box (Longboard System)</h3>
+                    <p class="text-gray-700 leading-relaxed mb-4">Deep, single fin box system primarily used for longboard center fins. Allows for fin positioning adjustment and accommodates larger fins.</p>
+                    <div class="p-3 bg-blue-50 rounded hover:bg-blue-100 transition-colors duration-300">
+                        <p class="text-sm text-blue-800"><strong>Link:</strong> <a href="{{ url_for('longboard_fins') }}" class="text-blue-600 hover:text-blue-800">Learn more about longboard fins →</a></p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="bg-white p-8 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 hover-card">
+                <h3 class="text-2xl font-semibold mb-6 text-gray-800">Additional Fin Systems</h3>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div class="p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors duration-300">
+                        <h4 class="font-semibold text-gray-800 mb-2">Single Tab</h4>
+                        <p class="text-sm text-gray-700">Simple single-tab system used on some budget and soft-top boards</p>
+                    </div>
+                    <div class="p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors duration-300">
+                        <h4 class="font-semibold text-gray-800 mb-2">Dual Tab</h4>
+                        <p class="text-sm text-gray-700">Two-tab system without screws, common on beginner boards</p>
+                    </div>
+                    <div class="p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors duration-300">
+                        <h4 class="font-semibold text-gray-800 mb-2">Proprietary Systems</h4>
+                        <p class="text-sm text-gray-700">Brand-specific systems like Red-X, LokBox, and others</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Understanding Fin Brands & Installation -->
+<section id="installation-tips" class="bg-gradient-to-br from-blue-900 via-blue-800 to-cyan-700 py-16">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="form-section p-8 md:p-12 form-animation hover-lift">
+            <h2 class="text-3xl font-bold text-center text-gray-900 mb-8">Understanding Fin Brands</h2>
+            <p class="text-center text-gray-600 mb-12 text-lg">Top surfboard fin brands and their system compatibility</p>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
+                <div class="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 hover-card">
+                    <h3 class="text-lg font-semibold mb-3 text-cyan-700">FCS Fins</h3>
+                    <p class="text-gray-700 leading-relaxed">The original fin system company offers the widest range of templates and materials for their own system.</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 hover-card">
+                    <h3 class="text-lg font-semibold mb-3 text-cyan-700">Futures Fins</h3>
+                    <p class="text-gray-700 leading-relaxed">Futures manufactures high-quality fins specifically designed for their single-box system with focus on performance.</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 hover-card">
+                    <h3 class="text-lg font-semibold mb-3 text-cyan-700">Captain Fin</h3>
+                    <p class="text-gray-700 leading-relaxed">Popular aftermarket brand making fins for both FCS and Futures systems with unique designs and collaborations.</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 hover-card">
+                    <h3 class="text-lg font-semibold mb-3 text-cyan-700">True Ames</h3>
+                    <p class="text-gray-700 leading-relaxed">Specializes in traditional and longboard fins, offering both modern and classic templates.</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 hover-card">
+                    <h3 class="text-lg font-semibold mb-3 text-cyan-700">Shapers Fins</h3>
+                    <p class="text-gray-700 leading-relaxed">Australian brand known for innovative designs and high-performance fins for both systems.</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 hover-card">
+                    <h3 class="text-lg font-semibold mb-3 text-cyan-700">Other Brands</h3>
+                    <p class="text-gray-700 leading-relaxed">Kinetik, Proctor, Rusty, and many shapers make quality fins for various systems.</p>
+                </div>
+            </div>
+
+            <!-- Installing & Removing Fins -->
+            <div class="mb-8">
+                <h2 class="text-3xl font-bold text-center text-gray-900 mb-8">Installing & Removing Fins (Tips for FCS & Futures)</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div class="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 hover-card">
+                        <h3 class="text-xl font-semibold mb-4 text-cyan-700">FCS Installation Tips</h3>
+                        <ul class="space-y-2 text-gray-700 mb-4">
+                                                        <li>• <strong>FCS II:</strong> Push fins down until they click into place</li>
+                            <li>• <strong>FCS I:</strong> Insert tabs, align properly, tighten grub screws with fin key</li>
+                            <li>• <strong>Check alignment:</strong> Ensure fins are straight and secure</li>
+                            <li>• <strong>Removal:</strong> FCS II - push tab and lift; FCS I - loosen screws first</li>
+                        </ul>
+                        <div class="p-3 bg-blue-50 rounded hover:bg-blue-100 transition-colors duration-300">
+                            <p class="text-sm text-blue-800"><strong>Fin Key:</strong> Always carry a fin key for FCS I systems and emergency adjustments</p>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 hover-card">
+                        <h3 class="text-xl font-semibold mb-4 text-cyan-700">Futures Installation Tips</h3>
+                        <ul class="space-y-2 text-gray-700 mb-4">
+                            <li>• <strong>Slide in:</strong> Insert fin base fully into the box</li>
+                            <li>• <strong>Hex key:</strong> Use provided hex key to tighten screw</li>
+                            <li>• <strong>Don't overtighten:</strong> Snug but not overly tight to avoid stripping</li>
+                            <li>• <strong>Check security:</strong> Fin should not move when properly installed</li>
+                        </ul>
+                        <div class="p-3 bg-purple-50 rounded hover:bg-purple-100 transition-colors duration-300">
+                            <p class="text-sm text-purple-800"><strong>Fin Screws:</strong> Keep spare screws as they can be lost or stripped over time</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Finding Compatible Fins -->
+<section class="py-16 bg-gray-50">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="form-section p-8 md:p-12 form-animation hover-lift">
+            <h2 class="text-3xl font-bold text-center text-gray-900 mb-8">Finding Compatible Fins for Your System</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
+                <div class="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 hover-card">
+                    <h3 class="text-xl font-semibold mb-4 text-cyan-700">System Compatibility Guide</h3>
+                    <ul class="space-y-3 text-gray-700">
+                        <li><strong>FCS II boxes:</strong> Accept both FCS I and FCS II fins</li>
+                        <li><strong>FCS I boxes:</strong> Only accept FCS I fins</li>
+                        <li><strong>Futures boxes:</strong> Only accept Futures fins</li>
+                        <li><strong>Longboard boxes:</strong> Require specific longboard fin bases</li>
+                    </ul>
+                </div>
+                
+                <div class="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 hover-card">
+                    <h3 class="text-xl font-semibold mb-4 text-cyan-700">Cross-System Solutions</h3>
+                    <ul class="space-y-3 text-gray-700">
+                        <li><strong>Adapters available:</strong> Some aftermarket adapters exist</li>
+                        <li><strong>Performance impact:</strong> Adapters may affect fin performance</li>
+                        <li><strong>Best practice:</strong> Use fins designed for your system</li>
+                        <li><strong>Replacement consideration:</strong> Factor in system when buying boards</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="bg-blue-50 p-6 rounded-lg hover:bg-blue-100 transition-colors duration-300">
+                <h3 class="text-xl font-semibold mb-4 text-blue-800">Ensure Compatibility with Our AI Tool!</h3>
+                <p class="text-gray-700 mb-4">Our Fin Finder AI can filter recommendations by your specific fin box type, ensuring you only see compatible fins for your surfboard system.</p>
+                <div class="text-center">
+                    <a href="{{ url_for('recommender_page') }}" class="inline-block bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-500 hover:to-cyan-500 text-white font-bold py-3 px-6 rounded-lg transition-all duration-300 transform hover:scale-105 shadow-lg">
+                        Get System-Compatible Fin Recommendations
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CTA to Fin Finder AI -->
+<section class="bg-gradient-to-br from-blue-900 via-blue-800 to-cyan-700 py-16">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <div class="bg-white/20 backdrop-blur-sm rounded-2xl p-8 border border-white/30 shadow-2xl hover:bg-white/25 transition-colors duration-300 hover-lift">
+            <h2 class="text-3xl font-bold text-white mb-4">Ready to Find the Perfect Fins for Your System?</h2>
+            <p class="text-xl text-blue-100 mb-6">Now that you understand fin systems, let our AI help you find compatible fins that match your board's fin boxes and your surfing style.</p>
+            <p class="text-lg text-blue-200 mb-8">💬 Don't forget - you can also chat with our Expert Fin Finder anytime using the chat box in the bottom right corner!</p>
+            <a href="{{ url_for('recommender_page') }}" class="inline-block bg-gradient-to-r from-white to-gray-100 hover:from-gray-100 hover:to-white text-blue-900 font-bold py-4 px-8 rounded-lg transition-all duration-300 transform hover:scale-105 shadow-xl text-lg border-2 border-white/50">
+                Get AI Fin System Recommendations
             </a>
         </div>
     </div>
+</section>
+
+<style>
+    /* Smooth animations */
+    @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(10px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
     
-    <!-- Compatibility Section -->
-    <div class="bg-white dark:bg-gray-800 shadow-lg rounded-lg overflow-hidden">
-        <div class="p-6">
-            <h2 class="text-2xl font-semibold mb-4 text-gray-800 dark:text-gray-200">Fin System Compatibility</h2>
-            <p class="text-gray-600 dark:text-gray-400 mb-4">
-                Understanding fin system compatibility is crucial when buying new fins or boards.
-            </p>
-            
-            <div class="overflow-x-auto">
-                <table class="min-w-full divide-y divide-gray-200 dark:divide-gray-700">
-                    <thead class="bg-gray-50 dark:bg-gray-700">
-                        <tr>
-                            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">Fin System</th>
-                            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">Compatible With</th>
-                            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">Not Compatible With</th>
-                        </tr>
-                    </thead>
-                    <tbody class="bg-white dark:bg-gray-800 divide-y divide-gray-200 dark:divide-gray-700">
-                        <tr>
-                            <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900 dark:text-gray-200">FCS I</td>
-                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-400">FCS I fins</td>
-                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-400">FCS II, Futures, other systems</td>
-                        </tr>
-                        <tr>
-                            <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900 dark:text-gray-200">FCS II</td>
-                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-400">FCS II fins, FCS I fins (with less security)</td>
-                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-400">Futures, other systems</td>
-                        </tr>
-                        <tr>
-                            <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900 dark:text-gray-200">Futures</td>
-                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-400">Futures fins only</td>
-                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-400">FCS I, FCS II, other systems</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-    </div>
-</div>
+    .form-animation {
+        animation: fadeIn 0.5s ease-out;
+    }
+    
+    /* Form styling to match other pages */
+    .form-section {
+        background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+        border-radius: 1rem;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    }
+    
+    /* Enhanced hover effects */
+    .hover-lift:hover {
+        transform: translateY(-5px);
+        transition: transform 0.3s ease;
+    }
+    
+    .hover-card:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+    }
+    
+    .nav-card {
+        text-decoration: none;
+        display: block;
+    }
+    
+    .nav-card:hover {
+        text-decoration: none;
+    }
+    
+    /* Smooth scrolling */
+    html {
+        scroll-behavior: smooth;
+    }
+    
+    /* Typography improvements */
+    .prose p {
+        margin-bottom: 1.5rem;
+    }
+    
+    .leading-relaxed {
+        line-height: 1.7;
+    }
+</style>
+{% endblock %}
+
+{% block scripts %}
+{{ super() }}
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Add smooth scrolling for internal links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                target.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }
+        });
+    });
+    
+    // Add animation on scroll for cards
+    const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+    };
+    
+    const observer = new IntersectionObserver(function(entries) {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.style.opacity = '1';
+                entry.target.style.transform = 'translateY(0)';
+            }
+        });
+    }, observerOptions);
+    
+    // Observe all cards for animation
+    document.querySelectorAll('.shadow-lg').forEach(card => {
+        card.style.opacity = '0';
+        card.style.transform = 'translateY(20px)';
+        card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+        observer.observe(card);
+    });
+    
+    // Enhanced hover effects for navigation cards
+    document.querySelectorAll('.nav-card').forEach(card => {
+        card.addEventListener('mouseenter', function() {
+            this.style.transform = 'scale(1.05) translateY(-2px)';
+        });
+        
+        card.addEventListener('mouseleave', function() {
+            this.style.transform = 'scale(1) translateY(0)';
+        });
+    });
+    
+    // Add pulse effect to chat reminder
+    const chatReminder = document.querySelector('.bg-blue-50 p');
+    if (chatReminder) {
+        setInterval(() => {
+            chatReminder.style.transform = 'scale(1.02)';
+            setTimeout(() => {
+                chatReminder.style.transform = 'scale(1)';
+            }, 200);
+        }, 5000);
+    }
+});
+</script>
 {% endblock %}

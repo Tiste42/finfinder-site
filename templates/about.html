@@ -1,0 +1,128 @@
+{% extends "base.html" %}
+{% set active_page = "about" %}
+
+{% block title %}About Fin Finder Expert | Baptiste's Story{% endblock %}
+
+{% block description %}Learn about Baptiste, the surfer and teacher behind Fin Finder Expert, and why he created this AI-powered fin recommendation tool for the surfing community.{% endblock %}
+
+{% block content %}
+<!-- Hero Section -->
+<section class="bg-gradient-to-br from-blue-900 via-blue-800 to-cyan-700 text-white py-16">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <h1 class="text-4xl md:text-5xl font-extrabold mb-6">About Fin Finder Expert</h1>
+        <p class="text-xl md:text-2xl text-blue-100 max-w-3xl mx-auto">
+            The story behind the AI-powered fin recommendation tool
+        </p>
+    </div>
+</section>
+
+<!-- About Content -->
+<section class="py-16 bg-gray-50">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="form-section p-8 md:p-12 form-animation hover-lift">
+            <!-- Hero Image Section -->
+            <div class="text-center mb-12">
+                <div class="relative inline-block">
+                    <img src="{{ url_for('static', filename='cloudbreakturn.jpg') }}" alt="Baptiste surfing at Cloudbreak, Fiji" class="rounded-lg shadow-xl max-w-full h-auto mx-auto" style="max-height: 400px;">
+                    <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent rounded-b-lg p-4">
+                        <p class="text-white text-sm font-medium">Founder Baptiste conducting "hands-on fin research" at Cloudbreak, Fiji 🏄‍♂️</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+                <div class="md:col-span-2">
+                    <h2 class="text-3xl font-bold text-gray-900 mb-6">Hi, I'm Baptiste</h2>
+                    <div class="prose prose-lg max-w-none text-gray-700">
+                        <p class="text-xl mb-6">I'm a passionate surfer and teacher from San Diego, California, and I created Fin Finder Expert to solve a problem I've seen countless times in the surf community.</p>
+                        
+                        <p class="mb-6">After years of surfing waves from my local San Diego breaks to world-class spots like Cloudbreak in Fiji, I've tested countless fin setups and helped fellow surfers choose the right fins. But I kept seeing the same confusion over and over again: people would spend hundreds of dollars on boards but struggle with the fundamental question - "What fins should I use?"</p>
+                        
+                        <p class="mb-6">As a teacher, I love breaking down complex topics into simple, actionable advice. But fin selection involves so many variables - your weight, board volume, skill level, wave conditions, surfing style - that even experienced surfers sometimes get it wrong.</p>
+                        
+                        <p class="mb-6">That's when I realized: this is exactly the kind of problem AI can solve brilliantly. By combining traditional surf knowledge with modern technology, I could create a tool that considers all these factors simultaneously and provides personalized recommendations that would take years of experience to develop naturally.</p>
+                    </div>
+                </div>
+                
+                <div class="flex flex-col justify-center">
+                    <div class="bg-blue-50 p-6 rounded-lg border border-blue-200 mb-6">
+                        <h3 class="text-xl font-semibold mb-4 text-blue-800">Quick Facts</h3>
+                        <ul class="space-y-2 text-gray-700">
+                            <li><strong>Location:</strong> San Diego, CA</li>
+                            <li><strong>Profession:</strong> Teacher</li>
+                            <li><strong>Passion:</strong> Surfing & Technology</li>
+                            <li><strong>Mission:</strong> Democratize fin expertise</li>
+                            <li><strong>Years of Experience:</strong> 40</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="bg-cyan-50 p-4 rounded-lg border border-cyan-200">
+                        <p class="text-cyan-800 text-sm italic">"Stop guessing, start ripping!"</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="bg-white p-8 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 hover-card mb-8">
+                <h3 class="text-2xl font-semibold mb-6 text-gray-800">Why Fin Finder Expert Exists</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div>
+                        <h4 class="text-lg font-semibold mb-4 text-cyan-700">The Problem I Saw</h4>
+                        <ul class="space-y-2 text-gray-700">
+                            <li>• Surfers confused by fin selection</li>
+                            <li>• Generic charts that don't consider individual factors</li>
+                            <li>• Expensive trial-and-error approach</li>
+                            <li>• Limited access to expert advice</li>
+                            <li>• Overwhelming amount of conflicting information</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 class="text-lg font-semibold mb-4 text-cyan-700">My Solution</h4>
+                        <ul class="space-y-2 text-gray-700">
+                            <li>• AI that considers ALL factors simultaneously</li>
+                            <li>• Personalized recommendations for each surfer</li>
+                            <li>• Free, accessible expert-level advice</li>
+                            <li>• Educational content to build understanding</li>
+                            <li>• Constantly updated with latest knowledge</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="bg-blue-50 p-6 rounded-lg hover:bg-blue-100 transition-colors duration-300 text-center">
+                <h3 class="text-xl font-semibold mb-4 text-blue-800">My Goal</h3>
+                <p class="text-gray-700 mb-6">Whether you're a beginner trying to understand the basics or an experienced surfer looking to fine-tune your setup, I want Fin Finder Expert to be your trusted guide. My goal is to make expert fin knowledge accessible to everyone in the surfing community - from your local break to world-class waves like Cloudbreak.</p>
+                <a href="{{ url_for('recommender_page') }}" class="inline-block bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-500 hover:to-cyan-500 text-white font-bold py-3 px-6 rounded-lg transition-all duration-300 transform hover:scale-105 shadow-lg">
+                    Try the AI Fin Finder
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+    .form-section {
+        background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+        border-radius: 1rem;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    }
+    
+    .form-animation {
+        animation: fadeIn 0.5s ease-out;
+    }
+    
+    @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(10px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+    
+    .hover-lift:hover {
+        transform: translateY(-5px);
+        transition: transform 0.3s ease;
+    }
+    
+    .hover-card:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+    }
+</style>
+{% endblock %}

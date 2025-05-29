@@ -1,110 +1,586 @@
 {% extends "base.html" %}
+{% set active_page = "recommender" %}
 
-{% block title %}AI Fin Recommender - Fin Finder{% endblock %}
+{% block title %}AI Fin Recommender - Expert Surfboard Fin Recommendations{% endblock %}
+
+{% block description %}Get personalized surfboard fin recommendations from our AI expert. Find the perfect fins based on your weight, skill level, board type, and wave conditions.{% endblock %}
 
 {% block content %}
-    <h1 class="text-3xl font-bold mb-6 text-gray-800 dark:text-gray-100">AI Fin Recommender</h1>
-    <p class="text-gray-700 dark:text-gray-300 mb-6">Ask the Fin Finder AI anything about surfboard fins! Enter your question below.</p>
+<style>
+    /* Smooth animations */
+    @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(10px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+    
+    .form-animation {
+        animation: fadeIn 0.5s ease-out;
+    }
+    
+    .message-animation {
+        animation: fadeIn 0.3s ease-out;
+    }
+    
+    /* Form styling */
+    .form-section {
+        background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+        border-radius: 1rem;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    }
+    
+    /* Chat styling */
+    #chat-messages::-webkit-scrollbar {
+        width: 8px;
+    }
+    #chat-messages::-webkit-scrollbar-track {
+        background: #1f2937;
+        border-radius: 4px;
+    }
+    #chat-messages::-webkit-scrollbar-thumb {
+        background: #4b5563;
+        border-radius: 4px;
+    }
+    #chat-messages::-webkit-scrollbar-thumb:hover {
+        background: #6b7280;
+    }
+</style>
 
-    <!-- AI Chat Interface Placeholder -->
-    <div id="chat-interface" class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg">
-        <div class="mb-4">
-            <label for="user-question" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Your Question:</label>
-            <input type="text" id="user-question" name="question" class="w-full p-2 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-700 focus:ring-blue-500 focus:border-blue-500 text-gray-800 dark:text-gray-200" placeholder="e.g., What's the difference between thruster and quad fins?">
-        </div>
-        <button id="ask-button" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded transition duration-200">
-            Ask AI
-        </button>
-        <div id="loading-indicator" class="mt-4 hidden">
-             <i class="fas fa-spinner fa-spin text-blue-500"></i> Loading...
-        </div>
-        <div id="ai-answer" class="mt-6 p-4 bg-gray-100 dark:bg-gray-700 rounded border border-gray-200 dark:border-gray-600 min-h-[100px]">
-            <!-- AI's answer will appear here -->
-            <p class="text-gray-500 dark:text-gray-400 italic">AI response will load here...</p>
-        </div>
-         <div id="error-message" class="mt-4 text-red-500 font-semibold hidden"></div>
+<!-- Hero Section -->
+<section class="bg-gradient-to-br from-blue-900 via-blue-800 to-cyan-700 text-white py-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <h1 class="text-5xl md:text-6xl font-extrabold mb-6">AI Fin Recommender</h1>
+        <p class="text-xl md:text-2xl text-blue-100 max-w-3xl mx-auto">
+            Get expert fin recommendations tailored to your unique surfing style
+        </p>
+        <p class="mt-4 text-3xl font-bold">Stop Guessing, Start Ripping!</p>
     </div>
-    <!-- End AI Chat Interface Placeholder -->
+</section>
 
-{% endblock %}
+<!-- Quick Surfboard Fin Selector Tool -->
+<section class="py-16 bg-gray-50">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="form-section p-8 md:p-12 form-animation">
+            <h2 class="text-3xl font-bold text-center text-gray-900 mb-4">Quick Surfboard Fin Selector Tool</h2>
+            <p class="text-center text-gray-600 mb-8">Get instant fin recommendations in 30 seconds</p>
+            
+            <form id="fin-selector-form" class="space-y-6">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">
+                            <i class="fas fa-weight text-blue-500 mr-2"></i>Rider Weight
+                        </label>
+                        <select name="weight" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition">
+                            <option value="">Select Weight Range</option>
+                            <option value="under-120">Under 120 lbs (54 kg)</option>
+                            <option value="120-150">120-150 lbs (54-68 kg)</option>
+                            <option value="150-180">150-180 lbs (68-82 kg)</option>
+                            <option value="180-210">180-210 lbs (82-95 kg)</option>
+                            <option value="over-210">Over 210 lbs (95+ kg)</option>
+                        </select>
+                    </div>
+                    
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">
+                            <i class="fas fa-chart-line text-blue-500 mr-2"></i>Skill Level
+                        </label>
+                        <select name="skill" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition">
+                            <option value="">Select Skill Level</option>
+                            <option value="beginner">Beginner</option>
+                            <option value="intermediate">Intermediate</option>
+                            <option value="advanced">Advanced</option>
+                            <option value="expert">Expert</option>
+                        </select>
+                    </div>
+                    
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">
+                            <i class="fas fa-water text-blue-500 mr-2"></i>Wave Type
+                        </label>
+                        <select name="waves" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition">
+                            <option value="">Select Wave Type</option>
+                            <option value="small-mushy">Small & Mushy</option>
+                            <option value="small-clean">Small & Clean</option>
+                            <option value="medium-mixed">Medium Mixed</option>
+                            <option value="powerful">Powerful</option>
+                            <option value="big-wave">Big Wave</option>
+                        </select>
+                    </div>
+                    
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">
+                            <i class="fas fa-ruler-vertical text-blue-500 mr-2"></i>Board Type
+                        </label>
+                        <select name="board" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition">
+                            <option value="">Select Board Type</option>
+                            <option value="shortboard">Shortboard</option>
+                            <option value="fish">Fish</option>
+                            <option value="hybrid">Hybrid</option>
+                            <option value="midlength">Mid-Length</option>
+                            <option value="longboard">Longboard</option>
+                            <option value="gun">Gun</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-2">
+                        <i class="fas fa-bullseye text-blue-500 mr-2"></i>Surfing Style Priority
+                    </label>
+                    <select name="style" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition">
+                        <option value="">Select Your Priority</option>
+                        <option value="speed">Speed & Drive</option>
+                        <option value="control">Control & Stability</option>
+                        <option value="maneuverability">Maneuverability & Looseness</option>
+                        <option value="balanced">Balanced Performance</option>
+                    </select>
+                </div>
+                
+                <button type="submit" class="w-full bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-700 hover:to-cyan-700 text-white font-bold py-4 px-6 rounded-lg transition-all duration-300 transform hover:scale-105 shadow-lg">
+                    <i class="fas fa-magic mr-2"></i>Get My Fin Recommendation
+                </button>
+            </form>
+            
+            <div id="recommendation-result" class="mt-8 hidden">
+                <!-- Recommendations will appear here -->
+            </div>
+        </div>
+    </div>
+</section>
 
-{% block scripts %}
-    <!-- Add JavaScript for handling the chat interaction here later -->
-    <script>
-        // Basic structure for chat JS will go here
-        document.addEventListener('DOMContentLoaded', () => {
-            const askButton = document.getElementById('ask-button');
-            const questionInput = document.getElementById('user-question');
-            const answerDiv = document.getElementById('ai-answer');
-            const loadingIndicator = document.getElementById('loading-indicator');
-            const errorMessageDiv = document.getElementById('error-message');
+<!-- Expert Guide Section - Matching Blue Background -->
+<section class="bg-gradient-to-br from-blue-900 via-blue-800 to-cyan-700 py-8">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pt-4">
+        <div class="bg-white rounded-lg shadow-lg px-8 pt-4 pb-8 mb-8">
+            <!-- Header with white logo and title -->
+            <div class="text-center mb-8">
+                <div class="flex items-center justify-center mb-6">
+    <img class="h-48 w-auto mr-10" src="{{ url_for('static', filename='finfinderlogolargeblavktext.png') }}" alt="Fin Finder Logo">
+    <h2 class="text-6xl font-bold text-black">Expert Guide</h2>
+</div>
+            </div>
 
-            askButton.addEventListener('click', () => {
-                const question = questionInput.value.trim();
-                if (!question) {
-                    errorMessageDiv.textContent = 'Please enter a question.';
-                    errorMessageDiv.classList.remove('hidden');
-                    return;
-                }
+            <!-- Topic buttons with gradient styling to match -->
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-3 mb-8">
+                <button class="quick-topic bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-700 hover:to-cyan-700 text-white px-4 py-3 rounded-lg font-medium transition-all duration-300 shadow-lg">Fin basics</button>
+                <button class="quick-topic bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-700 hover:to-cyan-700 text-white px-4 py-3 rounded-lg font-medium transition-all duration-300 shadow-lg">Thruster vs Quad</button>
+                <button class="quick-topic bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-700 hover:to-cyan-700 text-white px-4 py-3 rounded-lg font-medium transition-all duration-300 shadow-lg">Fin sizing</button>
+                <button class="quick-topic bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-700 hover:to-cyan-700 text-white px-4 py-3 rounded-lg font-medium transition-all duration-300 shadow-lg">Best fins for beginners</button>
+                <button class="quick-topic bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-700 hover:to-cyan-700 text-white px-4 py-3 rounded-lg font-medium transition-all duration-300 shadow-lg">FCS vs Futures</button>
+                <button class="quick-topic bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-700 hover:to-cyan-700 text-white px-4 py-3 rounded-lg font-medium transition-all duration-300 shadow-lg">Fin materials</button>
+                <button class="quick-topic bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-700 hover:to-cyan-700 text-white px-4 py-3 rounded-lg font-medium transition-all duration-300 shadow-lg">Twin fin setup</button>
+                <button class="quick-topic bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-700 hover:to-cyan-700 text-white px-4 py-3 rounded-lg font-medium transition-all duration-300 shadow-lg">Longboard fins</button>
+            </div>
 
-                // Clear previous answer/error, show loading
-                answerDiv.innerHTML = '<p class="text-gray-500 dark:text-gray-400 italic">Getting response...</p>';
-                errorMessageDiv.classList.add('hidden');
-                loadingIndicator.classList.remove('hidden');
-                askButton.disabled = true; // Prevent multiple clicks
+            <!-- Chat area matching the form style -->
+            <div class="bg-white rounded-xl border border-gray-300 shadow-lg">
+                <!-- Chat messages -->
+                <div id="chat-messages" class="p-6 h-80 overflow-y-auto">
+                    <div class="flex justify-start message-animation">
+                        <div class="bg-gradient-to-r from-blue-600 to-cyan-600 text-white rounded-lg p-4 max-w-4xl shadow-lg">
+                            Welcome! I'm your Fin Finder Expert Guide. Ask me anything about surfboard fins - from basic concepts to specific recommendations for your setup. What would you like to know?
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Input area -->
+                <div class="p-6 border-t border-gray-300">
+                    <div class="flex space-x-3">
+                        <input type="text" id="user-input" placeholder="Ask about fins, setups, or get recommendations..." 
+                               class="flex-1 px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition">
+                        <button id="send-button" class="bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-700 hover:to-cyan-700 text-white font-bold py-3 px-6 rounded-lg transition-all duration-300 transform hover:scale-105 shadow-lg">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                                <path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 
-                // Fetch call to the /ask endpoint
-                fetch('/ask', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify({ question: question })
-                })
-                .then(response => {
-                    if (!response.ok) {
-                        // Try to get error message from JSON response body
-                        return response.json().then(errData => {
-                            throw new Error(errData.error || `HTTP error! status: ${response.status}`);
-                        }).catch(() => {
-                            // Fallback if response body isn't JSON or doesn't have 'error'
-                            throw new Error(`HTTP error! status: ${response.status}`);
-                        });
-                    }
-                    return response.json();
-                })
-                .then(data => {
-                    if (data.answer) {
-                         // Simple display, replace special chars for safety
-                         const formattedAnswer = data.answer
-                            .replace(/</g, "&lt;")
-                            .replace(/>/g, "&gt;")
-                            .replace(/\n/g, "<br>"); // Convert newlines to <br>
-                        answerDiv.innerHTML = `<p>${formattedAnswer}</p>`; // Display the answer
-                    } else if (data.error) {
-                        throw new Error(data.error); // Handle error from backend JSON
-                    }
-                })
-                .catch(error => {
-                    console.error('Fetch Error:', error);
-                    errorMessageDiv.textContent = `Error: ${error.message}`;
-                    errorMessageDiv.classList.remove('hidden');
-                    answerDiv.innerHTML = '<p class="text-red-500 dark:text-red-400 italic">Failed to get response.</p>';
-                })
-                .finally(() => {
-                    // Hide loading, re-enable button
-                    loadingIndicator.classList.add('hidden');
-                    askButton.disabled = false;
-                });
-            });
-
-             // Optional: Allow pressing Enter in the input field to submit
-            questionInput.addEventListener('keypress', (event) => {
-                if (event.key === 'Enter') {
-                    event.preventDefault(); // Prevent default form submission if it were in a form
-                    askButton.click(); // Trigger the button click event
-                }
-            });
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Form submission handler
+    const form = document.getElementById('fin-selector-form');
+    const resultDiv = document.getElementById('recommendation-result');
+    
+    form.addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        const formData = new FormData(form);
+        const data = Object.fromEntries(formData);
+        
+        // Generate recommendation based on inputs
+        let recommendation = generateRecommendation(data);
+        
+        // Display result
+        resultDiv.innerHTML = `
+            <div class="bg-white rounded-lg p-6 shadow-lg border-2 border-blue-500">
+                <h3 class="text-2xl font-bold text-gray-900 mb-4">
+                    <i class="fas fa-check-circle text-green-500 mr-2"></i>Your Personalized Fin Recommendation
+                </h3>
+                ${recommendation}
+            </div>
+        `;
+        resultDiv.classList.remove('hidden');
+        resultDiv.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    });
+    
+   function generateRecommendation(data) {
+    let html = '<div class="space-y-4">';
+    
+    // Detailed recommendations based on all inputs
+    if (data.board === 'shortboard') {
+        if (data.skill === 'beginner') {
+            html += `
+                <div class="bg-blue-50 p-4 rounded-lg">
+                    <h4 class="font-semibold text-lg mb-2">Recommended Setup: Stable Medium Thruster</h4>
+                    <p class="text-gray-700 mb-2">As a beginner on a shortboard, stability is key. We recommend:</p>
+                    <ul class="list-disc list-inside text-gray-700 space-y-1">
+                        <li><strong>Fin Setup:</strong> Medium-sized thruster (3-fin) configuration</li>
+                        <li><strong>Template:</strong> Balanced template with moderate rake (32-35°)</li>
+                        <li><strong>Specific Models:</strong> FCS II Performer, Futures F6 Alpha, or Captain Fin CF Medium</li>
+                        <li><strong>Why:</strong> These provide excellent stability while learning to generate speed and control</li>
+                    </ul>
+                </div>`;
+        } else if (data.skill === 'intermediate') {
+            html += `
+                <div class="bg-blue-50 p-4 rounded-lg">
+                    <h4 class="font-semibold text-lg mb-2">Recommended Setup: Versatile Performance Thruster</h4>
+                    <p class="text-gray-700 mb-2">For intermediate surfers ready to progress:</p>
+                    <ul class="list-disc list-inside text-gray-700 space-y-1">
+                        <li><strong>Fin Setup:</strong> Performance thruster with medium-large template</li>
+                        <li><strong>Template:</strong> Moderate base, refined tip for responsiveness</li>
+                        <li><strong>Specific Models:</strong> FCS II Reactor, Futures AM2 Honeycomb, or Shapers Fins Asher Pacey</li>
+                        <li><strong>Alternative:</strong> Try a quad setup in smaller, weaker waves for extra speed</li>
+                    </ul>
+                </div>`;
+        } else {
+            html += `
+                <div class="bg-blue-50 p-4 rounded-lg">
+                    <h4 class="font-semibold text-lg mb-2">Recommended Setup: High-Performance Options</h4>
+                    <p class="text-gray-700 mb-2">Advanced surfers have multiple options based on conditions:</p>
+                    <ul class="list-disc list-inside text-gray-700 space-y-1">
+                        <li><strong>All-Around:</strong> Performance thruster - FCS II Carver, Futures John John</li>
+                        <li><strong>Small Waves:</strong> Quad setup - Futures Rasta Quad, FCS II Reactor Quad</li>
+                        <li><strong>Powerful Waves:</strong> Larger thruster - Futures Machado, Captain Fin Dane Reynolds</li>
+                        <li><strong>Pro Tip:</strong> Consider multiple sets for different conditions</li>
+                    </ul>
+                </div>`;
+        }
+    } else if (data.board === 'fish') {
+        html += `
+            <div class="bg-blue-50 p-4 rounded-lg">
+                <h4 class="font-semibold text-lg mb-2">Recommended Setup: Twin or Quad Configuration</h4>
+                <p class="text-gray-700 mb-2">Fish boards excel with specific fin setups:</p>
+                <ul class="list-disc list-inside text-gray-700 space-y-1">
+                    <li><strong>Twin Fin:</strong> Classic keel fins or modern upright twins</li>
+                    <li><strong>Specific Models:</strong> Captain Fin CF Twin Especial, Futures Machado Twin</li>
+                    <li><strong>Quad Option:</strong> For more control - Futures Quad Rears with K2 fronts</li>
+                    <li><strong>Size Note:</strong> Fish fins typically run larger than shortboard fins</li>
+                </ul>
+            </div>`;
+    } else if (data.board === 'longboard') {
+        html += `
+            <div class="bg-blue-50 p-4 rounded-lg">
+                <h4 class="font-semibold text-lg mb-2">Recommended Setup: Single Fin Configuration</h4>
+                <p class="text-gray-700 mb-2">Longboards require specific single fin considerations:</p>
+                <ul class="list-disc list-inside text-gray-700 space-y-1">
+                    <li><strong>Size Range:</strong> 8-10 inches depending on board length</li>
+                    <li><strong>Template:</strong> Pivot fin (wide base) for noseriding, rake fin for turns</li>
+                    <li><strong>Specific Models:</strong> True Ames Greenough 4A, Captain Fin Tyler Warren Pivot</li>
+                    <li><strong>2+1 Option:</strong> Add small side bites for more performance</li>
+                </ul>
+            </div>`;
+    } else if (data.board === 'hybrid') {
+        html += `
+            <div class="bg-blue-50 p-4 rounded-lg">
+                <h4 class="font-semibold text-lg mb-2">Recommended Setup: Versatile Thruster or Quad</h4>
+                <p class="text-gray-700 mb-2">Hybrid boards offer flexibility in fin choice:</p>
+                <ul class="list-disc list-inside text-gray-700 space-y-1">
+                    <li><strong>Thruster:</strong> All-around performance in varied conditions</li>
+                    <li><strong>Quad:</strong> Extra speed and hold in smaller surf</li>
+                    <li><strong>Specific Models:</strong> FCS II Reactor, Futures F8 Alpha, Captain Fin CF-Quad</li>
+                    <li><strong>Size:</strong> Medium to Medium-Large depending on your weight</li>
+                </ul>
+            </div>`;
+    } else if (data.board === 'midlength') {
+        html += `
+            <div class="bg-blue-50 p-4 rounded-lg">
+                <h4 class="font-semibold text-lg mb-2">Recommended Setup: 2+1 or Single Fin</h4>
+                <p class="text-gray-700 mb-2">Mid-lengths work well with various setups:</p>
+                <ul class="list-disc list-inside text-gray-700 space-y-1">
+                    <li><strong>2+1 Setup:</strong> 7-8" center fin with small side bites</li>
+                    <li><strong>Single Fin:</strong> 7.5-9" for classic feel</li>
+                    <li><strong>Specific Models:</strong> True Ames Volan, Captain Fin Raked Template</li>
+                    <li><strong>Versatility:</strong> 2+1 offers more performance options</li>
+                </ul>
+            </div>`;
+    } else if (data.board === 'gun') {
+        html += `
+            <div class="bg-blue-50 p-4 rounded-lg">
+                <h4 class="font-semibold text-lg mb-2">Recommended Setup: Powerful Thruster</h4>
+                <p class="text-gray-700 mb-2">Big wave guns need maximum control:</p>
+                <ul class="list-disc list-inside text-gray-700 space-y-1">
+                    <li><strong>Fin Setup:</strong> Large thruster with substantial base</li>
+                    <li><strong>Template:</strong> Upright with wide base for hold</li>
+                    <li><strong>Specific Models:</strong> FCS II Power Twin, Futures JJF, Captain Fin Jeff Myers</li>
+                    <li><strong>Construction:</strong> Stiff fiberglass or carbon for no flex</li>
+                </ul>
+            </div>`;
+    }
+    
+    // Detailed size recommendation based on weight and waves
+    html += '<div class="bg-gray-50 p-4 rounded-lg"><h4 class="font-semibold text-lg mb-2">Precise Size Recommendation</h4>';
+    
+    let sizeRec = '';
+    if (data.weight === 'under-120') {
+        sizeRec = 'Size XS to S: Look for fins in the 13-14" total area range';
+    } else if (data.weight === '120-150') {
+        sizeRec = 'Size S: Target fins around 14-14.5" total area';
+    } else if (data.weight === '150-180') {
+        sizeRec = 'Size M: Ideal fin area between 14.5-15.5"';
+    } else if (data.weight === '180-210') {
+        sizeRec = 'Size M/L: Look for fins in the 15.5-16" area range';
+    } else {
+        sizeRec = 'Size L to XL: Target fins 16"+ in total area';
+    }
+    
+    // Adjust for wave type
+    if (data.waves === 'small-mushy') {
+        sizeRec += '<br><em>Pro tip: Size up slightly for extra drive in weak waves</em>';
+    } else if (data.waves === 'powerful' || data.waves === 'big-wave') {
+        sizeRec += '<br><em>Pro tip: Consider sizing down for better control in powerful surf</em>';
+    }
+    
+    html += `<p class="text-gray-700">${sizeRec}</p></div>`;
+    
+    // Material and construction recommendations
+    html += `
+        <div class="bg-green-50 p-4 rounded-lg">
+            <h4 class="font-semibold text-lg mb-2">Material & Construction Recommendations</h4>`;
+    
+    if (data.style === 'speed') {
+        html += `
+            <p class="text-gray-700 mb-2">For maximum speed and drive:</p>
+            <ul class="list-disc list-inside text-gray-700 space-y-1">
+                <li><strong>Best Material:</strong> Stiff fiberglass or carbon fiber</li>
+                <li><strong>Construction:</strong> Solid fiberglass or honeycomb core</li>
+                <li><strong>Flex Pattern:</strong> Stiff base with controlled tip flex</li>
+                <li><strong>Rake:</strong> More upright (lower rake) for immediate response</li>
+            </ul>`;
+    } else if (data.style === 'control') {
+        html += `
+            <p class="text-gray-700 mb-2">For maximum control and stability:</p>
+            <ul class="list-disc list-inside text-gray-700 space-y-1">
+                <li><strong>Best Material:</strong> Fiberglass with moderate flex</li>
+                <li><strong>Construction:</strong> Solid fiberglass or performance glass</li>
+                <li><strong>Template:</strong> Wider base with moderate rake</li>
+                <li><strong>Foil:</strong> Flat to inside foil for predictability</li>
+            </ul>`;
+    } else if (data.style === 'maneuverability') {
+        html += `
+            <p class="text-gray-700 mb-2">For maximum maneuverability:</p>
+            <ul class="list-disc list-inside text-gray-700 space-y-1">
+                <li><strong>Best Material:</strong> Flexible composite or PC (Performance Core)</li>
+                <li><strong>Construction:</strong> Honeycomb or PC for responsive flex</li>
+                <li><strong>Template:</strong> Narrower base with more rake</li>
+                <li><strong>Tip:</strong> Refined tip for quick release</li>
+            </ul>`;
+    } else {
+        html += `
+            <p class="text-gray-700 mb-2">For balanced all-around performance:</p>
+            <ul class="list-disc list-inside text-gray-700 space-y-1">
+                <li><strong>Best Material:</strong> Fiberglass composite or honeycomb</li>
+                <li><strong>Construction:</strong> Performance glass or honeycomb core</li>
+                <li><strong>Template:</strong> Balanced base/tip ratio</li>
+                <li><strong>Versatility:</strong> Works well in various conditions</li>
+            </ul>`;
+    }
+    
+    html += '</div>';
+    
+    // Add specific product recommendations
+    html += `
+        <div class="bg-yellow-50 p-4 rounded-lg">
+            <h4 class="font-semibold text-lg mb-2">Top 3 Specific Fin Recommendations</h4>
+            <p class="text-gray-700 mb-2">Based on your inputs, here are our top picks:</p>
+            <ol class="list-decimal list-inside text-gray-700 space-y-2">`;
+    
+    // Generate specific recommendations based on all factors
+    if (data.board === 'shortboard' && (data.skill === 'beginner' || data.skill === 'intermediate')) {
+        html += `
+            <li><strong>FCS II Performer</strong> - The ultimate all-rounder, great for progression</li>
+            <li><strong>Futures F6 Alpha</strong> - Balanced performance with predictable feel</li>
+            <li><strong>Captain Fin CF Medium</strong> - Excellent value with proven performance</li>`;
+    } else if (data.board === 'shortboard' && (data.skill === 'advanced' || data.skill === 'expert')) {
+        html += `
+            <li><strong>FCS II John John</strong> - Pro-level performance for critical surfing</li>
+            <li><strong>Futures Jordy Smith</strong> - Power surfing with precision</li>
+            <li><strong>Shapers Fins S7</strong> - Cutting-edge design for progressive surfing</li>`;
+    } else if (data.board === 'fish') {
+        html += `
+            <li><strong>Captain Fin CF Twin Especial</strong> - Classic keel design for speed</li>
+            <li><strong>Futures Machado Twin + Trailer</strong> - Modern twin with option for quad</li>
+            <li><strong>True Ames Fish Keel</strong> - Traditional template for authentic feel</li>`;
+    } else if (data.board === 'longboard') {
+        html += `
+            <li><strong>True Ames Greenough 4A</strong> - Classic flex fin for all-around performance</li>
+            <li><strong>Captain Fin Tyler Warren Pivot</strong> - Wide base for noseriding</li>
+            <li><strong>Futures Raked 9.0</strong> - Modern construction with classic feel</li>`;
+    } else {
+        html += `
+                  <li><strong>FCS II Reactor</strong> - Versatile all-rounder</li>
+            <li><strong>Futures Alpha Series</strong> - Balanced performance</li>
+            <li><strong>Captain Fin Team Series</strong> - Reliable and affordable</li>`;
+    }
+    
+    html += `
+            </ol>
+        </div>
+    </div>`;
+    
+    return html;
+    }
+    
+    // Chat functionality
+    const chatMessages = document.getElementById('chat-messages');
+    const userInput = document.getElementById('user-input');
+    const sendButton = document.getElementById('send-button');
+    
+    // Quick topic buttons
+    document.querySelectorAll('.quick-topic').forEach(button => {
+        button.addEventListener('click', function() {
+            const topic = this.textContent.trim();
+            let question = '';
+            
+            switch(topic) {
+                case 'Fin basics':
+                    question = 'Can you explain the basics of how surfboard fins work?';
+                    break;
+                case 'Thruster vs Quad':
+                    question = 'What are the differences between thruster and quad fin setups?';
+                    break;
+                case 'Fin sizing':
+                    question = 'How do I choose the right fin size for my weight and board?';
+                    break;
+                case 'Best fins for beginners':
+                    question = 'What are the best fin setups for beginner surfers?';
+                    break;
+                case 'FCS vs Futures':
+                    question = 'What are the differences between FCS and Futures fin systems?';
+                    break;
+                case 'Fin materials':
+                    question = 'What are the different fin materials and how do they affect performance?';
+                    break;
+                case 'Twin fin setup':
+                    question = 'How do twin fin setups work and when should I use them?';
+                    break;
+                case 'Longboard fins':
+                    question = 'What types of single fins work best for longboards?';
+                    break;
+            }
+            
+            if (question) {
+                userInput.value = question;
+                handleSendMessage();
+            }
         });
-    </script>
+    });
+    
+    function addMessageToChat(message, sender) {
+        const messageDiv = document.createElement('div');
+        messageDiv.classList.add('flex', 'message-animation');
+        
+        const messageContentDiv = document.createElement('div');
+        messageContentDiv.classList.add('rounded-2xl', 'p-4', 'max-w-[80%]', 'shadow-lg');
+        
+        if (sender === 'user') {
+            messageDiv.classList.add('justify-end');
+            messageContentDiv.classList.add('bg-gradient-to-r', 'from-gray-600', 'to-gray-700', 'text-white');
+        } else {
+            messageDiv.classList.add('justify-start');
+            messageContentDiv.classList.add('bg-gradient-to-r', 'from-blue-600', 'to-blue-700', 'text-white');
+        }
+        
+        // Format message for better display with line breaks and bullet points
+        if (sender === 'expert') {
+            let formattedMessage = message
+                .replace(/\n/g, '<br>')  // Convert line breaks to <br> tags
+                .replace(/•/g, '<br>•') // Ensure bullet points start on new lines
+                .replace(/\n\n/g, '<br><br>'); // Double line breaks for paragraphs
+            messageContentDiv.innerHTML = formattedMessage;
+        } else {
+            messageContentDiv.textContent = message;
+        }
+        
+        messageDiv.appendChild(messageContentDiv);
+        chatMessages.appendChild(messageDiv);
+        chatMessages.scrollTop = chatMessages.scrollHeight;
+    }
+    
+    async function handleSendMessage() {
+        const messageText = userInput.value.trim();
+        if (!messageText) return;
+        
+        addMessageToChat(messageText, 'user');
+        userInput.value = '';
+        
+        // Show typing indicator
+        const typingDiv = document.createElement('div');
+        typingDiv.classList.add('flex', 'justify-start', 'typing-indicator', 'message-animation');
+        
+        const typingContent = document.createElement('div');
+        typingContent.classList.add('bg-gradient-to-r', 'from-blue-600', 'to-blue-700', 'text-white', 'rounded-2xl', 'p-4', 'max-w-[80%]', 'shadow-lg');
+        typingContent.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i>Expert is analyzing...';
+        
+        typingDiv.appendChild(typingContent);
+        chatMessages.appendChild(typingDiv);
+        chatMessages.scrollTop = chatMessages.scrollHeight;
+        
+        try {
+            const response = await fetch('/ask', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ question: messageText }),
+            });
+            
+            const data = await response.json();
+            
+            // Remove typing indicator
+            const typingIndicator = document.querySelector('.typing-indicator');
+            if (typingIndicator) {
+                chatMessages.removeChild(typingIndicator);
+            }
+            
+            if (data.answer) {
+                addMessageToChat(data.answer, 'expert');
+            } else {
+                addMessageToChat("Sorry, I couldn't generate a response. Please try again.", 'expert');
+            }
+        } catch (error) {
+            console.error('Error:', error);
+            
+            const typingIndicator = document.querySelector('.typing-indicator');
+            if (typingIndicator) {
+                chatMessages.removeChild(typingIndicator);
+            }
+            
+            addMessageToChat("Sorry, I'm having trouble connecting right now. Please try again later.", 'expert');
+        }
+    }
+    
+    if (sendButton && userInput && chatMessages) {
+        sendButton.addEventListener('click', handleSendMessage);
+        userInput.addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                handleSendMessage();
+            }
+        });
+    }
+});
+</script>
 {% endblock %}

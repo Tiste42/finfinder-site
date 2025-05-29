@@ -1,0 +1,464 @@
+{% extends "base.html" %}
+{% set active_page = "fin-setups" %}
+
+{% block title %}Surfboard Fin Setups: Twin, Thruster, Quad Compared | Fin Finder{% endblock %}
+
+{% block description %}Complete guide to surfboard fin setups - compare twin vs thruster vs quad configurations. Learn which fin setup is best for your surfing style and wave conditions.{% endblock %}
+
+{% block content %}
+<!-- Hero Section - Matching Home/Recommender Style -->
+<section class="bg-gradient-to-br from-blue-900 via-blue-800 to-cyan-700 text-white py-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <h1 class="text-5xl md:text-6xl font-extrabold mb-6">Surfboard Fin Setups: Twin vs. Thruster vs. Quad - Which is Best?</h1>
+        <p class="text-xl md:text-2xl text-blue-100 max-w-4xl mx-auto">
+            Discover the perfect fin configuration for your surfing style and wave conditions
+        </p>
+        <p class="mt-4 text-2xl font-bold">From Classic to Modern Setups</p>
+    </div>
+</section>
+
+<!-- Quick Navigation Overview -->
+<section class="py-12 bg-white">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 class="text-3xl font-bold text-center text-gray-900 mb-8">Quick Navigation</h2>
+        <p class="text-center text-gray-600 mb-8">Jump to any section to learn about specific fin configurations</p>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+            <a href="#understanding" class="nav-card bg-gradient-to-r from-blue-50 to-cyan-50 hover:from-blue-100 hover:to-cyan-100 p-4 rounded-lg border border-blue-200 hover:border-blue-300 transition-all duration-300 transform hover:scale-105 hover:shadow-lg">
+                <h3 class="font-semibold text-blue-800 mb-2">Understanding Configurations</h3>
+                <p class="text-sm text-gray-600">Learn the basics of fin setups</p>
+            </a>
+            
+            <a href="#twin-fins" class="nav-card bg-gradient-to-r from-green-50 to-emerald-50 hover:from-green-100 hover:to-emerald-100 p-4 rounded-lg border border-green-200 hover:border-green-300 transition-all duration-300 transform hover:scale-105 hover:shadow-lg">
+                <h3 class="font-semibold text-green-800 mb-2">Twin Fins: Fast & Loose</h3>
+                <p class="text-sm text-gray-600">Speed and playful surfing</p>
+            </a>
+            
+            <a href="#thruster" class="nav-card bg-gradient-to-r from-purple-50 to-violet-50 hover:from-purple-100 hover:to-violet-100 p-4 rounded-lg border border-purple-200 hover:border-purple-300 transition-all duration-300 transform hover:scale-105 hover:shadow-lg">
+                <h3 class="font-semibold text-purple-800 mb-2">Thruster: All-Around Standard</h3>
+                <p class="text-sm text-gray-600">The most popular setup</p>
+            </a>
+            
+            <a href="#quad" class="nav-card bg-gradient-to-r from-orange-50 to-red-50 hover:from-orange-100 hover:to-red-100 p-4 rounded-lg border border-orange-200 hover:border-orange-300 transition-all duration-300 transform hover:scale-105 hover:shadow-lg">
+                <h3 class="font-semibold text-orange-800 mb-2">Quad: Drive & Speed</h3>
+                <p class="text-sm text-gray-600">Power and control combined</p>
+            </a>
+            
+            <a href="#single-2plus1" class="nav-card bg-gradient-to-r from-teal-50 to-cyan-50 hover:from-teal-100 hover:to-cyan-100 p-4 rounded-lg border border-teal-200 hover:border-teal-300 transition-all duration-300 transform hover:scale-105 hover:shadow-lg">
+                <h3 class="font-semibold text-teal-800 mb-2">Single & 2+1 Setups</h3>
+                <p class="text-sm text-gray-600">Classic longboard configurations</p>
+            </a>
+            
+            <a href="#choose-setup" class="nav-card bg-gradient-to-r from-indigo-50 to-blue-50 hover:from-indigo-100 hover:to-blue-100 p-4 rounded-lg border border-indigo-200 hover:border-indigo-300 transition-all duration-300 transform hover:scale-105 hover:shadow-lg">
+                <h3 class="font-semibold text-indigo-800 mb-2">How to Choose</h3>
+                <p class="text-sm text-gray-600">Find your perfect setup</p>
+            </a>
+        </div>
+        
+        <div class="mt-8 text-center">
+            <div class="bg-blue-50 p-4 rounded-lg border border-blue-200">
+                <p class="text-blue-800 font-medium">💬 Have specific questions? Our Expert Fin Finder chat is always available in the bottom right corner!</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Understanding Different Fin Configurations -->
+<section id="understanding" class="py-16 bg-gray-50">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="form-section p-8 md:p-12 form-animation hover-lift">
+            <h2 class="text-3xl font-bold text-center text-gray-900 mb-8">Understanding Different Fin Configurations</h2>
+            <div class="prose prose-lg max-w-none text-gray-700">
+                <p class="text-xl mb-6">The number and arrangement of fins on your surfboard dramatically affects its performance characteristics. Each fin configuration offers distinct advantages for different wave conditions, surfing styles, and skill levels.</p>
+                
+                <p class="mb-6">Modern surfboard design has evolved to include various fin setups, from the classic single fin to innovative multi-fin arrangements. Understanding these configurations helps you choose the right setup for your specific needs and maximize your surfing performance.</p>
+                
+                <div class="bg-blue-50 p-6 rounded-lg mb-8 hover:bg-blue-100 transition-colors duration-300">
+                    <h3 class="text-xl font-semibold mb-4 text-blue-800">Key Factors in Fin Setup Performance:</h3>
+                    <ul class="list-disc list-inside space-y-2 text-gray-700">
+                        <li><strong>Speed Generation:</strong> How efficiently the setup creates forward momentum</li>
+                        <li><strong>Maneuverability:</strong> Ease of turning and directional changes</li>
+                        <li><strong>Hold & Control:</strong> Grip in critical sections and powerful waves</li>
+                        <li><strong>Release & Flow:</strong> Ability to slide and redirect smoothly</li>
+                        <li><strong>Stability:</strong> Predictable tracking and balance</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Traditional Fin Setups Visual -->
+<section class="bg-gradient-to-br from-blue-900 via-blue-800 to-cyan-700 py-16">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="bg-white p-8 rounded-xl shadow-2xl hover:shadow-3xl transition-shadow duration-300 hover-lift">
+            <img src="{{ url_for('static', filename='Traditional_Fin_Setups.png') }}" alt="Traditional Surfboard Fin Configurations" class="rounded-lg mx-auto w-full max-w-4xl">
+            <p class="text-center text-gray-600 font-medium mt-4 text-lg">Traditional Surfboard Fin Configurations</p>
+        </div>
+    </div>
+</section>
+
+<!-- Twin Fin Setups -->
+<section id="twin-fins" class="py-16 bg-gray-50">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="form-section p-8 md:p-12 form-animation hover-lift">
+            <h2 class="text-3xl font-bold text-center text-gray-900 mb-8">Twin Fin Setups: Fast & Loose</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
+                <div class="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 hover-card">
+                    <h3 class="text-xl font-semibold mb-4 text-cyan-700">What Are Twin Fins?</h3>
+                    <p class="text-gray-700 leading-relaxed">Twin fin surfboards feature two fins placed symmetrically near the rails, with no center fin. This configuration creates a unique surfing experience characterized by speed, looseness, and a distinctive "skatey" feel that many surfers love.</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 hover-card">
+                    <h3 class="text-xl font-semibold mb-4 text-cyan-700">Best Board Types</h3>
+                    <p class="text-gray-700 leading-relaxed">Twin fins excel on fish designs, retro shortboards, and wider boards. Popular with both Futures twin fins and FCS twin fin systems, they're perfect for boards with fuller outlines and lower rocker profiles.</p>
+                </div>
+            </div>
+
+            <div class="bg-white p-8 rounded-lg shadow-lg mb-8 hover:shadow-xl transition-all duration-300 hover-card">
+                <h3 class="text-2xl font-semibold mb-6 text-gray-800">Twin Fin Performance Characteristics</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="p-4 bg-green-50 rounded-lg hover:bg-green-100 transition-colors duration-300">
+                        <h4 class="font-semibold text-green-800 mb-2">Advantages</h4>
+                        <ul class="text-sm text-gray-700 space-y-1">
+                            <li>• Exceptional speed in small waves</li>
+                            <li>• Loose, playful feel</li>
+                            <li>• Easy to generate speed</li>
+                            <li>• Great for carving turns</li>
+                            <li>• Reduced drag</li>
+                        </ul>
+                    </div>
+                    <div class="p-4 bg-red-50 rounded-lg hover:bg-red-100 transition-colors duration-300">
+                        <h4 class="font-semibold text-red-800 mb-2">Considerations</h4>
+                        <ul class="text-sm text-gray-700 space-y-1">
+                            <li>• Less hold in powerful waves</li>
+                            <li>• Can feel unstable for beginners</li>
+                            <li>• Limited in critical sections</li>
+                            <li>• Requires different technique</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-blue-50 p-6 rounded-lg hover:bg-blue-100 transition-colors duration-300">
+                <h4 class="text-lg font-semibold mb-3 text-blue-800">Popular Twin Fin Types:</h4>
+                <p class="text-gray-700"><strong>Keel Fins:</strong> Traditional wide-based twins with lots of area for drive and stability. <strong>Modern Twins:</strong> Smaller, more upright fins for increased maneuverability and responsiveness.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Thruster Setups -->
+<section id="thruster" class="bg-gradient-to-br from-blue-900 via-blue-800 to-cyan-700 py-16">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="form-section p-8 md:p-12 form-animation hover-lift">
+            <h2 class="text-3xl font-bold text-center text-gray-900 mb-8">Thruster (Tri-Fin) Setups: The All-Around Standard</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
+                <div class="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 hover-card">
+                    <h3 class="text-xl font-semibold mb-4 text-cyan-700">The Modern Standard</h3>
+                    <p class="text-gray-700 leading-relaxed">Invented by Simon Anderson in 1980, the thruster setup revolutionized surfing. Three fins of similar size provide the perfect balance between drive, control, and maneuverability, making it the most popular configuration worldwide.</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 hover-card">
+                    <h3 class="text-xl font-semibold mb-4 text-cyan-700">Universal Appeal</h3>
+                    <p class="text-gray-700 leading-relaxed">Thruster fins work on virtually any board type and wave condition. Both FCS thruster fins and Futures thruster systems offer countless options for customizing your tri-fin setup to match your surfing style.</p>
+                </div>
+            </div>
+
+            <div class="bg-white p-8 rounded-lg shadow-lg mb-8 hover:shadow-xl transition-all duration-300 hover-card">
+                <h3 class="text-2xl font-semibold mb-6 text-gray-800">Why Thrusters Dominate</h3>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <div class="p-4 bg-blue-50 rounded-lg text-center hover:bg-blue-100 transition-colors duration-300">
+                        <h4 class="font-semibold text-blue-800 mb-2">Versatility</h4>
+                        <p class="text-sm text-gray-700">Performs well in all wave conditions from 1-15+ feet</p>
+                    </div>
+                    <div class="p-4 bg-blue-50 rounded-lg text-center hover:bg-blue-100 transition-colors duration-300">
+                        <h4 class="font-semibold text-blue-800 mb-2">Predictability</h4>
+                        <p class="text-sm text-gray-700">Consistent, reliable performance for all skill levels</p>
+                    </div>
+                    <div class="p-4 bg-blue-50 rounded-lg text-center hover:bg-blue-100 transition-colors duration-300">
+                        <h4 class="font-semibold text-blue-800 mb-2">Balance</h4>
+                        <p class="text-sm text-gray-700">Perfect mix of speed, control, and maneuverability</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-green-50 p-6 rounded-lg hover:bg-green-100 transition-colors duration-300">
+                <h4 class="text-lg font-semibold mb-3 text-green-800">Best For:</h4>
+                <p class="text-gray-700">All-around surfing, beginners to pros, competition surfing, varied wave conditions, and anyone wanting reliable, predictable performance.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Quad Setups -->
+<section id="quad" class="py-16 bg-gray-50">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="form-section p-8 md:p-12 form-animation hover-lift">
+            <h2 class="text-3xl font-bold text-center text-gray-900 mb-8">Quad Fin Setups: Drive & Speed</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
+                <div class="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 hover-card">
+                    <h3 class="text-xl font-semibold mb-4 text-cyan-700">Four-Fin Power</h3>
+                    <p class="text-gray-700 leading-relaxed">Quad fin setups feature four fins arranged in two pairs, combining the speed of twin fins with added control and hold. This configuration excels in powerful, hollow waves where drive and speed are essential.</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 hover-card">
+                    <h3 class="text-xl font-semibold mb-4 text-cyan-700">Modern Innovation</h3>
+                    <p class="text-gray-700 leading-relaxed">Futures quad fins and FCS quad systems offer various templates for different wave conditions. From small wave quads to big wave configurations, there's a quad fin setup for every situation.</p>
+                </div>
+            </div>
+
+            <div class="bg-white p-8 rounded-lg shadow-lg mb-8 hover:shadow-xl transition-all duration-300 hover-card">
+                <h3 class="text-2xl font-semibold mb-6 text-gray-800">Quad Performance Benefits</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="p-4 bg-purple-50 rounded-lg hover:bg-purple-100 transition-colors duration-300">
+                        <h4 class="font-semibold text-purple-800 mb-2">Speed & Drive</h4>
+                        <ul class="text-sm text-gray-700 space-y-1">
+                            <li>• Exceptional down-the-line speed</li>
+                            <li>• Powerful acceleration out of turns</li>
+                            <li>• Reduced drag compared to thrusters</li>
+                            <li>• Great for generating speed</li>
+                        </ul>
+                    </div>
+                    <div class="p-4 bg-purple-50 rounded-lg hover:bg-purple-100 transition-colors duration-300">
+                        <h4 class="font-semibold text-purple-800 mb-2">Control & Hold</h4>
+                        <ul class="text-sm text-gray-700 space-y-1">
+                            <li>• Excellent hold in powerful waves</li>
+                            <li>• Stable in critical sections</li>
+                            <li>• Good for barrel riding</li>
+                            <li>• Maintains control at high speeds</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-orange-50 p-6 rounded-lg hover:bg-orange-100 transition-colors duration-300">
+                <h4 class="text-lg font-semibold mb-3 text-orange-800">Ideal Conditions:</h4>
+                <p class="text-gray-700">Hollow waves, powerful surf, barrel riding, down-the-line speed runs, and when you need maximum drive with good control.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Single Fins & 2+1 Setups -->
+<section id="single-2plus1" class="bg-gradient-to-br from-blue-900 via-blue-800 to-cyan-700 py-16">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="form-section p-8 md:p-12 form-animation hover-lift">
+            <h2 class="text-3xl font-bold text-center text-gray-900 mb-8">Quick Look: Single Fins & 2+1 Setups</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 hover-card">
+                    <h3 class="text-xl font-semibold mb-4 text-cyan-700">Single Fin Setup</h3>
+                    <p class="text-gray-700 leading-relaxed mb-4">The original surfboard fin configuration, featuring one large fin in the center. Single fins provide smooth, flowing turns and excellent straight-line stability. They're most commonly found on longboards and retro designs.</p>
+                    <div class="p-3 bg-gray-50 rounded hover:bg-gray-100 transition-colors duration-300">
+                        <p class="text-sm text-gray-600"><strong>Best for:</strong> Longboards, noseriding, classic surfing style, and smooth, drawn-out turns.</p>
+                    </div>
+                </div>
+                
+                <div class="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 hover-card">
+                    <h3 class="text-xl font-semibold mb-4 text-cyan-700">2+1 Fin Setup</h3>
+                    <p class="text-gray-700 leading-relaxed mb-4">A center fin with two smaller side fins (side bites). This setup combines single fin flow with added control and maneuverability. Popular on mid-length boards and performance longboards for versatile performance.</p>
+                    <div class="p-3 bg-gray-50 rounded hover:bg-gray-100 transition-colors duration-300">
+                        <p class="text-sm text-gray-600"><strong>Best for:</strong> Mid-length boards, performance longboards, and surfers wanting single fin feel with more control.</p>
+                    </div>
+                </div>
+            </div>
+            
+           <div class="mt-8 text-center">
+    <div class="bg-blue-800/80 backdrop-blur-sm rounded-lg p-6 border border-blue-600/50 hover:bg-blue-800/90 transition-colors duration-300">
+        <p class="text-white text-lg mb-4">Want to learn more about longboard fin setups and single fin performance?</p>
+        <a href="{{ url_for('longboard_fins') }}" class="inline-block bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-500 hover:to-cyan-500 text-white font-bold py-3 px-6 rounded-lg transition-all duration-300 transform hover:scale-105 shadow-xl border-2 border-white/30">            
+            Explore Longboard Fins
+        </a>
+    </div>
+</div>
+        </div>
+    </div>
+</section>
+
+<!-- How to Choose the Right Fin Setup -->
+<section id="choose-setup" class="py-16 bg-gray-50">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="form-section p-8 md:p-12 form-animation hover-lift">
+            <h2 class="text-3xl font-bold text-center text-gray-900 mb-8">How to Choose the Right Fin Setup for You</h2>
+            
+            <div class="prose prose-lg max-w-none text-gray-700 mb-8">
+                <p class="text-xl mb-6">Selecting the best fin setup depends on several key factors including your board type, local wave conditions, surfing style, and skill level. Understanding these elements helps you make the right choice for optimal performance.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+                <div class="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 hover-card">
+                    <h3 class="text-lg font-semibold mb-4 text-cyan-700">Board Type Considerations</h3>
+                    <ul class="text-sm text-gray-700 space-y-2">
+                        <li><strong>Shortboards:</strong> Thruster or quad</li>
+                        <li><strong>Fish/Retro:</strong> Twin or quad</li>
+                        <li><strong>Longboards:</strong> Single or 2+1</li>
+                        <li><strong>Mid-lengths:</strong> 2+1 or thruster</li>
+                        <li><strong>Performance:</strong> Thruster or quad</li>
+                    </ul>
+                </div>
+                
+                <div class="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 hover-card">
+                    <h3 class="text-lg font-semibold mb-4 text-cyan-700">Wave Conditions</h3>
+                    <ul class="text-sm text-gray-700 space-y-2">
+                        <li><strong>Small/Weak:</strong> Twin or quad</li>
+                        <li><strong>Medium/Average:</strong> Thruster</li>
+                        <li><strong>Large/Powerful:</strong> Thruster or quad</li>
+                        <li><strong>Hollow/Barreling:</strong> Quad</li>
+                        <li><strong>Mushy/Slow:</strong> Twin</li>
+                    </ul>
+                </div>
+                
+                <div class="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 hover-card">
+                    <h3 class="text-lg font-semibold mb-4 text-cyan-700">Desired Feel</h3>
+                    <ul class="text-sm text-gray-700 space-y-2">
+                        <li><strong>Speed/Loose:</strong> Twin</li>
+                        <li><strong>Balanced/Reliable:</strong> Thruster</li>
+                        <li><strong>Drive/Power:</strong> Quad</li>
+                        <li><strong>Flow/Classic:</strong> Single</li>
+                        <li><strong>Versatile:</strong> 2+1</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="bg-blue-50 p-6 rounded-lg hover:bg-blue-100 transition-colors duration-300">
+                <h3 class="text-xl font-semibold mb-4 text-blue-800">Pro Tip: Experiment!</h3>
+                <p class="text-gray-700">Many modern boards come with 5-fin boxes, allowing you to try different setups. Start with a thruster for reliability, then experiment with twin and quad configurations to find your preferred feel.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CTA to Fin Finder AI -->
+<section class="bg-gradient-to-br from-blue-900 via-blue-800 to-cyan-700 py-16">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <div class="bg-white/20 backdrop-blur-sm rounded-2xl p-8 border border-white/30 shadow-2xl hover:bg-white/25 transition-colors duration-300 hover-lift">
+            <h2 class="text-3xl font-bold text-white mb-4">Let Our Fin Finder Expert Recommend Your Perfect Setup!</h2>
+            <p class="text-xl text-blue-100 mb-6">Our AI considers your board type, wave conditions, and surfing style to recommend the ideal fin setup and specific fins for your needs.</p>
+            <p class="text-lg text-blue-200 mb-8">💬 Don't forget - you can also chat with our Expert Fin Finder anytime using the chat box in the bottom right corner!</p>
+            <a href="{{ url_for('recommender_page') }}" class="inline-block bg-gradient-to-r from-white to-gray-100 hover:from-gray-100 hover:to-white text-blue-900 font-bold py-4 px-8 rounded-lg transition-all duration-300 transform hover:scale-105 shadow-xl text-lg border-2 border-white/50">
+                Get Personalized Fin Setup Recommendations
+            </a>
+        </div>
+    </div>
+</section>
+
+<style>
+    /* Smooth animations */
+    @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(10px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+    
+    .form-animation {
+        animation: fadeIn 0.5s ease-out;
+    }
+    
+    /* Form styling to match other pages */
+    .form-section {
+        background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+        border-radius: 1rem;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    }
+    
+    /* Enhanced hover effects */
+    .hover-lift:hover {
+        transform: translateY(-5px);
+        transition: transform 0.3s ease;
+    }
+    
+    .hover-card:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+    }
+    
+    .nav-card {
+        text-decoration: none;
+        display: block;
+    }
+    
+    .nav-card:hover {
+        text-decoration: none;
+    }
+    
+    /* Smooth scrolling */
+    html {
+        scroll-behavior: smooth;
+    }
+    
+    /* Typography improvements */
+    .prose p {
+        margin-bottom: 1.5rem;
+    }
+    
+    .leading-relaxed {
+        line-height: 1.7;
+      }
+</style>
+{% endblock %}
+
+{% block scripts %}
+{{ super() }}
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Add smooth scrolling for internal links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                target.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }
+        });
+    });
+    
+    // Add animation on scroll for cards
+    const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+    };
+    
+    const observer = new IntersectionObserver(function(entries) {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.style.opacity = '1';
+                entry.target.style.transform = 'translateY(0)';
+            }
+        });
+    }, observerOptions);
+    
+    // Observe all cards for animation
+    document.querySelectorAll('.shadow-lg').forEach(card => {
+        card.style.opacity = '0';
+        card.style.transform = 'translateY(20px)';
+        card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+        observer.observe(card);
+    });
+    
+    // Enhanced hover effects for navigation cards
+    document.querySelectorAll('.nav-card').forEach(card => {
+        card.addEventListener('mouseenter', function() {
+            this.style.transform = 'scale(1.05) translateY(-2px)';
+        });
+        
+        card.addEventListener('mouseleave', function() {
+            this.style.transform = 'scale(1) translateY(0)';
+        });
+    });
+    
+    // Add pulse effect to chat reminder
+    const chatReminder = document.querySelector('.bg-blue-50 p');
+    if (chatReminder) {
+        setInterval(() => {
+            chatReminder.style.transform = 'scale(1.02)';
+            setTimeout(() => {
+                chatReminder.style.transform = 'scale(1)';
+            }, 200);
+        }, 5000);
+    }
+});
+</script>
+{% endblock %}      

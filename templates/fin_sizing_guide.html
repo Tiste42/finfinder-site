@@ -1,0 +1,721 @@
+{% extends "base.html" %}
+{% set active_page = "fin-sizing-guide" %}
+
+{% block title %}Surfboard Fin Sizing Guide & Chart | Expert Recommendations | Fin Finder{% endblock %}
+
+{% block description %}Complete surfboard fin sizing guide with weight-based chart, volume considerations, skill level factors, and personalized AI recommendations for perfect fin selection.{% endblock %}
+
+{% block content %}
+<!-- Hero Section - Matching Home/Recommender Style -->
+<section class="bg-gradient-to-br from-blue-900 via-blue-800 to-cyan-700 text-white py-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <h1 class="text-5xl md:text-6xl font-extrabold mb-6">The Ultimate Surfboard Fin Sizing Guide</h1>
+        <p class="text-xl md:text-2xl text-blue-100 max-w-4xl mx-auto">
+            Master fin sizing with our comprehensive guide, weight-based charts, and AI-powered personalized recommendations
+        </p>
+        <p class="mt-4 text-2xl font-bold">From Beginner to Pro - Get Your Size Right</p>
+    </div>
+</section>
+
+<!-- Quick Navigation Overview -->
+<section class="py-12 bg-white">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 class="text-3xl font-bold text-center text-gray-900 mb-8">Quick Navigation</h2>
+        <p class="text-center text-gray-600 mb-8">Jump to any section to learn about fin sizing factors, charts, and expert recommendations</p>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+            <a href="#why-important" class="nav-card bg-gradient-to-r from-blue-50 to-cyan-50 hover:from-blue-100 hover:to-cyan-100 p-4 rounded-lg border border-blue-200 hover:border-blue-300 transition-all duration-300 transform hover:scale-105 hover:shadow-lg">
+                <h3 class="font-semibold text-blue-800 mb-2">Why Size Matters</h3>
+                <p class="text-sm text-gray-600">Non-negotiable importance</p>
+            </a>
+            
+            <a href="#key-factors" class="nav-card bg-gradient-to-r from-green-50 to-emerald-50 hover:from-green-100 hover:to-emerald-100 p-4 rounded-lg border border-green-200 hover:border-green-300 transition-all duration-300 transform hover:scale-105 hover:shadow-lg">
+                <h3 class="font-semibold text-green-800 mb-2">Key Sizing Factors</h3>
+                <p class="text-sm text-gray-600">Weight, volume, skill & waves</p>
+            </a>
+            
+            <a href="#size-categories" class="nav-card bg-gradient-to-r from-purple-50 to-violet-50 hover:from-purple-100 hover:to-violet-100 p-4 rounded-lg border border-purple-200 hover:border-purple-300 transition-all duration-300 transform hover:scale-105 hover:shadow-lg">
+                <h3 class="font-semibold text-purple-800 mb-2">Size Categories</h3>
+                <p class="text-sm text-gray-600">XS, S, M, L, XL explained</p>
+            </a>
+            
+            <a href="#fin-size-chart" class="nav-card bg-gradient-to-r from-orange-50 to-red-50 hover:from-orange-100 hover:to-red-100 p-4 rounded-lg border border-orange-200 hover:border-orange-300 transition-all duration-300 transform hover:scale-105 hover:shadow-lg">
+                <h3 class="font-semibold text-orange-800 mb-2">Fin Size Chart</h3>
+                <p class="text-sm text-gray-600">Weight-based sizing guide</p>
+            </a>
+            
+            <a href="#beyond-chart" class="nav-card bg-gradient-to-r from-teal-50 to-cyan-50 hover:from-teal-100 hover:to-cyan-100 p-4 rounded-lg border border-teal-200 hover:border-teal-300 transition-all duration-300 transform hover:scale-105 hover:shadow-lg">
+                <h3 class="font-semibold text-teal-800 mb-2">Beyond the Chart</h3>
+                <p class="text-sm text-gray-600">Advanced considerations</p>
+            </a>
+            
+            <a href="#ai-recommendations" class="nav-card bg-gradient-to-r from-indigo-50 to-blue-50 hover:from-indigo-100 hover:to-blue-100 p-4 rounded-lg border border-indigo-200 hover:border-indigo-300 transition-all duration-300 transform hover:scale-105 hover:shadow-lg">
+                <h3 class="font-semibold text-indigo-800 mb-2">AI Recommendations</h3>
+                <p class="text-sm text-gray-600">Personalized expert advice</p>
+            </a>
+        </div>
+        
+        <div class="mt-8 text-center">
+            <div class="bg-blue-50 p-4 rounded-lg border border-blue-200">
+                <p class="text-blue-800 font-medium">💬 Have specific questions? Our Expert Fin Finder chat is always available in the bottom right corner!</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Why Getting Your Fin Size Right is Non-Negotiable -->
+<section id="why-important" class="py-16 bg-gray-50">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="form-section p-8 md:p-12 form-animation hover-lift">
+            <h2 class="text-3xl font-bold text-center text-gray-900 mb-8">Why Getting Your Fin Size Right is Non-Negotiable</h2>
+            <div class="prose prose-lg max-w-none text-gray-700">
+                <p class="text-xl mb-6">Fin size is arguably the most critical factor in your surfboard setup. Get it wrong, and even the best board in the world will feel sluggish, unresponsive, or downright dangerous. Get it right, and you'll unlock your board's true potential and dramatically improve your surfing performance.</p>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
+                    <div class="bg-red-50 p-6 rounded-lg hover:bg-red-100 transition-colors duration-300">
+                        <h3 class="text-xl font-semibold mb-4 text-red-800">Fins Too Small = Problems</h3>
+                        <ul class="list-disc list-inside space-y-2 text-gray-700">
+                            <li>Board feels loose and uncontrollable</li>
+                            <li>Difficulty generating speed</li>
+                            <li>Poor hold in turns</li>
+                            <li>Sliding out in critical sections</li>
+                            <li>Lack of drive and projection</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="bg-red-50 p-6 rounded-lg hover:bg-red-100 transition-colors duration-300">
+                        <h3 class="text-xl font-semibold mb-4 text-red-800">Fins Too Large = Problems</h3>
+                        <ul class="list-disc list-inside space-y-2 text-gray-700">
+                            <li>Board feels stiff and sluggish</li>
+                            <li>Difficulty initiating turns</li>
+                            <li>Excessive drag and resistance</li>
+                            <li>Reduced maneuverability</li>
+                            <li>Fatigue from fighting the fins</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="bg-green-50 p-6 rounded-lg hover:bg-green-100 transition-colors duration-300">
+                    <h3 class="text-xl font-semibold mb-4 text-green-800">Perfect Fin Size = Performance</h3>
+                    <p class="text-gray-700 mb-4">When your fin size is dialed in correctly, you'll experience:</p>
+                    <ul class="list-disc list-inside space-y-2 text-gray-700">
+                        <li><strong>Optimal control:</strong> Perfect balance between hold and release</li>
+                        <li><strong>Enhanced speed:</strong> Efficient water flow and minimal drag</li>
+                        <li><strong>Responsive turning:</strong> Fins engage and release exactly when you want</li>
+                        <li><strong>Confidence:</strong> Predictable performance in all conditions</li>
+                        <li><strong>Progression:</strong> Your skills can develop without equipment limitations</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Key Factors That Determine Your Ideal Fin Size -->
+<section id="key-factors" class="bg-gradient-to-br from-blue-900 via-blue-800 to-cyan-700 py-16">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="form-section p-8 md:p-12 form-animation hover-lift">
+            <h2 class="text-3xl font-bold text-center text-gray-900 mb-8">Key Factors That Determine Your Ideal Fin Size</h2>
+            <p class="text-center text-gray-600 mb-12 text-lg">Understanding these four critical factors will help you choose the perfect fin size</p>
+            
+            <!-- Your Rider Weight -->
+            <div class="mb-12">
+                <h3 class="text-2xl font-semibold mb-6 text-gray-800">Your Rider Weight (The #1 Factor)</h3>
+                <div class="bg-white p-8 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 hover-card">
+                    <p class="text-gray-700 leading-relaxed mb-6">Rider weight is the most important factor in fin sizing. Heavier surfers need larger fins to generate adequate hold and control, while lighter surfers need smaller fins to avoid over-finning their boards.</p>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                        <div class="p-4 bg-blue-50 rounded-lg hover:bg-blue-100 transition-colors duration-300">
+                            <h4 class="font-semibold text-blue-800 mb-2">Lighter Riders (Under 150 lbs)</h4>
+                            <ul class="text-sm text-gray-700 space-y-1">
+                                <li>• Need smaller fins (XS-S)</li>
+                                <li>• Less force on fins</li>
+                                <li>• Easier to over-fin</li>
+                                <li>• Focus on maneuverability</li>
+                            </ul>
+                        </div>
+                        <div class="p-4 bg-green-50 rounded-lg hover:bg-green-100 transition-colors duration-300">
+                            <h4 class="font-semibold text-green-800 mb-2">Medium Riders (150-200 lbs)</h4>
+                            <ul class="text-sm text-gray-700 space-y-1">
+                                <li>• Standard sizing (M-L)</li>
+                                <li>• Most fin options available</li>
+                                <li>• Balanced performance</li>
+                                <li>• Good starting point</li>
+                            </ul>
+                        </div>
+                        <div class="p-4 bg-purple-50 rounded-lg hover:bg-purple-100 transition-colors duration-300">
+                            <h4 class="font-semibold text-purple-800 mb-2">Heavier Riders (Over 200 lbs)</h4>
+                            <ul class="text-sm text-gray-700 space-y-1">
+                                <li>• Need larger fins (L-XL)</li>
+                                <li>• More force on fins</li>
+                                <li>• Harder to over-fin</li>
+                                <li>• Focus on hold and drive</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-6 p-4 bg-yellow-50 rounded-lg hover:bg-yellow-100 transition-colors duration-300">
+                        <p class="text-yellow-800"><strong>Fin Size by Weight Pro Tip:</strong> Your weight determines the baseline, but other factors fine-tune from there. Never ignore weight as your starting point!</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Your Surfboard's Volume and Type -->
+            <div class="mb-12">
+                <h3 class="text-2xl font-semibold mb-6 text-gray-800">Your Surfboard's Volume and Type</h3>
+                <div class="bg-white p-8 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 hover-card">
+                    <p class="text-gray-700 leading-relaxed mb-6">Your surfboard's volume and type significantly impact fin size requirements. Higher volume boards need more fin area to maintain control, while lower volume boards need less.</p>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                        <div>
+                            <h4 class="text-lg font-semibold mb-4 text-cyan-700">Board Volume Impact</h4>
+                            <ul class="space-y-2 text-gray-700">
+                                <li>• <strong>High volume boards:</strong> Need larger fins for control</li>
+                                <li>• <strong>Low volume boards:</strong> Need smaller fins to avoid stiffness</li>
+                                <li>• <strong>Volume-to-weight ratio:</strong> Key consideration</li>
+                                <li>• <strong>Buoyancy factor:</strong> More float = more fin needed</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h4 class="text-lg font-semibold mb-4 text-cyan-700">Board Type Considerations</h4>
+                            <ul class="space-y-2 text-gray-700">
+                                <li>• <strong>Longboards:</strong> Larger center fins (7-10")</li>
+                                <li>• <strong>Shortboards:</strong> Standard thruster sizing</li>
+                                <li>• <strong>Fish/Grovelers:</strong> Often need larger fins</li>
+                                <li>• <strong>Performance boards:</strong> Precise sizing critical</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-6 p-4 bg-blue-50 rounded-lg hover:bg-blue-100 transition-colors duration-300">
+                        <p class="text-blue-800"><strong>Surfboard Volume Fin Size Rule:</strong> Higher volume-to-weight ratio = larger fins needed. Lower volume-to-weight ratio = smaller fins needed.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Your Surfing Skill Level -->
+            <div class="mb-12">
+                <h3 class="text-2xl font-semibold mb-6 text-gray-800">Your Surfing Skill Level</h3>
+                <div class="bg-white p-8 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 hover-card">
+                    <p class="text-gray-700 leading-relaxed mb-6">Your skill level affects how you interact with your fins and what performance characteristics you need most.</p>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                        <div class="p-4 bg-green-50 rounded-lg hover:bg-green-100 transition-colors duration-300">
+                            <h4 class="font-semibold text-green-800 mb-2">Beginner Fin Size</h4>
+                            <ul class="text-sm text-gray-700 space-y-1">
+                                <li>• Slightly larger fins for stability</li>
+                                <li>• More forgiving performance</li>
+                                <li>• Focus on control over speed</li>
+                                <li>• Avoid overly responsive setups</li>
+                            </ul>
+                        </div>
+                        <div class="p-4 bg-blue-50 rounded-lg hover:bg-blue-100 transition-colors duration-300">
+                            <h4 class="font-semibold text-blue-800 mb-2">Intermediate Fin Size</h4>
+                            <ul class="text-sm text-gray-700 space-y-1">
+                                <li>• Standard sizing works well</li>
+                                <li>• Can handle more responsive fins</li>
+                                <li>• Balance of control and performance</li>
+                                <li>• Good time to experiment</li>
+                            </ul>
+                        </div>
+                        <div class="p-4 bg-purple-50 rounded-lg hover:bg-purple-100 transition-colors duration-300">
+                            <h4 class="font-semibold text-purple-800 mb-2">Advanced/Pro Level</h4>
+                            <ul class="text-sm text-gray-700 space-y-1">
+                                <li>• Precise sizing critical</li>
+                                <li>• Can handle smaller, more responsive fins</li>
+                                <li>• Performance over forgiveness</li>
+                                <li>• Fine-tuning for specific conditions</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Typical Wave Conditions -->
+            <div class="mb-8">
+                <h3 class="text-2xl font-semibold mb-6 text-gray-800">Typical Wave Conditions You Surf</h3>
+                <div class="bg-white p-8 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 hover-card">
+                    <p class="text-gray-700 leading-relaxed mb-6">The waves you typically surf should influence your fin size choice. Different conditions require different performance characteristics.</p>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                        <div>
+                            <h4 class="text-lg font-semibold mb-4 text-cyan-700">Fins for Small Waves</h4>
+                            <ul class="space-y-2 text-gray-700">
+                                <li>• <strong>Larger fins:</strong> Generate speed in weak surf</li>
+                                <li>• <strong>More surface area:</strong> Better paddle power</li>
+                                <li>• <strong>Drive focus:</strong> Help maintain momentum</li>
+                                <li>• <strong>Stability:</strong> Control in mushy conditions</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h4 class="text-lg font-semibold mb-4 text-cyan-700">Fins for Large Waves</h4>
+                            <ul class="space-y-2 text-gray-700">
+                                <li>• <strong>Smaller fins:</strong> Reduce drag at speed</li>
+                                <li>• <strong>Less surface area:</strong> Easier to break free</li>
+                                <li>• <strong>Control focus:</strong> Manage powerful forces</li>
+                                <li>• <strong>Responsiveness:</strong> Quick direction changes</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-6 p-4 bg-teal-50 rounded-lg hover:bg-teal-100 transition-colors duration-300">
+                        <p class="text-teal-800"><strong>Wave Conditions Pro Tip:</strong> If you surf varied conditions, choose fins for your most common wave type, or consider having multiple sets for different conditions.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Understanding Fin Size Categories -->
+<section id="size-categories" class="py-16 bg-gray-50">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="form-section p-8 md:p-12 form-animation hover-lift">
+            <h2 class="text-3xl font-bold text-center text-gray-900 mb-8">Understanding Fin Size Categories</h2>
+            <p class="text-center text-gray-600 mb-12 text-lg">Fin sizes are typically categorized from XS to XL - here's what each means</p>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
+                <div class="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 hover-card">
+                    <h3 class="text-xl font-semibold mb-4 text-cyan-700">Fin Size XS</h3>
+                    <ul class="space-y-2 text-gray-700 text-sm">
+                        <li><strong>Rider Weight:</strong> Under 125 lbs</li>
+                        <li><strong>Base:</strong> ~4.0-4.2"</li>
+                        <li><strong>Height:</strong> ~4.3-4.5"</li>
+                        <li><strong>Best For:</strong> Groms, very light riders</li>
+                        <li><strong>Performance:</strong> Maximum maneuverability</li>
+                    </ul>
+                </div>
+                
+                <div class="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 hover-card">
+                    <h3 class="text-xl font-semibold mb-4 text-cyan-700">Fin Size S</h3>
+                    <ul class="space-y-2 text-gray-700 text-sm">
+                        <li><strong>Rider Weight:</strong> 125-155 lbs</li>
+                        <li><strong>Base:</strong> ~4.2-4.4"</li>
+                        <li><strong>Height:</strong> ~4.5-4.7"</li>
+                        <li><strong>Best For:</strong> Light to medium riders</li>
+                        <li><strong>Performance:</strong> Responsive and lively</li>
+                    </ul>
+                </div>
+                
+                <div class="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 hover-card">
+                    <h3 class="text-xl font-semibold mb-4 text-cyan-700">Fin Size M</h3>
+                    <ul class="space-y-2 text-gray-700 text-sm">
+                        <li><strong>Rider Weight:</strong> 155-175 lbs</li>
+                        <li><strong>Base:</strong> ~4.4-4.6"</li>
+                        <li><strong>Height:</strong> ~4.7-4.9"</li>
+                        <li><strong>Best For:</strong> Average weight riders</li>
+                        <li><strong>Performance:</strong> Balanced all-around</li>
+                    </ul>
+                </div>
+                
+                <div class="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 hover-card">
+                    <h3 class="text-xl font-semibold mb-4 text-cyan-700">Fin Size L</h3>
+                    <ul class="space-y-2 text-gray-700 text-sm">
+                        <li><strong>Rider Weight:</strong> 175-205 lbs</li>
+                        <li><strong>Base:</strong> ~4.6-4.8"</li>
+                        <li><strong>Height:</strong> ~4.9-5.1"</li>
+                        <li><strong>Best For:</strong> Heavier riders</li>
+                        <li><strong>Performance:</strong> Good hold and drive</li>
+                    </ul>
+                </div>
+                
+                <div class="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 hover-card">
+                    <h3 class="text-xl font-semibold mb-4 text-cyan-700">Fin Size XL</h3>
+                    <ul class="space-y-2 text-gray-700 text-sm">
+                        <li><strong>Rider Weight:</strong> Over 205 lbs</li>
+                        <li><strong>Base:</strong> ~4.8-5.0"</li>
+                        <li><strong>Height:</strong> ~5.1-5.3"</li>
+                        <li><strong>Best For:</strong> Heavy riders, powerful waves</li>
+                        <li><strong>Performance:</strong> Maximum hold and control</li>
+                    </ul>
+                </div>
+                
+                <div class="bg-blue-50 p-6 rounded-lg border border-blue-200">
+                    <h3 class="text-xl font-semibold mb-4 text-blue-800">Size Categories Note</h3>
+                    <p class="text-gray-700 text-sm">These are general guidelines. Actual measurements vary between brands. Always check specific fin dimensions when possible.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- The General Surfboard Fin Size Chart -->
+<section id="fin-size-chart" class="bg-gradient-to-br from-blue-900 via-blue-800 to-cyan-700 py-16">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="form-section p-8 md:p-12 form-animation hover-lift">
+            <h2 class="text-3xl font-bold text-center text-gray-900 mb-8">The General Surfboard Fin Size Chart</h2>
+            <p class="text-center text-gray-600 mb-12 text-lg">Use this weight-based chart as your starting point for fin selection</p>
+            
+            <div class="bg-white p-8 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 hover-card mb-8">
+                <div class="overflow-x-auto">
+                    <table class="w-full border-collapse">
+                        <thead>
+                            <tr class="bg-blue-50">
+                                <th class="border border-gray-300 px-4 py-3 text-left font-semibold text-blue-800">Rider Weight</th>
+                                <th class="border border-gray-300 px-4 py-3 text-left font-semibold text-blue-800">Recommended Size</th>
+                                <th class="border border-gray-300 px-4 py-3 text-left font-semibold text-blue-800">Typical Dimensions</th>
+                                <th class="border border-gray-300 px-4 py-3 text-left font-semibold text-blue-800">Performance Focus</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="hover:bg-gray-50">
+                                <td class="border border-gray-300 px-4 py-3 font-medium">Under 125 lbs</td>
+                                <td class="border border-gray-300 px-4 py-3">XS</td>
+                                <td class="border border-gray-300 px-4 py-3">4.0-4.2" base, 4.3-4.5" height</td>
+                                <td class="border border-gray-300 px-4 py-3">Maximum maneuverability</td>
+                            </tr>
+                            <tr class="hover:bg-gray-50">
+                                <td class="border border-gray-300 px-4 py-3 font-medium">125-155 lbs</td>
+                                <td class="border border-gray-300 px-4 py-3">S</td>
+                                <td class="border border-gray-300 px-4 py-3">4.2-4.4" base, 4.5-4.7" height</td>
+                                <td class="border border-gray-300 px-4 py-3">Responsive and lively</td>
+                            </tr>
+                            <tr class="hover:bg-gray-50">
+                                <td class="border border-gray-300 px-4 py-3 font-medium">155-175 lbs</td>
+                                <td class="border border-gray-300 px-4 py-3">M</td>
+                                <td class="border border-gray-300 px-4 py-3">4.4-4.6" base, 4.7-4.9" height</td>
+                                <td class="border border-gray-300 px-4 py-3">Balanced all-around</td>
+                            </tr>
+                            <tr class="hover:bg-gray-50">
+                                <td class="border border-gray-300 px-4 py-3 font-medium">175-205 lbs</td>
+                                <td class="border border-gray-300 px-4 py-3">L</td>
+                                <td class="border border-gray-300 px-4 py-3">4.6-4.8" base, 4.9-5.1" height</td>
+                                <td class="border border-gray-300 px-4 py-3">Good hold and drive</td>
+                            </tr>
+                            <tr class="hover:bg-gray-50">
+                                <td class="border border-gray-300 px-4 py-3 font-medium">Over 205 lbs</td>
+                                <td class="border border-gray-300 px-4 py-3">XL</td>
+                                <td class="border border-gray-300 px-4 py-3">4.8-5.0" base, 5.1-5.3" height</td>
+                                <td class="border border-gray-300 px-4 py-3">Maximum hold and control</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                        </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="bg-yellow-50 p-6 rounded-lg hover:bg-yellow-100 transition-colors duration-300">
+                    <h3 class="text-xl font-semibold mb-4 text-yellow-800">Important Chart Notes</h3>
+                    <ul class="space-y-2 text-gray-700 text-sm">
+                        <li>• This chart is a <strong>starting point</strong> - not the final answer</li>
+                        <li>• Dimensions vary between fin brands</li>
+                        <li>• Consider your board volume and surfing style</li>
+                        <li>• When in doubt, consult our AI for personalized recommendations</li>
+                    </ul>
+                </div>
+                
+                <div class="bg-green-50 p-6 rounded-lg hover:bg-green-100 transition-colors duration-300">
+                    <h3 class="text-xl font-semibold mb-4 text-green-800">How to Use This Chart</h3>
+                    <ol class="list-decimal list-inside space-y-2 text-gray-700 text-sm">
+                        <li>Find your weight range</li>
+                        <li>Note the recommended size</li>
+                        <li>Consider the other factors (volume, skill, waves)</li>
+                        <li>Fine-tune based on your specific needs</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Beyond the Chart: Nuances in Fin Sizing -->
+<section id="beyond-chart" class="py-16 bg-gray-50">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="form-section p-8 md:p-12 form-animation hover-lift">
+            <h2 class="text-3xl font-bold text-center text-gray-900 mb-8">Beyond the Chart: Nuances in Fin Sizing</h2>
+            <p class="text-center text-gray-600 mb-12 text-lg">The chart gets you close, but these advanced considerations dial in your perfect size</p>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+                <div class="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 hover-card">
+                    <h3 class="text-xl font-semibold mb-4 text-cyan-700">Fins for Different Waves</h3>
+                    <div class="space-y-4">
+                        <div class="p-3 bg-blue-50 rounded hover:bg-blue-100 transition-colors duration-300">
+                            <p class="text-sm font-medium text-blue-800">Powerful, Steep Waves:</p>
+                            <p class="text-gray-700 text-sm">Go 1 size smaller for better control and release</p>
+                        </div>
+                        <div class="p-3 bg-green-50 rounded hover:bg-green-100 transition-colors duration-300">
+                            <p class="text-sm font-medium text-green-800">Small, Weak Waves:</p>
+                            <p class="text-gray-700 text-sm">Go 1 size larger for more drive and speed generation</p>
+                        </div>
+                        <div class="p-3 bg-purple-50 rounded hover:bg-purple-100 transition-colors duration-300">
+                            <p class="text-sm font-medium text-purple-800">Variable Conditions:</p>
+                            <p class="text-gray-700 text-sm">Stick with chart recommendation for versatility</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 hover-card">
+                    <h3 class="text-xl font-semibold mb-4 text-cyan-700">Fins for Different Styles</h3>
+                    <div class="space-y-4">
+                        <div class="p-3 bg-orange-50 rounded hover:bg-orange-100 transition-colors duration-300">
+                            <p class="text-sm font-medium text-orange-800">High-Performance Surfing:</p>
+                            <p class="text-gray-700 text-sm">Smaller fins for maximum responsiveness and release</p>
+                        </div>
+                        <div class="p-3 bg-teal-50 rounded hover:bg-teal-100 transition-colors duration-300">
+                            <p class="text-sm font-medium text-teal-800">Cruisy, Flow Surfing:</p>
+                            <p class="text-gray-700 text-sm">Larger fins for stability and smooth carving</p>
+                        </div>
+                        <div class="p-3 bg-red-50 rounded hover:bg-red-100 transition-colors duration-300">
+                            <p class="text-sm font-medium text-red-800">Speed and Drive Focus:</p>
+                            <p class="text-gray-700 text-sm">Larger fins for maximum hold and projection</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="bg-blue-50 p-6 rounded-lg hover:bg-blue-100 transition-colors duration-300">
+                <h3 class="text-xl font-semibold mb-4 text-blue-800">Advanced Sizing Considerations</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                        <h4 class="font-semibold text-blue-700 mb-2">Board-Specific Factors:</h4>
+                        <ul class="text-gray-700 text-sm space-y-1">
+                            <li>• Wide boards often need larger fins</li>
+                            <li>• Thick boards may need more fin area</li>
+                            <li>• Rocker affects fin size requirements</li>
+                            <li>• Tail shape influences fin performance</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-blue-700 mb-2">Personal Preferences:</h4>
+                        <ul class="text-gray-700 text-sm space-y-1">
+                            <li>• Some surfers prefer looser feel (smaller fins)</li>
+                            <li>• Others want maximum hold (larger fins)</li>
+                            <li>• Experience level affects preferences</li>
+                            <li>• Local wave knowledge matters</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Get Personalized Expert Recommendations -->
+<section id="ai-recommendations" class="bg-gradient-to-br from-blue-900 via-blue-800 to-cyan-700 py-16">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <div class="bg-white/20 backdrop-blur-sm rounded-2xl p-8 border border-white/30 shadow-2xl hover:bg-white/25 transition-colors duration-300 hover-lift">
+            <h2 class="text-3xl font-bold text-white mb-4">Get Personalized Expert Recommendations</h2>
+            <p class="text-xl text-blue-100 mb-6">While charts and guidelines are helpful, nothing beats personalized recommendations based on YOUR specific setup, style, and conditions. Our AI Fin Expert analyzes all the factors we've discussed and provides tailored fin size recommendations just for you.</p>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+                <div class="bg-white/10 p-6 rounded-lg">
+                    <h3 class="text-lg font-semibold text-white mb-3">What Our AI Considers:</h3>
+                    <ul class="text-blue-100 text-sm space-y-1 text-left">
+                        <li>• Your exact weight and skill level</li>
+                        <li>• Your board's dimensions and volume</li>
+                        <li>• Your typical wave conditions</li>
+                        <li>• Your surfing style and goals</li>
+                        <li>• Fin system compatibility</li>
+                        <li>• Brand-specific sizing variations</li>
+                    </ul>
+                </div>
+                
+                <div class="bg-white/10 p-6 rounded-lg">
+                    <h3 class="text-lg font-semibold text-white mb-3">Why AI Beats Generic Charts:</h3>
+                    <ul class="text-blue-100 text-sm space-y-1 text-left">
+                        <li>• Considers ALL factors simultaneously</li>
+                        <li>• Accounts for nuanced interactions</li>
+                        <li>• Provides specific product recommendations</li>
+                        <li>• Explains the reasoning behind choices</li>
+                        <li>• Updates with latest fin technology</li>
+                        <li>• Available 24/7 for instant advice</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <p class="text-lg text-blue-200 mb-8">💬 Don't forget - you can also chat with our Expert Fin Finder anytime using the chat box in the bottom right corner for instant personalized fin sizing advice!</p>
+            
+            <div class="space-y-4">
+                <a href="{{ url_for('recommender_page') }}" class="inline-block bg-gradient-to-r from-white to-gray-100 hover:from-gray-100 hover:to-white text-blue-900 font-bold py-4 px-8 rounded-lg transition-all duration-300 transform hover:scale-105 shadow-xl text-lg border-2 border-white/50 mr-4">
+                    Get My Personalized Fin Size Recommendation
+                </a>
+                <p class="text-blue-200 text-sm">Free • Instant • Expert-Level Accuracy</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Common Fin Sizing Mistakes to Avoid -->
+<section class="py-16 bg-gray-50">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="form-section p-8 md:p-12 form-animation hover-lift">
+            <h2 class="text-3xl font-bold text-center text-gray-900 mb-8">Common Fin Sizing Mistakes to Avoid</h2>
+            <p class="text-center text-gray-600 mb-12 text-lg">Learn from others' mistakes - avoid these common fin sizing errors</p>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="bg-red-50 p-6 rounded-lg hover:bg-red-100 transition-colors duration-300 border-l-4 border-red-400">
+                    <h3 class="text-xl font-semibold mb-4 text-red-800">❌ Wrong Fin Size Mistakes</h3>
+                    <ul class="space-y-3 text-gray-700">
+                        <li><strong>Only considering weight:</strong> Ignoring board volume, skill level, and wave conditions</li>
+                        <li><strong>Copying others blindly:</strong> What works for your friend might not work for you</li>
+                        <li><strong>Sticking with stock fins:</strong> Board manufacturers often use generic, compromise sizing</li>
+                        <li><strong>Fear of experimentation:</strong> Never trying different sizes to find your sweet spot</li>
+                        <li><strong>Ignoring fin system differences:</strong> FCS and Futures fins can size differently</li>
+                    </ul>
+                </div>
+                
+                <div class="bg-green-50 p-6 rounded-lg hover:bg-green-100 transition-colors duration-300 border-l-4 border-green-400">
+                    <h3 class="text-xl font-semibold mb-4 text-green-800">✅ Smart Sizing Strategies</h3>
+                    <ul class="space-y-3 text-gray-700">
+                        <li><strong>Start with weight-based sizing:</strong> Use it as your baseline, then adjust</li>
+                        <li><strong>Consider all factors:</strong> Weight, volume, skill, waves, and style</li>
+                        <li><strong>Test systematically:</strong> Try one size up and down from your baseline</li>
+                        <li><strong>Keep detailed notes:</strong> Track what works in different conditions</li>
+                        <li><strong>Consult experts:</strong> Use our AI or chat with experienced surfers</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="mt-8 bg-yellow-50 p-6 rounded-lg hover:bg-yellow-100 transition-colors duration-300">
+                <h3 class="text-xl font-semibold mb-4 text-yellow-800">🎯 Pro Tip: The 80/20 Rule</h3>
+                <p class="text-gray-700">Get your fin size 80% right with weight-based sizing, then fine-tune the final 20% based on your specific needs. This approach saves time and money while ensuring optimal performance.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+    /* Smooth animations */
+    @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(10px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+    
+    .form-animation {
+        animation: fadeIn 0.5s ease-out;
+    }
+    
+    /* Form styling to match other pages */
+    .form-section {
+        background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+        border-radius: 1rem;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    }
+    
+    /* Enhanced hover effects */
+    .hover-lift:hover {
+        transform: translateY(-5px);
+        transition: transform 0.3s ease;
+    }
+    
+    .hover-card:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+    }
+    
+    .nav-card {
+        text-decoration: none;
+        display: block;
+    }
+    
+    .nav-card:hover {
+        text-decoration: none;
+    }
+    
+    /* Smooth scrolling */
+    html {
+        scroll-behavior: smooth;
+    }
+    
+    /* Typography improvements */
+    .prose p {
+        margin-bottom: 1.5rem;
+    }
+    
+    .leading-relaxed {
+        line-height: 1.7;
+    }
+    
+    /* Table styling */
+    table {
+        font-size: 0.9rem;
+    }
+    
+    @media (max-width: 768px) {
+        table {
+            font-size: 0.8rem;
+        }
+        
+        th, td {
+            padding: 0.5rem !important;
+        }
+    }
+</style>
+{% endblock %}
+
+{% block scripts %}
+{{ super() }}
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Add smooth scrolling for internal links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                target.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }
+        });
+    });
+    
+    // Add animation on scroll for cards
+    const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+    };
+    
+    const observer = new IntersectionObserver(function(entries) {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.style.opacity = '1';
+                entry.target.style.transform = 'translateY(0)';
+            }
+        });
+    }, observerOptions);
+    
+    // Observe all cards for animation
+    document.querySelectorAll('.shadow-lg').forEach(card => {
+        card.style.opacity = '0';
+        card.style.transform = 'translateY(20px)';
+        card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+        observer.observe(card);
+    });
+    
+    // Enhanced hover effects for navigation cards
+    document.querySelectorAll('.nav-card').forEach(card => {
+        card.addEventListener('mouseenter', function() {
+            this.style.transform = 'scale(1.05) translateY(-2px)';
+        });
+        
+        card.addEventListener('mouseleave', function() {
+            this.style.transform = 'scale(1) translateY(0)';
+        });
+    });
+    
+    // Add pulse effect to chat reminder
+    const chatReminder = document.querySelector('.bg-blue-50 p');
+    if (chatReminder) {
+        setInterval(() => {
+            chatReminder.style.transform = 'scale(1.02)';
+            setTimeout(() => {
+                chatReminder.style.transform = 'scale(1)';
+            }, 200);
+        }, 5000);
+    }
+    
+    // Highlight table rows on hover for better readability
+    document.querySelectorAll('tbody tr').forEach(row => {
+        row.addEventListener('mouseenter', function() {
+            this.style.backgroundColor = '#f3f4f6';
+        });
+        
+        row.addEventListener('mouseleave', function() {
+            this.style.backgroundColor = '';
+        });
+    });
+});
+</script>
+{% endblock %}

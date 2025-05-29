@@ -1,177 +1,479 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <title>{% block title %}Fin Finder AI{% endblock %}</title>
-    
-    <meta name="description" content="Fin Finder AI - Your personal AI expert for surfboard fin recommendations.">
-    <meta property="og:title" content="Fin Finder AI">
-    <meta property="og:description" content="Get personalized surfboard fin advice from our AI expert.">
-    <meta property="og:image" content="https://cdn.simulationtheory.ai/gasset/?asset=img&prompt=surfer+on+a+tropical+wave+logo&w=1200&h=630&style=realistic">
-    <meta property="og:type" content="website">
-    <link rel="icon" href="https://cdn.simulationtheory.ai/gasset/?asset=sprite&prompt=stylized+F+letter+with+wave+icon&w=32&h=32&transparent=true&style=pixel_art" type="image/png">
-
+    <title>{% block title %}Fin Finder | Expert Surfboard Fin Knowledge{% endblock %}</title>
+    <meta name="description" content="{% block description %}Fin Finder is your expert guide to surfboard fins. Learn about fin types, setups, and get personalized recommendations.{% endblock %}">
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="/chat/cdn/aos.css" rel="stylesheet">
-    <link href="/chat/cdn/animate.min.css" rel="stylesheet">
-    
-    <!-- FONTAWESOME STYLES - INCLUDE THEM ALL!! -->
-    <link href="/chat/cdn/all.min.css" rel="stylesheet"> <!-- Font Awesome 6 Core CSS -->
-    <style>
-    @font-face {
-        font-family: 'Font Awesome 6 Free';
-        font-style: normal;
-        font-weight: 400;
-        font-display: block;
-        src: url('/chat/webfonts/fa-regular-400.woff2') format('woff2'),
-             url('/chat/webfonts/fa-regular-400.ttf') format('truetype');
-    }
-    @font-face {
-        font-family: 'Font Awesome 6 Free';
-        font-style: normal;
-        font-weight: 900;
-        font-display: block;
-        src: url('/chat/webfonts/fa-solid-900.woff2') format('woff2'),
-             url('/chat/webfonts/fa-solid-900.ttf') format('truetype');
-    }
-    @font-face {
-        font-family: 'Font Awesome 6 Brands';
-        font-style: normal;
-        font-weight: 400;
-        font-display: block;
-        src: url('/chat/webfonts/fa-brands-400.woff2') format('woff2'),
-             url('/chat/webfonts/fa-brands-400.ttf') format('truetype');
-    }
-    /* Basic dark mode support */
-    .dark {
-        --text-color: #e5e7eb; /* gray-200 */
-        --bg-color: #111827; /* gray-900 */
-        --bg-secondary-color: #1f2937; /* gray-800 */
-        --border-color: #374151; /* gray-700 */
-    }
-    html.dark body {
-        background-color: var(--bg-color);
-        color: var(--text-color);
-    }
-    /* Additional dark mode styles can be added here or with dark: prefixes in Tailwind */
-    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
     <script>
-        // Tailwind dark mode setup
-        if (localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-          document.documentElement.classList.add('dark');
-        } else {
-          document.documentElement.classList.remove('dark');
+        tailwind.config = {
+            darkMode: 'class', // or 'media'
+            theme: {
+                extend: {
+                    colors: {
+                        primary: { // Example: using 'primary' for your main blue/cyan
+                            50: '#ecfeff',  // cyan-50
+                            100: '#cffafe', // cyan-100
+                            200: '#a5f3fc', // cyan-200
+                            300: '#67e8f9', // cyan-300
+                            400: '#22d3ee', // cyan-400
+                            500: '#06b6d4', // cyan-500 (main Fin Finder blue)
+                            600: '#0891b2', // cyan-600
+                            700: '#0e7490', // cyan-700
+                            800: '#155e75', // cyan-800
+                            900: '#164e63', // cyan-900
+                            950: '#083344'  // cyan-950
+                        },
+                        ffBlue: '#06b6d4', // Your main Fin Finder blue
+                        ffDarkBlue: '#0e7490',
+                        ffLightBlue: '#a5f3fc',
+                        ffBlack: '#1f2937', // A dark gray, almost black (Tailwind gray-800)
+                        ffWhite: '#ffffff',
+                        ffGray: {
+                            100: '#f3f4f6', // Tailwind gray-100
+                            200: '#e5e7eb', // Tailwind gray-200
+                            800: '#1f2937', // Tailwind gray-800
+                            900: '#111827'  // Tailwind gray-900
+                        }
+                    }
+                }
+            }
         }
     </script>
-</head>
-<body class="bg-gray-50 dark:bg-gray-900 text-gray-800 dark:text-gray-200 font-sans antialiased flex flex-col min-h-screen">
+    <style>
+        /* Navigation gradient styling */
+        .nav-gradient {
+            background: linear-gradient(to right, #f8fafc, #f1f5f9);
+            border-bottom: 1px solid #e2e8f0;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+        }
+       
+        /* Chatbox specific styles */
+        .chat-container-messages { /* Renamed to avoid conflict if you use chat-container elsewhere */
+            max-height: 300px;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem; /* space-y-3 */
+        }
+       
+        .user-message {
+            background-color: #06b6d4; /* ffBlue */
+            color: #ffffff; /* ffWhite */
+            border-radius: 0.75rem; /* rounded-lg */
+            padding: 0.75rem; /* p-3 */
+            margin-left: auto; /* Pushes to the right */
+            align-self: flex-end;
+            max-width: 80%;
+            word-wrap: break-word;
+        }
+       
+        .ai-message {
+            background-color: #374151; /* Tailwind gray-700 for AI messages in dark mode */
+            color: #f3f4f6; /* Tailwind gray-100 for AI text */
+            border-radius: 0.75rem; /* rounded-lg */
+            padding: 0.75rem; /* p-3 */
+            margin-right: auto; /* Pushes to the left */
+            align-self: flex-start;
+            max-width: 80%;
+            word-wrap: break-word;
+        }
+        .contextual-question {
+            background-color: #4b5563; /* Tailwind gray-600 */
+            color: #e5e7eb; /* Tailwind gray-200 */
+            border: 1px solid #374151; /* Tailwind gray-700 */
+        }
+        .contextual-question:hover {
+            background-color: #374151; /* Tailwind gray-700 */
+        }
 
-    <!-- Header -->
-    <header class="bg-white dark:bg-gray-800 shadow-md sticky top-0 z-50" data-aos="fade-down">
-        <nav class="container mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex items-center justify-between h-20">
-                <div class="flex items-center">
-                    <a href="{{ url_for('index_page') if index_page else '/' }}" class="flex-shrink-0 flex items-center">
-                        <!-- Using the filename you provided for the logo -->
-                        <img class="h-16 sm:h-20 w-auto" src="{{ url_for('static', filename='fin_finder_logo_transparent.png') }}" alt="Fin Finder Logo" onerror="this.onerror=null; this.src='https://cdn.simulationtheory.ai/gasset/?asset=img&prompt=modern+F+logo+wave+theme&w=160&h=80&style=professional';">
-                        <span class="ml-3 text-2xl font-bold text-cyan-600 dark:text-cyan-400 hidden sm:inline">Fin Finder AI</span>
-                    </a>
+
+        /* Basic scrollbar styling for chat messages */
+        .chat-container-messages::-webkit-scrollbar {
+            width: 8px;
+        }
+        .chat-container-messages::-webkit-scrollbar-track {
+            background: #1f2937; /* ffBlack or dark gray */
+        }
+        .chat-container-messages::-webkit-scrollbar-thumb {
+            background: #0891b2; /* ffDarkBlue */
+            border-radius: 4px;
+        }
+        .chat-container-messages::-webkit-scrollbar-thumb:hover {
+            background: #06b6d4; /* ffBlue */
+        }
+
+
+        /* General body styling */
+        body {
+            background-color: #f3f4f6; /* ffGray-100 (light mode default) */
+        }
+        html.dark body {
+            background-color: #111827; /* ffGray-900 (dark mode default) */
+        }
+        .content-wrapper { /* For pages that need a distinct content background */
+            background-color: #ffffff; /* ffWhite */
+        }
+        html.dark .content-wrapper {
+            background-color: #1f2937; /* ffBlack / ffGray-800 */
+        }
+    </style>
+</head>
+<body class="min-h-screen text-ffBlack dark:text-ffGray-100">
+   <!-- Navigation -->
+<nav class="nav-gradient sticky top-0 z-40">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex items-center justify-between h-18 sm:h-20">
+            <div class="flex items-center">
+                <a href="{{ url_for('home') }}" class="flex-shrink-0 flex items-center">
+                    <!-- Logo made smaller and using white transparent version -->
+                    <img class="h-16 sm:h-18 w-auto" src="{{ url_for('static', filename='finfinderlogolargeblavktext.png') }}" alt="Fin Finder Logo">
+                    <span class="ml-3 sm:ml-4 text-lg sm:text-xl font-bold text-gray-800">Fin Finder</span>
+                </a>
+            </div>
+            <div class="block">
+                <div class="ml-10 flex items-baseline space-x-2 lg:space-x-4">
+                    <a href="{{ url_for('home') }}" class="{% if active_page == 'home' %}bg-blue-600 text-white{% else %}text-gray-700 hover:bg-gray-200{% endif %} px-3 py-2 rounded-md text-sm font-medium transition-all duration-200">Home</a>
+                    <a href="{{ url_for('recommender_page') }}" class="{% if active_page == 'recommender' %}bg-blue-600 text-white{% else %}text-gray-700 hover:bg-gray-200{% endif %} px-3 py-2 rounded-md text-sm font-medium transition-all duration-200">Fin Recommender</a>
+                    <a href="{{ url_for('all_about_fins') }}" class="{% if active_page == 'all-about-fins' %}bg-blue-600 text-white{% else %}text-gray-700 hover:bg-gray-200{% endif %} px-3 py-2 rounded-md text-sm font-medium transition-all duration-200">All About Fins</a>
+                    <a href="{{ url_for('fin_setups') }}" class="{% if active_page == 'fin-setups' %}bg-blue-600 text-white{% else %}text-gray-700 hover:bg-gray-200{% endif %} px-3 py-2 rounded-md text-sm font-medium transition-all duration-200">Fin Setups</a>
+                    <a href="{{ url_for('fin_systems') }}" class="{% if active_page == 'fin-systems' %}bg-blue-600 text-white{% else %}text-gray-700 hover:bg-gray-200{% endif %} px-3 py-2 rounded-md text-sm font-medium transition-all duration-200">Fin Systems</a>
+                    <a href="{{ url_for('longboard_fins') }}" class="{% if active_page == 'longboard-fins' %}bg-blue-600 text-white{% else %}text-gray-700 hover:bg-gray-200{% endif %} px-3 py-2 rounded-md text-sm font-medium transition-all duration-200">Longboard Fins</a>
+                    <a href="{{ url_for('fin_sizing_guide') }}" class="{% if active_page == 'fin-sizing-guide' %}bg-blue-600 text-white{% else %}text-gray-700 hover:bg-gray-200{% endif %} px-3 py-2 rounded-md text-sm font-medium transition-all duration-200">Fin Sizing Guide</a>
                 </div>
-                <div class="flex items-center space-x-4">
-                    <a href="{{ url_for('home') }}" class="text-gray-600 dark:text-gray-300 hover:text-cyan-600 dark:hover:text-cyan-400 px-3 py-2 rounded-md text-sm font-medium transition-colors">Home</a>
-<a href="{{ url_for('fundamentals') }}" class="text-gray-600 dark:text-gray-300 hover:text-cyan-600 dark:hover:text-cyan-400 px-3 py-2 rounded-md text-sm font-medium transition-colors">Fundamentals</a>
-<a href="{{ url_for('setups') }}" class="text-gray-600 dark:text-gray-300 hover:text-cyan-600 dark:hover:text-cyan-400 px-3 py-2 rounded-md text-sm font-medium transition-colors">Setups</a>
-<a href="{{ url_for('longboards') }}" class="text-gray-600 dark:text-gray-300 hover:text-cyan-600 dark:hover:text-cyan-400 px-3 py-2 rounded-md text-sm font-medium transition-colors">Longboards</a>
-<a href="{{ url_for('fin_systems') }}" class="text-gray-600 dark:text-gray-300 hover:text-cyan-600 dark:hover:text-cyan-400 px-3 py-2 rounded-md text-sm font-medium transition-colors">Fin Systems</a><a href="{{ url_for('recommender_page') }}" class="text-gray-600 dark:text-gray-300 hover:text-cyan-600 dark:hover:text-cyan-400 px-3 py-2 rounded-md text-sm font-medium transition-colors">AI Recommender</a>
-                        <i id="theme-toggle-dark-icon" class="fas fa-moon w-5 h-5 hidden"></i>
-                        <i id="theme-toggle-light-icon" class="fas fa-sun w-5 h-5 hidden"></i>
+            </div>
+            <div class="-mr-2 flex md:hidden">
+                <button type="button" id="mobile-menu-button" class="inline-flex items-center justify-center p-2 rounded-md text-gray-600 hover:text-gray-900 hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-100 focus:ring-blue-500" aria-controls="mobile-menu" aria-expanded="false">
+                    <span class="sr-only">Open main menu</span>
+                    <svg id="icon-open" class="block h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" /></svg>
+                    <svg id="icon-closed" class="hidden h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" /></svg>
+                </button>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="md:hidden hidden" id="mobile-menu">
+        <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-white border-t border-gray-200">
+            <a href="{{ url_for('home') }}" class="{% if active_page == 'home' %}bg-blue-600 text-white{% else %}text-gray-700 hover:bg-gray-200{% endif %} block px-3 py-2 rounded-md text-base font-medium">Home</a>
+            <a href="{{ url_for('recommender_page') }}" class="{% if active_page == 'recommender' %}bg-blue-600 text-white{% else %}text-gray-700 hover:bg-gray-200{% endif %} block px-3 py-2 rounded-md text-base font-medium">Fin Recommender</a>
+            <a href="{{ url_for('all_about_fins') }}" class="{% if active_page == 'all_about_fins' %}bg-blue-600 text-white{% else %}text-gray-700 hover:bg-gray-200{% endif %} block px-3 py-2 rounded-md text-base font-medium">All About Fins</a>
+            <a href="{{ url_for('fin_setups') }}" class="{% if active_page == 'fin_setups' %}bg-blue-600 text-white{% else %}text-gray-700 hover:bg-gray-200{% endif %} block px-3 py-2 rounded-md text-base font-medium">Fin Setups</a>
+            <a href="{{ url_for('fin_systems') }}" class="{% if active_page == 'fin_systems' %}bg-blue-600 text-white{% else %}text-gray-700 hover:bg-gray-200{% endif %} block px-3 py-2 rounded-md text-base font-medium">Fin Systems</a>
+            <a href="{{ url_for('longboard_fins') }}" class="{% if active_page == 'longboard_fins' %}bg-blue-600 text-white{% else %}text-gray-700 hover:bg-gray-200{% endif %} block px-3 py-2 rounded-md text-base font-medium">Longboard Fins</a>
+            <a href="{{ url_for('fin_sizing_guide') }}" class="{% if active_page == 'fin_sizing_guide' %}bg-blue-600 text-white{% else %}text-gray-700 hover:bg-gray-200{% endif %} block px-3 py-2 rounded-md text-base font-medium">Fin Sizing Guide</a>
+        </div>
+    </div>
+</nav>
+
+
+    <!-- Debug info - remove in production -->
+    <div style="display:none;">
+        Debug: Active page is: {{ active_page|default('not set') }}
+    </div>
+
+
+    <!-- Main Content Block -->
+    {% block content %}{% endblock %}
+
+
+    <!-- Chat Interface Widget -->
+    <div id="chat-widget-container" class="fixed bottom-4 right-4 z-50">
+        <!-- Floating Chat Button -->
+        <button id="open-chat-button" class="bg-ffBlue hover:bg-ffDarkBlue text-ffWhite p-3 sm:p-4 rounded-full shadow-xl transition-all duration-300 ease-in-out transform hover:scale-110 flex items-center justify-center">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 sm:h-7 sm:w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z" />
+            </svg>
+            <span class="sr-only">Open Chat</span>
+        </button>
+
+
+        <!-- Chat Window -->
+        <div id="chat-window" class="bg-ffGray-800 dark:bg-ffBlack rounded-lg shadow-xl w-80 sm:w-96 hidden flex flex-col" style="max-height: 70vh; height: 500px;">
+            <div class="p-3 border-b border-gray-700 dark:border-gray-600 flex justify-between items-center">
+                <h3 class="text-md font-semibold text-ffWhite">Fin Finder Expert</h3>
+                <button id="close-chat-button" class="text-gray-400 hover:text-ffWhite">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd" /></svg>
+                </button>
+            </div>
+            <div id="chat-messages-display" class="p-3 flex-grow chat-container-messages">
+                <div class="ai-message">Hi! I'm your Fin Finder Expert. Ask me about fin types, setups, or sizing!</div>
+                <div id="contextual-questions-area" class="mt-2 space-y-1">
+                    <!-- Contextual questions will be injected here by JavaScript -->
+                </div>
+            </div>
+            <div class="p-3 border-t border-gray-700 dark:border-gray-600">
+                <div class="flex space-x-2">
+                    <input id="chat-user-input" type="text" class="flex-1 rounded-md border-gray-600 bg-gray-700 dark:bg-gray-900 text-ffWhite shadow-sm focus:border-ffBlue focus:ring focus:ring-ffBlue focus:ring-opacity-50 p-2" placeholder="Ask about fins...">
+                    <button id="chat-send-button" class="bg-ffBlue hover:bg-ffDarkBlue text-ffWhite px-3 py-2 rounded-md flex items-center justify-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd" /></svg>
                     </button>
                 </div>
             </div>
-        </nav>
-    </header>
+        </div>
+    </div>
 
-    <!-- Main Content -->
-    <main class="flex-grow container mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        {% block content %}{% endblock %}
-    </main>
 
     <!-- Footer -->
-    <footer class="bg-gray-800 dark:bg-black text-white py-8" data-aos="fade-up">
-        <div class="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <div class="mb-4">
-                <a href="#" class="text-gray-400 hover:text-white mx-2"><i class="fab fa-facebook-f"></i></a>
-                <a href="#" class="text-gray-400 hover:text-white mx-2"><i class="fab fa-instagram"></i></a>
-                <a href="#" class="text-gray-400 hover:text-white mx-2"><i class="fab fa-twitter"></i></a>
+<footer class="bg-gradient-to-br from-blue-900 via-blue-800 to-cyan-700 text-white py-6">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+            <!-- Logo and Brand -->
+            <div class="md:col-span-1">
+                <div class="flex flex-col items-center mb-4">
+    <img src="{{ url_for('static', filename='fin_finder_logo_transparent.png') }}" alt="Fin Finder Logo" class="h-40 w-auto">
+</div>
             </div>
-            <p class="text-sm text-gray-400">&copy; <span id="currentYear"></span> Fin Finder AI. All rights reserved.</p>
-            <p class="text-xs text-gray-500 mt-1">Your AI-Powered Surf Fin Advisor</p>
+           
+            <!-- Quick Links -->
+            <div>
+                <h3 class="text-lg font-semibold mb-4">Quick Links</h3>
+                <ul class="space-y-2 text-sm">
+                    <li><a href="{{ url_for('home') }}" class="text-blue-100 hover:text-white transition-colors duration-300">Home</a></li>
+                    <li><a href="{{ url_for('recommender_page') }}" class="text-blue-100 hover:text-white transition-colors duration-300">AI Fin Finder</a></li>
+                    <li><a href="{{ url_for('all_about_fins') }}" class="text-blue-100 hover:text-white transition-colors duration-300">All About Fins</a></li>
+                    <li><a href="{{ url_for('fin_sizing_guide') }}" class="text-blue-100 hover:text-white transition-colors duration-300">Sizing Guide</a></li>
+                </ul>
+            </div>
+           
+            <!-- Resources -->
+            <div>
+                <h3 class="text-lg font-semibold mb-4">Resources</h3>
+                <ul class="space-y-2 text-sm">
+                    <li><a href="{{ url_for('fin_setups') }}" class="text-blue-100 hover:text-white transition-colors duration-300">Fin Setups</a></li>
+                    <li><a href="{{ url_for('fin_systems') }}" class="text-blue-100 hover:text-white transition-colors duration-300">Fin Systems</a></li>
+                    <li><a href="{{ url_for('longboard_fins') }}" class="text-blue-100 hover:text-white transition-colors duration-300">Longboard Fins</a></li>
+                    <li><a href="{{ url_for('about') }}" class="text-blue-100 hover:text-white transition-colors duration-300">About</a></li>
+                </ul>
+            </div>
+           
+            <!-- Connect -->
+            <div>
+                <h3 class="text-lg font-semibold mb-4">Connect</h3>
+                <p class="text-blue-100 text-sm mb-4">Questions? Use our AI chat in the bottom right corner!</p>
+                <div class="text-blue-100 text-sm">
+                    <p>San Diego, California</p>
+                    <p class="mt-2">Built by a surfer, for surfers</p>
+                </div>
+            </div>
         </div>
-    </footer>
+       
+        <!-- Copyright -->
+        <div class="border-t border-blue-600/30 mt-8 pt-6 text-center">
+            <p class="text-blue-200 text-sm">&copy; 2025 Fin Finder | Stop Guessing, Start Ripping!</p>
+        </div>
+    </div>
+</footer>
+</footer>
 
-    <script src="/chat/cdn/papaparse.min.js"></script>
-    <script src="/chat/cdn/aos.js"></script>
-    <script src="/chat/cdn/all.min.js" crossorigin="anonymous"></script> <!-- Essential JS for FONTAWESOME -->
-    
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            // Initialize AOS
-            AOS.init({
-                duration: 800,
-                easing: 'ease-in-out',
-                once: true,
-                mirror: false
-            });
 
-            // Set current year in footer
-            document.getElementById('currentYear').textContent = new Date().getFullYear();
+<!-- Chat Spacing Fix CSS -->
+<style>
+/* Fix chat message spacing */
+.user-message {
+    margin-bottom: 12px !important;
+}
 
-            // Dark mode toggle logic
-            const themeToggleBtn = document.getElementById('theme-toggle');
-            const themeToggleDarkIcon = document.getElementById('theme-toggle-dark-icon');
-            const themeToggleLightIcon = document.getElementById('theme-toggle-light-icon');
 
-            // Function to set icon based on theme
-            function updateThemeIcon() {
-                if (localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-                    themeToggleLightIcon.classList.remove('hidden');
-                    themeToggleDarkIcon.classList.add('hidden');
-                } else {
-                    themeToggleDarkIcon.classList.remove('hidden');
-                    themeToggleLightIcon.classList.add('hidden');
-                }
+.ai-message {
+    margin-bottom: 16px !important;
+}
+
+
+/* Fix paragraph spacing in AI responses */
+.ai-message p {
+    margin-bottom: 8px !important;
+    line-height: 1.5;
+}
+
+
+.ai-message p:last-child {
+    margin-bottom: 0 !important;
+}
+
+
+/* Improve bullet point spacing */
+.ai-message br + • {
+    margin-top: 4px;
+}
+
+
+/* Chat container spacing */
+#chat-messages > div {
+    margin-bottom: 12px;
+}
+
+
+#chat-messages > div:last-child {
+    margin-bottom: 0;
+}
+
+
+/* Floating chat widget styles */
+.hidden {
+    display: none !important;
+}
+
+
+#chat-widget-container {
+    position: fixed;
+    bottom: 1rem;
+    right: 1rem;
+    z-index: 50;
+}
+
+
+#open-chat-button {
+    background-color: #0891b2;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    transition: all 0.3s ease;
+}
+
+
+#chat-window {
+    position: fixed;
+    bottom: 90px;
+    right: 20px;
+    width: 350px;
+    height: 500px;
+    max-height: 70vh;
+}
+</style>
+
+
+<!-- Mobile Menu Toggle Script -->
+<script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const iconOpen = document.getElementById('icon-open');
+            const iconClosed = document.getElementById('icon-closed');
+           
+            if (mobileMenuButton && mobileMenu) {
+                mobileMenuButton.addEventListener('click', function() {
+                    mobileMenu.classList.toggle('hidden');
+                    iconOpen.classList.toggle('hidden');
+                    iconClosed.classList.toggle('hidden');
+                });
             }
-            updateThemeIcon(); // Set initial icon
-
-            themeToggleBtn.addEventListener('click', function() {
-                // toggle icons inside button
-                themeToggleDarkIcon.classList.toggle('hidden');
-                themeToggleLightIcon.classList.toggle('hidden');
-
-                // if set via local storage previously
-                if (localStorage.getItem('theme')) {
-                    if (localStorage.getItem('theme') === 'light') {
-                        document.documentElement.classList.add('dark');
-                        localStorage.setItem('theme', 'dark');
-                    } else {
-                        document.documentElement.classList.remove('dark');
-                        localStorage.setItem('theme', 'light');
+           
+            // Chat functionality
+            const openChatButton = document.getElementById('open-chat-button');
+            const closeChatButton = document.getElementById('close-chat-button');
+            const chatWindow = document.getElementById('chat-window');
+            const chatInput = document.getElementById('chat-user-input');
+            const chatSendButton = document.getElementById('chat-send-button');
+            const chatMessages = document.getElementById('chat-messages-display');
+           
+            if (openChatButton && chatWindow) {
+                openChatButton.addEventListener('click', function() {
+                    chatWindow.classList.remove('hidden');
+                    openChatButton.classList.add('hidden');
+                    if (chatInput) chatInput.focus();
+                });
+            }
+           
+            if (closeChatButton && chatWindow) {
+                closeChatButton.addEventListener('click', function() {
+                    chatWindow.classList.add('hidden');
+                    openChatButton.classList.remove('hidden');
+                });
+            }
+           
+            // Chat send functionality
+            if (chatSendButton && chatInput && chatMessages) {
+                chatSendButton.addEventListener('click', sendChatMessage);
+                chatInput.addEventListener('keypress', function(e) {
+                    if (e.key === 'Enter') {
+                        sendChatMessage();
                     }
-                // if NOT set via local storage previously
-                } else {
-                    if (document.documentElement.classList.contains('dark')) {
-                        document.documentElement.classList.remove('dark');
-                        localStorage.setItem('theme', 'light');
-                    } else {
-                        document.documentElement.classList.add('dark');
-                        localStorage.setItem('theme', 'dark');
+                });
+            }
+           
+            function sendChatMessage() {
+                const message = chatInput.value.trim();
+                if (!message) return;
+               
+                // Add user message to chat
+                const userMessageDiv = document.createElement('div');
+                userMessageDiv.className = 'user-message';
+                userMessageDiv.textContent = message;
+                chatMessages.appendChild(userMessageDiv);
+               
+                // Clear input
+                chatInput.value = '';
+               
+                // Scroll to bottom
+                chatMessages.scrollTop = chatMessages.scrollHeight;
+               
+                // Show typing indicator
+                const typingDiv = document.createElement('div');
+                typingDiv.className = 'ai-message typing-indicator';
+                typingDiv.textContent = 'Thinking...';
+                chatMessages.appendChild(typingDiv);
+                chatMessages.scrollTop = chatMessages.scrollHeight;
+               
+                // Send to backend
+                fetch('/ask', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ question: message }),
+                })
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok');
                     }
-                }
-                updateThemeIcon(); // Update icon after toggle
-            });
+                    return response.json();
+                })
+                .then(data => {
+                    // Remove typing indicator
+                    const typingIndicator = document.querySelector('.typing-indicator');
+                    if (typingIndicator) {
+                        chatMessages.removeChild(typingIndicator);
+                    }
+                   
+                    // Add AI response
+                    const aiMessageDiv = document.createElement('div');
+                    aiMessageDiv.className = 'ai-message';
+                    aiMessageDiv.innerHTML = data.answer || "Sorry, I couldn't generate a response.";
+                    chatMessages.appendChild(aiMessageDiv);
+                   
+                    // Scroll to bottom
+                    chatMessages.scrollTop = chatMessages.scrollHeight;
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                   
+                    // Remove typing indicator
+                    const typingIndicator = document.querySelector('.typing-indicator');
+                    if (typingIndicator) {
+                        chatMessages.removeChild(typingIndicator);
+                    }
+                   
+                    // Add error message
+                    const errorDiv = document.createElement('div');
+                    errorDiv.className = 'ai-message';
+                    errorDiv.textContent = "Sorry, there was an error processing your request.";
+                    chatMessages.appendChild(errorDiv);
+                   
+                    // Scroll to bottom
+                    chatMessages.scrollTop = chatMessages.scrollHeight;
+                });
+            }
         });
     </script>
 </body>
 </html>
+
+
