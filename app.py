@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, jsonify, redirect, url_for, session
+from flask import Flask, render_template, request, jsonify, redirect, url_for, session, Response
 import google.generativeai as genai
 import os
 from dotenv import load_dotenv
@@ -12,6 +12,9 @@ logging.basicConfig(level=logging.INFO)
 # --- Flask App Initialization ---
 app = Flask(__name__) 
 app.secret_key = 'your-secret-key-for-sessions-change-this-to-something-random'
+
+# Define the base URL for your site
+SITE_URL = "https://finfinder.ai"
 
 # --- Load Environment Variables & Configure Gemini ---
 model = None # Initialize model as None
@@ -136,6 +139,24 @@ def about():
 def recommender_page():
     """Renders the Fin Recommender tool page."""
     return render_template('recommender.html')
+
+# --- Sitemap Route ---
+@app.route('/sitemap.xml')
+def sitemap():
+    """Generates and serves the sitemap.xml file for SEO."""
+    pages = [
+        {'loc': f"{SITE_URL}/", 'lastmod': '2025-05-29', 'changefreq': 'daily', 'priority': '1.0'},
+        {'loc': f"{SITE_URL}/recommender", 'lastmod': '2025-05-29', 'changefreq': 'weekly', 'priority': '0.9'},
+        {'loc': f"{SITE_URL}/all-about-surfboard-fins", 'lastmod': '2025-05-29', 'changefreq': 'monthly', 'priority': '0.8'},
+        {'loc': f"{SITE_URL}/fin-setups", 'lastmod': '2025-05-29', 'changefreq': 'monthly', 'priority': '0.8'},
+        {'loc': f"{SITE_URL}/fin-systems", 'lastmod': '2025-05-29', 'changefreq': 'monthly', 'priority': '0.8'},
+        {'loc': f"{SITE_URL}/longboard-fins", 'lastmod': '2025-05-29', 'changefreq': 'monthly', 'priority': '0.8'},
+        {'loc': f"{SITE_URL}/fin-sizing-guide", 'lastmod': '2025-05-29', 'changefreq': 'monthly', 'priority': '0.8'},
+        {'loc': f"{SITE_URL}/about", 'lastmod': '2025-05-29', 'changefreq': 'monthly', 'priority': '0.7'},
+    ]
+
+    sitemap_xml = render_template('sitemap.xml', pages=pages)
+    return Response(sitemap_xml, mimetype='application/xml')
 
 @app.route('/ask', methods=['POST'])
 def ask():
