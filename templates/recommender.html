@@ -85,10 +85,10 @@
                         </label>
                         <select name="skill" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition">
                             <option value="">Select Skill Level</option>
-                            <option value="beginner">Beginner</option>
-                            <option value="intermediate">Intermediate</option>
-                            <option value="advanced">Advanced</option>
-                            <option value="expert">Expert</option>
+<option value="beginner">Beginner (Getting to feet & riding straight)</option>
+<option value="intermediate">Intermediate (Catching waves & going down the line)</option>
+<option value="advanced">Advanced (Surfing good waves, getting barreled, doing turns)</option>
+<option value="pro">Pro (Boosting airs & surfing slabs)</option>
                         </select>
                     </div>
                     
@@ -414,7 +414,7 @@ document.addEventListener('DOMContentLoaded', function() {
             <li><strong>FCS II Performer</strong> - The ultimate all-rounder, great for progression</li>
             <li><strong>Futures F6 Alpha</strong> - Balanced performance with predictable feel</li>
             <li><strong>Captain Fin CF Medium</strong> - Excellent value with proven performance</li>`;
-    } else if (data.board === 'shortboard' && (data.skill === 'advanced' || data.skill === 'expert')) {
+    } else if (data.board === 'shortboard' && (data.skill === 'advanced' || data.skill === 'pro')) {
         html += `
             <li><strong>FCS II John John</strong> - Pro-level performance for critical surfing</li>
             <li><strong>Futures Jordy Smith</strong> - Power surfing with precision</li>
