@@ -44,34 +44,44 @@
     </style>
 
     <header class="relative">
-        <!-- Hero Section with Modern Gradient -->
-        <div class="relative bg-gradient-to-br from-blue-900 via-blue-800 to-cyan-700 overflow-hidden" style="background-image: url('/static/surferarmdrag.jpg'); background-size: cover; background-position: center; background-blend-mode: overlay;">
-            <div class="absolute inset-0 bg-black bg-opacity-20"></div>
-            <div class="absolute inset-0 opacity-20">
-                <svg class="absolute bottom-0 w-full h-32" preserveAspectRatio="none" viewBox="0 0 1440 320">
-                    <path fill="currentColor" fill-opacity="0.3" d="M0,96L48,112C96,128,192,160,288,160C384,160,480,128,576,112C672,96,768,96,864,112C960,128,1056,160,1152,160C1248,160,1344,128,1392,112L1440,96L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path>
-                </svg>
-            </div>
+    <!-- Hero Section with Video Background -->
+    <div class="relative bg-gradient-to-br from-blue-900 via-blue-800 to-cyan-700 overflow-hidden">
+        <!-- Video Background -->
+        <video autoplay muted loop playsinline class="absolute inset-0 w-full h-full object-cover" style="object-position: center bottom;">
+            <source src="/static/surferarmdrag.mov" type="video/mp4">
+            <!-- Fallback image if video fails to load -->
+            <img src="/static/surferarmdrag.jpg" alt="Surfer" class="absolute inset-0 w-full h-full object-cover">
+        </video>
+        
+        <!-- Overlay for better text readability -->
+        <div class="absolute inset-0 bg-black bg-opacity-40"></div>
+        
+        <!-- Decorative SVG Wave -->
+        <div class="absolute inset-0 opacity-20">
+            <svg class="absolute bottom-0 w-full h-32" preserveAspectRatio="none" viewBox="0 0 1440 320">
+                <path fill="currentColor" fill-opacity="0.3" d="M0,96L48,112C96,128,192,160,288,160C384,160,480,128,576,112C672,96,768,96,864,112C960,128,1056,160,1152,160C1248,160,1344,128,1392,112L1440,96L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path>
+            </svg>
+        </div>
 
-            <!-- Content -->
-            <div class="relative max-w-7xl mx-auto py-24 px-4 sm:py-32 sm:px-6 lg:px-8 text-center">
-                <h1 class="text-5xl md:text-6xl font-extrabold text-white mb-6 tracking-tight">
-                    Find Your Perfect Surfboard Fins
-                </h1>
-                <p class="text-xl md:text-2xl text-blue-100 max-w-3xl mx-auto mb-4">
-                    Expert Recommendations Based on Your Unique Needs
-                </p>
-                <p class="mt-4 text-3xl font-bold text-white">
-                    Stop Guessing, Start Ripping!
-                </p>
-                <div class="mt-10 max-w-sm mx-auto sm:max-w-none sm:flex sm:justify-center">
-                    <a href="{{ url_for('recommender_page') }}" class="flex items-center justify-center px-8 py-4 border border-transparent text-lg font-medium rounded-lg shadow-lg text-white bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-700 hover:to-cyan-700 transition-all duration-300 transform hover:scale-105">
-                        <i class="fas fa-magic mr-2"></i>Find Your Fins Now
-                    </a>
-                </div>
+        <!-- Content -->
+        <div class="relative max-w-7xl mx-auto py-24 px-4 sm:py-32 sm:px-6 lg:px-8 text-center">
+            <h1 class="text-5xl md:text-6xl font-extrabold text-white mb-6 tracking-tight">
+                Find Your Perfect Surfboard Fins
+            </h1>
+            <p class="text-xl md:text-2xl text-blue-100 max-w-3xl mx-auto mb-4">
+                Expert Recommendations Based on Your Unique Needs
+            </p>
+            <p class="mt-4 text-3xl font-bold text-white">
+                Stop Guessing, Start Ripping!
+            </p>
+            <div class="mt-10 max-w-sm mx-auto sm:max-w-none sm:flex sm:justify-center">
+                <a href="{{ url_for('recommender_page') }}" class="flex items-center justify-center px-8 py-4 border border-transparent text-lg font-medium rounded-lg shadow-lg text-white bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-700 hover:to-cyan-700 transition-all duration-300 transform hover:scale-105">
+                    <i class="fas fa-magic mr-2"></i>Find Your Fins Now
+                </a>
             </div>
         </div>
-    </header>
+    </div>
+</header>
 
     <main class="bg-gray-50">
         <!-- What Makes Fin Finder Different -->
