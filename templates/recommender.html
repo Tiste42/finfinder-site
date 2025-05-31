@@ -45,9 +45,17 @@
     }
 </style>
 
-<!-- Hero Section -->
-<section class="bg-gradient-to-br from-blue-900 via-blue-800 to-cyan-700 text-white py-16">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+<<!-- Hero Section -->
+<section class="relative bg-gradient-to-br from-blue-900 via-blue-800 to-cyan-700 text-white py-16 overflow-hidden">
+    <!-- Background Image -->
+    <div class="absolute inset-0">
+        <img src="/static/girlduckdives.jpg" alt="Underwater surfing" class="w-full h-full object-cover" style="object-position: center center;">
+    </div>
+    <!-- Overlay for text readability -->
+    <div class="absolute inset-0 bg-black bg-opacity-50"></div>
+    
+    <!-- Content -->
+    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         <h1 class="text-5xl md:text-6xl font-extrabold mb-6">AI Fin Recommender</h1>
         <p class="text-xl md:text-2xl text-blue-100 max-w-3xl mx-auto">
             Get expert fin recommendations tailored to your unique surfing style
