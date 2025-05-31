@@ -227,222 +227,186 @@ document.addEventListener('DOMContentLoaded', function() {
         resultDiv.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
     });
     
-   function generateRecommendation(data) {
+  function generateRecommendation(data) {
     let html = '<div class="space-y-4">';
     
-    // Detailed recommendations based on all inputs
+    // Determine fin size based on weight
+    let finSize = '';
+    if (data.weight === 'under-120' || data.weight === '120-150') {
+        finSize = 'small';
+    } else if (data.weight === '150-180') {
+        finSize = 'medium';
+    } else if (data.weight === '180-210') {
+        finSize = 'medium-large';
+    } else {
+        finSize = 'large';
+    }
+    
+    // Adjust size for skill level and waves
+    if ((data.skill === 'advanced' || data.skill === 'pro') && (data.waves === 'powerful' || data.waves === 'big-wave')) {
+        // Size up for advanced surfers in powerful waves
+        if (finSize === 'medium') finSize = 'large';
+        if (finSize === 'small') finSize = 'medium';
+    }
+    
+    // Main recommendation section
+    html += '<div class="bg-blue-50 p-4 rounded-lg">';
+    
+    // SHORTBOARD RECOMMENDATIONS
     if (data.board === 'shortboard') {
-        if (data.skill === 'beginner') {
+        if (data.style === 'speed' || data.waves === 'small-mushy' || data.waves === 'small-clean') {
+            // Recommend Quad for speed/small waves
+            html += '<h4 class="font-semibold text-lg mb-2">Recommended: Quad Setup for Maximum Speed</h4>';
+            html += '<p class="text-gray-700 mb-3">Quad fins excel in generating speed and maintaining momentum.</p>';
+            
+            if (finSize === 'small') {
+                html += `
+                    <p class="mb-2"><strong>🏆 Premium Pick: <a href="https://amzn.to/4jLxC0F" target="_blank" class="text-blue-600 hover:underline">Futures Fins Legacy F4 Small - $99.95</a></strong></p>
+                    <p class="mb-2"><strong>💰 Budget Pick: <a href="https://amzn.to/4dCDgjU" target="_blank" class="text-blue-600 hover:underline">UPSURF S+GL Quad Set - $37.98</a></strong></p>`;
+            } else if (finSize === 'medium' || finSize === 'medium-large') {
+                html += `
+                    <p class="mb-2"><strong>🏆 Premium Pick: <a href="https://amzn.to/43DlnNv" target="_blank" class="text-blue-600 hover:underline">FCS 2 Pyzel PC Air Core Quad - $75.00</a></strong></p>
+                    <p class="mb-2"><strong>💰 Budget Pick: <a href="https://amzn.to/3FFkdsJ" target="_blank" class="text-blue-600 hover:underline">Ho Stevie! Quad HexCore - $64.97</a></strong></p>`;
+            } else {
+                html += `
+                    <p class="mb-2"><strong>🏆 Premium Pick: <a href="https://amzn.to/3Z7ZLHC" target="_blank" class="text-blue-600 hover:underline">Futures Fins F8 Honeycomb Quad - $139.95</a></strong></p>
+                    <p class="mb-2"><strong>💰 Budget Pick: <a href="https://amzn.to/4kM443H" target="_blank" class="text-blue-600 hover:underline">UPSURF K2.1 Quad Set - $36.89</a></strong></p>`;
+            }
+            html += '<p class="mt-2"><strong>🔍 <a href="https://amzn.to/4jryKWM" target="_blank" class="text-blue-600 hover:underline">Browse All Quad Fins</a></strong></p>';
+            
+        } else {
+            // Recommend Thruster for all-around/powerful waves
+            html += '<h4 class="font-semibold text-lg mb-2">Recommended: Thruster Setup for Control & Performance</h4>';
+            html += '<p class="text-gray-700 mb-3">Thruster fins provide the best balance of speed, control, and maneuverability.</p>';
+            
+            if (finSize === 'small') {
+                html += `
+                    <p class="mb-2"><strong>🏆 Premium Pick: <a href="https://amzn.to/3HhEUeS" target="_blank" class="text-blue-600 hover:underline">Futures Fins R4 - $110.00</a></strong></p>
+                    <p class="mb-2"><strong>💰 Budget Pick: <a href="https://amzn.to/4jLwp9D" target="_blank" class="text-blue-600 hover:underline">AQUBONA G3 FCS Half Carbon - $39.89</a></strong></p>`;
+            } else if (finSize === 'medium' || finSize === 'medium-large') {
+                html += `
+                    <p class="mb-2"><strong>🏆 Premium Pick: <a href="https://amzn.to/3T5pcG8" target="_blank" class="text-blue-600 hover:underline">FCS 2 Performer PC Tri-Fin Set - $110.00</a></strong></p>
+                    <p class="mb-2"><strong>💰 Budget Pick: <a href="https://amzn.to/3StgcdW" target="_blank" class="text-blue-600 hover:underline">Ho Stevie! Thruster HexCore - $59.97</a></strong></p>`;
+            } else {
+                html += `
+                    <p class="mb-2"><strong>🏆 Premium Pick: <a href="https://amzn.to/43yxNWN" target="_blank" class="text-blue-600 hover:underline">FCS II AM Performance Core - $120.00</a></strong></p>
+                    <p class="mb-2"><strong>💰 Budget Pick: <a href="https://amzn.to/4mEBi6T" target="_blank" class="text-blue-600 hover:underline">BPS New Zealand G7 - $44.99</a></strong></p>`;
+            }
+            html += '<p class="mt-2"><strong>🔍 <a href="https://amzn.to/3SZ0tDp" target="_blank" class="text-blue-600 hover:underline">Browse All Thruster Fins</a></strong></p>';
+        }
+        
+    // FISH BOARD RECOMMENDATIONS
+    } else if (data.board === 'fish') {
+        html += '<h4 class="font-semibold text-lg mb-2">Recommended: Twin or Quad Setup</h4>';
+        html += '<p class="text-gray-700 mb-3">Fish boards excel with twin fins for speed or quads for control.</p>';
+        
+        if (data.style === 'speed' || data.style === 'maneuverability') {
             html += `
-                <div class="bg-blue-50 p-4 rounded-lg">
-                    <h4 class="font-semibold text-lg mb-2">Recommended Setup: Stable Medium Thruster</h4>
-                    <p class="text-gray-700 mb-2">As a beginner on a shortboard, stability is key. We recommend:</p>
-                    <ul class="list-disc list-inside text-gray-700 space-y-1">
-                        <li><strong>Fin Setup:</strong> Medium-sized thruster (3-fin) configuration</li>
-                        <li><strong>Template:</strong> Balanced template with moderate rake (32-35°)</li>
-                        <li><strong>Specific Models:</strong> FCS II Performer, Futures F6 Alpha, or Captain Fin CF Medium</li>
-                        <li><strong>Why:</strong> These provide excellent stability while learning to generate speed and control</li>
-                    </ul>
-                </div>`;
-        } else if (data.skill === 'intermediate') {
+                <p class="mb-2"><strong>🏆 Premium Pick: <a href="https://amzn.to/3HiVCdI" target="_blank" class="text-blue-600 hover:underline">FT1 Honeycomb Twin Fin - $109.95</a></strong></p>
+                <p class="mb-2"><strong>💰 Budget Pick: <a href="https://amzn.to/4jrpS3q" target="_blank" class="text-blue-600 hover:underline">Ho Stevie! Surfboard Twin Keel - $29.97</a></strong></p>`;
+        } else {
+            // Quad for more control
+            if (finSize === 'large') {
+                html += `
+                    <p class="mb-2"><strong>🏆 Premium Pick: <a href="https://amzn.to/3Z7ZLHC" target="_blank" class="text-blue-600 hover:underline">Futures Fins F8 Honeycomb Quad - $139.95</a></strong></p>
+                    <p class="mb-2"><strong>💰 Budget Pick: <a href="https://amzn.to/4kM443H" target="_blank" class="text-blue-600 hover:underline">UPSURF K2.1 Quad Set - $36.89</a></strong></p>`;
+            } else {
+                html += `
+                    <p class="mb-2"><strong>🏆 Premium Pick: <a href="https://amzn.to/43DlnNv" target="_blank" class="text-blue-600 hover:underline">FCS 2 Pyzel PC Air Core Quad - $75.00</a></strong></p>
+                    <p class="mb-2"><strong>💰 Budget Pick: <a href="https://amzn.to/3FFkdsJ" target="_blank" class="text-blue-600 hover:underline">Ho Stevie! Quad HexCore - $64.97</a></strong></p>`;
+            }
+        }
+        html += '<p class="mt-2"><strong>🔍 <a href="https://amzn.to/3ZGiZUQ" target="_blank" class="text-blue-600 hover:underline">Browse All Twin Fins</a></strong></p>';
+        
+    // LONGBOARD RECOMMENDATIONS
+    } else if (data.board === 'longboard') {
+        html += '<h4 class="font-semibold text-lg mb-2">Recommended: Single Fin Setup</h4>';
+        html += '<p class="text-gray-700 mb-3">For all-around longboarding, we recommend pivot fins for their versatility.</p>';
+        
+        html += `
+            <p class="mb-2"><strong>🏆 Premium Pick: <a href="https://amzn.to/3HzUG4I" target="_blank" class="text-blue-600 hover:underline">FCS Connect Glass Flex Single Fin - $30.00</a></strong></p>
+            <p class="mb-2"><strong>💰 Budget Pick: <a href="https://amzn.to/3ZI82SG" target="_blank" class="text-blue-600 hover:underline">Abahub 9/10" Pivot Fin - $32.95</a></strong></p>`;
+        
+        if (data.style === 'control') {
+            html += '<p class="mt-2 text-sm text-gray-600">For noseriding specifically, consider: <a href="https://amzn.to/3Z8k3Rg" target="_blank" class="text-blue-600 hover:underline">DORSAL 8.5" D Fin - $39.95</a></p>';
+        }
+        html += '<p class="mt-2"><strong>🔍 <a href="https://amzn.to/4dMqGyW" target="_blank" class="text-blue-600 hover:underline">Browse All Longboard Fins</a></strong></p>';
+        
+    // MID-LENGTH RECOMMENDATIONS
+    } else if (data.board === 'midlength') {
+        html += '<h4 class="font-semibold text-lg mb-2">Recommended: 2+1 or Single Fin Setup</h4>';
+        html += '<p class="text-gray-700 mb-3">Mid-lengths work well with various setups for versatility.</p>';
+        
+        html += `
+            <p class="mb-2"><strong>Center Fin: <a href="https://amzn.to/3HzUG4I" target="_blank" class="text-blue-600 hover:underline">FCS Connect Glass Flex - $30.00</a></strong></p>
+            <p class="mb-2"><strong>Side Bites: <a href="https://amzn.to/452OyvQ" target="_blank" class="text-blue-600 hover:underline">Ho Stevie! Side Bite Fins - $19.97</a></strong></p>`;
+        html += '<p class="mt-2"><strong>🔍 <a href="https://amzn.to/4dMqGyW" target="_blank" class="text-blue-600 hover:underline">Browse All Single Fins</a></strong></p>';
+        
+    // HYBRID RECOMMENDATIONS
+    } else if (data.board === 'hybrid') {
+        html += '<h4 class="font-semibold text-lg mb-2">Recommended: Versatile Thruster or Quad</h4>';
+        html += '<p class="text-gray-700 mb-3">Hybrid boards offer flexibility - choose based on conditions.</p>';
+        
+        if (finSize === 'large') {
             html += `
-                <div class="bg-blue-50 p-4 rounded-lg">
-                    <h4 class="font-semibold text-lg mb-2">Recommended Setup: Versatile Performance Thruster</h4>
-                    <p class="text-gray-700 mb-2">For intermediate surfers ready to progress:</p>
-                    <ul class="list-disc list-inside text-gray-700 space-y-1">
-                        <li><strong>Fin Setup:</strong> Performance thruster with medium-large template</li>
-                        <li><strong>Template:</strong> Moderate base, refined tip for responsiveness</li>
-                        <li><strong>Specific Models:</strong> FCS II Reactor, Futures AM2 Honeycomb, or Shapers Fins Asher Pacey</li>
-                        <li><strong>Alternative:</strong> Try a quad setup in smaller, weaker waves for extra speed</li>
-                    </ul>
-                </div>`;
+                <p class="mb-2"><strong>Thruster: <a href="https://amzn.to/43yxNWN" target="_blank" class="text-blue-600 hover:underline">FCS II AM Performance Core - $120.00</a></strong></p>
+                <p class="mb-2"><strong>Quad: <a href="https://amzn.to/3Z7ZLHC" target="_blank" class="text-blue-600 hover:underline">Futures Fins F8 Honeycomb Quad - $139.95</a></strong></p>`;
         } else {
             html += `
-                <div class="bg-blue-50 p-4 rounded-lg">
-                    <h4 class="font-semibold text-lg mb-2">Recommended Setup: High-Performance Options</h4>
-                    <p class="text-gray-700 mb-2">Advanced surfers have multiple options based on conditions:</p>
-                    <ul class="list-disc list-inside text-gray-700 space-y-1">
-                        <li><strong>All-Around:</strong> Performance thruster - FCS II Carver, Futures John John</li>
-                        <li><strong>Small Waves:</strong> Quad setup - Futures Rasta Quad, FCS II Reactor Quad</li>
-                        <li><strong>Powerful Waves:</strong> Larger thruster - Futures Machado, Captain Fin Dane Reynolds</li>
-                        <li><strong>Pro Tip:</strong> Consider multiple sets for different conditions</li>
-                    </ul>
-                </div>`;
+                <p class="mb-2"><strong>Thruster: <a href="https://amzn.to/3T5pcG8" target="_blank" class="text-blue-600 hover:underline">FCS 2 Performer PC - $110.00</a></strong></p>
+                <p class="mb-2"><strong>Quad: <a href="https://amzn.to/43DlnNv" target="_blank" class="text-blue-600 hover:underline">FCS 2 Pyzel PC Quad - $75.00</a></strong></p>`;
         }
-    } else if (data.board === 'fish') {
-        html += `
-            <div class="bg-blue-50 p-4 rounded-lg">
-                <h4 class="font-semibold text-lg mb-2">Recommended Setup: Twin or Quad Configuration</h4>
-                <p class="text-gray-700 mb-2">Fish boards excel with specific fin setups:</p>
-                <ul class="list-disc list-inside text-gray-700 space-y-1">
-                    <li><strong>Twin Fin:</strong> Classic keel fins or modern upright twins</li>
-                    <li><strong>Specific Models:</strong> Captain Fin CF Twin Especial, Futures Machado Twin</li>
-                    <li><strong>Quad Option:</strong> For more control - Futures Quad Rears with K2 fronts</li>
-                    <li><strong>Size Note:</strong> Fish fins typically run larger than shortboard fins</li>
-                </ul>
-            </div>`;
-    } else if (data.board === 'longboard') {
-        html += `
-            <div class="bg-blue-50 p-4 rounded-lg">
-                <h4 class="font-semibold text-lg mb-2">Recommended Setup: Single Fin Configuration</h4>
-                <p class="text-gray-700 mb-2">Longboards require specific single fin considerations:</p>
-                <ul class="list-disc list-inside text-gray-700 space-y-1">
-                    <li><strong>Size Range:</strong> 8-10 inches depending on board length</li>
-                    <li><strong>Template:</strong> Pivot fin (wide base) for noseriding, rake fin for turns</li>
-                    <li><strong>Specific Models:</strong> True Ames Greenough 4A, Captain Fin Tyler Warren Pivot</li>
-                    <li><strong>2+1 Option:</strong> Add small side bites for more performance</li>
-                </ul>
-            </div>`;
-    } else if (data.board === 'hybrid') {
-        html += `
-            <div class="bg-blue-50 p-4 rounded-lg">
-                <h4 class="font-semibold text-lg mb-2">Recommended Setup: Versatile Thruster or Quad</h4>
-                <p class="text-gray-700 mb-2">Hybrid boards offer flexibility in fin choice:</p>
-                <ul class="list-disc list-inside text-gray-700 space-y-1">
-                    <li><strong>Thruster:</strong> All-around performance in varied conditions</li>
-                    <li><strong>Quad:</strong> Extra speed and hold in smaller surf</li>
-                    <li><strong>Specific Models:</strong> FCS II Reactor, Futures F8 Alpha, Captain Fin CF-Quad</li>
-                    <li><strong>Size:</strong> Medium to Medium-Large depending on your weight</li>
-                </ul>
-            </div>`;
-    } else if (data.board === 'midlength') {
-        html += `
-            <div class="bg-blue-50 p-4 rounded-lg">
-                <h4 class="font-semibold text-lg mb-2">Recommended Setup: 2+1 or Single Fin</h4>
-                <p class="text-gray-700 mb-2">Mid-lengths work well with various setups:</p>
-                <ul class="list-disc list-inside text-gray-700 space-y-1">
-                    <li><strong>2+1 Setup:</strong> 7-8" center fin with small side bites</li>
-                    <li><strong>Single Fin:</strong> 7.5-9" for classic feel</li>
-                    <li><strong>Specific Models:</strong> True Ames Volan, Captain Fin Raked Template</li>
-                    <li><strong>Versatility:</strong> 2+1 offers more performance options</li>
-                </ul>
-            </div>`;
+        
+    // GUN RECOMMENDATIONS
     } else if (data.board === 'gun') {
+        html += '<h4 class="font-semibold text-lg mb-2">Recommended: Large Thruster for Maximum Control</h4>';
+        html += '<p class="text-gray-700 mb-3">Big wave guns need maximum hold and control.</p>';
+        
         html += `
-            <div class="bg-blue-50 p-4 rounded-lg">
-                <h4 class="font-semibold text-lg mb-2">Recommended Setup: Powerful Thruster</h4>
-                <p class="text-gray-700 mb-2">Big wave guns need maximum control:</p>
-                <ul class="list-disc list-inside text-gray-700 space-y-1">
-                    <li><strong>Fin Setup:</strong> Large thruster with substantial base</li>
-                    <li><strong>Template:</strong> Upright with wide base for hold</li>
-                    <li><strong>Specific Models:</strong> FCS II Power Twin, Futures JJF, Captain Fin Jeff Myers</li>
-                    <li><strong>Construction:</strong> Stiff fiberglass or carbon for no flex</li>
-                </ul>
-            </div>`;
-    }
-    
-    // Detailed size recommendation based on weight and waves
-    html += '<div class="bg-gray-50 p-4 rounded-lg"><h4 class="font-semibold text-lg mb-2">Precise Size Recommendation</h4>';
-    
-    let sizeRec = '';
-    if (data.weight === 'under-120') {
-        sizeRec = 'Size XS to S: Look for fins in the 13-14" total area range';
-    } else if (data.weight === '120-150') {
-        sizeRec = 'Size S: Target fins around 14-14.5" total area';
-    } else if (data.weight === '150-180') {
-        sizeRec = 'Size M: Ideal fin area between 14.5-15.5"';
-    } else if (data.weight === '180-210') {
-        sizeRec = 'Size M/L: Look for fins in the 15.5-16" area range';
-    } else {
-        sizeRec = 'Size L to XL: Target fins 16"+ in total area';
-    }
-    
-    // Adjust for wave type
-    if (data.waves === 'small-mushy') {
-        sizeRec += '<br><em>Pro tip: Size up slightly for extra drive in weak waves</em>';
-    } else if (data.waves === 'powerful' || data.waves === 'big-wave') {
-        sizeRec += '<br><em>Pro tip: Consider sizing down for better control in powerful surf</em>';
-    }
-    
-    html += `<p class="text-gray-700">${sizeRec}</p></div>`;
-    
-    // Material and construction recommendations
-    html += `
-        <div class="bg-green-50 p-4 rounded-lg">
-            <h4 class="font-semibold text-lg mb-2">Material & Construction Recommendations</h4>`;
-    
-    if (data.style === 'speed') {
-        html += `
-            <p class="text-gray-700 mb-2">For maximum speed and drive:</p>
-            <ul class="list-disc list-inside text-gray-700 space-y-1">
-                <li><strong>Best Material:</strong> Stiff fiberglass or carbon fiber</li>
-                <li><strong>Construction:</strong> Solid fiberglass or honeycomb core</li>
-                <li><strong>Flex Pattern:</strong> Stiff base with controlled tip flex</li>
-                <li><strong>Rake:</strong> More upright (lower rake) for immediate response</li>
-            </ul>`;
-    } else if (data.style === 'control') {
-        html += `
-            <p class="text-gray-700 mb-2">For maximum control and stability:</p>
-            <ul class="list-disc list-inside text-gray-700 space-y-1">
-                <li><strong>Best Material:</strong> Fiberglass with moderate flex</li>
-                <li><strong>Construction:</strong> Solid fiberglass or performance glass</li>
-                <li><strong>Template:</strong> Wider base with moderate rake</li>
-                <li><strong>Foil:</strong> Flat to inside foil for predictability</li>
-            </ul>`;
-    } else if (data.style === 'maneuverability') {
-        html += `
-            <p class="text-gray-700 mb-2">For maximum maneuverability:</p>
-            <ul class="list-disc list-inside text-gray-700 space-y-1">
-                <li><strong>Best Material:</strong> Flexible composite or PC (Performance Core)</li>
-                <li><strong>Construction:</strong> Honeycomb or PC for responsive flex</li>
-                <li><strong>Template:</strong> Narrower base with more rake</li>
-                <li><strong>Tip:</strong> Refined tip for quick release</li>
-            </ul>`;
-    } else {
-        html += `
-            <p class="text-gray-700 mb-2">For balanced all-around performance:</p>
-            <ul class="list-disc list-inside text-gray-700 space-y-1">
-                <li><strong>Best Material:</strong> Fiberglass composite or honeycomb</li>
-                <li><strong>Construction:</strong> Performance glass or honeycomb core</li>
-                <li><strong>Template:</strong> Balanced base/tip ratio</li>
-                <li><strong>Versatility:</strong> Works well in various conditions</li>
-            </ul>`;
+            <p class="mb-2"><strong>🏆 Premium Pick: <a href="https://amzn.to/4dZLkvD" target="_blank" class="text-blue-600 hover:underline">Futures JJ-2 Large TECHFLEX - $136.85</a></strong></p>
+            <p class="mb-2"><strong>💰 Budget Pick: <a href="https://amzn.to/4mEBzqr" target="_blank" class="text-blue-600 hover:underline">Futures Fins F8 Alpha - $64.95</a></strong></p>`;
+        html += '<p class="mt-2"><strong>🔍 <a href="https://amzn.to/3SZ0tDp" target="_blank" class="text-blue-600 hover:underline">Browse All Thruster Fins</a></strong></p>';
     }
     
     html += '</div>';
     
-    // Add specific product recommendations
-    html += `
-        <div class="bg-yellow-50 p-4 rounded-lg">
-            <h4 class="font-semibold text-lg mb-2">Top 3 Specific Fin Recommendations</h4>
-            <p class="text-gray-700 mb-2">Based on your inputs, here are our top picks:</p>
-            <ol class="list-decimal list-inside text-gray-700 space-y-2">`;
+    // Size recommendation section
+    html += '<div class="bg-gray-50 p-4 rounded-lg mt-4">';
+    html += '<h4 class="font-semibold text-lg mb-2">Your Fin Size</h4>';
     
-    // Generate specific recommendations based on all factors
-    if (data.board === 'shortboard' && (data.skill === 'beginner' || data.skill === 'intermediate')) {
-        html += `
-            <li><strong>FCS II Performer</strong> - The ultimate all-rounder, great for progression</li>
-            <li><strong>Futures F6 Alpha</strong> - Balanced performance with predictable feel</li>
-            <li><strong>Captain Fin CF Medium</strong> - Excellent value with proven performance</li>`;
-    } else if (data.board === 'shortboard' && (data.skill === 'advanced' || data.skill === 'pro')) {
-        html += `
-            <li><strong>FCS II John John</strong> - Pro-level performance for critical surfing</li>
-            <li><strong>Futures Jordy Smith</strong> - Power surfing with precision</li>
-            <li><strong>Shapers Fins S7</strong> - Cutting-edge design for progressive surfing</li>`;
-    } else if (data.board === 'fish') {
-        html += `
-            <li><strong>Captain Fin CF Twin Especial</strong> - Classic keel design for speed</li>
-            <li><strong>Futures Machado Twin + Trailer</strong> - Modern twin with option for quad</li>
-            <li><strong>True Ames Fish Keel</strong> - Traditional template for authentic feel</li>`;
-    } else if (data.board === 'longboard') {
-        html += `
-            <li><strong>True Ames Greenough 4A</strong> - Classic flex fin for all-around performance</li>
-            <li><strong>Captain Fin Tyler Warren Pivot</strong> - Wide base for noseriding</li>
-            <li><strong>Futures Raked 9.0</strong> - Modern construction with classic feel</li>`;
+    let sizeText = '';
+    if (data.weight === 'under-120') {
+        sizeText = 'Size XS to S - Perfect for lighter surfers';
+    } else if (data.weight === '120-150') {
+        sizeText = 'Size S - Ideal for your weight range';
+    } else if (data.weight === '150-180') {
+        sizeText = 'Size M - Standard size for your weight';
+    } else if (data.weight === '180-210') {
+        sizeText = 'Size M/L - Good balance of hold and maneuverability';
     } else {
-        html += `
-                  <li><strong>FCS II Reactor</strong> - Versatile all-rounder</li>
-            <li><strong>Futures Alpha Series</strong> - Balanced performance</li>
-            <li><strong>Captain Fin Team Series</strong> - Reliable and affordable</li>`;
+        sizeText = 'Size L to XL - Maximum hold for larger surfers';
     }
     
+    html += `<p class="text-gray-700 font-semibold">${sizeText}</p>`;
+    
+    if (data.waves === 'powerful' || data.waves === 'big-wave') {
+        html += '<p class="text-sm text-gray-600 mt-2">💡 <em>Pro tip: Consider sizing up for extra hold in powerful waves</em></p>';
+    } else if (data.waves === 'small-mushy') {
+        html += '<p class="text-sm text-gray-600 mt-2">💡 <em>Pro tip: You might prefer slightly smaller fins for easier turning in weak waves</em></p>';
+    }
+    
+    html += '</div>';
+    
+    // Add "Browse All Fins" link at the end
     html += `
-            </ol>
+        <div class="bg-yellow-50 p-4 rounded-lg mt-4 text-center">
+            <p class="text-lg font-semibold">Want to see more options?</p>
+            <p class="mt-2"><strong>🏄 <a href="https://amzn.to/4kIsACQ" target="_blank" class="text-blue-600 hover:underline text-xl">Browse All Surfboard Fins on Amazon</a></strong></p>
         </div>
     </div>`;
     
     return html;
-    }
+}
     
     // Chat functionality
     const chatMessages = document.getElementById('chat-messages');
