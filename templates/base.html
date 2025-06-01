@@ -420,19 +420,17 @@
                 userMessageDiv.className = 'user-message';
                 userMessageDiv.textContent = message;
                 chatMessages.appendChild(userMessageDiv);
+userMessageDiv.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
                
                 // Clear input
                 chatInput.value = '';
-               
-                // Scroll to bottom
-                chatMessages.scrollTop = chatMessages.scrollHeight;
                
                 // Show typing indicator
                 const typingDiv = document.createElement('div');
                 typingDiv.className = 'ai-message typing-indicator';
                 typingDiv.textContent = 'Thinking...';
                 chatMessages.appendChild(typingDiv);
-                chatMessages.scrollTop = chatMessages.scrollHeight;
+                typingDiv.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
                
                 // Send to backend
                 fetch('/ask', {
@@ -462,7 +460,7 @@
                     chatMessages.appendChild(aiMessageDiv);
                    
                     // Scroll to bottom
-                    chatMessages.scrollTop = chatMessages.scrollHeight;
+                    typingDiv.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
                 })
                 .catch(error => {
                     console.error('Error:', error);
@@ -480,7 +478,7 @@
                     chatMessages.appendChild(errorDiv);
                    
                     // Scroll to bottom
-                    chatMessages.scrollTop = chatMessages.scrollHeight;
+                    errorDiv.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
                 });
             }
         });
