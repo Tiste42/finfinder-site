@@ -112,43 +112,41 @@
                         Why Choose Fin Finder?
                     </h2>
                     <p class="text-xl text-gray-600 max-w-3xl mx-auto">
-                        More than just information - get personalized expert advice tailored to your specific needs.
+                        The wrong fins can kill your performance. Get expert recommendations that unlock your board's true potential and transform your surfing.
                     </p>
                 </div>
                
                 <div class="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
-                    <div class="feature-card bg-gradient-to-br from-blue-50 to-cyan-50 rounded-2xl p-8 text-center shadow-lg border border-blue-100">
-                        <div class="flex items-center justify-center h-16 w-16 rounded-full bg-gradient-to-br from-blue-500 to-blue-600 text-white shadow-lg mx-auto mb-4">
-                            <i class="fas fa-brain text-2xl"></i>
-                        </div>
-                        <h3 class="text-xl font-semibold text-gray-900 mb-3">Expert System</h3>
-                        <p class="text-gray-600">
-                            Our Fin Finder Expert combines decades of surfing knowledge with advanced technology to provide custom fin advice.
-                        </p>
-                    </div>
-                   
-                    <div class="feature-card bg-gradient-to-br from-blue-50 to-cyan-50 rounded-2xl p-8 text-center shadow-lg border border-blue-100">
-                        <div class="flex items-center justify-center h-16 w-16 rounded-full bg-gradient-to-br from-blue-500 to-blue-600 text-white shadow-lg mx-auto mb-4">
-                            <i class="fas fa-comments text-2xl"></i>
-                        </div>
-                        <h3 class="text-xl font-semibold text-gray-900 mb-3">Real-Time Answers</h3>
-                        <p class="text-gray-600">
-                            Ask detailed questions and get immediate answers about any fin-related topic, from basic concepts to specific recommendations.
-                        </p>
-                    </div>
-                   
-                    <div class="feature-card bg-gradient-to-br from-blue-50 to-cyan-50 rounded-2xl p-8 text-center shadow-lg border border-blue-100">
-                        <div class="flex items-center justify-center h-16 w-16 rounded-full bg-gradient-to-br from-blue-500 to-blue-600 text-white shadow-lg mx-auto mb-4">
-                            <i class="fas fa-user-check text-2xl"></i>
-                        </div>
-                        <h3 class="text-xl font-semibold text-gray-900 mb-3">Personalized Recommendations</h3>
-                        <p class="text-gray-600">
-                            Get fin recommendations based on your weight, skill level, board type, and wave conditions for optimal performance.
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </section>
+    <div class="feature-card bg-gradient-to-br from-blue-50 to-cyan-50 rounded-2xl p-8 text-center shadow-lg border border-blue-100 cursor-pointer transition-all duration-300 hover:shadow-xl" onclick="window.location.href='{{ url_for('recommender_page') }}'">
+        <div class="flex items-center justify-center h-16 w-16 rounded-full bg-gradient-to-br from-blue-500 to-blue-600 text-white shadow-lg mx-auto mb-4">
+            <i class="fas fa-brain text-2xl"></i>
+        </div>
+        <h3 class="text-xl font-semibold text-gray-900 mb-3">Expert System</h3>
+        <p class="text-gray-600">
+            Our Fin Finder Expert combines decades of surfing knowledge with advanced technology to provide custom fin advice.
+        </p>
+    </div>
+   
+    <div class="feature-card bg-gradient-to-br from-blue-50 to-cyan-50 rounded-2xl p-8 text-center shadow-lg border border-blue-100 cursor-pointer transition-all duration-300 hover:shadow-xl" onclick="window.location.href='{{ url_for('recommender_page') }}'">
+        <div class="flex items-center justify-center h-16 w-16 rounded-full bg-gradient-to-br from-blue-500 to-blue-600 text-white shadow-lg mx-auto mb-4">
+            <i class="fas fa-comments text-2xl"></i>
+        </div>
+        <h3 class="text-xl font-semibold text-gray-900 mb-3">Real-Time Answers</h3>
+        <p class="text-gray-600">
+            Ask detailed questions and get immediate answers about any fin-related topic, from basic concepts to specific recommendations.
+        </p>
+    </div>
+   
+    <div class="feature-card bg-gradient-to-br from-blue-50 to-cyan-50 rounded-2xl p-8 text-center shadow-lg border border-blue-100 cursor-pointer transition-all duration-300 hover:shadow-xl" onclick="window.location.href='{{ url_for('recommender_page') }}'">
+        <div class="flex items-center justify-center h-16 w-16 rounded-full bg-gradient-to-br from-blue-500 to-blue-600 text-white shadow-lg mx-auto mb-4">
+            <i class="fas fa-user-check text-2xl"></i>
+        </div>
+        <h3 class="text-xl font-semibold text-gray-900 mb-3">Personalized Recommendations</h3>
+        <p class="text-gray-600">
+            Get fin recommendations based on your weight, skill level, board type, and wave conditions for optimal performance.
+        </p>
+    </div>
+</div>
 
         <!-- Introduction to Fin Guides Section -->
         <section class="py-16 bg-gray-50">
