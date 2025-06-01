@@ -41,17 +41,37 @@
         .feature-card:hover {
             transform: translateY(-4px);
         }
+        /* Responsive media queries */
+.mobile-gif {
+    display: none;
+}
+
+.desktop-video {
+    display: block;
+}
+
+@media (max-width: 768px) {
+    .mobile-gif {
+        display: block;
+    }
+    
+    .desktop-video {
+        display: none;
+    }
+}
     </style>
 
     <header class="relative">
     <!-- Hero Section with Video Background -->
     <div class="relative bg-gradient-to-br from-blue-900 via-blue-800 to-cyan-700 overflow-hidden">
-        <!-- Video Background -->
-        <video autoplay muted loop playsinline class="absolute inset-0 w-full h-full object-cover" style="object-position: center bottom;">
-            <source src="/static/surferarmdrag.mov" type="video/mp4">
-            <!-- Fallback image if video fails to load -->
-            <img src="/static/surferarmdrag.jpg" alt="Surfer" class="absolute inset-0 w-full h-full object-cover">
-        </video>
+       <!-- Responsive Video/GIF Background -->
+<!-- Desktop Video (hidden on mobile) -->
+<video autoplay muted loop playsinline class="desktop-video absolute inset-0 w-full h-full object-cover" style="object-position: center bottom;">
+    <source src="/static/surferarmdrag.mov" type="video/mp4">
+</video>
+
+<!-- Mobile GIF (hidden on desktop) -->
+<img src="/static/underwaterarmdrag.gif" alt="Underwater wave" class="mobile-gif absolute inset-0 w-full h-full object-cover" style="object-position: center bottom;">
         
         <!-- Overlay for better text readability -->
         <div class="absolute inset-0 bg-black bg-opacity-40"></div>
