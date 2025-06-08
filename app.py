@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, jsonify, redirect, url_for, session, Response
+from flask import Flask, render_template, request, jsonify, redirect, url_for, session, Response, send_from_directory
 import google.generativeai as genai
 import os
 from dotenv import load_dotenv
@@ -11,6 +11,10 @@ logging.basicConfig(level=logging.INFO)
 
 # --- Flask App Initialization ---
 app = Flask(__name__) 
+
+@app.route('/robots.txt')
+def robots_txt():
+    return send_from_directory(app.static_folder, 'robots.txt')
 app.secret_key = 'your-secret-key-for-sessions-change-this-to-something-random'
 
 # Define the base URL for your site
