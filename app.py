@@ -41,8 +41,8 @@ try:
     else:
         logging.info("GEMINI_API_KEY loaded successfully.")
         genai.configure(api_key=gemini_api_key)
-        model = genai.GenerativeModel('gemini-1.5-flash-latest')
-        logging.info("Gemini model initialized.")
+        model = genai.GenerativeModel('gemini-2.5-flash')
+        logging.info("Gemini model initialized with gemini-2.5-flash.")
 
 except KeyError:
     logging.error("GEMINI_API_KEY not found in environment variables (KeyError). Ensure it's in your .env file.")
