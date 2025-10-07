@@ -83,14 +83,12 @@ def format_ai_response(response_text):
     """Format AI response for proper HTML display"""
     formatted = response_text
     
-    # Convert **text** to HTML bold
-    formatted = re.sub(r'\*\*(.*?)\*\*', r'<strong>\1</strong>', formatted)
+    # CRITICAL FIX: Convert Markdown links [text](url) to HTML links FIRST
+    # This must happen before any other formatting that might interfere
+    formatted = re.sub(r'\[([^\]]+)\]\((https?://[^\)]+)\)', r'<a href="\2" target="_blank" rel="noopener noreferrer">\1</a>', formatted)
     
-    # Make entire recommendation lines bold (including the links)
-    # This captures the emoji, text, and link all together
-    formatted = re.sub(r'(💰 Budget Pick:.*?https://amzn\.to/\w+)', r'<strong>\1</strong>', formatted)
-    formatted = re.sub(r'(🏆 Premium Pick:.*?https://amzn\.to/\w+)', r'<strong>\1</strong>', formatted)
-    formatted = re.sub(r'(🔍 Browse All.*?https://amzn\.to/\w+)', r'<strong>\1</strong>', formatted)
+    # Convert **text** to HTML bold (after link conversion to avoid conflicts)
+    formatted = re.sub(r'\*\*(.*?)\*\*', r'<strong>\1</strong>', formatted)
     
     # Handle bullet points - remove extra line breaks before bullets
     formatted = re.sub(r'\n+• ', r'<br>• ', formatted)
@@ -104,8 +102,15 @@ def format_ai_response(response_text):
     # Clean up excessive <br> tags - max 2 in a row
     formatted = re.sub(r'(<br>\s*){3,}', r'<br><br>', formatted)
     
-    # Make affiliate links clickable (and keep them bold if they're already wrapped in strong tags)
-    formatted = re.sub(r'(https://amzn\.to/\w+)', r'<a href="\1" target="_blank" rel="noopener noreferrer">\1</a>', formatted)
+    # Make any remaining bare affiliate links clickable (for links not in markdown format)
+    # Use negative lookbehind and lookahead to avoid double-linking
+    formatted = re.sub(r'(?<!href=")(?<!>)(https://amzn\.to/\w+)(?!</a>)(?!")', r'<a href="\1" target="_blank" rel="noopener noreferrer">\1</a>', formatted)
+    
+    # Make specific recommendation lines bold AFTER all link processing
+    # This will bold the entire line including any converted links
+    formatted = re.sub(r'(💰 Budget Pick:.*?)(<br>|$)', r'<strong>\1</strong>\2', formatted)
+    formatted = re.sub(r'(🏆 Premium Pick:.*?)(<br>|$)', r'<strong>\1</strong>\2', formatted)
+    formatted = re.sub(r'(🔍 Browse All.*?)(<br>|$)', r'<strong>\1</strong>\2', formatted)
     
     # Wrap in a div instead of paragraph tags for better control
     formatted = f'<div>{formatted}</div>'
