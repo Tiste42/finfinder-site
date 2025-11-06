@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="675" viewBox="0 0 1200 675" role="img" aria-label="Illustration comparing FCS II two-tab and Futures single-tab surfboard fins">
+  <defs>
+    <linearGradient id="bgGradient" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0%" stop-color="#083344" />
+      <stop offset="50%" stop-color="#0e7490" />
+      <stop offset="100%" stop-color="#22d3ee" />
+    </linearGradient>
+    <style>
+      text { font-family: 'Montserrat', 'Helvetica Neue', Arial, sans-serif; }
+      .title { font-size: 56px; font-weight: 700; fill: #ffffff; }
+      .subtitle { font-size: 24px; fill: #e0f2fe; }
+      .label { font-size: 34px; font-weight: 700; }
+      .body { font-size: 22px; line-height: 1.4; }
+    </style>
+  </defs>
+  <rect width="1200" height="675" fill="url(#bgGradient)" />
+  <text class="title" x="600" y="100" text-anchor="middle">FCS vs Futures Fins</text>
+  <text class="subtitle" x="600" y="150" text-anchor="middle">Connection design changes how your board feels under your feet</text>
+
+  <g transform="translate(150, 220)">
+    <rect width="420" height="360" rx="32" fill="rgba(255,255,255,0.1)" stroke="#38bdf8" stroke-width="2" />
+    <text class="label" x="210" y="60" text-anchor="middle" fill="#38bdf8">FCS II</text>
+    <text class="body" x="210" y="110" text-anchor="middle" fill="#e0f2fe">Tool-less twin tabs that snap in fast</text>
+    <text class="body" x="210" y="140" text-anchor="middle" fill="#bae6fd">Playful, flexible connection</text>
+    <g transform="translate(110, 185)">
+      <path d="M0 0 C20 -40 120 -40 140 0 L140 120 H0 Z" fill="#38bdf8" opacity="0.8" />
+      <rect x="10" y="120" width="40" height="45" fill="#0ea5e9" />
+      <rect x="90" y="120" width="40" height="45" fill="#0ea5e9" />
+    </g>
+    <text class="body" x="210" y="330" text-anchor="middle" fill="#e0f2fe">Best for variety &amp; quick swaps</text>
+  </g>
+
+  <g transform="translate(630, 220)">
+    <rect width="420" height="360" rx="32" fill="rgba(8,51,68,0.25)" stroke="#fbbf24" stroke-width="2" />
+    <text class="label" x="210" y="60" text-anchor="middle" fill="#fbbf24">Futures</text>
+    <text class="body" x="210" y="110" text-anchor="middle" fill="#fde68a">Single tab locks the fin in place</text>
+    <text class="body" x="210" y="140" text-anchor="middle" fill="#fef3c7">Stronger, drive-focused feel</text>
+    <g transform="translate(115, 185)">
+      <path d="M0 0 C25 -45 135 -45 160 0 L160 125 H0 Z" fill="#facc15" opacity="0.85" />
+      <rect x="55" y="125" width="60" height="55" fill="#f59e0b" />
+    </g>
+    <text class="body" x="210" y="330" text-anchor="middle" fill="#fde68a">Built for power, hold &amp; durability</text>
+  </g>
+
+  <text class="body" x="600" y="640" text-anchor="middle" fill="#e0f2fe">Remember your best sessions with FinFinder and match fins to conditions</text>
+</svg>

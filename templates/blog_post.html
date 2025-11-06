@@ -169,7 +169,7 @@
     {% if post.featured_image %}
     <img 
         src="{{ url_for('static', filename=post.featured_image) }}" 
-        alt="{{ post.title }}"
+        alt="{{ post.featured_image_alt if post.featured_image_alt else post.title }}"
         class="absolute inset-0 w-full h-full object-cover opacity-50"
     >
     {% endif %}
@@ -297,9 +297,9 @@
                     <!-- Thumbnail -->
                     <div class="relative h-40 bg-gradient-to-br from-blue-100 to-cyan-100">
                         {% if related_post.featured_image %}
-                        <img 
-                            src="{{ url_for('static', filename=related_post.featured_image) }}" 
-                            alt="{{ related_post.title }}"
+                          <img 
+                              src="{{ url_for('static', filename=related_post.featured_image) }}" 
+                              alt="{{ related_post.featured_image_alt if related_post.featured_image_alt else related_post.title }}"
                             class="w-full h-full object-cover"
                             loading="lazy"
                         >
