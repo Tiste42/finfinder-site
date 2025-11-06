@@ -1,0 +1,269 @@
+{% extends "base.html" %}
+
+{% block title %}Finsights - Surfboard Fin Blog | Fin Finder{% endblock %}
+
+{% block description %}Expert surfboard fin insights, tips, and recommendations. Learn everything about fin selection, performance, and surf equipment from the Fin Finder blog.{% endblock %}
+
+{% block content %}
+<style>
+    .blog-card {
+        transition: all 0.3s ease;
+    }
+    
+    .blog-card:hover {
+        transform: translateY(-4px);
+    }
+    
+    .category-badge {
+        transition: all 0.2s ease;
+    }
+    
+    .category-badge:hover {
+        transform: scale(1.05);
+    }
+    
+    .search-input:focus {
+        outline: none;
+        border-color: #06b6d4;
+        box-shadow: 0 0 0 3px rgba(6, 182, 212, 0.1);
+    }
+</style>
+
+<!-- Hero Section -->
+<div class="bg-gradient-to-br from-blue-900 via-blue-800 to-cyan-700 py-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center">
+            <h1 class="text-4xl md:text-5xl font-extrabold text-white mb-4">
+                Finsights
+            </h1>
+            <p class="text-xl md:text-2xl text-blue-100 max-w-3xl mx-auto">
+                Expert insights, tips, and stories from the world of surfboard fins
+            </p>
+        </div>
+    </div>
+</div>
+
+<!-- Search and Filter Section -->
+<div class="bg-white border-b border-gray-200 sticky top-18 sm:top-20 z-30">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+        <div class="flex flex-col md:flex-row gap-4 items-center justify-between">
+            <!-- Search Bar -->
+            <div class="w-full md:w-96">
+                <div class="relative">
+                    <input 
+                        type="text" 
+                        id="blog-search" 
+                        placeholder="Search articles..." 
+                        class="search-input w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 transition-all"
+                    >
+                    <i class="fas fa-search absolute left-3 top-3 text-gray-400"></i>
+                </div>
+            </div>
+            
+            <!-- Category Filters -->
+            <div class="flex flex-wrap gap-2 justify-center">
+                <button class="category-badge px-4 py-2 rounded-full bg-blue-600 text-white text-sm font-medium" data-category="all">
+                    All Posts
+                </button>
+                <button class="category-badge px-4 py-2 rounded-full bg-gray-200 text-gray-700 text-sm font-medium hover:bg-gray-300" data-category="guides">
+                    Guides
+                </button>
+                <button class="category-badge px-4 py-2 rounded-full bg-gray-200 text-gray-700 text-sm font-medium hover:bg-gray-300" data-category="reviews">
+                    Reviews
+                </button>
+                <button class="category-badge px-4 py-2 rounded-full bg-gray-200 text-gray-700 text-sm font-medium hover:bg-gray-300" data-category="tips">
+                    Tips & Tricks
+                </button>
+                <button class="category-badge px-4 py-2 rounded-full bg-gray-200 text-gray-700 text-sm font-medium hover:bg-gray-300" data-category="news">
+                    News
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Blog Posts Grid -->
+<div class="bg-gray-50 py-12">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {% if posts and posts|length > 0 %}
+        <div id="blog-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {% for post in posts %}
+            <article class="blog-card bg-white rounded-2xl shadow-lg overflow-hidden border border-gray-100" data-category="{{ post.category }}" data-title="{{ post.title|lower }}" data-excerpt="{{ post.excerpt|lower }}">
+                <a href="{{ url_for('blog_post', slug=post.slug) }}" class="block">
+                    <!-- Featured Image -->
+                    <div class="relative h-48 bg-gradient-to-br from-blue-100 to-cyan-100 overflow-hidden">
+                        {% if post.featured_image %}
+                        <img 
+                            src="{{ url_for('static', filename=post.featured_image) }}" 
+                            alt="{{ post.title }}"
+                            class="w-full h-full object-cover"
+                            loading="lazy"
+                        >
+                        {% else %}
+                        <div class="w-full h-full flex items-center justify-center">
+                            <i class="fas fa-water text-6xl text-blue-300"></i>
+                        </div>
+                        {% endif %}
+                        
+                        <!-- Category Badge -->
+                        <div class="absolute top-3 left-3">
+                            <span class="px-3 py-1 bg-blue-600 text-white text-xs font-semibold rounded-full">
+                                {{ post.category|title }}
+                            </span>
+                        </div>
+                    </div>
+                    
+                    <!-- Content -->
+                    <div class="p-6">
+                        <h2 class="text-xl font-bold text-gray-900 mb-3 line-clamp-2 hover:text-blue-600 transition-colors">
+                            {{ post.title }}
+                        </h2>
+                        
+                        <p class="text-gray-600 mb-4 line-clamp-3">
+                            {{ post.excerpt }}
+                        </p>
+                        
+                        <!-- Meta -->
+                        <div class="flex items-center justify-between text-sm text-gray-500">
+                            <div class="flex items-center gap-4">
+                                <span class="flex items-center">
+                                    <i class="far fa-calendar mr-1"></i>
+                                    {{ post.date }}
+                                </span>
+                                <span class="flex items-center">
+                                    <i class="far fa-clock mr-1"></i>
+                                    {{ post.read_time }} min read
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </article>
+            {% endfor %}
+        </div>
+        
+        <!-- Pagination Placeholder -->
+        <div class="mt-12 flex justify-center">
+            <nav class="inline-flex rounded-lg shadow-sm" aria-label="Pagination">
+                <button class="px-4 py-2 text-sm font-medium text-gray-500 bg-white border border-gray-300 rounded-l-lg hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed" disabled>
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                <button class="px-4 py-2 text-sm font-medium text-white bg-blue-600 border border-blue-600">
+                    1
+                </button>
+                <button class="px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 hover:bg-gray-50">
+                    2
+                </button>
+                <button class="px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 hover:bg-gray-50">
+                    3
+                </button>
+                <button class="px-4 py-2 text-sm font-medium text-gray-500 bg-white border border-gray-300 rounded-r-lg hover:bg-gray-50">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+            </nav>
+        </div>
+        {% else %}
+        <!-- Empty State -->
+        <div class="text-center py-16">
+            <div class="inline-flex items-center justify-center w-24 h-24 rounded-full bg-gradient-to-br from-blue-100 to-cyan-100 mb-6">
+                <i class="fas fa-pen-fancy text-4xl text-blue-500"></i>
+            </div>
+            <h2 class="text-3xl font-bold text-gray-900 mb-4">
+                Coming Soon!
+            </h2>
+            <p class="text-xl text-gray-600 max-w-2xl mx-auto mb-8">
+                We're working on bringing you expert surfboard fin insights, reviews, and tips. Check back soon for our first posts!
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="{{ url_for('recommender_page') }}" class="inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-lg text-white bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-700 hover:to-cyan-700 transition-all duration-300">
+                    <i class="fas fa-magic mr-2"></i>
+                    Try Our Fin Recommender
+                </a>
+                <a href="{{ url_for('all_about_fins') }}" class="inline-flex items-center justify-center px-6 py-3 border border-gray-300 text-base font-medium rounded-lg text-gray-700 bg-white hover:bg-gray-50 transition-all duration-300">
+                    <i class="fas fa-book-open mr-2"></i>
+                    Read Our Fin Guides
+                </a>
+            </div>
+        </div>
+        {% endif %}
+    </div>
+</div>
+
+<!-- Newsletter CTA Section (Ready for future use) -->
+<div class="bg-gradient-to-r from-blue-700 to-cyan-700 py-12">
+    <div class="max-w-4xl mx-auto text-center px-4 sm:px-6 lg:px-8">
+        <h2 class="text-3xl font-bold text-white mb-4">
+            Stay Updated with Finsights
+        </h2>
+        <p class="text-xl text-blue-100 mb-6">
+            Get the latest surfboard fin tips and recommendations delivered to your inbox (coming soon!)
+        </p>
+        <div class="flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
+            <input 
+                type="email" 
+                placeholder="Enter your email" 
+                class="flex-1 px-4 py-3 rounded-lg border-0 focus:ring-2 focus:ring-white focus:outline-none"
+                disabled
+            >
+            <button class="px-6 py-3 bg-white text-blue-700 font-semibold rounded-lg hover:bg-blue-50 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed" disabled>
+                Subscribe
+            </button>
+        </div>
+        <p class="text-sm text-blue-200 mt-4">
+            Newsletter coming soon!
+        </p>
+    </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const searchInput = document.getElementById('blog-search');
+    const categoryButtons = document.querySelectorAll('.category-badge');
+    const blogCards = document.querySelectorAll('.blog-card');
+    let activeCategory = 'all';
+    
+    // Category Filter
+    categoryButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            // Update active state
+            categoryButtons.forEach(btn => {
+                btn.classList.remove('bg-blue-600', 'text-white');
+                btn.classList.add('bg-gray-200', 'text-gray-700');
+            });
+            this.classList.remove('bg-gray-200', 'text-gray-700');
+            this.classList.add('bg-blue-600', 'text-white');
+            
+            // Update active category
+            activeCategory = this.dataset.category;
+            filterPosts();
+        });
+    });
+    
+    // Search Filter
+    if (searchInput) {
+        searchInput.addEventListener('input', filterPosts);
+    }
+    
+    function filterPosts() {
+        const searchTerm = searchInput ? searchInput.value.toLowerCase() : '';
+        
+        blogCards.forEach(card => {
+            const category = card.dataset.category;
+            const title = card.dataset.title;
+            const excerpt = card.dataset.excerpt;
+            
+            const matchesCategory = activeCategory === 'all' || category === activeCategory;
+            const matchesSearch = title.includes(searchTerm) || excerpt.includes(searchTerm);
+            
+            if (matchesCategory && matchesSearch) {
+                card.style.display = 'block';
+            } else {
+                card.style.display = 'none';
+            }
+        });
+    }
+});
+</script>
+
+{% endblock %}
+

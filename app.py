@@ -5,6 +5,7 @@ from dotenv import load_dotenv
 import logging
 import datetime
 import re
+import json
 
 # --- Logging Setup ---
 logging.basicConfig(level=logging.INFO)
@@ -51,6 +52,38 @@ except Exception as e:
     logging.error(f"An unexpected error occurred during Gemini API configuration: {e}")
     model = None
 
+# --- Blog Posts Helper Functions ---
+def load_blog_posts():
+    """Load blog posts from JSON file"""
+    try:
+        blog_posts_path = os.path.join(os.getcwd(), 'blog_posts.json')
+        if os.path.exists(blog_posts_path):
+            with open(blog_posts_path, 'r', encoding='utf-8') as f:
+                data = json.load(f)
+                return data.get('posts', [])
+        return []
+    except Exception as e:
+        logging.error(f"Error loading blog posts: {e}")
+        return []
+
+def get_post_by_slug(slug):
+    """Get a specific blog post by slug"""
+    posts = load_blog_posts()
+    for post in posts:
+        if post.get('slug') == slug:
+            return post
+    return None
+
+def get_related_posts(current_post, limit=3):
+    """Get related posts based on category"""
+    posts = load_blog_posts()
+    related = []
+    for post in posts:
+        if post.get('slug') != current_post.get('slug'):
+            if post.get('category') == current_post.get('category'):
+                related.append(post)
+    return related[:limit]
+
 # --- Context Processor to inject 'now' into all templates ---
 @app.context_processor
 def inject_now():
@@ -76,6 +109,8 @@ def inject_active_page():
         return {'active_page': 'fin_sizing_guide'}
     elif request.path == '/about':
         return {'active_page': 'about'}
+    elif request.path == '/finsights' or request.path.startswith('/finsights/'):
+        return {'active_page': 'finsights'}
     return {'active_page': None}
 
 # --- Helper Function for AI Response Formatting ---
@@ -153,6 +188,24 @@ def recommender_page():
     """Renders the Fin Recommender tool page."""
     return render_template('recommender.html')
 
+@app.route('/finsights')
+def finsights():
+    """Renders the Finsights blog hub page."""
+    posts = load_blog_posts()
+    # Sort posts by date (newest first)
+    posts_sorted = sorted(posts, key=lambda x: x.get('date_published', x.get('date', '')), reverse=True)
+    return render_template('finsights.html', posts=posts_sorted)
+
+@app.route('/finsights/<slug>')
+def blog_post(slug):
+    """Renders a specific blog post page."""
+    post = get_post_by_slug(slug)
+    if not post:
+        return render_template('404.html'), 404
+    
+    related_posts = get_related_posts(post)
+    return render_template('blog_post.html', post=post, related_posts=related_posts)
+
 # --- Sitemap Route ---
 @app.route('/sitemap.xml')
 def sitemap():
@@ -160,6 +213,7 @@ def sitemap():
     pages = [
         {'loc': f"{SITE_URL}/", 'lastmod': '2025-05-29', 'changefreq': 'daily', 'priority': '1.0'},
         {'loc': f"{SITE_URL}/recommender", 'lastmod': '2025-05-29', 'changefreq': 'weekly', 'priority': '0.9'},
+        {'loc': f"{SITE_URL}/finsights", 'lastmod': '2025-11-06', 'changefreq': 'weekly', 'priority': '0.9'},
         {'loc': f"{SITE_URL}/all-about-surfboard-fins", 'lastmod': '2025-05-29', 'changefreq': 'monthly', 'priority': '0.8'},
         {'loc': f"{SITE_URL}/fin-setups", 'lastmod': '2025-05-29', 'changefreq': 'monthly', 'priority': '0.8'},
         {'loc': f"{SITE_URL}/fin-systems", 'lastmod': '2025-05-29', 'changefreq': 'monthly', 'priority': '0.8'},
@@ -167,6 +221,16 @@ def sitemap():
         {'loc': f"{SITE_URL}/fin-sizing-guide", 'lastmod': '2025-05-29', 'changefreq': 'monthly', 'priority': '0.8'},
         {'loc': f"{SITE_URL}/about", 'lastmod': '2025-05-29', 'changefreq': 'monthly', 'priority': '0.7'},
     ]
+    
+    # Add blog posts to sitemap
+    blog_posts = load_blog_posts()
+    for post in blog_posts:
+        pages.append({
+            'loc': f"{SITE_URL}/finsights/{post.get('slug')}",
+            'lastmod': post.get('date_modified', post.get('date_published', post.get('date', '2025-11-06'))),
+            'changefreq': 'monthly',
+            'priority': '0.7'
+        })
 
     sitemap_xml = render_template('sitemap.xml', pages=pages)
     return Response(sitemap_xml, mimetype='application/xml')

@@ -161,6 +161,7 @@
                 <div class="ml-10 flex items-baseline space-x-2 lg:space-x-4">
                     <a href="{{ url_for('home') }}" class="{% if active_page == 'home' %}bg-blue-600 text-white{% else %}text-gray-700 hover:bg-gray-200{% endif %} px-3 py-2 rounded-md text-sm font-medium transition-all duration-200">Home</a>
                     <a href="{{ url_for('recommender_page') }}" class="{% if active_page == 'recommender' %}bg-blue-600 text-white{% else %}text-gray-700 hover:bg-gray-200{% endif %} px-3 py-2 rounded-md text-sm font-medium transition-all duration-200">Fin Recommender</a>
+                    <a href="{{ url_for('finsights') }}" class="{% if active_page == 'finsights' %}bg-blue-600 text-white{% else %}text-gray-700 hover:bg-gray-200{% endif %} px-3 py-2 rounded-md text-sm font-medium transition-all duration-200">Finsights (Blog)</a>
                     <a href="{{ url_for('all_about_fins') }}" class="{% if active_page == 'all-about-fins' %}bg-blue-600 text-white{% else %}text-gray-700 hover:bg-gray-200{% endif %} px-3 py-2 rounded-md text-sm font-medium transition-all duration-200">All About Fins</a>
                     <a href="{{ url_for('fin_setups') }}" class="{% if active_page == 'fin-setups' %}bg-blue-600 text-white{% else %}text-gray-700 hover:bg-gray-200{% endif %} px-3 py-2 rounded-md text-sm font-medium transition-all duration-200">Fin Setups</a>
                     <a href="{{ url_for('fin_systems') }}" class="{% if active_page == 'fin-systems' %}bg-blue-600 text-white{% else %}text-gray-700 hover:bg-gray-200{% endif %} px-3 py-2 rounded-md text-sm font-medium transition-all duration-200">Fin Systems</a>
@@ -183,6 +184,7 @@
         <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-white border-t border-gray-200">
             <a href="{{ url_for('home') }}" class="{% if active_page == 'home' %}bg-blue-600 text-white{% else %}text-gray-700 hover:bg-gray-200{% endif %} block px-3 py-2 rounded-md text-base font-medium">Home</a>
             <a href="{{ url_for('recommender_page') }}" class="{% if active_page == 'recommender' %}bg-blue-600 text-white{% else %}text-gray-700 hover:bg-gray-200{% endif %} block px-3 py-2 rounded-md text-base font-medium">Fin Recommender</a>
+            <a href="{{ url_for('finsights') }}" class="{% if active_page == 'finsights' %}bg-blue-600 text-white{% else %}text-gray-700 hover:bg-gray-200{% endif %} block px-3 py-2 rounded-md text-base font-medium">Finsights (Blog)</a>
             <a href="{{ url_for('all_about_fins') }}" class="{% if active_page == 'all_about_fins' %}bg-blue-600 text-white{% else %}text-gray-700 hover:bg-gray-200{% endif %} block px-3 py-2 rounded-md text-base font-medium">All About Fins</a>
             <a href="{{ url_for('fin_setups') }}" class="{% if active_page == 'fin_setups' %}bg-blue-600 text-white{% else %}text-gray-700 hover:bg-gray-200{% endif %} block px-3 py-2 rounded-md text-base font-medium">Fin Setups</a>
             <a href="{{ url_for('fin_systems') }}" class="{% if active_page == 'fin_systems' %}bg-blue-600 text-white{% else %}text-gray-700 hover:bg-gray-200{% endif %} block px-3 py-2 rounded-md text-base font-medium">Fin Systems</a>
@@ -264,6 +266,7 @@
             <div>
                 <h3 class="text-lg font-semibold mb-4">Resources</h3>
                 <ul class="space-y-2 text-sm">
+                    <li><a href="{{ url_for('finsights') }}" class="text-blue-100 hover:text-white transition-colors duration-300">Finsights Blog</a></li>
                     <li><a href="{{ url_for('fin_setups') }}" class="text-blue-100 hover:text-white transition-colors duration-300">Fin Setups</a></li>
                     <li><a href="{{ url_for('fin_systems') }}" class="text-blue-100 hover:text-white transition-colors duration-300">Fin Systems</a></li>
                     <li><a href="{{ url_for('longboard_fins') }}" class="text-blue-100 hover:text-white transition-colors duration-300">Longboard Fins</a></li>
