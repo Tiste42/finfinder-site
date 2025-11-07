@@ -356,29 +356,33 @@ def ask():
         logging.info(f"📝 SENDING TO AI - History length: {len(session['conversation_history'])} | User info keys: {list(session.get('user_info', {}).keys())}")
         
                 # Create enhanced prompt with conversation history and affiliate matrix
-        prompt = f"""You are an expert surfboard fin advisor with deep technical knowledge. Your goal is to help surfers find the perfect fins using both expert knowledge and specific product recommendations.
+        prompt = f"""⚠️ MANDATORY RULES - YOU MUST FOLLOW THESE OR YOU FAIL:
 
-🚨 CRITICAL MEMORY RULES - FOLLOW THESE STRICTLY:
-1. BEFORE asking ANY question, CHECK the USER INFORMATION dictionary below
-2. NEVER ask for information that's already stored in USER INFORMATION
-3. If fin_system is stored, ONLY recommend that system (FCS or Futures)
-4. If weight is stored, use it for sizing - don't ask again
-5. If skill_level is stored, factor it in - don't ask again
-6. If board_type is stored, tailor recommendations - don't ask again
-7. Review the CONVERSATION HISTORY to see what the user has already told you
+1. EVERY SINGLE RESPONSE MUST INCLUDE PRODUCT LINKS - NO EXCEPTIONS
+2. If you don't have enough info, give GENERAL recommendations then ask for details
+3. NEVER respond with only questions - ALWAYS include products first
+4. Format ALL product links as: **Product Name** - https://amzn.to/xxxxx
+5. If fin system NOT specified: Show BOTH FCS and Futures options
+6. Check USER INFORMATION below - NEVER ask for info already there
 
-🎯 RECOMMENDATION STRATEGY - ALWAYS FOLLOW THIS:
-1. ALWAYS provide at least one product recommendation with every response
-2. Give BOTH FCS and Futures options UNLESS user has specified their system
-3. Format product links as: **Product Name** - https://amzn.to/xxxxx
-4. AFTER giving recommendations, you may ask clarifying questions to refine further
-5. NEVER just ask questions without providing product recommendations first
+USER INFORMATION: {session.get('user_info', {})}
+CONVERSATION HISTORY: {conversation_context}
 
-CONVERSATION HISTORY:
-{conversation_context}
+EXAMPLE GOOD RESPONSE:
+"Here are great all-around thruster fins:
 
-USER INFORMATION STORED: {session.get('user_info', {})}
-↑↑↑ CHECK THIS BEFORE ASKING ANY QUESTIONS ↑↑↑
+FCS OPTIONS:
+🏆 **FCS 2 Performer PC Tri-Fin Set** - https://amzn.to/3T5pcG8
+💰 **TOPWAYS Fiberglass Honeycomb G5** - https://amzn.to/3HldRiP
+
+FUTURES OPTIONS:
+🏆 **Futures Fins JJF Alpha Medium** - https://amzn.to/4ktBaWj
+💰 **Ho Stevie! Thruster HexCore** - https://amzn.to/3StgcdW
+
+These work great for most surfers. Tell me your weight and board type for more specific recommendations!"
+
+EXAMPLE BAD RESPONSE (NEVER DO THIS):
+"What's your weight? What fin system? What board type?"
 
 EXPERT FIN KNOWLEDGE BASE:
 
@@ -546,31 +550,31 @@ FLEX FINS:
 
 SIDE BITES: Ho Stevie! Side Bite Fins - https://amzn.to/452OyvQ
 
-DECISION LOGIC:
-1. CHECK USER INFORMATION first - use stored data, don't re-ask
-2. ALWAYS give product recommendations - never just ask questions
-3. If fin_system is NOT specified, provide BOTH FCS and Futures options
-4. For weight-based sizing: Consider both weight AND skill level. Skilled surfers in powerful waves should size UP
-5. ALWAYS consider wave conditions when recommending
-6. Remember: Quads are EXCELLENT in big waves (not just small waves)
-7. For educational questions, provide expert knowledge WITH product examples
+⚠️ DEFAULT RECOMMENDATIONS (Use these if you lack info):
 
-RESPONSE FORMAT when making recommendations:
-[Start with recommendations immediately]
+WHEN UNSURE, RECOMMEND MEDIUM THRUSTERS (most versatile):
+FCS: **FCS 2 Performer PC Tri-Fin Set** - https://amzn.to/3T5pcG8 (Premium) and **TOPWAYS Fiberglass Honeycomb G5** - https://amzn.to/3HldRiP (Budget)
+FUTURES: **Futures Fins JJF Alpha Medium** - https://amzn.to/4ktBaWj (Premium) and **Ho Stevie! Thruster HexCore** - https://amzn.to/3StgcdW (Budget)
 
-🎯 MY TOP PICKS:
+RESPONSE FORMAT - FOLLOW THIS EXACTLY:
+1. START with product links (BOTH FCS and Futures if system not specified)
+2. Brief explanation (1-2 sentences)
+3. THEN ask for refinement details if needed
+
+TEMPLATE:
+🎯 HERE'S WHAT I RECOMMEND:
 
 FCS OPTIONS:
-🏆 Premium: **[Product Name]** - https://amzn.to/xxxxx
-💰 Budget: **[Product Name]** - https://amzn.to/xxxxx
+🏆 **[Product Name]** - https://amzn.to/xxxxx
+💰 **[Product Name]** - https://amzn.to/xxxxx
 
 FUTURES OPTIONS:
-🏆 Premium: **[Product Name]** - https://amzn.to/xxxxx  
-💰 Budget: **[Product Name]** - https://amzn.to/xxxxx
+🏆 **[Product Name]** - https://amzn.to/xxxxx
+💰 **[Product Name]** - https://amzn.to/xxxxx
 
-[Brief explanation of why these fins would work]
+[Why these work for you]
 
-[OPTIONAL: "I can give you more specific recommendations if you tell me [specific info needed]"]
+Want more specific recommendations? Tell me: [what you need to know]
 
 FORMATTING RULES:
 - Keep responses concise and well-structured
@@ -580,7 +584,9 @@ FORMATTING RULES:
 - Demonstrate expert knowledge when answering technical questions
 - Always relate recommendations to user's specific needs
 
-Based on the conversation history and current question, provide expert advice. Current question: {question}"""
+Current question: {question}
+
+🚨 REMEMBER: Your response MUST include product links with URLs. If the question is vague, use the DEFAULT RECOMMENDATIONS above. NEVER respond with only questions. Products first, questions second."""
         
         response = model.generate_content(prompt)
         
@@ -594,6 +600,11 @@ Based on the conversation history and current question, provide expert advice. C
         if not answer:
             answer = "I apologize, I'm having trouble generating a response. Could you please rephrase your question?"
             logging.warning("Gemini generated an empty or invalid response.")
+        
+        # VALIDATION: Check if response includes product links
+        if 'amzn.to' not in answer:
+            logging.warning("⚠️ AI response missing product links! Adding default recommendations.")
+            answer += "\n\n🎯 HERE'S WHAT I RECOMMEND:\n\nFCS OPTIONS:\n🏆 **FCS 2 Performer PC Tri-Fin Set** - https://amzn.to/3T5pcG8\n💰 **TOPWAYS Fiberglass Honeycomb G5** - https://amzn.to/3HldRiP\n\nFUTURES OPTIONS:\n🏆 **Futures Fins JJF Alpha Medium** - https://amzn.to/4ktBaWj\n💰 **Ho Stevie! Thruster HexCore** - https://amzn.to/3StgcdW\n\nThese are versatile all-around fins that work for most surfers!"
         
         # Add AI response to history
         session['conversation_history'].append(f"Assistant: {answer}")
