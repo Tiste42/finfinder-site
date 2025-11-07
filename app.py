@@ -118,14 +118,38 @@ def format_ai_response(response_text):
     """Format AI response for proper HTML display"""
     formatted = response_text
     
-    # Convert **text** to HTML bold
-    formatted = re.sub(r'\*\*(.*?)\*\*', r'<strong>\1</strong>', formatted)
+    # FIRST: Convert product name + link patterns to clean hyperlinks
+    # Pattern: **Product Name** - https://amzn.to/xxx
+    # Result: <strong><a href="link">Product Name (Amazon)</a></strong>
+    formatted = re.sub(
+        r'\*\*([^*]+?)\*\*\s*[-–—]\s*(https://amzn\.to/\w+)',
+        r'<strong><a href="\2" target="_blank" rel="noopener noreferrer">\1 (Amazon)</a></strong>',
+        formatted
+    )
     
-    # Make entire recommendation lines bold (including the links)
-    # This captures the emoji, text, and link all together
-    formatted = re.sub(r'(💰 Budget Pick:.*?https://amzn\.to/\w+)', r'<strong>\1</strong>', formatted)
-    formatted = re.sub(r'(🏆 Premium Pick:.*?https://amzn\.to/\w+)', r'<strong>\1</strong>', formatted)
-    formatted = re.sub(r'(🔍 Browse All.*?https://amzn\.to/\w+)', r'<strong>\1</strong>', formatted)
+    # Pattern: Product Name - https://amzn.to/xxx (without bold markers)
+    formatted = re.sub(
+        r'([A-Z][^-\n]+?)\s*[-–—]\s*(https://amzn\.to/\w+)',
+        r'<strong><a href="\2" target="_blank" rel="noopener noreferrer">\1 (Amazon)</a></strong>',
+        formatted
+    )
+    
+    # Pattern: [View on Amazon link] or similar text before URL
+    formatted = re.sub(
+        r'(?:View on Amazon link|View on Amazon|Browse All[^:]*?)(?:\s*[:]\s*|\s+)(https://amzn\.to/\w+)',
+        r'<strong><a href="\1" target="_blank" rel="noopener noreferrer">View on Amazon</a></strong>',
+        formatted
+    )
+    
+    # Catch any remaining standalone Amazon links and make them clickable
+    formatted = re.sub(
+        r'(?<![">])(https://amzn\.to/\w+)(?![<"])',
+        r'<a href="\1" target="_blank" rel="noopener noreferrer">\1</a>',
+        formatted
+    )
+    
+    # Convert **text** to HTML bold (for any remaining bold text)
+    formatted = re.sub(r'\*\*(.*?)\*\*', r'<strong>\1</strong>', formatted)
     
     # Handle bullet points - remove extra line breaks before bullets
     formatted = re.sub(r'\n+• ', r'<br>• ', formatted)
@@ -138,9 +162,6 @@ def format_ai_response(response_text):
     
     # Clean up excessive <br> tags - max 2 in a row
     formatted = re.sub(r'(<br>\s*){3,}', r'<br><br>', formatted)
-    
-    # Make affiliate links clickable (and keep them bold if they're already wrapped in strong tags)
-    formatted = re.sub(r'(https://amzn\.to/\w+)', r'<a href="\1" target="_blank" rel="noopener noreferrer">\1</a>', formatted)
     
     # Wrap in a div instead of paragraph tags for better control
     formatted = f'<div>{formatted}</div>'
@@ -259,12 +280,72 @@ def ask():
         if 'conversation_history' not in session:
             session['conversation_history'] = []
             session['user_info'] = {}
+            logging.info("🔵 NEW SESSION: Initialized conversation history and user info")
+        else:
+            logging.info(f"🟢 EXISTING SESSION: {len(session.get('conversation_history', []))} messages in history")
+            logging.info(f"🟢 USER INFO STORED: {session.get('user_info', {})}")
         
-        # Check if user is providing info about themselves
-        weight_match = re.search(r'(\d+)\s*(?:lbs?|pounds?|kg)', question.lower())
+        # Extract user information from the question
+        question_lower = question.lower()
+        
+        # Extract weight
+        weight_match = re.search(r'(\d+)\s*(?:lbs?|pounds?|kg)', question_lower)
         if weight_match:
             session['user_info']['weight'] = weight_match.group(1)
             logging.info(f"Stored user weight: {weight_match.group(1)}")
+        
+        # Extract fin system (FCS or Futures)
+        if 'fcs' in question_lower and 'futures' not in question_lower:
+            session['user_info']['fin_system'] = 'FCS'
+            logging.info("Stored fin system: FCS")
+        elif 'futures' in question_lower or 'future' in question_lower:
+            session['user_info']['fin_system'] = 'Futures'
+            logging.info("Stored fin system: Futures")
+        
+        # Extract skill level
+        if re.search(r'\b(beginner|beginning|just start|learning|new to)', question_lower):
+            session['user_info']['skill_level'] = 'beginner'
+            logging.info("Stored skill level: beginner")
+        elif re.search(r'\b(intermediate|getting better|catching waves)', question_lower):
+            session['user_info']['skill_level'] = 'intermediate'
+            logging.info("Stored skill level: intermediate")
+        elif re.search(r'\b(advanced|experienced|good surfer|barreled|barrels)', question_lower):
+            session['user_info']['skill_level'] = 'advanced'
+            logging.info("Stored skill level: advanced")
+        elif re.search(r'\b(pro|professional|expert|airs?|boosting)', question_lower):
+            session['user_info']['skill_level'] = 'pro'
+            logging.info("Stored skill level: pro")
+        
+        # Extract board type
+        if re.search(r'\b(shortboard|short board|performance board)', question_lower):
+            session['user_info']['board_type'] = 'shortboard'
+            logging.info("Stored board type: shortboard")
+        elif re.search(r'\b(fish)\b', question_lower):
+            session['user_info']['board_type'] = 'fish'
+            logging.info("Stored board type: fish")
+        elif re.search(r'\b(longboard|long board|noserider|nose rider)', question_lower):
+            session['user_info']['board_type'] = 'longboard'
+            logging.info("Stored board type: longboard")
+        elif re.search(r'\b(hybrid|groveler)', question_lower):
+            session['user_info']['board_type'] = 'hybrid'
+            logging.info("Stored board type: hybrid")
+        elif re.search(r'\b(mid.?length|funboard|fun board)', question_lower):
+            session['user_info']['board_type'] = 'mid-length'
+            logging.info("Stored board type: mid-length")
+        elif re.search(r'\b(gun|big wave)', question_lower):
+            session['user_info']['board_type'] = 'gun'
+            logging.info("Stored board type: gun")
+        
+        # Extract wave conditions
+        if re.search(r'\b(small|weak|mushy|slow|1.?2.?ft|knee high)', question_lower):
+            session['user_info']['wave_conditions'] = 'small/weak'
+            logging.info("Stored wave conditions: small/weak")
+        elif re.search(r'\b(big|large|powerful|overhead|heavy|barreling|hollow)', question_lower):
+            session['user_info']['wave_conditions'] = 'big/powerful'
+            logging.info("Stored wave conditions: big/powerful")
+        
+        # Log complete user info after extraction
+        logging.info(f"📊 COMPLETE USER INFO AFTER EXTRACTION: {session.get('user_info', {})}")
         
         # Add current question to history
         session['conversation_history'].append(f"User: {question}")
@@ -272,15 +353,32 @@ def ask():
         # Build context from conversation history (last 10 messages)
         conversation_context = "\n".join(session['conversation_history'][-10:])
         
+        logging.info(f"📝 SENDING TO AI - History length: {len(session['conversation_history'])} | User info keys: {list(session.get('user_info', {}).keys())}")
+        
                 # Create enhanced prompt with conversation history and affiliate matrix
         prompt = f"""You are an expert surfboard fin advisor with deep technical knowledge. Your goal is to help surfers find the perfect fins using both expert knowledge and specific product recommendations.
 
-REMEMBER: You must ALWAYS check the conversation history for information the user has already provided. Never ask for information that's already been given.
+🚨 CRITICAL MEMORY RULES - FOLLOW THESE STRICTLY:
+1. BEFORE asking ANY question, CHECK the USER INFORMATION dictionary below
+2. NEVER ask for information that's already stored in USER INFORMATION
+3. If fin_system is stored, ONLY recommend that system (FCS or Futures)
+4. If weight is stored, use it for sizing - don't ask again
+5. If skill_level is stored, factor it in - don't ask again
+6. If board_type is stored, tailor recommendations - don't ask again
+7. Review the CONVERSATION HISTORY to see what the user has already told you
+
+🎯 RECOMMENDATION STRATEGY - ALWAYS FOLLOW THIS:
+1. ALWAYS provide at least one product recommendation with every response
+2. Give BOTH FCS and Futures options UNLESS user has specified their system
+3. Format product links as: **Product Name** - https://amzn.to/xxxxx
+4. AFTER giving recommendations, you may ask clarifying questions to refine further
+5. NEVER just ask questions without providing product recommendations first
 
 CONVERSATION HISTORY:
 {conversation_context}
 
-USER INFORMATION: {session.get('user_info', {})}
+USER INFORMATION STORED: {session.get('user_info', {})}
+↑↑↑ CHECK THIS BEFORE ASKING ANY QUESTIONS ↑↑↑
 
 EXPERT FIN KNOWLEDGE BASE:
 
@@ -449,21 +547,30 @@ FLEX FINS:
 SIDE BITES: Ho Stevie! Side Bite Fins - https://amzn.to/452OyvQ
 
 DECISION LOGIC:
-1. When user asks about specific fin needs, gather: fin type, system, and approximate size
-2. For weight-based sizing: Consider both weight AND skill level. Skilled surfers in powerful waves should size UP
-3. ALWAYS consider wave conditions when recommending
-4. Remember: Quads are EXCELLENT in big waves (not just small waves)
-5. For educational questions, provide expert knowledge then ask if they want recommendations
+1. CHECK USER INFORMATION first - use stored data, don't re-ask
+2. ALWAYS give product recommendations - never just ask questions
+3. If fin_system is NOT specified, provide BOTH FCS and Futures options
+4. For weight-based sizing: Consider both weight AND skill level. Skilled surfers in powerful waves should size UP
+5. ALWAYS consider wave conditions when recommending
+6. Remember: Quads are EXCELLENT in big waves (not just small waves)
+7. For educational questions, provide expert knowledge WITH product examples
 
 RESPONSE FORMAT when making recommendations:
-Based on your [weight/skill/conditions], here's what I recommend:
+[Start with recommendations immediately]
 
-🎯 MY TOP PICKS FOR YOU:
-🏆 Premium Pick: **[Product Name]** - [View on Amazon link]
-💰 Budget Pick: **[Product Name]** - [View on Amazon link]
-🔍 Browse All [Category] Fins: [Category link]
+🎯 MY TOP PICKS:
 
-[Brief explanation of why these fins suit their needs]
+FCS OPTIONS:
+🏆 Premium: **[Product Name]** - https://amzn.to/xxxxx
+💰 Budget: **[Product Name]** - https://amzn.to/xxxxx
+
+FUTURES OPTIONS:
+🏆 Premium: **[Product Name]** - https://amzn.to/xxxxx  
+💰 Budget: **[Product Name]** - https://amzn.to/xxxxx
+
+[Brief explanation of why these fins would work]
+
+[OPTIONAL: "I can give you more specific recommendations if you tell me [specific info needed]"]
 
 FORMATTING RULES:
 - Keep responses concise and well-structured
@@ -491,10 +598,13 @@ Based on the conversation history and current question, provide expert advice. C
         # Add AI response to history
         session['conversation_history'].append(f"Assistant: {answer}")
         
+        # Log session state after AI response
+        logging.info(f"✅ SESSION UPDATED - Total messages: {len(session['conversation_history'])} | User info: {session.get('user_info', {})}")
+        
         # Format the response before returning
         formatted_answer = format_ai_response(answer)
         
-        logging.info(f"AI Answer: {answer}")
+        logging.info(f"AI Answer (first 200 chars): {answer[:200]}...")
 
         return jsonify({'answer': formatted_answer})
 
