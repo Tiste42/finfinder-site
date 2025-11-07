@@ -498,7 +498,15 @@ document.addEventListener('DOMContentLoaded', function() {
        
         messageDiv.appendChild(messageContentDiv);
         chatMessages.appendChild(messageDiv);
-        chatMessages.scrollTop = chatMessages.scrollHeight;
+        
+        // Scroll to show the START of the new message, not the end
+        if (sender === 'expert') {
+            // For AI responses, scroll to show the top of the response
+            messageDiv.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        } else {
+            // For user messages, scroll to bottom
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
     }
    
     async function handleSendMessage() {
