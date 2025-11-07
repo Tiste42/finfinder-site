@@ -105,7 +105,7 @@
                     <div class="relative h-48 bg-gradient-to-br from-blue-100 to-cyan-100 overflow-hidden">
                         {% if post.featured_image %}
                           <img 
-                              src="{% if post.featured_image[:4] == 'http' %}{{ post.featured_image }}{% else %}{{ url_for('static', filename=post.featured_image) }}{% endif %}" 
+                              src="{{ url_for('static', filename=post.featured_image) }}" 
                               alt="{{ post.featured_image_alt if post.featured_image_alt else post.title }}"
                             class="w-full h-full object-cover"
                             loading="lazy"
