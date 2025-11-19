@@ -123,28 +123,28 @@ def format_ai_response(response_text):
     # Result: <strong><a href="link">Product Name (Amazon)</a></strong>
     formatted = re.sub(
         r'\*\*([^*]+?)\*\*\s*[-–—]\s*(https://amzn\.to/\w+)',
-        r'<strong><a href="\2" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:underline">\1 (Amazon)</a></strong>',
+        r'<strong><a href="\2" target="_blank" rel="noopener noreferrer" class="text-teal-300 hover:text-teal-100 hover:underline">\1 (Amazon)</a></strong>',
         formatted
     )
     
     # Pattern: Product Name - https://amzn.to/xxx (without bold markers)
     formatted = re.sub(
         r'([A-Z][^-\n]+?)\s*[-–—]\s*(https://amzn\.to/\w+)',
-        r'<strong><a href="\2" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:underline">\1 (Amazon)</a></strong>',
+        r'<strong><a href="\2" target="_blank" rel="noopener noreferrer" class="text-teal-300 hover:text-teal-100 hover:underline">\1 (Amazon)</a></strong>',
         formatted
     )
     
     # Pattern: [View on Amazon] or [Browse All X] followed by URL - hide the URL
     formatted = re.sub(
         r'(?:View on Amazon|Browse All[^:\n]*?)(?:\s*[:]\s*|\s+)(https://amzn\.to/\w+)',
-        r'<strong><a href="\1" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:underline">View on Amazon</a></strong>',
+        r'<strong><a href="\1" target="_blank" rel="noopener noreferrer" class="text-teal-300 hover:text-teal-100 hover:underline">View on Amazon</a></strong>',
         formatted
     )
     
     # Catch any remaining standalone Amazon links and hide them as "View on Amazon" text
     formatted = re.sub(
         r'(?<![">])(https://amzn\.to/\w+)(?![<"])',
-        r'<a href="\1" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:underline">View on Amazon</a>',
+        r'<a href="\1" target="_blank" rel="noopener noreferrer" class="text-teal-300 hover:text-teal-100 hover:underline">View on Amazon</a>',
         formatted
     )
     
@@ -362,21 +362,26 @@ def ask():
         prompt = f"""⚠️ MANDATORY RULES - YOU MUST FOLLOW THESE OR YOU FAIL:
 
 1. EVERY SINGLE RESPONSE MUST INCLUDE PRODUCT LINKS - NO EXCEPTIONS
-2. You can ask clarifying questions ONLY on your first response - after that, give recommendations with what you have
-3. NEVER respond with only questions - ALWAYS include products first with explanations
+2. **ORDER OF OPERATIONS**: 
+   - **FIRST**: Provide EXPLANATION & RESEARCH (Why this works, fin principles, etc.)
+   - **SECOND**: Provide SPECIFIC PRODUCT RECOMMENDATIONS
+3. **CONDITIONAL DETAIL**:
+   - If the user's request is BROAD or vague (e.g., "what fins should I get?"), provide OVERVIEW options but explicitly say:
+     "Here are some overview options, but if you let me know [missing info like weight/board/waves], I can be more specific."
+   - If the user provides specific info, give specific recommendations.
 4. Format ALL product links as: **Product Name** - https://amzn.to/xxxxx
 5. If fin system NOT specified: Show BOTH FCS and Futures options
 6. Check USER INFORMATION below - NEVER ask for info already there
-7. EXPLAIN WHY you chose these fins based on fin design principles
 
 AI RESPONSES SO FAR: {ai_response_count}
-{"⚠️ YOU HAVE ALREADY ASKED QUESTIONS - STOP ASKING, JUST GIVE RECOMMENDATIONS WITH EXPLANATIONS" if ai_response_count > 0 else "You can ask ONE clarifying question after recommendations"}
-
 USER INFORMATION: {session.get('user_info', {})}
 CONVERSATION HISTORY: {conversation_context}
 
-EXAMPLE GOOD RESPONSE WITH EXPLANATIONS:
-"🎯 HERE'S WHAT I RECOMMEND:
+EXAMPLE GOOD RESPONSE (Explanation First):
+"🤔 **THE RESEARCH:**
+For a surfer of your weight (170lbs) in small waves, you want fins that generate speed. A template with a wide base gives you drive, while a more upright rake allows for quick pivots in tight pockets.
+
+🎯 **HERE'S WHAT I RECOMMEND:**
 
 FCS OPTIONS:
 🏆 **FCS 2 Performer PC Tri-Fin Set** - https://amzn.to/3T5pcG8
@@ -386,14 +391,8 @@ FUTURES OPTIONS:
 🏆 **Futures Fins JJF Alpha Medium** - https://amzn.to/4ktBaWj
 💰 **Ho Stevie! Thruster HexCore** - https://amzn.to/3StgcdW
 
-WHY THESE WORK:
-These are medium thruster fins - the most versatile setup. Thrusters give you balanced performance in all conditions. The medium size works for 160-200 lbs surfers. The templates have moderate rake for versatile turning and good depth for hold.
-
-If you tell me your specific weight, wave conditions, or riding style, I can refine this further!"
-
-EXAMPLE BAD RESPONSE (NEVER DO THIS):
-"What's your weight? What fin system? What board type?"
-"I need more information before I can help."
+💡 **WANT MORE SPECIFICITY?**
+These are great all-arounders, but if you tell me if you prefer **speed** or **control**, I can narrow this down further!"
 
 EXPERT FIN KNOWLEDGE BASE:
 
@@ -568,13 +567,15 @@ FCS: **FCS 2 Performer PC Tri-Fin Set** - https://amzn.to/3T5pcG8 (Premium) and 
 FUTURES: **Futures Fins JJF Alpha Medium** - https://amzn.to/4ktBaWj (Premium) and **Ho Stevie! Thruster HexCore** - https://amzn.to/3StgcdW (Budget)
 
 RESPONSE FORMAT - FOLLOW THIS EXACTLY:
-1. START with product links (BOTH FCS and Futures if system not specified)
-2. EXPLAIN WHY using fin design principles (base, depth, rake, foil, flex)
-3. Make recommendations broad and useful with limited info
-4. If first response: can ask ONE question. If 2+ responses: NO MORE QUESTIONS, just refine recommendations
+1. START with EXPLANATION/RESEARCH (Why these fins work, principles)
+2. THEN give PRODUCT RECOMMENDATIONS (Links)
+3. END with CONDITIONAL OFFER (If broad request)
 
 TEMPLATE:
-🎯 HERE'S WHAT I RECOMMEND:
+🤔 **THE RESEARCH:**
+[Explain using fin principles: "Based on your input, you need fins that... These fins have [base/depth/rake] which means..."]
+
+🎯 **HERE'S WHAT I RECOMMEND:**
 
 FCS OPTIONS:
 🏆 **[Product Name]** - https://amzn.to/xxxxx
@@ -584,11 +585,8 @@ FUTURES OPTIONS:
 🏆 **[Product Name]** - https://amzn.to/xxxxx
 💰 **[Product Name]** - https://amzn.to/xxxxx
 
-WHY THESE WORK:
-[Explain using fin principles: "These fins have [base/depth/rake characteristics] which means [performance benefit]. They work great for [conditions/style] because [technical reason]."]
-
-[ONLY IF FIRST RESPONSE: "Tell me [one specific detail] and I can refine this further!"]
-[IF 2+ RESPONSES: Just give refined recommendations based on new info, no questions]
+💡 **WANT MORE SPECIFICITY?**
+[If broad: "Here are some overview options, but if you let me know [missing info], I can be more specific."]
 
 FORMATTING RULES:
 - Keep responses concise and well-structured
@@ -600,7 +598,7 @@ FORMATTING RULES:
 
 Current question: {question}
 
-🚨 REMEMBER: Your response MUST include product links with URLs. If the question is vague, use the DEFAULT RECOMMENDATIONS above. NEVER respond with only questions. Products first, questions second."""
+🚨 REMEMBER: Your response MUST include product links with URLs. EXPLANATION FIRST, RECOMMENDATIONS SECOND."""
         
         response = model.generate_content(prompt)
         
