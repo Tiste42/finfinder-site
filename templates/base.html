@@ -15,20 +15,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}Fin Finder | Expert Surfboard Fin Knowledge{% endblock %}</title>
     <meta name="description" content="{% block description %}Fin Finder is your expert guide to surfboard fins. Learn about fin types, setups, and get personalized recommendations.{% endblock %}">
-    <link rel="canonical" href="{{ request.url }}">
+    {% set canonical_url = request.url.split('?')[0] if request.url and '?' in request.url else (request.url if request.url else url_for(request.endpoint or 'home', _external=True)) %}
+    <link rel="canonical" href="{{ canonical_url }}">
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Open Graph / Social Media Sharing -->
-<meta property="og:title" content="Fin Finder - Stop Guessing, Start Ripping!">
-<meta property="og:description" content="Get personalized surfboard fin recommendations from our expert system. Find the perfect fins for your unique surfing style, board, and wave conditions.">
-<meta property="og:image" content="{{ url_for('static', filename='fin_finder_logo_transparent.png') }}">
-<meta property="og:url" content="https://finfinder.ai">
-<meta property="og:type" content="website">
+    <!-- Open Graph / Social Media Sharing - Can be overridden in child templates -->
+    {% block og_tags %}
+    <meta property="og:title" content="{% block og_title %}Fin Finder - Stop Guessing, Start Ripping!{% endblock %}">
+    <meta property="og:description" content="{% block og_description %}Get personalized surfboard fin recommendations from our expert system. Find the perfect fins for your unique surfing style, board, and wave conditions.{% endblock %}">
+    <meta property="og:image" content="{% block og_image %}{{ url_for('static', filename='fin_finder_logo_transparent.png', _external=True) }}{% endblock %}">
+    <meta property="og:url" content="{% block og_url %}{{ canonical_url }}{% endblock %}">
+    <meta property="og:type" content="{% block og_type %}website{% endblock %}">
+    <meta property="og:site_name" content="Fin Finder">
 
-<!-- Twitter Card -->
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Fin Finder - Stop Guessing, Start Ripping!">
-<meta name="twitter:description" content="Get personalized surfboard fin recommendations from our expert system.">
-<meta name="twitter:image" content="{{ url_for('static', filename='fin_finder_logo_transparent.png') }}">
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="{% block twitter_card %}summary_large_image{% endblock %}">
+    <meta name="twitter:title" content="{% block twitter_title %}Fin Finder - Stop Guessing, Start Ripping!{% endblock %}">
+    <meta name="twitter:description" content="{% block twitter_description %}Get personalized surfboard fin recommendations from our expert system.{% endblock %}">
+    <meta name="twitter:image" content="{% block twitter_image %}{{ url_for('static', filename='fin_finder_logo_transparent.png', _external=True) }}{% endblock %}">
+    {% endblock %}
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
     <script>

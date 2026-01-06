@@ -5,6 +5,37 @@
 {% block description %}Get personalized surfboard fin recommendations from our expert system. Find the perfect fins for your unique surfing style, board, and wave conditions.{% endblock %}
 
 {% block content %}
+<!-- Organization Schema -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Fin Finder",
+  "url": "https://finfinder.ai",
+  "logo": "{{ url_for('static', filename='fin_finder_logo_transparent.png', _external=True) }}",
+  "description": "Expert surfboard fin recommendations and guides. Find the perfect fins for your unique surfing style, board, and wave conditions.",
+  "sameAs": []
+}
+</script>
+
+<!-- WebSite Schema with SearchAction -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "Fin Finder",
+  "url": "https://finfinder.ai",
+  "description": "Expert surfboard fin recommendations and guides",
+  "potentialAction": {
+    "@type": "SearchAction",
+    "target": {
+      "@type": "EntryPoint",
+      "urlTemplate": "https://finfinder.ai/finsights?search={search_term_string}"
+    },
+    "query-input": "required name=search_term_string"
+  }
+}
+</script>
     <!-- Additional styles specific to the homepage -->
     <style>
         /* Basic scrollbar styling for chat */

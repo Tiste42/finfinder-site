@@ -35,17 +35,21 @@ Add a new post object to the "posts" array with the following structure:
 | Field | Required | Description |
 |-------|----------|-------------|
 | `slug` | **Yes** | URL-friendly identifier (e.g., "best-fins-for-beginners"). No spaces or special characters. |
-| `title` | **Yes** | The main heading of your post |
+| `title` | **Yes** | The main heading of your post (used in H1, meta title, schema) |
 | `excerpt` | **Yes** | Short summary (2-3 sentences) shown in the blog grid |
 | `content` | **Yes** | Full HTML content of your post |
-| `category` | **Yes** | One of: `guides`, `reviews`, `tips`, `news` |
-| `author` | No | Default: "Fin Finder Team" |
+| `category` | **Yes** | One of: `guides`, `reviews`, `tips`, `news` (used in schema) |
+| `author` | No | Default: "Fin Finder Team" (used in Person schema) |
 | `date` | **Yes** | Display date (e.g., "Nov 6, 2025") |
-| `date_published` | **Yes** | ISO format date (YYYY-MM-DD) for SEO |
-| `date_modified` | No | ISO format date for last update |
+| `date_published` | **Yes** | ISO format date (YYYY-MM-DD) for SEO schema |
+| `date_modified` | No | ISO format date for last update (used in schema) |
 | `read_time` | **Yes** | Estimated reading time in minutes |
 | `featured_image` | No | Filename of image in `/static/` folder |
-| `meta_description` | No | Custom SEO description (uses excerpt if omitted) |
+| `featured_image_alt` | **Yes** (if featured_image exists) | Descriptive alt text for accessibility and SEO |
+| `meta_description` | No | Custom SEO description (150-160 chars recommended, uses excerpt if omitted) |
+| `tags` | No | Array of tags (e.g., `["fin types", "surfing tips"]`) - used in Article schema keywords |
+| `primary_keyword` | No | Main SEO keyword for the post |
+| `secondary_keywords` | No | Array of related keywords |
 
 ### 3. Categories
 
@@ -114,7 +118,27 @@ Your content should be in HTML format. Here are some examples:
 3. For featured images, just use the filename: `"featured_image": "my-image.jpg"`
 4. For images in content, use: `<img src="{{ url_for('static', filename='my-image.jpg') }}" alt="Description" />`
 
-### 6. Example Blog Post
+### 6. Required Fields for SEO
+
+**Critical fields that must be included for proper SEO:**
+
+- `slug` - URL-friendly identifier
+- `title` - Post title (used in H1, meta title, schema)
+- `excerpt` - Short description (used in meta description if meta_description not provided)
+- `meta_description` - SEO-optimized description (150-160 characters recommended)
+- `featured_image` - Image filename in static folder
+- `featured_image_alt` - **REQUIRED** - Descriptive alt text for accessibility and SEO
+- `date_published` - ISO format date (YYYY-MM-DD) for schema
+- `date_modified` - ISO format date (YYYY-MM-DD) for schema
+- `author` - Author name (defaults to "Fin Finder Team" if not provided)
+- `category` - Used in schema and filtering
+- `tags` - Array of tags (used in Article schema keywords)
+
+**Optional but recommended:**
+- `primary_keyword` - Main SEO keyword
+- `secondary_keywords` - Array of related keywords
+
+### 7. Example Blog Post
 
 Here's a complete example:
 
@@ -133,20 +157,45 @@ Here's a complete example:
       "date_modified": "2025-11-06",
       "read_time": 4,
       "featured_image": "finsinaline.jpeg",
-      "meta_description": "Complete beginner's guide to choosing your first surfboard fins. Learn about fin types, sizing, and get expert recommendations."
+      "featured_image_alt": "Close-up of multiple surfboard fins aligned on a wooden rack inside a surf shop, showing various fin types and sizes",
+      "meta_description": "Complete beginner's guide to choosing your first surfboard fins. Learn about fin types, sizing, and get expert recommendations.",
+      "primary_keyword": "choosing surfboard fins",
+      "secondary_keywords": [
+        "beginner fins",
+        "first surfboard fins",
+        "fin selection guide"
+      ]
     }
   ]
 }
 ```
 
-## SEO Features (Already Built-In)
+## SEO Features (Automatically Applied)
 
-Your blog posts automatically include:
-- ✅ Schema.org BlogPosting markup
-- ✅ Meta title and description tags
-- ✅ Open Graph tags for social sharing
-- ✅ Automatic sitemap.xml inclusion
-- ✅ Breadcrumb navigation
+Your blog posts automatically include comprehensive SEO optimization:
+
+### Structured Data (Schema.org)
+- ✅ **BlogPosting schema** - For blog-specific content
+- ✅ **Article schema** - For article content with keywords and section
+- ✅ **Person schema** - For author information
+- ✅ **BreadcrumbList schema** - For site hierarchy navigation
+- ✅ **Organization schema** - Publisher information
+
+### Meta Tags
+- ✅ **Meta title** - Automatically formatted as "{Post Title} | Finsights - Fin Finder"
+- ✅ **Meta description** - Uses `meta_description` field or falls back to `excerpt`
+- ✅ **Article meta tags** - article:author, article:published_time, article:modified_time, article:section, article:tag
+
+### Open Graph & Social Sharing
+- ✅ **Dynamic OG tags** - Title, description, image, URL, and type automatically set per post
+- ✅ **Twitter Card tags** - Optimized for Twitter sharing
+- ✅ **Featured image** - Automatically used for social previews
+
+### Technical SEO
+- ✅ **Canonical URLs** - Automatically set (query parameters stripped)
+- ✅ **Automatic sitemap.xml inclusion** - All posts added with proper dates
+- ✅ **Breadcrumb navigation** - Visual and structured data
+- ✅ **Image alt text** - Required field for accessibility and SEO
 - ✅ Mobile-responsive design
 - ✅ Image lazy loading
 - ✅ Internal linking to other site pages

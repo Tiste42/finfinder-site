@@ -231,24 +231,35 @@ def blog_post(slug):
 @app.route('/sitemap.xml')
 def sitemap():
     """Generates and serves the sitemap.xml file for SEO."""
+    # Use current date for static pages
+    current_date = datetime.datetime.now().strftime('%Y-%m-%d')
+    
     pages = [
-        {'loc': f"{SITE_URL}/", 'lastmod': '2025-05-29', 'changefreq': 'daily', 'priority': '1.0'},
-        {'loc': f"{SITE_URL}/recommender", 'lastmod': '2025-05-29', 'changefreq': 'weekly', 'priority': '0.9'},
-        {'loc': f"{SITE_URL}/finsights", 'lastmod': '2025-11-06', 'changefreq': 'weekly', 'priority': '0.9'},
-        {'loc': f"{SITE_URL}/all-about-surfboard-fins", 'lastmod': '2025-05-29', 'changefreq': 'monthly', 'priority': '0.8'},
-        {'loc': f"{SITE_URL}/fin-setups", 'lastmod': '2025-05-29', 'changefreq': 'monthly', 'priority': '0.8'},
-        {'loc': f"{SITE_URL}/fin-systems", 'lastmod': '2025-05-29', 'changefreq': 'monthly', 'priority': '0.8'},
-        {'loc': f"{SITE_URL}/longboard-fins", 'lastmod': '2025-05-29', 'changefreq': 'monthly', 'priority': '0.8'},
-        {'loc': f"{SITE_URL}/fin-sizing-guide", 'lastmod': '2025-05-29', 'changefreq': 'monthly', 'priority': '0.8'},
-        {'loc': f"{SITE_URL}/about", 'lastmod': '2025-05-29', 'changefreq': 'monthly', 'priority': '0.7'},
+        {'loc': f"{SITE_URL}/", 'lastmod': current_date, 'changefreq': 'daily', 'priority': '1.0'},
+        {'loc': f"{SITE_URL}/recommender", 'lastmod': current_date, 'changefreq': 'weekly', 'priority': '0.9'},
+        {'loc': f"{SITE_URL}/finsights", 'lastmod': current_date, 'changefreq': 'weekly', 'priority': '0.9'},
+        {'loc': f"{SITE_URL}/all-about-surfboard-fins", 'lastmod': current_date, 'changefreq': 'monthly', 'priority': '0.8'},
+        {'loc': f"{SITE_URL}/fin-setups", 'lastmod': current_date, 'changefreq': 'monthly', 'priority': '0.8'},
+        {'loc': f"{SITE_URL}/fin-systems", 'lastmod': current_date, 'changefreq': 'monthly', 'priority': '0.8'},
+        {'loc': f"{SITE_URL}/longboard-fins", 'lastmod': current_date, 'changefreq': 'monthly', 'priority': '0.8'},
+        {'loc': f"{SITE_URL}/fin-sizing-guide", 'lastmod': current_date, 'changefreq': 'monthly', 'priority': '0.8'},
+        {'loc': f"{SITE_URL}/about", 'lastmod': current_date, 'changefreq': 'monthly', 'priority': '0.7'},
     ]
     
     # Add blog posts to sitemap
     blog_posts = load_blog_posts()
     for post in blog_posts:
+        # Use post's date_modified or date_published, fallback to current date
+        post_date = post.get('date_modified') or post.get('date_published') or post.get('date', current_date)
+        # Ensure date is in YYYY-MM-DD format
+        if post_date and len(post_date) >= 10:
+            post_date = post_date[:10]
+        else:
+            post_date = current_date
+        
         pages.append({
             'loc': f"{SITE_URL}/finsights/{post.get('slug')}",
-            'lastmod': post.get('date_modified', post.get('date_published', post.get('date', '2025-11-06'))),
+            'lastmod': post_date,
             'changefreq': 'monthly',
             'priority': '0.7'
         })
