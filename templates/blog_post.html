@@ -263,13 +263,27 @@
 
 <!-- Featured Image Header -->
 <header class="relative overflow-hidden bg-gradient-to-br from-blue-900 via-blue-800 to-cyan-700 {% if post.featured_image %}h-[28rem]{% else %}h-72{% endif %}">
-    {% if post.featured_image %}
-    <img 
-        src="{{ url_for('static', filename=post.featured_image) }}" 
-        alt="{{ post.featured_image_alt if post.featured_image_alt else post.title }}"
-        class="absolute inset-0 w-full h-full object-cover opacity-95"
-    >
-    {% endif %}
+
+{% if post.featured_image %}
+    {% set basename = post.featured_image.rsplit('.', 1)[0] %}
+    <picture>
+        <source type="image/webp"
+                srcset="{{ url_for('static', filename=basename + '-400w.webp') }} 400w,
+                        {{ url_for('static', filename=basename + '-800w.webp') }} 800w,
+                        {{ url_for('static', filename=basename + '-1200w.webp') }} 1200w,
+                        {{ url_for('static', filename=basename + '.webp') }} 1920w"
+                sizes="100vw">
+        <img 
+            src="{{ url_for('static', filename=post.featured_image) }}" 
+            alt="{{ post.featured_image_alt if post.featured_image_alt else post.title }}"
+            class="absolute inset-0 w-full h-full object-cover opacity-95"
+            width="1200"
+            height="630"
+            decoding="async"
+        >
+    </picture>
+{% endif %}
+
     <div class="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent"></div>
     <div class="relative h-full flex items-end py-12">
         <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
@@ -392,26 +406,36 @@
             <article class="related-post-card bg-white rounded-xl shadow-lg overflow-hidden border border-gray-100">
                 <a href="{{ url_for('blog_post', slug=related_post.slug) }}" class="block">
                     <!-- Thumbnail -->
-                    <div class="relative h-40 bg-gradient-to-br from-blue-100 to-cyan-100">
-                        {% if related_post.featured_image %}
-                          <img 
-                              src="{{ url_for('static', filename=related_post.featured_image) }}" 
-                              alt="{{ related_post.featured_image_alt if related_post.featured_image_alt else related_post.title }}"
-                            class="w-full h-full object-cover"
-                            loading="lazy"
-                        >
-                        {% else %}
-                        <div class="w-full h-full flex items-center justify-center">
-                            <i class="fas fa-water text-4xl text-blue-300"></i>
-                        </div>
-                        {% endif %}
-                        
-                        <div class="absolute top-2 left-2">
-                            <span class="px-2 py-1 bg-blue-600 text-white text-xs font-semibold rounded-full">
-                                {{ related_post.category|title }}
-                            </span>
-                        </div>
-                    </div>
+
+<div class="relative h-40 bg-gradient-to-br from-blue-100 to-cyan-100">
+    {% if related_post.featured_image %}
+    {% set basename = related_post.featured_image.rsplit('.', 1)[0] %}
+    <picture>
+        <source type="image/webp"
+                srcset="{{ url_for('static', filename=basename + '-400w.webp') }} 400w,
+                        {{ url_for('static', filename=basename + '-800w.webp') }} 800w"
+                sizes="(max-width: 768px) 100vw, 33vw">
+        <img 
+            src="{{ url_for('static', filename=related_post.featured_image) }}" 
+            alt="{{ related_post.featured_image_alt if related_post.featured_image_alt else related_post.title }}"
+            class="w-full h-full object-cover"
+            loading="lazy"
+            decoding="async"
+        >
+    </picture>
+    {% else %}
+    <div class="w-full h-full flex items-center justify-center">
+        <i class="fas fa-water text-4xl text-blue-300"></i>
+    </div>
+    {% endif %}
+    
+    <div class="absolute top-2 left-2">
+        <span class="px-2 py-1 bg-blue-600 text-white text-xs font-semibold rounded-full">
+            {{ related_post.category|title }}
+        </span>
+    </div>
+</div>
+
                     
                     <!-- Content -->
                     <div class="p-5">

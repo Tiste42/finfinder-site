@@ -13,9 +13,10 @@ logging.basicConfig(level=logging.INFO)
 # --- Flask App Initialization ---
 app = Flask(__name__) 
 
-@app.route('/robots.txt')
-def robots_txt():
-    return send_from_directory(app.static_folder, 'robots.txt')
+@app.route('/static/<path:filename>')
+def serve_static(filename):
+    # Cache static assets for 1 year
+    return send_from_directory(app.static_folder, filename, max_age=31536000)
 app.secret_key = 'your-secret-key-for-sessions-change-this-to-something-random'
 
 # Define the base URL for your site
@@ -52,15 +53,33 @@ except Exception as e:
     logging.error(f"An unexpected error occurred during Gemini API configuration: {e}")
     model = None
 
-# --- Blog Posts Helper Functions ---
+# --- Blog Posts Helper Functions with Caching ---
+import time
+
+# Simple in-memory cache
+blog_cache = {
+    'posts': None,
+    'timestamp': 0,
+    'ttl': 300  # Cache for 5 minutes
+}
+
 def load_blog_posts():
-    """Load blog posts from JSON file"""
+    """Load blog posts from JSON file with caching"""
+    global blog_cache
+    current_time = time.time()
+    
+    if blog_cache['posts'] and (current_time - blog_cache['timestamp'] < blog_cache['ttl']):
+        return blog_cache['posts']
+
     try:
         blog_posts_path = os.path.join(os.getcwd(), 'blog_posts.json')
         if os.path.exists(blog_posts_path):
             with open(blog_posts_path, 'r', encoding='utf-8') as f:
                 data = json.load(f)
-                return data.get('posts', [])
+                posts = data.get('posts', [])
+                blog_cache['posts'] = posts
+                blog_cache['timestamp'] = current_time
+                return posts
         return []
     except Exception as e:
         logging.error(f"Error loading blog posts: {e}")
@@ -215,7 +234,11 @@ def finsights():
     posts = load_blog_posts()
     # Sort posts by date (newest first)
     posts_sorted = sorted(posts, key=lambda x: x.get('date_published', x.get('date', '')), reverse=True)
-    return render_template('finsights.html', posts=posts_sorted)
+    
+    # Add caching headers
+    response = render_template('finsights.html', posts=posts_sorted)
+    # Cache for 1 hour public
+    return Response(response, headers={'Cache-Control': 'public, max-age=3600'})
 
 @app.route('/finsights/<slug>')
 def blog_post(slug):
@@ -225,7 +248,8 @@ def blog_post(slug):
         return render_template('404.html'), 404
     
     related_posts = get_related_posts(post)
-    return render_template('blog_post.html', post=post, related_posts=related_posts)
+    response = render_template('blog_post.html', post=post, related_posts=related_posts)
+    return Response(response, headers={'Cache-Control': 'public, max-age=3600'})
 
 # --- Sitemap Route ---
 @app.route('/sitemap.xml')

@@ -34,8 +34,16 @@ performance, and surf equipment from the Fin Finder blog.{% endblock %}
 <div class="relative bg-gradient-to-br from-blue-900 via-blue-800 to-cyan-700 py-16 overflow-hidden">
     <!-- Background Image -->
     <div class="absolute inset-0 z-0">
-        <img src="{{ url_for('static', filename='finsights_hero.webp') }}" alt="Surfboard fins in the water"
-            class="w-full h-full object-cover">
+        <picture>
+            <source type="image/webp"
+                    srcset="{{ url_for('static', filename='finsights_hero-400w.webp') }} 400w,
+                            {{ url_for('static', filename='finsights_hero-800w.webp') }} 800w,
+                            {{ url_for('static', filename='finsights_hero-1200w.webp') }} 1200w,
+                            {{ url_for('static', filename='finsights_hero.webp') }} 1920w"
+                    sizes="100vw">
+            <img src="{{ url_for('static', filename='finsights_hero.jpg') }}" alt="Surfboard fins in the water"
+                class="w-full h-full object-cover" loading="eager" decoding="async">
+        </picture>
         <div class="absolute inset-0 bg-black bg-opacity-40"></div>
     </div>
 
@@ -107,11 +115,23 @@ performance, and surf equipment from the Fin Finder blog.{% endblock %}
                 data-excerpt="{{ post.excerpt|lower }}">
                 <a href="{{ url_for('blog_post', slug=post.slug) }}" class="block">
                     <!-- Featured Image -->
+
                     <div class="relative h-48 bg-gradient-to-br from-blue-100 to-cyan-100 overflow-hidden">
                         {% if post.featured_image %}
-                        <img src="{{ url_for('static', filename=post.featured_image) }}"
-                            alt="{{ post.featured_image_alt if post.featured_image_alt else post.title }}"
-                            class="w-full h-full object-cover" loading="lazy">
+                        {% set basename = post.featured_image.rsplit('.', 1)[0] %}
+                        <picture>
+                            <source type="image/webp"
+                                    srcset="{{ url_for('static', filename=basename + '-400w.webp') }} 400w,
+                                            {{ url_for('static', filename=basename + '-800w.webp') }} 800w"
+                                    sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw">
+                            <img src="{{ url_for('static', filename=post.featured_image) }}"
+                                alt="{{ post.featured_image_alt if post.featured_image_alt else post.title }}"
+                                class="w-full h-full object-cover" 
+                                loading="lazy"
+                                width="400"
+                                height="250"
+                                decoding="async">
+                        </picture>
                         {% else %}
                         <div class="w-full h-full flex items-center justify-center">
                             <i class="fas fa-water text-6xl text-blue-300"></i>
@@ -125,6 +145,7 @@ performance, and surf equipment from the Fin Finder blog.{% endblock %}
                             </span>
                         </div>
                     </div>
+
 
                     <!-- Content -->
                     <div class="p-6">
