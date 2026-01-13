@@ -184,12 +184,12 @@
   "description": "{{ post.meta_description if post.meta_description else post.excerpt }}",
   "image": "{{ url_for('static', filename=post.featured_image, _external=True) if post.featured_image else url_for('static', filename='fin_finder_logo_transparent.png', _external=True) }}",
   "author": {
-    "@type": "Person",
+    "@type": "{% if post.author == 'FinFinder Team' or post.author == 'FinFinder.ai' or post.author == 'Fin Finder Team' %}Organization{% else %}Person{% endif %}",
     "name": "{{ post.author if post.author else 'Fin Finder Team' }}"
   },
   "publisher": {
     "@type": "Organization",
-    "name": "Fin Finder",
+    "name": "FinFinder.ai",
     "logo": {
       "@type": "ImageObject",
       "url": "{{ url_for('static', filename='fin_finder_logo_transparent.png', _external=True) }}"
@@ -216,12 +216,12 @@
   "description": "{{ post.meta_description if post.meta_description else post.excerpt }}",
   "image": "{{ url_for('static', filename=post.featured_image, _external=True) if post.featured_image else url_for('static', filename='fin_finder_logo_transparent.png', _external=True) }}",
   "author": {
-    "@type": "Person",
+    "@type": "{% if post.author == 'FinFinder Team' or post.author == 'FinFinder.ai' or post.author == 'Fin Finder Team' %}Organization{% else %}Person{% endif %}",
     "name": "{{ post.author if post.author else 'Fin Finder Team' }}"
   },
   "publisher": {
     "@type": "Organization",
-    "name": "Fin Finder",
+    "name": "FinFinder.ai",
     "logo": {
       "@type": "ImageObject",
       "url": "{{ url_for('static', filename='fin_finder_logo_transparent.png', _external=True) }}"
