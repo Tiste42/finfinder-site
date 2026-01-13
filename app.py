@@ -13,6 +13,25 @@ logging.basicConfig(level=logging.INFO)
 # --- Flask App Initialization ---
 app = Flask(__name__) 
 
+# Configure static file caching
+app.config['SEND_FILE_MAX_AGE_DEFAULT'] = 31536000  # 1 year for static files
+
+@app.after_request
+def add_cache_headers(response):
+    """Add cache headers for better performance"""
+    # Cache static files aggressively
+    if request.path.startswith('/static/'):
+        # Images, videos, fonts - cache for 1 year
+        if any(request.path.endswith(ext) for ext in ['.webp', '.jpg', '.jpeg', '.png', '.gif', '.mp4', '.mov', '.woff2', '.woff']):
+            response.headers['Cache-Control'] = 'public, max-age=31536000, immutable'
+        # CSS/JS - cache for 1 week with revalidation
+        elif any(request.path.endswith(ext) for ext in ['.css', '.js']):
+            response.headers['Cache-Control'] = 'public, max-age=604800, stale-while-revalidate=86400'
+    # Blog pages - cache for 1 hour
+    elif request.path.startswith('/finsights'):
+        response.headers['Cache-Control'] = 'public, max-age=3600, stale-while-revalidate=86400'
+    return response
+
 @app.route('/robots.txt')
 def robots_txt():
     return send_from_directory(app.static_folder, 'robots.txt')
@@ -52,15 +71,33 @@ except Exception as e:
     logging.error(f"An unexpected error occurred during Gemini API configuration: {e}")
     model = None
 
-# --- Blog Posts Helper Functions ---
+# --- Blog Posts Helper Functions with Caching ---
+# In-memory cache for blog posts
+_blog_posts_cache = {
+    'data': None,
+    'timestamp': 0
+}
+BLOG_CACHE_TTL = 300  # 5 minutes cache TTL
+
 def load_blog_posts():
-    """Load blog posts from JSON file"""
+    """Load blog posts from JSON file with caching"""
+    import time
+    current_time = time.time()
+    
+    # Return cached data if still valid
+    if _blog_posts_cache['data'] is not None and (current_time - _blog_posts_cache['timestamp']) < BLOG_CACHE_TTL:
+        return _blog_posts_cache['data']
+    
     try:
         blog_posts_path = os.path.join(os.getcwd(), 'blog_posts.json')
         if os.path.exists(blog_posts_path):
             with open(blog_posts_path, 'r', encoding='utf-8') as f:
                 data = json.load(f)
-                return data.get('posts', [])
+                posts = data.get('posts', [])
+                # Update cache
+                _blog_posts_cache['data'] = posts
+                _blog_posts_cache['timestamp'] = current_time
+                return posts
         return []
     except Exception as e:
         logging.error(f"Error loading blog posts: {e}")

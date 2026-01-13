@@ -2,22 +2,24 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-     <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-WZQ6TSRJVG"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-WZQ6TSRJVG');
-</script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}Fin Finder | Expert Surfboard Fin Knowledge{% endblock %}</title>
     <meta name="description" content="{% block description %}Fin Finder is your expert guide to surfboard fins. Learn about fin types, setups, and get personalized recommendations.{% endblock %}">
     {% set canonical_url = request.url.split('?')[0] if request.url and '?' in request.url else (request.url if request.url else url_for(request.endpoint or 'home', _external=True)) %}
     <link rel="canonical" href="{{ canonical_url }}">
+    
+    <!-- Preconnect to external domains for faster loading -->
+    <link rel="preconnect" href="https://cdn.tailwindcss.com" crossorigin>
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+    <link rel="preconnect" href="https://www.googletagmanager.com" crossorigin>
+    
+    <!-- DNS Prefetch for analytics -->
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    
+    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
+    
     <!-- Open Graph / Social Media Sharing - Can be overridden in child templates -->
     {% block og_tags %}
     <meta property="og:title" content="{% block og_title %}Fin Finder - Stop Guessing, Start Ripping!{% endblock %}">
@@ -33,7 +35,28 @@
     <meta name="twitter:description" content="{% block twitter_description %}Get personalized surfboard fin recommendations from our expert system.{% endblock %}">
     <meta name="twitter:image" content="{% block twitter_image %}{{ url_for('static', filename='fin_finder_logo_transparent.png', _external=True) }}{% endblock %}">
     {% endblock %}
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Font Awesome - loaded async to not block render -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" media="print" onload="this.media='all'">
+    <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"></noscript>
+    
+    <!-- Google Analytics - deferred to not block page load -->
+    <script>
+        // Defer analytics loading until after page load
+        window.addEventListener('load', function() {
+            var script = document.createElement('script');
+            script.src = 'https://www.googletagmanager.com/gtag/js?id=G-WZQ6TSRJVG';
+            script.async = true;
+            document.head.appendChild(script);
+            
+            script.onload = function() {
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){dataLayer.push(arguments);}
+                gtag('js', new Date());
+                gtag('config', 'G-WZQ6TSRJVG');
+            };
+        });
+    </script>
 </head>
     <script>
         tailwind.config = {

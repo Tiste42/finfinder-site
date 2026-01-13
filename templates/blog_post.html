@@ -261,13 +261,17 @@
     </div>
 </nav>
 
-<!-- Featured Image Header -->
+<!-- Featured Image Header - Optimized for performance -->
 <header class="relative overflow-hidden bg-gradient-to-br from-blue-900 via-blue-800 to-cyan-700 {% if post.featured_image %}h-[28rem]{% else %}h-72{% endif %}">
     {% if post.featured_image %}
     <img 
         src="{{ url_for('static', filename=post.featured_image) }}" 
         alt="{{ post.featured_image_alt if post.featured_image_alt else post.title }}"
         class="absolute inset-0 w-full h-full object-cover opacity-95"
+        width="1200"
+        height="448"
+        fetchpriority="high"
+        decoding="async"
     >
     {% endif %}
     <div class="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent"></div>
@@ -391,7 +395,7 @@
             {% for related_post in related_posts[:3] %}
             <article class="related-post-card bg-white rounded-xl shadow-lg overflow-hidden border border-gray-100">
                 <a href="{{ url_for('blog_post', slug=related_post.slug) }}" class="block">
-                    <!-- Thumbnail -->
+                    <!-- Thumbnail - Optimized with lazy loading -->
                     <div class="relative h-40 bg-gradient-to-br from-blue-100 to-cyan-100">
                         {% if related_post.featured_image %}
                           <img 
@@ -399,6 +403,9 @@
                               alt="{{ related_post.featured_image_alt if related_post.featured_image_alt else related_post.title }}"
                             class="w-full h-full object-cover"
                             loading="lazy"
+                            decoding="async"
+                            width="400"
+                            height="160"
                         >
                         {% else %}
                         <div class="w-full h-full flex items-center justify-center">
