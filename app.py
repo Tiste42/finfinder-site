@@ -254,6 +254,12 @@ def finsights():
     posts_sorted = sorted(posts, key=lambda x: x.get('date_published', x.get('date', '')), reverse=True)
     return render_template('finsights.html', posts=posts_sorted)
 
+# SEO Redirect: Old slug to new slug (preserve Google rankings)
+@app.route('/finsights/surfboard-fin-prices-skyrocketed-200-300')
+def redirect_old_fins_price_post():
+    """301 redirect from old URL to new URL for SEO preservation"""
+    return redirect(url_for('blog_post', slug='why-are-fins-so-expensive-real-costs'), code=301)
+
 @app.route('/finsights/<slug>')
 def blog_post(slug):
     """Renders a specific blog post page."""
