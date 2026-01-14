@@ -1,2 +1,4 @@
 User-agent: *
 Disallow: /ask
+
+Sitemap: https://finfinder.ai/sitemap.xml

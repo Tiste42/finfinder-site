@@ -6,8 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}Fin Finder | Expert Surfboard Fin Knowledge{% endblock %}</title>
     <meta name="description" content="{% block description %}Fin Finder is your expert guide to surfboard fins. Learn about fin types, setups, and get personalized recommendations.{% endblock %}">
-    {% set canonical_url = request.url.split('?')[0] if request.url and '?' in request.url else (request.url if request.url else url_for(request.endpoint or 'home', _external=True)) %}
+    {% set canonical_url = url_for(request.endpoint or 'home', _external=True, **request.view_args) if request.endpoint else 'https://finfinder.ai/' %}
     <link rel="canonical" href="{{ canonical_url }}">
+    <link rel="sitemap" type="application/xml" href="https://finfinder.ai/sitemap.xml">
     
     <!-- Preconnect to external domains for faster loading -->
     <link rel="preconnect" href="https://cdn.tailwindcss.com" crossorigin>

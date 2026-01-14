@@ -140,7 +140,7 @@ def inject_active_page():
         return {'active_page': 'fin_setups'}
     elif request.path == '/fin-systems':
         return {'active_page': 'fin_systems'}
-    elif request.path == '/longboard-fins/':
+    elif request.path == '/longboard-fins':
         return {'active_page': 'longboard_fins'}
     elif request.path == '/fin-sizing-guide':
         return {'active_page': 'fin_sizing_guide'}
