@@ -438,11 +438,11 @@ For a surfer of your weight (170lbs) in small waves, you want fins that generate
 🎯 **HERE'S WHAT I RECOMMEND:**
 
 FCS OPTIONS:
-🏆 **FCS 2 Performer PC Tri-Fin Set** - https://amzn.to/3T5pcG8
-💰 **TOPWAYS Fiberglass Honeycomb G5** - https://amzn.to/3HldRiP
+🏆 **FCS 2 Performer PC Tri-Fin Set** - https://amzn.to/4bgFEht
+💰 **TOPWAYS Fiberglass Honeycomb G5** - https://amzn.to/4bxAjSP
 
 FUTURES OPTIONS:
-🏆 **Futures Fins JJF Alpha Medium** - https://amzn.to/4ktBaWj
+🏆 **Futures Fins JJF Alpha Medium** - https://amzn.to/3YyRBYd
 💰 **Ho Stevie! Thruster HexCore** - https://amzn.to/3StgcdW
 
 💡 **WANT MORE SPECIFICITY?**
@@ -541,84 +541,86 @@ ADVANCED:
 AFFILIATE PRODUCT MATRIX - Use these EXACT products and links when making recommendations:
 
 === THRUSTER SETS (3-fin) ===
-Category Link: https://amzn.to/3SZ0tDp
+Category Link: https://amzn.to/4qeLW5H
 
 SMALL THRUSTER:
-- FCS Budget: AQUBONA G3 FCS Half Carbon - https://amzn.to/4jLwp9D
+- FCS Premium: FCS II Performer Neo Glass Tri Fin Set - https://amzn.to/4jJOnee
+- FCS Budget: AQUBONA G3 FCS Half Carbon - https://amzn.to/4aYK1h0
 - Futures Premium: Futures Fins R4 - https://amzn.to/3HhEUeS
-- Futures Budget: AQUBONA G3 Futures Half Carbon - https://amzn.to/4mAOee9
+- Futures Budget: AQUBONA G3 Futures Half Carbon - https://amzn.to/4pNReEo
 
 MEDIUM THRUSTER:
-- FCS Premium: FCS 2 Performer PC Tri-Fin Set - https://amzn.to/3T5pcG8
-- FCS Budget: TOPWAYS Fiberglass Honeycomb G5 - https://amzn.to/3HldRiP
-- Futures Premium: Futures Fins JJF Alpha Medium - https://amzn.to/4ktBaWj
+- FCS Premium: FCS 2 Performer PC Tri-Fin Set - https://amzn.to/4bgFEht
+- FCS Budget: TOPWAYS Fiberglass Honeycomb G5 - https://amzn.to/4bxAjSP
+- Futures Premium: Futures Fins JJF Alpha Medium - https://amzn.to/3YyRBYd
 - Futures Budget: Ho Stevie! Thruster HexCore - https://amzn.to/3StgcdW
 
 LARGE THRUSTER:
-- FCS Premium: FCS II AM Performance Core - https://amzn.to/43yxNWN
-- FCS Budget: BPS New Zealand G7 - https://amzn.to/4mEBi6T
+- FCS Premium: FCS II AM Performance Core Tri Fin Set - https://amzn.to/3Ls5NPM
+- FCS Budget: BPS New Zealand G7 - https://amzn.to/49AaeQC
 - Futures Premium: Futures Fins JJ-2 Large TECHFLEX - https://amzn.to/4dZLkvD
-- Futures Budget: Futures Fins F8 Alpha Thruster - https://amzn.to/4mEBzqr
+- Futures Budget: Futures Fins F8 Alpha Thruster - https://amzn.to/4qiG8YK
 
 === QUAD SETS (4-fin) ===
-Category Link: https://amzn.to/4jryKWM
+Category Link: https://amzn.to/3YX0ScR
 
 SMALL QUAD:
-- FCS Premium: FCS Carver Eco Neo Glass - https://amzn.to/45C41Dd
+- FCS Premium: FCS Carver Eco Neo Glass - https://amzn.to/45c7Eil
 - FCS Budget: UPSURF S+GL Quad Set - https://amzn.to/4dCDgjU
-- Futures Premium: Futures Fins Legacy F4 Small - https://amzn.to/4jLxC0F
-- Futures Budget: UPSURF Quad Set S/M - https://amzn.to/3FqFC99
+- Futures Premium: Futures Fins Legacy F4 Small Quad - https://amzn.to/4btiR1J
+- Futures Budget: UPSURF Quad Set S/M - https://amzn.to/4qXaAYB
 
 MEDIUM QUAD:
-- FCS Premium: FCS 2 Pyzel PC Air Core Quad - https://amzn.to/43DlnNv
-- FCS Budget: Ho Stevie! Quad HexCore - https://amzn.to/3FFkdsJ
-- Futures Premium: Futures Fins AM1 Tech-Flex - https://amzn.to/3ZbFnFv
+- FCS Premium: FCS 2 Pyzel PC Air Core Quad - https://amzn.to/4jAPY5Q
+- FCS Budget: Ho Stevie! Quad HexCore - https://amzn.to/3NhdOHO
+- Futures Premium: Futures Fins AM1 Tech-Flex Medium - https://amzn.to/4sDcnDF
+- Futures Budget: Ho Stevie! Quad HexCore - https://amzn.to/4byfoip
 
 LARGE QUAD:
-- FCS Premium: FCS II Matt Biolos Tri-Quad - https://amzn.to/4dEKGU5
+- FCS Premium: FCS II Harley Mid Tri-Quad PC Large - https://amzn.to/4sEnbBx
 - FCS Budget: UPSURF K2.1 Quad Set - https://amzn.to/4kM443H
 - Futures Premium: Futures Fins F8 Honeycomb Quad - https://amzn.to/3Z7ZLHC
-- Futures Budget: Surf Squared 5-Fin Set - https://amzn.to/4kn4vSn
+- Futures Budget: Surf Squared 5-Fin Set - https://amzn.to/49z2yxL
 
 === TWIN FINS ===
-Category Link: https://amzn.to/3ZGiZUQ
+Category Link: https://amzn.to/45bY5Qq
 
 UPRIGHT TWINS:
-- FCS Premium: FCS II Power Twin PG - https://amzn.to/3Fxufw2
-- Futures Premium: FT1 Honeycomb Twin - https://amzn.to/3HiVCdI
+- FCS Premium: FCS II Power Twin + 1 PG - https://amzn.to/4qRwT1I
+- Futures Premium: FT1 Honeycomb Twin Fin - https://amzn.to/3LyesAb
 - Budget: Surf Squared Twin/Thruster/Quad Set - https://amzn.to/4jppiDz
 
 KEEL TWINS:
-- FCS Premium: FCS II Modern Keel PG Twin - https://amzn.to/4mL3m8S
-- Futures Premium: Futures Fins K2 Fiberglass Keel - https://amzn.to/43kuJig
-- Budget: Ho Stevie! Surfboard Twin Keel - https://amzn.to/4jrpS3q
+- FCS Premium: FCS II Modern Keel PG Twin - https://amzn.to/45Fzx2k
+- Futures Premium: Futures Fins K2 Fiberglass Keel - https://amzn.to/49QmyNM
+- Budget: Ho Stevie! Surfboard Twin Keel - https://amzn.to/4jEmFiF
 
 === LONGBOARD SINGLE FINS ===
-Category Link: https://amzn.to/4dMqGyW
+Category Link: https://amzn.to/49uKID3
 
 PIVOT FINS: 
-- FCS Connect Glass Flex - https://amzn.to/3HzUG4I
-- Abahub 9/10" - https://amzn.to/3ZI82SG
+- FCS Connect Glass Flex Single Fin - https://amzn.to/49zT5qd
+- Abahub 9/10" - https://amzn.to/49wXdqL
 
 D-FINS:
-- UPSURF 10" Center D Fin - https://amzn.to/4kD04mF
-- DORSAL 8.5" Center D Fin - https://amzn.to/3Z8k3Rg
+- UPSURF 10" Center D Fin - https://amzn.to/4pzvfR9
+- DORSAL 8.5" Center D Fin - https://amzn.to/49JR0Iq
 
 HATCHET FINS:
-- DORSAL Modified Hatchet Pivot - https://amzn.to/4kgHYq5
+- DORSAL Modified Hatchet Pivot Polycarbonate - https://amzn.to/3Nlpe7u
 - Culture Supply 9" Hatchet Noserider - https://amzn.to/43mpe2B
 
 FLEX FINS:
-- DORSAL Flex Pintail 9.75" - https://amzn.to/43IZpc0
-- PACIFIC VIBRATIONS 9.25" VOLAN Flex - https://amzn.to/4jt78kb
+- DORSAL Flex Pintail 9.75" - https://amzn.to/43lZpc0
+- PACIFIC VIBRATIONS 9.25" VOLAN Flex Hull - https://amzn.to/4jt78kb
 
-SIDE BITES: Ho Stevie! Side Bite Fins - https://amzn.to/452OyvQ
+SIDE BITES: Ho Stevie! Side Bite Fins - https://amzn.to/3YDTUt2
 
 ⚠️ DEFAULT RECOMMENDATIONS (Use these if you lack info):
 
 WHEN UNSURE, RECOMMEND MEDIUM THRUSTERS (most versatile):
-FCS: **FCS 2 Performer PC Tri-Fin Set** - https://amzn.to/3T5pcG8 (Premium) and **TOPWAYS Fiberglass Honeycomb G5** - https://amzn.to/3HldRiP (Budget)
-FUTURES: **Futures Fins JJF Alpha Medium** - https://amzn.to/4ktBaWj (Premium) and **Ho Stevie! Thruster HexCore** - https://amzn.to/3StgcdW (Budget)
+FCS: **FCS 2 Performer PC Tri-Fin Set** - https://amzn.to/4bgFEht (Premium) and **TOPWAYS Fiberglass Honeycomb G5** - https://amzn.to/4bxAjSP (Budget)
+FUTURES: **Futures Fins JJF Alpha Medium** - https://amzn.to/3YyRBYd (Premium) and **Ho Stevie! Thruster HexCore** - https://amzn.to/3StgcdW (Budget)
 
 RESPONSE FORMAT - FOLLOW THIS EXACTLY:
 1. START with EXPLANATION/RESEARCH (Why these fins work, principles)
@@ -670,7 +672,7 @@ Current question: {question}
         # VALIDATION: Check if response includes product links
         if 'amzn.to' not in answer:
             logging.warning("⚠️ AI response missing product links! Adding default recommendations.")
-            answer += "\n\n🎯 HERE'S WHAT I RECOMMEND:\n\nFCS OPTIONS:\n🏆 **FCS 2 Performer PC Tri-Fin Set** - https://amzn.to/3T5pcG8\n💰 **TOPWAYS Fiberglass Honeycomb G5** - https://amzn.to/3HldRiP\n\nFUTURES OPTIONS:\n🏆 **Futures Fins JJF Alpha Medium** - https://amzn.to/4ktBaWj\n💰 **Ho Stevie! Thruster HexCore** - https://amzn.to/3StgcdW\n\nThese are versatile all-around fins that work for most surfers!"
+            answer += "\n\n🎯 HERE'S WHAT I RECOMMEND:\n\nFCS OPTIONS:\n🏆 **FCS 2 Performer PC Tri-Fin Set** - https://amzn.to/4bgFEht\n💰 **TOPWAYS Fiberglass Honeycomb G5** - https://amzn.to/4bxAjSP\n\nFUTURES OPTIONS:\n🏆 **Futures Fins JJF Alpha Medium** - https://amzn.to/3YyRBYd\n💰 **Ho Stevie! Thruster HexCore** - https://amzn.to/3StgcdW\n\nThese are versatile all-around fins that work for most surfers!"
         
         # Add AI response to history
         session['conversation_history'].append(f"Assistant: {answer}")
