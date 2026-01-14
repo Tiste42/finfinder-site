@@ -5,7 +5,50 @@
 
 {% block description %}Complete surfboard fin sizing guide with weight-based chart, volume considerations, skill level factors, and personalized AI recommendations for perfect fin selection.{% endblock %}
 
+{% block og_tags %}
+{{ super() }}
+<meta property="og:image" content="{{ url_for('static', filename='understanding_fin_size_categories.webp', _external=True) }}">
+<meta property="og:image:alt" content="Surfboard fin sizing guide infographic showing XS, S, M, L, and XL fin sizes with rider weight ranges">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="675">
+<meta name="twitter:image" content="{{ url_for('static', filename='understanding_fin_size_categories.webp', _external=True) }}">
+<meta name="twitter:image:alt" content="Surfboard fin sizing guide infographic showing XS, S, M, L, and XL fin sizes">
+{% endblock %}
+
 {% block content %}
+
+<!-- Structured Data for SEO -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "The Ultimate Surfboard Fin Sizing Guide",
+  "description": "Complete surfboard fin sizing guide with weight-based chart, volume considerations, skill level factors, and personalized AI recommendations for perfect fin selection.",
+  "image": {
+    "@type": "ImageObject",
+    "url": "{{ url_for('static', filename='understanding_fin_size_categories.webp', _external=True) }}",
+    "width": 1200,
+    "height": 675,
+    "alt": "Surfboard fin sizing guide infographic showing XS, S, M, L, and XL fin sizes with rider weight ranges"
+  },
+  "author": {
+    "@type": "Organization",
+    "name": "Fin Finder"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Fin Finder",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "{{ url_for('static', filename='finfinderlogolargeblavktext.png', _external=True) }}"
+    }
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "{{ url_for('fin_sizing_guide', _external=True) }}"
+  }
+}
+</script>
 
 <!-- Hero Section - Matching Home/Recommender Style -->
 <section class="relative h-96 bg-gradient-to-br from-blue-900 via-blue-800 to-cyan-700 overflow-hidden">
@@ -278,6 +321,23 @@
         <div class="form-section p-8 md:p-12 form-animation hover-lift">
             <h2 class="text-3xl font-bold text-center text-gray-900 mb-8">Understanding Fin Size Categories</h2>
             <p class="text-center text-gray-600 mb-12 text-lg">Fin sizes are typically categorized from XS to XL - here's what each means</p>
+            
+            <!-- Fin Size Categories Infographic -->
+            <div class="mb-12 text-center">
+                <picture>
+                    <source srcset="{{ url_for('static', filename='understanding_fin_size_categories.webp') }}" type="image/webp">
+                    <img 
+                        src="{{ url_for('static', filename='understanding_fin_size_ categories.jpg') }}" 
+                        alt="Surfboard fin sizing guide infographic showing XS, S, M, L, and XL fin sizes with rider weight ranges, base and height measurements, and performance characteristics for each size category"
+                        title="Understanding Surfboard Fin Sizing: XS to XL Size Guide"
+                        class="w-full max-w-5xl mx-auto rounded-lg shadow-2xl hover:shadow-3xl transition-shadow duration-300"
+                        loading="lazy"
+                        width="1200"
+                        height="675"
+                    >
+                </picture>
+                <p class="mt-4 text-sm text-gray-600 italic">Visual guide to surfboard fin sizes from XS to XL based on rider weight and performance needs</p>
+            </div>
             
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
                 <div class="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 hover-card">
