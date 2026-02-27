@@ -6,13 +6,13 @@
 
 {% block og_title %}{{ post.title }}{% endblock %}
 {% block og_description %}{{ post.meta_description if post.meta_description else post.excerpt }}{% endblock %}
-{% block og_image %}{{ url_for('static', filename=post.featured_image, _external=True) if post.featured_image else url_for('static', filename='fin_finder_logo_transparent.png', _external=True) }}{% endblock %}
+{% block og_image %}{{ url_for('static', filename=post.featured_image, _external=True) if post.featured_image else url_for('static', filename='og-default.png', _external=True) }}{% endblock %}
 {% block og_url %}{{ request.url.split('?')[0] if request.url else url_for('blog_post', slug=post.slug, _external=True) }}{% endblock %}
 {% block og_type %}article{% endblock %}
 
 {% block twitter_title %}{{ post.title }}{% endblock %}
 {% block twitter_description %}{{ post.meta_description if post.meta_description else post.excerpt }}{% endblock %}
-{% block twitter_image %}{{ url_for('static', filename=post.featured_image, _external=True) if post.featured_image else url_for('static', filename='fin_finder_logo_transparent.png', _external=True) }}{% endblock %}
+{% block twitter_image %}{{ url_for('static', filename=post.featured_image, _external=True) if post.featured_image else url_for('static', filename='og-default.png', _external=True) }}{% endblock %}
 
 <!-- Article Meta Tags -->
 <meta property="article:author" content="{{ post.author if post.author else 'Fin Finder Team' }}">
@@ -175,38 +175,6 @@
 }
 </script>
 
-<!-- Article Schema -->
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Article",
-  "headline": "{{ post.title }}",
-  "description": "{{ post.meta_description if post.meta_description else post.excerpt }}",
-  "image": "{{ url_for('static', filename=post.featured_image, _external=True) if post.featured_image else url_for('static', filename='fin_finder_logo_transparent.png', _external=True) }}",
-  "author": {
-    "@type": "{% if post.author == 'FinFinder Team' or post.author == 'FinFinder.ai' or post.author == 'Fin Finder Team' %}Organization{% else %}Person{% endif %}",
-    "name": "{{ post.author if post.author else 'Fin Finder Team' }}"
-  },
-  "publisher": {
-    "@type": "Organization",
-    "name": "FinFinder.ai",
-    "logo": {
-      "@type": "ImageObject",
-      "url": "{{ url_for('static', filename='fin_finder_logo_transparent.png', _external=True) }}"
-    }
-  },
-  "datePublished": "{{ post.date_published if post.date_published else post.date }}",
-  "dateModified": "{{ post.date_modified if post.date_modified else post.date_published if post.date_published else post.date }}",
-  "mainEntityOfPage": {
-    "@type": "WebPage",
-    "@id": "{{ request.url.split('?')[0] }}"
-  },
-  "articleSection": "{{ post.category|title if post.category else 'General' }}",
-  "inLanguage": "en-US",
-  "keywords": "{{ post.tags|join(', ') if post.tags else '' }}"
-}
-</script>
-
 <!-- Schema.org BlogPosting Markup -->
 <script type="application/ld+json">
 {
@@ -234,9 +202,32 @@
     "@id": "{{ request.url.split('?')[0] }}"
   },
   "articleSection": "{{ post.category|title if post.category else 'General' }}",
+  "inLanguage": "en-US",
   "keywords": "{{ post.tags|join(', ') if post.tags else '' }}"
 }
 </script>
+
+{% if post.faqs and post.faqs|length > 0 %}
+<!-- FAQ Schema for rich snippets and AI citation -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {% for faq in post.faqs %}
+    {
+      "@type": "Question",
+      "name": "{{ faq.question }}",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "{{ faq.answer }}"
+      }
+    }{% if not loop.last %},{% endif %}
+    {% endfor %}
+  ]
+}
+</script>
+{% endif %}
 
 <!-- Breadcrumb Navigation -->
 <nav class="bg-gray-50 border-b border-gray-200" aria-label="Breadcrumb">

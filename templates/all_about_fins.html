@@ -6,6 +6,74 @@
 {% block description %}Complete guide to surfboard fins - learn how fin base, depth, rake, foil, and materials affect your surfing performance. Expert explanations with diagrams.{% endblock %}
 
 {% block content %}
+<!-- BreadcrumbList Schema -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://finfinder.ai" },
+    { "@type": "ListItem", "position": 2, "name": "All About Surfboard Fins", "item": "https://finfinder.ai/all-about-surfboard-fins" }
+  ]
+}
+</script>
+
+<!-- WebPage + Speakable Schema -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "name": "The Ultimate Guide to Surfboard Fins",
+  "description": "Complete guide to surfboard fins - learn how fin base, depth, rake, foil, and materials affect your surfing performance.",
+  "speakable": {
+    "@type": "SpeakableSpecification",
+    "cssSelector": ["h1", ".speakable-summary"]
+  }
+}
+</script>
+
+<!-- FAQ Schema -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What do surfboard fins do?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Surfboard fins provide directional stability, control, and drive. They act like the keel of a boat, preventing the board from sliding sideways and allowing you to generate speed and perform turns. Without fins, a surfboard would spin out and be nearly impossible to control."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How does fin base length affect surfing performance?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "A longer fin base provides more drive and drawn-out turns, making it better for generating speed. A shorter base allows for quicker, sharper turns and a more pivotal feel, ideal for tight pocket surfing."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is fin rake and how does it affect turns?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Fin rake (or sweep) is the angle of the fin tip relative to its base. More rake creates longer, drawn-out turns and better hold in bigger waves. Less rake provides a tighter turning radius, better suited for smaller, weaker waves where quick direction changes are needed."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What fin materials are best for surfing?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Fiberglass fins offer the best balance of flex and response for most surfers. Carbon fiber fins are stiffer and faster, ideal for powerful waves. Plastic/nylon fins are budget-friendly but less responsive. Honeycomb cores reduce weight while maintaining stiffness."
+      }
+    }
+  ]
+}
+</script>
+
 <!-- Hero Section with Background Image -->
 <section class="relative bg-gradient-to-br from-blue-900 via-blue-800 to-cyan-700 text-white py-16 overflow-hidden">
     <!-- Background Image -->
@@ -308,17 +376,62 @@
     </div>
 </section>
 
+<!-- Related Guides Section -->
+<section class="py-12 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 class="text-3xl font-bold text-gray-900 mb-8 text-center">Explore More Fin Guides</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <a href="{{ url_for('fin_sizing_guide') }}" class="group bg-gradient-to-br from-blue-50 to-cyan-50 rounded-xl p-6 border border-blue-100 hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
+                <div class="flex items-center mb-3">
+                    <div class="w-10 h-10 bg-blue-600 rounded-lg flex items-center justify-center mr-3">
+                        <i class="fas fa-ruler-combined text-white"></i>
+                    </div>
+                    <h3 class="font-semibold text-gray-900 group-hover:text-blue-600">Fin Sizing Guide</h3>
+                </div>
+                <p class="text-sm text-gray-600">Find the perfect fin size based on your weight and board</p>
+            </a>
+            <a href="{{ url_for('fin_setups') }}" class="group bg-gradient-to-br from-blue-50 to-cyan-50 rounded-xl p-6 border border-blue-100 hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
+                <div class="flex items-center mb-3">
+                    <div class="w-10 h-10 bg-blue-600 rounded-lg flex items-center justify-center mr-3">
+                        <i class="fas fa-cogs text-white"></i>
+                    </div>
+                    <h3 class="font-semibold text-gray-900 group-hover:text-blue-600">Fin Setups</h3>
+                </div>
+                <p class="text-sm text-gray-600">Compare twin, thruster, quad, and other configurations</p>
+            </a>
+            <a href="{{ url_for('fin_systems') }}" class="group bg-gradient-to-br from-blue-50 to-cyan-50 rounded-xl p-6 border border-blue-100 hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
+                <div class="flex items-center mb-3">
+                    <div class="w-10 h-10 bg-blue-600 rounded-lg flex items-center justify-center mr-3">
+                        <i class="fas fa-plug text-white"></i>
+                    </div>
+                    <h3 class="font-semibold text-gray-900 group-hover:text-blue-600">Fin Systems</h3>
+                </div>
+                <p class="text-sm text-gray-600">FCS vs Futures and other fin box systems explained</p>
+            </a>
+            <a href="{{ url_for('finsights') }}" class="group bg-gradient-to-br from-blue-50 to-cyan-50 rounded-xl p-6 border border-blue-100 hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
+                <div class="flex items-center mb-3">
+                    <div class="w-10 h-10 bg-blue-600 rounded-lg flex items-center justify-center mr-3">
+                        <i class="fas fa-newspaper text-white"></i>
+                    </div>
+                    <h3 class="font-semibold text-gray-900 group-hover:text-blue-600">Finsights Blog</h3>
+                </div>
+                <p class="text-sm text-gray-600">Expert articles and in-depth fin comparisons</p>
+            </a>
+        </div>
+    </div>
+</section>
+
 <style>
     /* Smooth animations */
     @keyframes fadeIn {
         from { opacity: 0; transform: translateY(10px); }
         to { opacity: 1; transform: translateY(0); }
     }
-    
+
     .form-animation {
         animation: fadeIn 0.5s ease-out;
     }
-    
+
     /* Form styling to match other pages */
     .form-section {
         background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);

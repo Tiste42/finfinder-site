@@ -1,4 +1,3 @@
-<!-- Force deployment fix -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,6 +9,11 @@
     <link rel="canonical" href="{{ canonical_url }}">
     <link rel="sitemap" type="application/xml" href="https://finfinder.ai/sitemap.xml">
     
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ url_for('static', filename='favicon-32x32.png') }}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ url_for('static', filename='favicon-16x16.png') }}">
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ url_for('static', filename='apple-touch-icon.png') }}">
+
     <!-- Preconnect to external domains for faster loading -->
     <link rel="preconnect" href="https://cdn.tailwindcss.com" crossorigin>
     <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
@@ -25,7 +29,10 @@
     {% block og_tags %}
     <meta property="og:title" content="{% block og_title %}Fin Finder - Stop Guessing, Start Ripping!{% endblock %}">
     <meta property="og:description" content="{% block og_description %}Get personalized surfboard fin recommendations from our expert system. Find the perfect fins for your unique surfing style, board, and wave conditions.{% endblock %}">
-    <meta property="og:image" content="{% block og_image %}{{ url_for('static', filename='fin_finder_logo_transparent.png', _external=True) }}{% endblock %}">
+    <meta property="og:image" content="{% block og_image %}{{ url_for('static', filename='og-default.png', _external=True) }}{% endblock %}">
+    <meta property="og:image:width" content="{% block og_image_width %}1200{% endblock %}">
+    <meta property="og:image:height" content="{% block og_image_height %}630{% endblock %}">
+    <meta property="og:image:alt" content="{% block og_image_alt %}Fin Finder - Expert Surfboard Fin Recommendations{% endblock %}">
     <meta property="og:url" content="{% block og_url %}{{ canonical_url }}{% endblock %}">
     <meta property="og:type" content="{% block og_type %}website{% endblock %}">
     <meta property="og:site_name" content="Fin Finder">
@@ -34,7 +41,8 @@
     <meta name="twitter:card" content="{% block twitter_card %}summary_large_image{% endblock %}">
     <meta name="twitter:title" content="{% block twitter_title %}Fin Finder - Stop Guessing, Start Ripping!{% endblock %}">
     <meta name="twitter:description" content="{% block twitter_description %}Get personalized surfboard fin recommendations from our expert system.{% endblock %}">
-    <meta name="twitter:image" content="{% block twitter_image %}{{ url_for('static', filename='fin_finder_logo_transparent.png', _external=True) }}{% endblock %}">
+    <meta name="twitter:image" content="{% block twitter_image %}{{ url_for('static', filename='og-default.png', _external=True) }}{% endblock %}">
+    <meta name="twitter:image:alt" content="{% block twitter_image_alt %}Fin Finder - Expert Surfboard Fin Recommendations{% endblock %}">
     {% endblock %}
     
     <!-- Font Awesome - loaded async to not block render -->
@@ -189,11 +197,11 @@
                 <div class="ml-10 flex items-baseline space-x-2 lg:space-x-4">
                     <a href="{{ url_for('home') }}" class="{% if active_page == 'home' %}bg-blue-600 text-white{% else %}text-gray-700 hover:bg-gray-200{% endif %} px-3 py-2 rounded-md text-sm font-medium transition-all duration-200">Home</a>
                     <a href="{{ url_for('recommender_page') }}" class="{% if active_page == 'recommender' %}bg-blue-600 text-white{% else %}text-gray-700 hover:bg-gray-200{% endif %} px-3 py-2 rounded-md text-sm font-medium transition-all duration-200">Fin Recommender</a>
-                    <a href="{{ url_for('all_about_fins') }}" class="{% if active_page == 'all-about-fins' %}bg-blue-600 text-white{% else %}text-gray-700 hover:bg-gray-200{% endif %} px-3 py-2 rounded-md text-sm font-medium transition-all duration-200">All About Fins</a>
-                    <a href="{{ url_for('fin_setups') }}" class="{% if active_page == 'fin-setups' %}bg-blue-600 text-white{% else %}text-gray-700 hover:bg-gray-200{% endif %} px-3 py-2 rounded-md text-sm font-medium transition-all duration-200">Fin Setups</a>
-                    <a href="{{ url_for('fin_systems') }}" class="{% if active_page == 'fin-systems' %}bg-blue-600 text-white{% else %}text-gray-700 hover:bg-gray-200{% endif %} px-3 py-2 rounded-md text-sm font-medium transition-all duration-200">Fin Systems</a>
-                    <a href="{{ url_for('longboard_fins') }}" class="{% if active_page == 'longboard-fins' %}bg-blue-600 text-white{% else %}text-gray-700 hover:bg-gray-200{% endif %} px-3 py-2 rounded-md text-sm font-medium transition-all duration-200">Longboard Fins</a>
-                    <a href="{{ url_for('fin_sizing_guide') }}" class="{% if active_page == 'fin-sizing-guide' %}bg-blue-600 text-white{% else %}text-gray-700 hover:bg-gray-200{% endif %} px-3 py-2 rounded-md text-sm font-medium transition-all duration-200">Fin Sizing Guide</a>
+                    <a href="{{ url_for('all_about_fins') }}" class="{% if active_page == 'all_about_fins' %}bg-blue-600 text-white{% else %}text-gray-700 hover:bg-gray-200{% endif %} px-3 py-2 rounded-md text-sm font-medium transition-all duration-200">All About Fins</a>
+                    <a href="{{ url_for('fin_setups') }}" class="{% if active_page == 'fin_setups' %}bg-blue-600 text-white{% else %}text-gray-700 hover:bg-gray-200{% endif %} px-3 py-2 rounded-md text-sm font-medium transition-all duration-200">Fin Setups</a>
+                    <a href="{{ url_for('fin_systems') }}" class="{% if active_page == 'fin_systems' %}bg-blue-600 text-white{% else %}text-gray-700 hover:bg-gray-200{% endif %} px-3 py-2 rounded-md text-sm font-medium transition-all duration-200">Fin Systems</a>
+                    <a href="{{ url_for('longboard_fins') }}" class="{% if active_page == 'longboard_fins' %}bg-blue-600 text-white{% else %}text-gray-700 hover:bg-gray-200{% endif %} px-3 py-2 rounded-md text-sm font-medium transition-all duration-200">Longboard Fins</a>
+                    <a href="{{ url_for('fin_sizing_guide') }}" class="{% if active_page == 'fin_sizing_guide' %}bg-blue-600 text-white{% else %}text-gray-700 hover:bg-gray-200{% endif %} px-3 py-2 rounded-md text-sm font-medium transition-all duration-200">Fin Sizing Guide</a>
                     <a href="{{ url_for('finsights') }}" class="{% if active_page == 'finsights' %}bg-blue-600 text-white{% else %}text-gray-700 hover:bg-gray-200{% endif %} px-3 py-2 rounded-md text-sm font-medium transition-all duration-200">Finsights (Blog)</a>
                 </div>
             </div>
@@ -221,12 +229,6 @@
         </div>
     </div>
 </nav>
-
-
-    <!-- Debug info - remove in production -->
-    <div style="display:none;">
-        Debug: Active page is: {{ active_page|default('not set') }}
-    </div>
 
 
     <!-- Main Content Block -->
@@ -315,7 +317,7 @@
        
         <!-- Copyright -->
         <div class="border-t border-blue-600/30 mt-8 pt-6 text-center">
-            <p class="text-blue-200 text-sm">&copy; 2025 Fin Finder | Stop Guessing, Start Ripping!</p>
+            <p class="text-blue-200 text-sm">&copy; {{ now.year }} Fin Finder | Stop Guessing, Start Ripping!</p>
         </div>
     </div>
 </footer>

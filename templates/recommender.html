@@ -215,6 +215,50 @@
     </div>
 </section>
 
+<!-- Related Guides Section -->
+<section class="py-12 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 class="text-3xl font-bold text-gray-900 mb-8 text-center">Learn More About Fins</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <a href="{{ url_for('all_about_fins') }}" class="group bg-gradient-to-br from-blue-50 to-cyan-50 rounded-xl p-6 border border-blue-100 hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
+                <div class="flex items-center mb-3">
+                    <div class="w-10 h-10 bg-blue-600 rounded-lg flex items-center justify-center mr-3">
+                        <i class="fas fa-book-open text-white"></i>
+                    </div>
+                    <h3 class="font-semibold text-gray-900 group-hover:text-blue-600">All About Fins</h3>
+                </div>
+                <p class="text-sm text-gray-600">Master fin anatomy, materials, and design principles</p>
+            </a>
+            <a href="{{ url_for('fin_sizing_guide') }}" class="group bg-gradient-to-br from-blue-50 to-cyan-50 rounded-xl p-6 border border-blue-100 hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
+                <div class="flex items-center mb-3">
+                    <div class="w-10 h-10 bg-blue-600 rounded-lg flex items-center justify-center mr-3">
+                        <i class="fas fa-ruler-combined text-white"></i>
+                    </div>
+                    <h3 class="font-semibold text-gray-900 group-hover:text-blue-600">Fin Sizing Guide</h3>
+                </div>
+                <p class="text-sm text-gray-600">Weight-based charts and expert sizing advice</p>
+            </a>
+            <a href="{{ url_for('fin_setups') }}" class="group bg-gradient-to-br from-blue-50 to-cyan-50 rounded-xl p-6 border border-blue-100 hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
+                <div class="flex items-center mb-3">
+                    <div class="w-10 h-10 bg-blue-600 rounded-lg flex items-center justify-center mr-3">
+                        <i class="fas fa-cogs text-white"></i>
+                    </div>
+                    <h3 class="font-semibold text-gray-900 group-hover:text-blue-600">Fin Setups</h3>
+                </div>
+                <p class="text-sm text-gray-600">Compare twin, thruster, quad, and other configurations</p>
+            </a>
+            <a href="{{ url_for('finsights') }}" class="group bg-gradient-to-br from-blue-50 to-cyan-50 rounded-xl p-6 border border-blue-100 hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
+                <div class="flex items-center mb-3">
+                    <div class="w-10 h-10 bg-blue-600 rounded-lg flex items-center justify-center mr-3">
+                        <i class="fas fa-newspaper text-white"></i>
+                    </div>
+                    <h3 class="font-semibold text-gray-900 group-hover:text-blue-600">Finsights Blog</h3>
+                </div>
+                <p class="text-sm text-gray-600">Expert articles and in-depth fin comparisons</p>
+            </a>
+        </div>
+    </div>
+</section>
 
 <script>
 document.addEventListener('DOMContentLoaded', function() {

@@ -6,6 +6,74 @@
 {% block description %}Complete guide to surfboard fin setups - compare twin vs thruster vs quad configurations. Learn which fin setup is best for your surfing style and wave conditions.{% endblock %}
 
 {% block content %}
+<!-- BreadcrumbList Schema -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://finfinder.ai" },
+    { "@type": "ListItem", "position": 2, "name": "Fin Setups", "item": "https://finfinder.ai/fin-setups" }
+  ]
+}
+</script>
+
+<!-- WebPage + Speakable Schema -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "name": "Surfboard Fin Setups: Twin vs Thruster vs Quad Compared",
+  "description": "Complete guide to surfboard fin setups - compare twin vs thruster vs quad configurations for your surfing style.",
+  "speakable": {
+    "@type": "SpeakableSpecification",
+    "cssSelector": ["h1", ".speakable-summary"]
+  }
+}
+</script>
+
+<!-- FAQ Schema -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is the difference between a thruster and a quad fin setup?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "A thruster has 3 fins (two side fins and one center fin) providing balanced control and versatility in all conditions. A quad has 4 fins (two on each side, no center fin) which generates more speed and better hold on rail, excelling in both small mushy waves and big powerful surf. Thrusters offer more controlled turns while quads feel faster and looser."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What fin setup is best for beginners?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "A thruster (3-fin) setup is best for beginners because it provides the most stability and control. The center fin adds directional stability that helps new surfers maintain balance and catch waves more easily. Avoid twin fins as a beginner since they can feel loose and slide out."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Are twin fins good for small waves?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes, twin fins are excellent for small waves. With only two fins creating minimal drag, twin setups generate speed easily in weak surf. They provide a loose, skatey feel that makes small wave surfing more fun and allow for quick, snappy turns in tight pockets."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is a 5-fin box setup?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "A 5-fin box setup has five fin plugs in the board, allowing you to run a thruster (using 3 plugs), a quad (using 4 plugs), or a twin (using 2 plugs). This gives maximum versatility to experiment with different configurations on the same board depending on wave conditions."
+      }
+    }
+  ]
+}
+</script>
+
 <!-- Hero Section - Matching Home/Recommender Style -->
 <section class="relative h-96 bg-gradient-to-br from-blue-900 via-blue-800 to-cyan-700 overflow-hidden">
     <img src="/static/woodfins.jpeg" alt="Wooden surfboard fins" class="w-full h-full object-cover" style="object-position: center center;">
@@ -347,54 +415,99 @@
     </div>
 </section>
 
+<!-- Related Guides Section -->
+<section class="py-12 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 class="text-3xl font-bold text-gray-900 mb-8 text-center">Explore More Fin Guides</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <a href="{{ url_for('all_about_fins') }}" class="group bg-gradient-to-br from-blue-50 to-cyan-50 rounded-xl p-6 border border-blue-100 hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
+                <div class="flex items-center mb-3">
+                    <div class="w-10 h-10 bg-blue-600 rounded-lg flex items-center justify-center mr-3">
+                        <i class="fas fa-book-open text-white"></i>
+                    </div>
+                    <h3 class="font-semibold text-gray-900 group-hover:text-blue-600">All About Fins</h3>
+                </div>
+                <p class="text-sm text-gray-600">Master fin anatomy, materials, and design principles</p>
+            </a>
+            <a href="{{ url_for('fin_sizing_guide') }}" class="group bg-gradient-to-br from-blue-50 to-cyan-50 rounded-xl p-6 border border-blue-100 hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
+                <div class="flex items-center mb-3">
+                    <div class="w-10 h-10 bg-blue-600 rounded-lg flex items-center justify-center mr-3">
+                        <i class="fas fa-ruler-combined text-white"></i>
+                    </div>
+                    <h3 class="font-semibold text-gray-900 group-hover:text-blue-600">Fin Sizing Guide</h3>
+                </div>
+                <p class="text-sm text-gray-600">Find the perfect fin size based on your weight and board</p>
+            </a>
+            <a href="{{ url_for('longboard_fins') }}" class="group bg-gradient-to-br from-blue-50 to-cyan-50 rounded-xl p-6 border border-blue-100 hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
+                <div class="flex items-center mb-3">
+                    <div class="w-10 h-10 bg-blue-600 rounded-lg flex items-center justify-center mr-3">
+                        <i class="fas fa-water text-white"></i>
+                    </div>
+                    <h3 class="font-semibold text-gray-900 group-hover:text-blue-600">Longboard Fins</h3>
+                </div>
+                <p class="text-sm text-gray-600">Single fin and 2+1 setup guide for longboards</p>
+            </a>
+            <a href="{{ url_for('finsights') }}" class="group bg-gradient-to-br from-blue-50 to-cyan-50 rounded-xl p-6 border border-blue-100 hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
+                <div class="flex items-center mb-3">
+                    <div class="w-10 h-10 bg-blue-600 rounded-lg flex items-center justify-center mr-3">
+                        <i class="fas fa-newspaper text-white"></i>
+                    </div>
+                    <h3 class="font-semibold text-gray-900 group-hover:text-blue-600">Finsights Blog</h3>
+                </div>
+                <p class="text-sm text-gray-600">Expert articles and in-depth fin comparisons</p>
+            </a>
+        </div>
+    </div>
+</section>
+
 <style>
     /* Smooth animations */
     @keyframes fadeIn {
         from { opacity: 0; transform: translateY(10px); }
         to { opacity: 1; transform: translateY(0); }
     }
-    
+
     .form-animation {
         animation: fadeIn 0.5s ease-out;
     }
-    
+
     /* Form styling to match other pages */
     .form-section {
         background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
         border-radius: 1rem;
         box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
     }
-    
+
     /* Enhanced hover effects */
     .hover-lift:hover {
         transform: translateY(-5px);
         transition: transform 0.3s ease;
     }
-    
+
     .hover-card:hover {
         transform: translateY(-3px);
         box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
     }
-    
+
     .nav-card {
         text-decoration: none;
         display: block;
     }
-    
+
     .nav-card:hover {
         text-decoration: none;
     }
-    
+
     /* Smooth scrolling */
     html {
         scroll-behavior: smooth;
     }
-    
+
     /* Typography improvements */
     .prose p {
         margin-bottom: 1.5rem;
     }
-    
+
     .leading-relaxed {
         line-height: 1.7;
       }

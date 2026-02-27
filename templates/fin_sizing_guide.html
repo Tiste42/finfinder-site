@@ -5,15 +5,12 @@
 
 {% block description %}Complete surfboard fin sizing guide with weight-based chart, volume considerations, skill level factors, and personalized AI recommendations for perfect fin selection.{% endblock %}
 
-{% block og_tags %}
-{{ super() }}
-<meta property="og:image" content="{{ url_for('static', filename='understanding_fin_size_categories.webp', _external=True) }}">
-<meta property="og:image:alt" content="Surfboard fin sizing guide infographic showing XS, S, M, L, and XL fin sizes with rider weight ranges">
-<meta property="og:image:width" content="1200">
-<meta property="og:image:height" content="675">
-<meta name="twitter:image" content="{{ url_for('static', filename='understanding_fin_size_categories.webp', _external=True) }}">
-<meta name="twitter:image:alt" content="Surfboard fin sizing guide infographic showing XS, S, M, L, and XL fin sizes">
-{% endblock %}
+{% block og_image %}{{ url_for('static', filename='understanding_fin_size_categories.webp', _external=True) }}{% endblock %}
+{% block og_image_alt %}Surfboard fin sizing guide infographic showing XS, S, M, L, and XL fin sizes with rider weight ranges{% endblock %}
+{% block og_image_width %}1200{% endblock %}
+{% block og_image_height %}675{% endblock %}
+{% block twitter_image %}{{ url_for('static', filename='understanding_fin_size_categories.webp', _external=True) }}{% endblock %}
+{% block twitter_image_alt %}Surfboard fin sizing guide infographic showing XS, S, M, L, and XL fin sizes{% endblock %}
 
 {% block content %}
 
@@ -47,6 +44,74 @@
     "@type": "WebPage",
     "@id": "{{ url_for('fin_sizing_guide', _external=True) }}"
   }
+}
+</script>
+
+<!-- BreadcrumbList Schema -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://finfinder.ai" },
+    { "@type": "ListItem", "position": 2, "name": "Fin Sizing Guide", "item": "https://finfinder.ai/fin-sizing-guide" }
+  ]
+}
+</script>
+
+<!-- WebPage + Speakable Schema -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "name": "Surfboard Fin Sizing Guide & Chart",
+  "description": "Complete surfboard fin sizing guide with weight-based chart and expert recommendations.",
+  "speakable": {
+    "@type": "SpeakableSpecification",
+    "cssSelector": ["h1", ".speakable-summary"]
+  }
+}
+</script>
+
+<!-- FAQ Schema -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What size surfboard fins should I get for my weight?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Fin sizing is primarily based on your weight: Under 120 lbs use XS fins, 120-150 lbs use Small, 150-180 lbs use Medium, 180-210 lbs use Large, and over 210 lbs use XL fins. Skilled surfers in powerful waves should consider sizing up regardless of weight for additional hold and control."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does board volume affect fin size?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes, board volume affects fin sizing. Higher volume boards generate more speed and momentum, requiring larger fins for adequate control. Lower volume, performance-oriented boards benefit from smaller fins that allow quicker response and less drag."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Should I size up or down on my surfboard fins?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "If you're between sizes, size up for more hold and control (better for powerful waves and heavier boards), or size down for more speed and looseness (better for small waves and performance surfing). Beginners should generally size up for stability."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do skill level and wave conditions affect fin size?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Beginners benefit from larger fins for stability and control. Advanced surfers can use smaller fins for responsiveness. In powerful waves, size up for hold. In small, weak waves, size down to reduce drag and generate speed more easily."
+      }
+    }
+  ]
 }
 </script>
 
@@ -639,17 +704,62 @@
     </div>
 </section>
 
+<!-- Related Guides Section -->
+<section class="py-12 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 class="text-3xl font-bold text-gray-900 mb-8 text-center">Explore More Fin Guides</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <a href="{{ url_for('all_about_fins') }}" class="group bg-gradient-to-br from-blue-50 to-cyan-50 rounded-xl p-6 border border-blue-100 hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
+                <div class="flex items-center mb-3">
+                    <div class="w-10 h-10 bg-blue-600 rounded-lg flex items-center justify-center mr-3">
+                        <i class="fas fa-book-open text-white"></i>
+                    </div>
+                    <h3 class="font-semibold text-gray-900 group-hover:text-blue-600">All About Fins</h3>
+                </div>
+                <p class="text-sm text-gray-600">Master fin anatomy, materials, and design principles</p>
+            </a>
+            <a href="{{ url_for('fin_setups') }}" class="group bg-gradient-to-br from-blue-50 to-cyan-50 rounded-xl p-6 border border-blue-100 hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
+                <div class="flex items-center mb-3">
+                    <div class="w-10 h-10 bg-blue-600 rounded-lg flex items-center justify-center mr-3">
+                        <i class="fas fa-cogs text-white"></i>
+                    </div>
+                    <h3 class="font-semibold text-gray-900 group-hover:text-blue-600">Fin Setups</h3>
+                </div>
+                <p class="text-sm text-gray-600">Compare twin, thruster, quad, and other configurations</p>
+            </a>
+            <a href="{{ url_for('fin_systems') }}" class="group bg-gradient-to-br from-blue-50 to-cyan-50 rounded-xl p-6 border border-blue-100 hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
+                <div class="flex items-center mb-3">
+                    <div class="w-10 h-10 bg-blue-600 rounded-lg flex items-center justify-center mr-3">
+                        <i class="fas fa-plug text-white"></i>
+                    </div>
+                    <h3 class="font-semibold text-gray-900 group-hover:text-blue-600">Fin Systems</h3>
+                </div>
+                <p class="text-sm text-gray-600">FCS vs Futures and other fin box systems explained</p>
+            </a>
+            <a href="{{ url_for('finsights') }}" class="group bg-gradient-to-br from-blue-50 to-cyan-50 rounded-xl p-6 border border-blue-100 hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
+                <div class="flex items-center mb-3">
+                    <div class="w-10 h-10 bg-blue-600 rounded-lg flex items-center justify-center mr-3">
+                        <i class="fas fa-newspaper text-white"></i>
+                    </div>
+                    <h3 class="font-semibold text-gray-900 group-hover:text-blue-600">Finsights Blog</h3>
+                </div>
+                <p class="text-sm text-gray-600">Expert articles and in-depth fin comparisons</p>
+            </a>
+        </div>
+    </div>
+</section>
+
 <style>
     /* Smooth animations */
     @keyframes fadeIn {
         from { opacity: 0; transform: translateY(10px); }
         to { opacity: 1; transform: translateY(0); }
     }
-    
+
     .form-animation {
         animation: fadeIn 0.5s ease-out;
     }
-    
+
     /* Form styling to match other pages */
     .form-section {
         background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);

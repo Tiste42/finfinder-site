@@ -35,7 +35,7 @@ def add_cache_headers(response):
 @app.route('/robots.txt')
 def robots_txt():
     return send_from_directory(app.static_folder, 'robots.txt')
-app.secret_key = 'your-secret-key-for-sessions-change-this-to-something-random'
+app.secret_key = os.environ.get('SECRET_KEY', os.urandom(24))
 
 # Define the base URL for your site
 SITE_URL = "https://finfinder.ai"
@@ -250,9 +250,15 @@ def recommender_page():
 def finsights():
     """Renders the Finsights blog hub page."""
     posts = load_blog_posts()
+    search_query = request.args.get('search', '').strip()
+    if search_query:
+        search_lower = search_query.lower()
+        posts = [p for p in posts if search_lower in p.get('title', '').lower()
+                 or search_lower in p.get('excerpt', '').lower()
+                 or search_lower in ' '.join(p.get('tags', [])).lower()]
     # Sort posts by date (newest first)
     posts_sorted = sorted(posts, key=lambda x: x.get('date_published', x.get('date', '')), reverse=True)
-    return render_template('finsights.html', posts=posts_sorted)
+    return render_template('finsights.html', posts=posts_sorted, search_query=search_query)
 
 # SEO Redirect: Old slug to new slug (preserve Google rankings)
 @app.route('/finsights/surfboard-fin-prices-skyrocketed-200-300')
@@ -309,6 +315,40 @@ def sitemap():
 
     sitemap_xml = render_template('sitemap.xml', pages=pages)
     return Response(sitemap_xml, mimetype='application/xml')
+
+@app.route('/llms.txt')
+def llms_txt():
+    """Serve llms.txt for AI/LLM discoverability"""
+    content = """# Fin Finder
+> Expert surfboard fin recommendations and educational guides at finfinder.ai
+
+## About
+Fin Finder is an expert surfboard fin resource providing AI-powered personalized fin recommendations, educational guides about fin types, setups, sizing, and systems, and a blog (Finsights) with in-depth articles. Founded by Baptiste, a surfer and teacher with 40 years of experience based in San Diego, California.
+
+## Key Pages
+- [Home](https://finfinder.ai/): Overview and navigation to all resources
+- [AI Fin Recommender](https://finfinder.ai/recommender): AI-powered personalized fin recommendations based on weight, skill level, board type, and wave conditions
+- [All About Surfboard Fins](https://finfinder.ai/all-about-surfboard-fins): Comprehensive guide to fin anatomy (base, depth, rake, foil, cant), materials, and how fins affect performance
+- [Fin Setups Compared](https://finfinder.ai/fin-setups): Comparison of single, twin, thruster (3-fin), quad (4-fin), and 5-fin configurations
+- [Fin Systems](https://finfinder.ai/fin-systems): Guide to FCS, FCS II, Futures, and US Box fin systems with compatibility info
+- [Longboard Fins](https://finfinder.ai/longboard-fins): Complete guide to longboard fin types (pivot, hatchet, D-fin, flex), sizing, and placement
+- [Fin Sizing Guide](https://finfinder.ai/fin-sizing-guide): Weight-based sizing charts and expert recommendations for choosing the right fin size
+- [Finsights Blog](https://finfinder.ai/finsights): In-depth articles about fin selection, performance, and surf equipment
+- [About](https://finfinder.ai/about): About the founder and mission
+
+## Key Facts About Surfboard Fins
+- Fin sizing is primarily based on surfer weight: Under 120 lbs = XS, 120-150 lbs = Small, 150-180 lbs = Medium, 180-210 lbs = Large, Over 210 lbs = XL
+- Thruster (3-fin) is the most versatile setup, suitable for all conditions and recommended for beginners
+- Quad (4-fin) generates more down-the-line speed than thrusters, excelling in both small mushy waves and big powerful surf
+- Twin fins are excellent for small waves due to minimal drag and speed generation
+- Single fins provide the smoothest glide and are standard for traditional longboarding
+- FCS and Futures are the two dominant fin box systems; they are NOT interchangeable
+- Longer fin base = more drive and drawn-out turns; deeper fins = more hold; more rake = longer turns
+- Stiffer fins = more stability at high speed; flexible fins = smoother feel and projection out of turns
+- The US Box system is standard for longboard center fins, allowing precise placement adjustment
+- A 5-fin box setup gives maximum versatility: run thruster, quad, or twin on the same board
+"""
+    return Response(content, mimetype='text/plain')
 
 @app.route('/ask', methods=['POST'])
 def ask():

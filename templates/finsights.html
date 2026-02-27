@@ -64,6 +64,7 @@ performance, and surf equipment from the Fin Finder blog.{% endblock %}
             <div class="w-full md:w-96">
                 <div class="relative">
                     <input type="text" id="blog-search" placeholder="Search articles..."
+                        value="{{ search_query if search_query else '' }}"
                         class="search-input w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 transition-all">
                     <i class="fas fa-search absolute left-3 top-3 text-gray-400"></i>
                 </div>

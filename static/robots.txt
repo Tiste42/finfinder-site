@@ -2,3 +2,6 @@ User-agent: *
 Disallow: /ask
 
 Sitemap: https://finfinder.ai/sitemap.xml
+
+# AI/LLM Discoverability
+# https://finfinder.ai/llms.txt
