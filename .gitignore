@@ -95,7 +95,8 @@ venv.bak/
 # IDE & Editor specific
 .vscode/
 .idea/
-.claude/
+.claude/*
+!.claude/commands/
 .project
 .pydevproject
 .settings/
