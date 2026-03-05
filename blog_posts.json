@@ -30,6 +30,24 @@
         "futures quad fins",
         "machado quad fins",
         "quad fin performance"
+      ],
+      "faqs": [
+        {
+          "question": "Are quad fins faster than thrusters?",
+          "answer": "In most conditions, yes. Quads generate speed more efficiently because water flows between the four fins without the drag of a center fin. The difference is most noticeable in smaller, weaker waves where thrusters require constant pumping."
+        },
+        {
+          "question": "When should I use a thruster instead of a quad?",
+          "answer": "Thrusters shine in steep, powerful waves where you need maximum hold and control through vertical turns. If you're surfing overhead-plus surf with critical sections, the center fin gives you the bite and pivot point that quads lack."
+        },
+        {
+          "question": "Can I switch between quad and thruster on the same board?",
+          "answer": "If your board has a five-fin box setup, absolutely. Many modern shortboards come with five fin plugs so you can run either configuration. It's one of the best ways to experiment without buying a second board."
+        },
+        {
+          "question": "Do quads feel looser than thrusters?",
+          "answer": "They feel different, not necessarily looser. Quads have more drive and release through turns, but they lack the sharp pivot of a center fin. Some surfers describe it as a smoother, more flowing feel compared to the snappier response of a thruster."
+        }
       ]
     },
     {
@@ -62,6 +80,24 @@
         "best budget surfboard fins",
         "mid-tier fin brands",
         "premium fins worth it"
+      ],
+      "faqs": [
+        {
+          "question": "Why did surfboard fin prices go up in 2024 and 2025?",
+          "answer": "A combination of new tariffs on imported goods, rising raw material costs (especially carbon fiber and fiberglass), and shipping disruptions. Brands like FCS and Futures absorbed some costs but passed most of the increase to consumers, pushing premium sets past $200."
+        },
+        {
+          "question": "Are expensive fins worth the money?",
+          "answer": "It depends on your level. Intermediate to advanced surfers can feel the difference in flex, response, and drive from premium materials. Beginners and casual surfers will get 80-90% of the performance from mid-tier fins in the $50-80 range."
+        },
+        {
+          "question": "What are the best budget-friendly fin brands?",
+          "answer": "Ho Stevie, Dorsal, and Captain Fin Co. all make quality fins under $60. They use fiberglass or honeycomb construction instead of carbon, which keeps costs down without sacrificing much performance for most recreational surfers."
+        },
+        {
+          "question": "Do carbon fins really perform better than fiberglass?",
+          "answer": "Carbon fins are stiffer and more responsive, which benefits powerful surfers who generate a lot of speed. But stiffer isn't always better. Lighter surfers or those who prefer a more forgiving feel often surf better on fiberglass or nylon-blend fins."
+        }
       ]
     },
     {
@@ -92,6 +128,24 @@
         "surfboard fins",
         "fin care",
         "fin trailing edge"
+      ],
+      "faqs": [
+        {
+          "question": "How do I fix a humming fin?",
+          "answer": "Humming usually means the trailing edge is damaged or rough. Run your finger along it. If you feel nicks or burrs, sand them smooth with 400-grit sandpaper, then finish with 800-grit. It takes about five minutes and stops the humming immediately."
+        },
+        {
+          "question": "Can I repair a chipped surfboard fin at home?",
+          "answer": "Minor chips and dings, yes. Clean the damaged area, apply a small amount of UV-cure resin or epoxy, let it harden, then sand it smooth. For deep cracks or structural damage near the base, it's better to replace the fin entirely."
+        },
+        {
+          "question": "How often should I maintain my surfboard fins?",
+          "answer": "Rinse them with fresh water after every session. Do a proper inspection every month or so: check for nicks on the trailing edge, make sure the base sits flush in the box, and clean any salt or sand buildup from the tab or screw areas."
+        },
+        {
+          "question": "When should I actually replace my fins instead of repairing them?",
+          "answer": "Replace them when you see cracks running through the base, significant delamination between layers, or if a fin has been flexed past its normal range and feels permanently soft. Surface scratches and minor chips are cosmetic and easily fixable."
+        }
       ]
     },
     {
@@ -125,6 +179,20 @@
         "fin setups",
         "surfboard fin customization",
         "performance fins 2026"
+      ],
+      "faqs": [
+        {
+          "question": "What fins should be in a basic fin quiver?",
+          "answer": "Start with three setups: a standard thruster set for everyday conditions, a quad set for small or mushy waves, and a larger thruster set for bigger days when you need extra hold. That covers about 90% of the conditions most surfers see in a year."
+        },
+        {
+          "question": "How many fin sets do I actually need?",
+          "answer": "Two to four sets covers most surfers. A versatile thruster for daily use and a quad for small waves is the minimum. Add a single fin for your log and a stiff, raked set for solid surf if you want to be dialed for everything."
+        },
+        {
+          "question": "Should I match my fin quiver to my board quiver?",
+          "answer": "Ideally, yes. Each board in your quiver probably handles different conditions, and the right fins amplify that. Your groveler wants small, flexy fins for speed. Your step-up wants larger, stiffer fins for hold. Don't just throw the same set in every board."
+        }
       ]
     },
     {
@@ -154,6 +222,20 @@
         "Do Fins Matter",
         "Surfboard Fin Cost",
         "Best Fins for Intermediates"
+      ],
+      "faqs": [
+        {
+          "question": "Will upgrading my fins improve my surfing?",
+          "answer": "Only if your current fins are wrong for your weight, board, or conditions. Upgrading from a poorly matched $30 set to a properly sized $60 set makes a real difference. Going from a good $60 set to a premium $180 set? The gains are marginal for most surfers."
+        },
+        {
+          "question": "What should I upgrade before my fins?",
+          "answer": "Honestly? Your technique. After that, make sure your board matches the waves you actually surf. Then check that your fins are the right size for your weight. The fin brand and material should be the last thing you spend money on."
+        },
+        {
+          "question": "Is there a placebo effect with expensive fins?",
+          "answer": "Absolutely. New gear makes you excited to surf, and excitement improves your performance. That's real, but it fades. The lasting improvement comes from having the right size and template for your surfing, not from the price tag."
+        }
       ]
     },
     {
@@ -183,6 +265,24 @@
         "Keel vs Upright Twin",
         "Twin Fin Benefits",
         "Summer Surfboard Setup"
+      ],
+      "faqs": [
+        {
+          "question": "What size twin fins should I use?",
+          "answer": "Go slightly larger than your usual side fins. Since you only have two fins and no center fin for stability, the extra surface area helps with control. Most surfers in the 150-180 lb range do well with medium-large twins."
+        },
+        {
+          "question": "Can I ride a twin fin in bigger waves?",
+          "answer": "You can, but it's not ideal. Twin fins lose hold in steep, powerful surf because there's no center fin to grip through bottom turns. They're built for speed and flow in waves under head-high. Above that, most surfers prefer a thruster or quad."
+        },
+        {
+          "question": "What's the difference between a twin fin and a twin plus stabilizer?",
+          "answer": "A true twin has just two fins and feels loose and skatey. A twin plus stabilizer adds a small trailer fin in the center that provides a bit more hold through turns without killing the twin's speed and freedom. It's a good middle ground if pure twins feel too unpredictable."
+        },
+        {
+          "question": "Are twin fins good for beginners?",
+          "answer": "They can be. Twins generate speed easily, which helps beginners who struggle to stay moving. But the lack of a center fin makes them less stable and harder to control in turns. A thruster is still the safest learning setup for most new surfers."
+        }
       ]
     },
     {
@@ -212,6 +312,24 @@
         "FCS vs Futures",
         "Surfboard Fin Guide",
         "Best Fins for Beginners"
+      ],
+      "faqs": [
+        {
+          "question": "How do I know what size fins to get?",
+          "answer": "Start with your body weight. Most brands have clear size charts: Small for under 150 lbs, Medium for 150-180 lbs, and Large for 180 lbs and up. Then adjust based on your board type and the waves you surf most often."
+        },
+        {
+          "question": "What happens if my fins are too big or too small?",
+          "answer": "Too big and your board feels stiff, heavy, and hard to turn. Too small and you lose control, especially in bigger surf, because the fins can't hold through turns. Getting the size right matters more than the brand or material."
+        },
+        {
+          "question": "Does board volume affect what fin size I need?",
+          "answer": "Yes. Higher volume boards (like fish or funboards) push more water, so they often need slightly larger fins for control. Low-volume performance shortboards respond better with standard or slightly smaller fins for that loose, responsive feel."
+        },
+        {
+          "question": "Should I size up or down my fins for different wave conditions?",
+          "answer": "Size down for small, weak waves so you get more speed and freedom. Size up for bigger, more powerful waves where you need hold and control. This is why having two sets in different sizes is one of the smartest investments you can make."
+        }
       ]
     },
     {
@@ -243,6 +361,24 @@
         "Pro Surfers Single Fin",
         "Joel Parkinson Single Fin",
         "Mikey February Single Fin"
+      ],
+      "faqs": [
+        {
+          "question": "Why are pro surfers switching to single fins?",
+          "answer": "It's partly a style movement and partly practical. Single fins force cleaner, more deliberate lines and reward smooth technique over rapid-fire snaps. Surfers like Joel Parkinson and Mikey February use them to reconnect with a more flowing approach to wave riding."
+        },
+        {
+          "question": "Are single fins harder to surf?",
+          "answer": "They're different, not necessarily harder. You can't rely on quick pivot turns the way you can with a thruster. Single fins reward smooth, drawn-out carves and forward planning. If you try to surf a single fin like a thruster, it'll feel frustrating. Adjust your approach and it clicks."
+        },
+        {
+          "question": "What kind of board works best with a single fin?",
+          "answer": "Longer boards with more volume, like mid-lengths, logs, and retro shapes. The single fin provides a smooth, trim-oriented ride that complements the glide of a bigger board. You can run a single fin on a shorter board, but it's less common and requires a dedicated shape."
+        },
+        {
+          "question": "Can I put a single fin on my thruster board?",
+          "answer": "Not directly. Thruster boxes are smaller and positioned differently than single fin boxes. You'd need a board with a center box designed for a single fin (like a longboard box). Some five-fin boards let you run just the center fin, but the performance isn't the same as a dedicated single fin setup."
+        }
       ]
     },
     {
@@ -274,6 +410,24 @@
         "flat foil",
         "fin design",
         "how foil affects surfing"
+      ],
+      "faqs": [
+        {
+          "question": "What is fin foil?",
+          "answer": "Fin foil is the cross-sectional shape of a fin from the leading edge to the trailing edge. It determines how water flows around the fin, which directly affects speed, lift, and how the fin responds to your turns."
+        },
+        {
+          "question": "What's the difference between flat foil and inside foil?",
+          "answer": "A flat foil has one flat side and one curved side. It's less predictable but generates more speed and works well for side fins. Inside foil (also called 50/50) is symmetrical on both sides, creating equal water flow and a more stable, neutral feel. It's typically used for center fins."
+        },
+        {
+          "question": "Does fin foil matter more than fin size?",
+          "answer": "Size matters more for most surfers. Getting the right size for your weight and conditions has the biggest impact on performance. Foil is a fine-tuning variable. Once your size is dialed, experimenting with foil can help you squeeze out extra speed or hold."
+        },
+        {
+          "question": "Which fin foil is best for beginners?",
+          "answer": "A standard flat foil on the side fins and a 50/50 (symmetrical) foil on the center fin. This is the most common setup and gives a balanced, predictable feel. Don't worry about aggressive or specialized foils until you're comfortable reading how your fins respond in different conditions."
+        }
       ]
     },
     {
@@ -304,6 +458,24 @@
         "surfboard fin systems",
         "fin durability",
         "best fin setup"
+      ],
+      "faqs": [
+        {
+          "question": "Is FCS or Futures better?",
+          "answer": "Neither is objectively better. FCS II offers tool-free swaps and the widest selection of templates. Futures provides a more solid connection with less flex at the base. Your choice should come down to which system your board already has and how often you want to swap fins."
+        },
+        {
+          "question": "Can I use FCS fins in Futures boxes or vice versa?",
+          "answer": "No. The two systems are not interchangeable. FCS uses a two-tab system while Futures uses a single, longer tab. There are some adapter kits out there, but they compromise the fit. Pick one system and build your quiver around it."
+        },
+        {
+          "question": "Do FCS II fins really click in without a tool?",
+          "answer": "Yes, that's the main selling point of FCS II. You press them in and they lock with a click. Removal is just as easy. It's genuinely convenient for surfers who switch fins between sessions. The trade-off is a tiny bit of play compared to the locked-in feel of Futures."
+        },
+        {
+          "question": "Which fin system has more options to choose from?",
+          "answer": "FCS has the larger catalog, including more pro model templates, sizes, and material options. Futures has a strong lineup too, especially in their Alpha and Blackstix ranges. Both systems have plenty of choices for any surfer, but FCS edges it on sheer variety."
+        }
       ]
     },
     {
@@ -319,7 +491,21 @@
       "read_time": 3,
       "featured_image": "finsinaline.webp",
       "featured_image_alt": "Close-up of multiple surfboard fins aligned on a wooden rack inside a surf shop",
-      "meta_description": "Welcome to Finsights, the new blog from Fin Finder! Expert surfboard fin insights, guides, reviews, and tips to help you find your perfect fins."
+      "meta_description": "Welcome to Finsights, the new blog from Fin Finder! Expert surfboard fin insights, guides, reviews, and tips to help you find your perfect fins.",
+      "faqs": [
+        {
+          "question": "What is Finsights?",
+          "answer": "Finsights is the blog from FinFinder.ai. It covers everything about surfboard fins: sizing guides, setup comparisons, maintenance tips, gear reviews, and industry news. All written by surfers, for surfers."
+        },
+        {
+          "question": "How often is new content published?",
+          "answer": "New posts go up regularly. We cover timely topics like gear drops and surf industry news alongside evergreen guides that help you pick and maintain your fins."
+        },
+        {
+          "question": "What is the Fin Finder recommendation tool?",
+          "answer": "It's an AI-powered tool on FinFinder.ai that helps you find the right surfboard fins based on your weight, board type, skill level, and the waves you surf. Think of it as a knowledgeable friend who actually knows what they're talking about."
+        }
+      ]
     },
     {
       "slug": "5-common-fin-mistakes-beginners-make",
@@ -334,7 +520,25 @@
       "read_time": 5,
       "featured_image": "fcsfinbox.webp",
       "featured_image_alt": "Close-up of an FCS surfboard fin box illustrating proper fin installation",
-      "meta_description": "Learn the 5 most common fin mistakes beginners make and how to avoid them. Expert tips for choosing the right surfboard fins and improving your performance."
+      "meta_description": "Learn the 5 most common fin mistakes beginners make and how to avoid them. Expert tips for choosing the right surfboard fins and improving your performance.",
+      "faqs": [
+        {
+          "question": "What's the most common fin mistake beginners make?",
+          "answer": "Riding the wrong size. Most beginners grab whatever fins came with their board or pick based on looks. If the fins are too big or small for your weight, nothing else matters. Size is the single most important variable to get right."
+        },
+        {
+          "question": "Should beginners use soft or hard fins?",
+          "answer": "Flexible (softer) fins are more forgiving and a good choice for learning. They're less responsive than stiff fins, but that's actually a benefit when you're still developing your technique. Save the stiff, high-performance fins for when you've got your fundamentals down."
+        },
+        {
+          "question": "Do beginners need expensive fins?",
+          "answer": "Not at all. A properly sized set of mid-range fins ($40-60) will perform great while you're learning. Expensive fins offer marginal improvements that you won't notice until your skills catch up. Invest in lessons and water time instead."
+        },
+        {
+          "question": "How do I know if my fins are installed correctly?",
+          "answer": "The fins should sit flush in the boxes with no wobble. The leading edge (front curve) should point toward the nose of the board. Side fins angle slightly toward the center (this is called toe). If anything wiggles or sits crooked, don't paddle out until it's fixed."
+        }
+      ]
     },
     {
       "slug": "stuck-fins-removal-tips-tricks",
@@ -365,6 +569,24 @@
         "stuck fin tricks",
         "surfboard fin removal",
         "salt buildup fins"
+      ],
+      "faqs": [
+        {
+          "question": "Why do surfboard fins get stuck?",
+          "answer": "Salt, sand, and corrosion build up in the fin box over time. If you don't rinse your board with fresh water regularly, the salt crystallizes and bonds the fin tab to the box. Temperature changes can also cause materials to expand and lock things in place."
+        },
+        {
+          "question": "How do I remove a stuck FCS fin?",
+          "answer": "Try the warm water soak first. Fill a bucket with warm (not boiling) water and submerge the fin area for 10-15 minutes. The heat loosens the salt and expands the box slightly. Then use a steady rocking motion while pulling. Don't yank or twist hard, or you'll damage the box."
+        },
+        {
+          "question": "Can I use WD-40 to remove stuck fins?",
+          "answer": "A light lubricant can help, but be careful. Apply a small amount around the base of the fin where it meets the box. Let it seep in for a few minutes, then try the rock-and-wiggle method. Wipe off any excess after removal so it doesn't affect your wax."
+        },
+        {
+          "question": "How do I prevent my fins from getting stuck?",
+          "answer": "Rinse your board and fin boxes with fresh water after every session. Remove your fins periodically (every few weeks) to prevent long-term buildup. A light smear of fin wax or marine grease on the tab before inserting keeps things sliding smoothly."
+        }
       ]
     },
     {
@@ -396,6 +618,24 @@
         "budget fins that work",
         "honeycomb core fins",
         "Ho Stevie vs FCS Futures"
+      ],
+      "faqs": [
+        {
+          "question": "Are Ho Stevie fins good quality?",
+          "answer": "Yes, for the price point. They use honeycomb core and fiberglass construction, which gives solid performance for recreational surfers. They're not competing with premium carbon sets, but they're a clear step above bargain bin fins."
+        },
+        {
+          "question": "How do Ho Stevie fins compare to FCS or Futures brand fins?",
+          "answer": "Ho Stevie fins cost a fraction of the price and perform at about 80% of the level. The main differences are in the precision of the foil, consistency between fins in a set, and the range of templates available. For most surfers below the advanced level, you won't notice a big gap."
+        },
+        {
+          "question": "Do Ho Stevie fins fit FCS and Futures boxes?",
+          "answer": "Ho Stevie sells fins for both systems. Make sure you select the right tab type when ordering. Their FCS-compatible fins fit FCS and FCS II boxes. They also make Futures-compatible options."
+        },
+        {
+          "question": "Who are Ho Stevie fins best for?",
+          "answer": "Beginner to intermediate surfers who want decent performance without spending $100+. They're also great as backup fins, travel fins, or fins for boards you lend to friends. No point putting $150 fins on a board that might get dinged."
+        }
       ]
     },
     {
