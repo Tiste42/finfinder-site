@@ -60,13 +60,17 @@ If $ARGUMENTS is empty or says "auto", pick the next available topic from `.clau
    - First, ensure the library is installed: `pip install google-genai` (skip if already installed)
    - Read the API key from `.claude/mcp.json` (GEMINI_API_KEY in nano-banana-pro env)
    - Use `google.genai.Client` with model `gemini-3.1-flash-image-preview`
-   - **Choose prompt based on post category:**
-     - **Gear/science/how-to posts** (guides, tips, reviews about fin products, materials, sizing, setup mechanics):
-       `"Overhead flat lay product photograph of [specific fin type from the post] on clean white sand. Translucent fiberglass with visible weave texture. Natural sunlight, soft shadows. Editorial product photography. No text, no logos."`
-     - **Culture/pro setup posts** (profiles, pro gear breakdowns, industry news, WSL):
-       `"Silhouette of a surfer on the beach at golden hour holding a [board type relevant to post] under their arm, looking out at waves. Shot from behind, no face visible. Cinematic 35mm film look. No text, no logos."`
-     - **Action/wave-specific posts** (wave-type guides, spot-specific content, performance comparisons):
-       `"Surfer bottom-turning on a [wave type from the post] wave, shot from water angle. Golden afternoon light. Editorial surf photography like Stab Magazine. No face detail visible. No text, no logos."`
+   - **Build a UNIQUE prompt for every post.** Do NOT reuse the same prompt across posts. The prompt must include:
+     1. A specific **subject** pulled from the post content (e.g., "a five-fin shortboard with all plugs visible" not just "surfboard fins")
+     2. A specific **setting/scene** that varies per post (beach, underwater, shaping bay, surf shop counter, lineup, reef break, etc.)
+     3. A specific **camera angle** that varies (overhead flat lay, underwater looking up, eye-level from water, 45-degree product shot, wide establishing shot, tight macro detail)
+     4. A specific **lighting condition** (golden hour, overcast morning, harsh midday tropical sun, backlit, soft diffused)
+   - **Prompt formula:** `"[Camera angle] photograph of [specific subject from post] [in/on/at specific setting]. [Lighting]. [One texture/mood detail]. No text, no logos, no readable letters, no faces."`
+   - **Examples of good, varied prompts:**
+     - Five-fin boxes post: `"Overhead flat lay of a shortboard bottom showing five empty FCS fin plugs on wet sand at sunrise. Warm golden light. Water droplets on the fiberglass surface. No text, no logos, no readable letters, no faces."`
+     - Asymmetric fins post: `"Close-up macro shot of two asymmetric surfboard fins, one longer than the other, resting on a concrete surf shop counter. Overcast window light. Visible carbon fiber weave texture. No text, no logos, no readable letters, no faces."`
+     - Pro setup post: `"Wide shot from behind of a surfer walking toward a reef break at dawn carrying a shortboard under their arm. Pink and orange sky reflected on wet sand. No text, no logos, no readable letters, no faces."`
+     - Fin flex post: `"Side profile of a fiberglass fin being flexed by hand against a white background, showing the bend curve. Clean studio lighting with soft shadow. No text, no logos, no readable letters, no faces."`
    - Set `config=types.GenerateContentConfig(response_modalities=["TEXT", "IMAGE"])` with `aspect_ratio="16:9"` and `image_size="2K"` in the config
    - Extract the image from `response.candidates[0].content.parts`, find the part with `inline_data`, and save the raw bytes
    - **Resize using crop-to-fit (NEVER force-stretch):**
