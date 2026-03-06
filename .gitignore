@@ -97,6 +97,7 @@ venv.bak/
 .idea/
 .claude/*
 !.claude/commands/
+!.claude/BLOG_PIPELINE_OVERVIEW.md
 .project
 .pydevproject
 .settings/
