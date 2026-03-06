@@ -79,33 +79,11 @@ If $ARGUMENTS is empty or says "auto", pick the next available topic from `.clau
    - This ensures no distortion regardless of source image dimensions
    - Set `featured_image` in the JSON to match the filename
 
-## PHASE 4: PUBLISH
+## PHASE 4: QUALITY CHECKS
 
-10. **Add the post to `blog_posts.json`:**
-    - Write a Python script to load the JSON, append the new post object, and save
-    - Verify JSON is valid after writing
+Run all checks using real skills and tools BEFORE publishing. Fix any issues and recheck until everything passes. By the time we reach Phase 5, the post is clean.
 
-11. **Update topics queue** (if topic came from `.claude/topics.md`):
-    - Change the topic from `[~]` to `[x]`
-
-12. **Commit and push:**
-    - `git add blog_posts.json static/<image>.webp`
-    - If topics.md was modified, add that too
-    - Commit message: `Add blog post: <post-title>`
-    - `git push origin main`
-
-13. **Report what was done:**
-    - Post title and slug
-    - Word count
-    - Image filename and size
-    - Commit hash
-    - URL: `https://finfinder.ai/finsights/<slug>`
-
-## PHASE 5: POST-PUBLISH QUALITY CHECK
-
-Run these checks using real skills and tools. If any check fails, fix the issue, re-commit, and re-push before marking the topic complete.
-
-### Step 14: Word Count & Readability
+### Step 10: Word Count & Readability
 
 Use the **`word-stats`** skill on the post content (strip HTML tags first) to confirm:
 - Fin-specific posts hit 1,200-1,800 words
@@ -115,7 +93,7 @@ Then use the **`readability`** skill on the same stripped content to verify:
 - Flesch-Kincaid grade level is between 6-10 (accessible but not dumbed down)
 - If grade level is above 10, simplify long sentences and recheck
 
-### Step 15: AI Detection & Humanization
+### Step 11: AI Detection & Humanization
 
 Use the **`detect-ai`** skill on the post content. This returns a 0-100 AI detection score.
 - **Score 0-30:** Pass. Move on.
@@ -128,9 +106,9 @@ After humanization (if needed), also do a manual scan for:
 - Paragraphs over 4 sentences
 - Stiff non-contractions ("do not", "it is", "you will") unless used for deliberate emphasis
 
-### Step 16: SEO Audit
+### Step 12: SEO Audit
 
-Use the **`seo-audit`** skill, passing the post URL (`https://finfinder.ai/finsights/<slug>`) or the raw HTML content. Verify:
+Use the **`seo-audit`** skill on the raw HTML content and JSON fields. Verify:
 - Meta description is under 160 characters
 - Heading structure is valid (one H1, H2s for sections, H3s under H2s only)
 - Primary keyword appears in the first paragraph
@@ -138,9 +116,7 @@ Use the **`seo-audit`** skill, passing the post URL (`https://finfinder.ai/finsi
 - `featured_image_alt` is non-empty and descriptive
 - No broken internal links
 
-If the site isn't deployed yet, run the SEO audit against the raw content and JSON fields directly.
-
-### Step 17: GEO / AI Search Optimization
+### Step 13: GEO / AI Search Optimization
 
 Use the **`ai-seo`** skill on the post content to check AI citation readiness:
 - At least 2 paragraphs contain direct-answer statements an AI search engine could extract as a citation
@@ -148,20 +124,40 @@ Use the **`ai-seo`** skill on the post content to check AI citation readiness:
 - Post includes specific product names, measurements, or stats (not vague generalities)
 - Content is structured with clear H2 question/topic headers that AI can parse
 
-### Step 18: FAQ Validation
+### Step 14: FAQ Validation
 
-Programmatically verify (read from `blog_posts.json`):
+Programmatically verify:
 - The `faqs` array has at least 3 entries
 - Each FAQ has both `question` and `answer` fields, both non-empty strings
 - FAQs are real questions a surfer would search for, not keyword-stuffed headers
 
-### Step 19: Fix & Re-publish
+### Step 15: Fix & Recheck Loop
 
-- If any check failed, fix the issues in `blog_posts.json`
-- Re-commit: `Fix quality issues: <post-title>`
-- Re-push: `git push origin main`
-- Re-run any failed checks to confirm they now pass
+If any check from Steps 10-14 failed:
+- Fix the issue in the post content or JSON fields (still in memory, not yet written to file)
+- Re-run the failed check to confirm it passes
+- Repeat until all checks are green
 
-### Step 20: Mark Complete
+## PHASE 5: PUBLISH
 
-If all checks pass, mark the topic as `[x]` in `.claude/topics.md` (if not already done).
+Everything has passed quality checks. Now write to disk and ship it.
+
+16. **Add the post to `blog_posts.json`:**
+    - Write a Python script to load the JSON, append the new post object, and save
+    - Verify JSON is valid after writing
+
+17. **Update topics queue** (if topic came from `.claude/topics.md`):
+    - Change the topic from `[~]` to `[x]`
+
+18. **Commit and push:**
+    - `git add blog_posts.json static/<image>.webp`
+    - Commit message: `Add blog post: <post-title>`
+    - `git push origin main`
+
+19. **Report what was done:**
+    - Post title and slug
+    - Word count and readability grade
+    - AI detection score
+    - Image filename and size
+    - Commit hash
+    - URL: `https://finfinder.ai/finsights/<slug>`
