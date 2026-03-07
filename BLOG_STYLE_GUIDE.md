@@ -46,6 +46,14 @@ Irreverent, honest, sharp. Stab Magazine editorial energy. See `voice-profile.md
 - **Blog cards:** 400x192, lazy loaded. Set via `featured_image` in JSON.
 - **Alt text:** Descriptive and specific. Not "surfboard fins" but "FCS II Performer fins mounted on a 5'10 shortboard."
 
+## AI-Generated Image Rules
+- AI models **cannot accurately render fin geometry.** Never prompt for close-up fin detail, fin curves, or fin shapes.
+- Use only the 5 safe scene types: FINS_ON_SAND, FINS_ON_WOOD, SILHOUETTE, WAVE_FRAME, ACTION_SHOT (see `blog.md` for full descriptions).
+- Keep fins small in frame, silhouetted, or overhead flat lay only.
+- Style: editorial surf photography, photorealistic, warm natural tones.
+- No text, logos, or readable faces in any generated image.
+- Check `last_image_type` on the last 2 posts to avoid repeating the same scene type.
+
 ## Metadata (blog_posts.json)
 Every post requires all fields. See CLAUDE.md for the full list. Key rules:
 - `date`: "Mon DD, YYYY" format (e.g., "Mar 03, 2026")
