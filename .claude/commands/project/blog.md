@@ -85,19 +85,9 @@ If $ARGUMENTS is empty or says "auto", pick the next available topic from `.clau
 
 ## PHASE 4: QUALITY CHECKS
 
-Run all checks using real skills and tools BEFORE publishing. Fix any issues and recheck until everything passes. By the time we reach Phase 5, the post is clean.
+Run these checks BEFORE publishing. If any check fails, flag it in the final output so it can be reviewed manually.
 
-### Step 10: Word Count & Readability
-
-Use the **`word-stats`** skill on the post content (strip HTML tags first) to confirm:
-- Fin-specific posts hit 1,200-1,800 words
-- News posts hit 600-1,000 words
-
-Then use the **`readability`** skill on the same stripped content to verify:
-- Flesch-Kincaid grade level is between 6-10 (accessible but not dumbed down)
-- If grade level is above 10, simplify long sentences and recheck
-
-### Step 11: AI Detection & Humanization
+### Step 10: AI Detection & Humanization
 
 Use the **`detect-ai`** skill on the post content. This returns a 0-100 AI detection score.
 - **Score 0-30:** Pass. Move on.
@@ -110,7 +100,7 @@ After humanization (if needed), also do a manual scan for:
 - Paragraphs over 4 sentences
 - Stiff non-contractions ("do not", "it is", "you will") unless used for deliberate emphasis
 
-### Step 12: SEO Audit
+### Step 11: SEO Audit
 
 Use the **`seo-audit`** skill on the raw HTML content and JSON fields. Verify:
 - Meta description is under 160 characters
@@ -120,27 +110,13 @@ Use the **`seo-audit`** skill on the raw HTML content and JSON fields. Verify:
 - `featured_image_alt` is non-empty and descriptive
 - No broken internal links
 
-### Step 13: GEO / AI Search Optimization
+### Step 12: GEO / AI Search Optimization
 
 Use the **`ai-seo`** skill on the post content to check AI citation readiness:
 - At least 2 paragraphs contain direct-answer statements an AI search engine could extract as a citation
 - Post has structured FAQ data (the `faqs` array triggers FAQPage schema automatically)
 - Post includes specific product names, measurements, or stats (not vague generalities)
 - Content is structured with clear H2 question/topic headers that AI can parse
-
-### Step 14: FAQ Validation
-
-Programmatically verify:
-- The `faqs` array has at least 3 entries
-- Each FAQ has both `question` and `answer` fields, both non-empty strings
-- FAQs are real questions a surfer would search for, not keyword-stuffed headers
-
-### Step 15: Fix & Recheck Loop
-
-If any check from Steps 10-14 failed:
-- Fix the issue in the post content or JSON fields (still in memory, not yet written to file)
-- Re-run the failed check to confirm it passes
-- Repeat until all checks are green
 
 ## PHASE 5: PUBLISH
 
