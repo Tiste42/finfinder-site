@@ -107,3 +107,12 @@ venv.bak/
 *.njsproj
 *.sln
 *.swp
+
+# Pipeline temp files
+tmp_*.py
+tmp_*.json
+gen_image.py
+
+# Old original images (not needed in repo)
+static/trailerfin.png
+static/twinfinonbeach.png
