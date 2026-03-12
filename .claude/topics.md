@@ -14,7 +14,7 @@ Status legend: `[ ]` = available, `[x]` = published, `[~]` = in progress
 - [x] Carbon vs Fiberglass vs Plastic Fins: The Material Breakdown That Actually Matters
 - [x] Fin Cant and Toe-In: The Angles You Never Think About That Control Everything
 - [~] How Fin Base Length Changes Drive, Speed, and Pivot
-- [ ] Fin Rake Explained: Why Your Turns Feel Tight or Sweeping
+- [x] Fin Rake Explained: Why Your Turns Feel Tight or Sweeping
 
 ## Gear Reviews & Comparisons
 - [ ] Futures Alpha vs FCS II Accelerator: The All-Rounder Showdown
