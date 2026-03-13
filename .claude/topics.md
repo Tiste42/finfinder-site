@@ -17,7 +17,7 @@ Status legend: `[ ]` = available, `[x]` = published, `[~]` = in progress
 - [x] Fin Rake Explained: Why Your Turns Feel Tight or Sweeping
 
 ## Gear Reviews & Comparisons
-- [ ] Futures Alpha vs FCS II Accelerator: The All-Rounder Showdown
+- [x] Futures Alpha vs FCS II Accelerator: The All-Rounder Showdown
 - [ ] The Best Budget Fins Under $80 That Don't Suck
 - [ ] Machado Keel Fins Review: Are They Worth the Hype for Your Fish?
 - [ ] FCS II H4 vs Reactor: Which Thruster Set for Punchy Beach Breaks?
