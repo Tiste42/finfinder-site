@@ -18,7 +18,7 @@ Status legend: `[ ]` = available, `[x]` = published, `[~]` = in progress
 
 ## Gear Reviews & Comparisons
 - [x] Futures Alpha vs FCS II Accelerator: The All-Rounder Showdown
-- [ ] The Best Budget Fins Under $80 That Don't Suck
+- [x] The Best Budget Fins Under $80 That Don't Suck
 - [ ] Machado Keel Fins Review: Are They Worth the Hype for Your Fish?
 - [ ] FCS II H4 vs Reactor: Which Thruster Set for Punchy Beach Breaks?
 - [ ] Fin Brands You've Never Heard Of That Rip: Captain Fin, True Ames, and More
