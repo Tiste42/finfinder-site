@@ -21,7 +21,7 @@ Status legend: `[ ]` = available, `[x]` = published, `[~]` = in progress
 - [x] The Best Budget Fins Under $80 That Don't Suck
 - [x] Machado Keel Fins Review: Are They Worth the Hype for Your Fish?
 - [x] FCS II H4 vs Reactor: Which Thruster Set for Punchy Beach Breaks?
-- [ ] Fin Brands You've Never Heard Of That Rip: Captain Fin, True Ames, and More
+- [x] Fin Brands You've Never Heard Of That Rip: Captain Fin, True Ames, and More
 
 ## Board-Specific Fin Guides
 - [ ] Best Fins for Your Groveler: Small Wave Boards Need Small Wave Fins
