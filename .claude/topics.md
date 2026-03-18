@@ -24,7 +24,7 @@ Status legend: `[ ]` = available, `[x]` = published, `[~]` = in progress
 - [x] Fin Brands You've Never Heard Of That Rip: Captain Fin, True Ames, and More
 
 ## Board-Specific Fin Guides
-- [ ] Best Fins for Your Groveler: Small Wave Boards Need Small Wave Fins
+- [x] Best Fins for Your Groveler: Small Wave Boards Need Small Wave Fins
 - [ ] Step-Up Fins: What to Ride When the Waves Get Serious
 - [ ] Midlength Fin Setups: The Overlooked Sweet Spot Between Longboard and Shortboard
 - [ ] Best Fins for Fish Surfboards: Keels, Quads, and Everything Between
