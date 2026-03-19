@@ -25,7 +25,7 @@ Status legend: `[ ]` = available, `[x]` = published, `[~]` = in progress
 
 ## Board-Specific Fin Guides
 - [x] Best Fins for Your Groveler: Small Wave Boards Need Small Wave Fins
-- [ ] Step-Up Fins: What to Ride When the Waves Get Serious
+- [x] Step-Up Fins: What to Ride When the Waves Get Serious
 - [ ] Midlength Fin Setups: The Overlooked Sweet Spot Between Longboard and Shortboard
 - [ ] Best Fins for Fish Surfboards: Keels, Quads, and Everything Between
 - [ ] Soft-Top Fins: Why They Matter More Than You Think for Beginners
