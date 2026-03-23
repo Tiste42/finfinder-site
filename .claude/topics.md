@@ -13,7 +13,7 @@ Status legend: `[ ]` = available, `[x]` = published, `[~]` = in progress
 - [x] Fin Flex: Why Stiffer Isn't Always Better and How Flex Patterns Change Your Surfing
 - [x] Carbon vs Fiberglass vs Plastic Fins: The Material Breakdown That Actually Matters
 - [x] Fin Cant and Toe-In: The Angles You Never Think About That Control Everything
-- [~] How Fin Base Length Changes Drive, Speed, and Pivot
+- [x] How Fin Base Length Changes Drive, Speed, and Pivot
 - [x] Fin Rake Explained: Why Your Turns Feel Tight or Sweeping
 
 ## Gear Reviews & Comparisons
@@ -26,8 +26,8 @@ Status legend: `[ ]` = available, `[x]` = published, `[~]` = in progress
 ## Board-Specific Fin Guides
 - [x] Best Fins for Your Groveler: Small Wave Boards Need Small Wave Fins
 - [x] Step-Up Fins: What to Ride When the Waves Get Serious
-- [ ] Midlength Fin Setups: The Overlooked Sweet Spot Between Longboard and Shortboard
-- [ ] Best Fins for Fish Surfboards: Keels, Quads, and Everything Between
+- [x] Midlength Fin Setups: The Overlooked Sweet Spot Between Longboard and Shortboard
+- [x] Best Fins for Fish Surfboards: Keels, Quads, and Everything Between
 - [ ] Soft-Top Fins: Why They Matter More Than You Think for Beginners
 
 ## Surf Culture & Pro Setups
