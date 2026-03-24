@@ -28,7 +28,7 @@ Status legend: `[ ]` = available, `[x]` = published, `[~]` = in progress
 - [x] Step-Up Fins: What to Ride When the Waves Get Serious
 - [x] Midlength Fin Setups: The Overlooked Sweet Spot Between Longboard and Shortboard
 - [x] Best Fins for Fish Surfboards: Keels, Quads, and Everything Between
-- [ ] Soft-Top Fins: Why They Matter More Than You Think for Beginners
+- [x] Soft-Top Fins: Why They Matter More Than You Think for Beginners
 
 ## Surf Culture & Pro Setups
 - [ ] John John Florence's Fin Setup: Breaking Down What the Best Surfer Rides
