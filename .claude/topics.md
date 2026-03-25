@@ -31,7 +31,7 @@ Status legend: `[ ]` = available, `[x]` = published, `[~]` = in progress
 - [x] Soft-Top Fins: Why They Matter More Than You Think for Beginners
 
 ## Surf Culture & Pro Setups
-- [ ] John John Florence's Fin Setup: Breaking Down What the Best Surfer Rides
+- [~] John John Florence's Fin Setup: Breaking Down What the Best Surfer Rides
 - [ ] Why Filipe Toledo Switched Fin Templates Mid-Season and What It Means
 - [ ] Pipeline Fin Setups: What the Pros Ride When the Wave Can Kill You
 - [ ] The WSL Equipment Rules: What Fins Are Actually Allowed in Competition?
