@@ -38,8 +38,8 @@ Status legend: `[ ]` = available, `[x]` = published, `[~]` = in progress
 - [x] How Board Shapers Think About Fins: Interviews With the People Who Design Your Ride
 
 ## Practical Guides
-- [ ] Traveling With Fins: TSA Rules, Packing Tricks, and What to Bring for Indo
-- [ ] How to Read a Fin Spec Sheet Without a Physics Degree
+- [x] Traveling With Fins: TSA Rules, Packing Tricks, and What to Bring for Indo
+- [x] How to Read a Fin Spec Sheet Without a Physics Degree
 - [ ] Fin Maintenance 101: Cleaning, Storage, and When to Replace
 - [ ] The Fin Quiver on a Budget: Building a Two-Set Arsenal for Under $200
 - [ ] Switching From FCS to Futures (or Back): What You Need to Know
