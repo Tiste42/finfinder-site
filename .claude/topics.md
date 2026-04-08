@@ -40,6 +40,6 @@ Status legend: `[ ]` = available, `[x]` = published, `[~]` = in progress
 ## Practical Guides
 - [x] Traveling With Fins: TSA Rules, Packing Tricks, and What to Bring for Indo
 - [x] How to Read a Fin Spec Sheet Without a Physics Degree
-- [ ] Fin Maintenance 101: Cleaning, Storage, and When to Replace
-- [ ] The Fin Quiver on a Budget: Building a Two-Set Arsenal for Under $200
+- [x] Fin Maintenance 101: Cleaning, Storage, and When to Replace
+- [~] The Fin Quiver on a Budget: Building a Two-Set Arsenal for Under $200
 - [ ] Switching From FCS to Futures (or Back): What You Need to Know
