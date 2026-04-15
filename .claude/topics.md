@@ -46,3 +46,6 @@ Status legend: `[ ]` = available, `[x]` = published, `[~]` = in progress
 
 ## Fin Systems & Construction
 - [x] Glass-On Fins vs Removable: The Old-School Debate That Still Matters
+
+## Fin Geometry Deep Dives
+- [x] Fin Foil Explained: The Cross-Section Nobody Looks At That Controls Everything
