@@ -49,3 +49,6 @@ Status legend: `[ ]` = available, `[x]` = published, `[~]` = in progress
 
 ## Fin Geometry Deep Dives
 - [x] Fin Foil Explained: The Cross-Section Nobody Looks At That Controls Everything
+
+## Big Wave & Specialty Setups
+- [x] Big Wave Fin Setups: What the Crew at Mavericks and Nazare Ride
