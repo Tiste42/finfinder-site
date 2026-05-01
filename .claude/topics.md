@@ -52,3 +52,6 @@ Status legend: `[ ]` = available, `[x]` = published, `[~]` = in progress
 
 ## Big Wave & Specialty Setups
 - [x] Big Wave Fin Setups: What the Crew at Mavericks and Nazare Ride
+
+## Practical Maintenance
+- [x] Whistling Fins: Why Yours Are Screaming at You and How to Shut Them Up
