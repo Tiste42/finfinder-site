@@ -55,3 +55,6 @@ Status legend: `[ ]` = available, `[x]` = published, `[~]` = in progress
 
 ## Practical Maintenance
 - [x] Whistling Fins: Why Yours Are Screaming at You and How to Shut Them Up
+
+## Buying & Marketplace
+- [x] Buying Used Fins: How to Score Real Deals Without Getting Burned
