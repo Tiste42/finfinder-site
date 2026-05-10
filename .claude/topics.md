@@ -58,3 +58,6 @@ Status legend: `[ ]` = available, `[x]` = published, `[~]` = in progress
 
 ## Buying & Marketplace
 - [x] Buying Used Fins: How to Score Real Deals Without Getting Burned
+
+## Materials & Construction Deep Dives
+- [x] Wood Core Fins: Performance Gear or Pure Aesthetic?
