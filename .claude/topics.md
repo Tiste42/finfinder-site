@@ -61,3 +61,6 @@ Status legend: `[ ]` = available, `[x]` = published, `[~]` = in progress
 
 ## Materials & Construction Deep Dives
 - [x] Wood Core Fins: Performance Gear or Pure Aesthetic?
+
+## Longboard-Specific
+- [x] Pivot vs Flex Longboard Fins: Which Single Fin Suits Your Style
