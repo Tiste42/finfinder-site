@@ -66,3 +66,6 @@ Status legend: `[ ]` = available, `[x]` = published, `[~]` = in progress
 
 ## Longboard-Specific
 - [x] Pivot vs Flex Longboard Fins: Which Single Fin Suits Your Style
+
+## Fin Systems & Compatibility
+- [x] Can You Put FCS Fins in a Futures Box? The Honest Answer
