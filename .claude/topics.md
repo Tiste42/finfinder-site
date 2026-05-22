@@ -69,3 +69,4 @@ Status legend: `[ ]` = available, `[x]` = published, `[~]` = in progress
 
 ## Fin Systems & Compatibility
 - [x] Can You Put FCS Fins in a Futures Box? The Honest Answer
+- [x] FCS vs FCS II: The Dual-Tab to Single-Tab Switch, Explained
