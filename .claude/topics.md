@@ -9,6 +9,7 @@ Status legend: `[ ]` = available, `[x]` = published, `[~]` = in progress
 - [x] Asymmetric Fins: The Weirdest Setup That Actually Makes Sense
 - [x] Trailer Fins Explained: That Tiny Fin Behind Your Quads Does More Than You Think
 - [x] The Twinzer Fin Setup: Two Mains, Two Canards, and the Cult That Won a World Title
+- [x] The Nubster: Why Pros Bolt a Fifth Half-Fin Into Their Quads
 
 ## Fin Science & Technology
 - [x] Fin Flex: Why Stiffer Isn't Always Better and How Flex Patterns Change Your Surfing
