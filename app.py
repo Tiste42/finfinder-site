@@ -216,6 +216,11 @@ def all_about_fins():
     """Renders the 'All About Surfboard Fins' page."""
     return render_template('all_about_fins.html')
 
+@app.route('/all-about-fins')
+def redirect_old_all_about_fins():
+    """301 redirect from old educational URL to canonical page."""
+    return redirect(url_for('all_about_fins'), code=301)
+
 @app.route('/fin-setups')
 def fin_setups():
     """Renders the 'Surfboard Fin Setups Explained' page."""
@@ -230,6 +235,11 @@ def longboard_fins():
 def fin_systems():
     """Renders the 'Fin Box Systems & Brands' page."""
     return render_template('fin_systems.html')
+
+@app.route('/fin-box-systems')
+def redirect_old_fin_box_systems():
+    """301 redirect from old fin box systems URL to canonical page."""
+    return redirect(url_for('fin_systems'), code=301)
 
 @app.route('/fin-sizing-guide')
 def fin_sizing_guide():
@@ -266,9 +276,30 @@ def redirect_old_fins_price_post():
     """301 redirect from old URL to new URL for SEO preservation"""
     return redirect(url_for('blog_post', slug='why-are-fins-so-expensive-real-costs'), code=301)
 
+@app.route('/how-surfboard-fins-work-lift-physics')
+def redirect_root_lift_physics_post():
+    """301 redirect from old root blog URL to canonical Finsights URL."""
+    return redirect(url_for('blog_post', slug='how-surfboard-fins-work-lift-physics'), code=301)
+
+@app.route('/pivot-vs-flex-longboard-fins-single-fin-guide')
+def redirect_root_pivot_flex_post():
+    """301 redirect from old root blog URL to canonical Finsights URL."""
+    return redirect(url_for('blog_post', slug='pivot-vs-flex-longboard-fins-single-fin-guide'), code=301)
+
+BLOG_SLUG_REDIRECTS = {
+    'fin-cant-toe-in-angles-control-everything': 'fin-cant-toe-in-angles-explained',
+    'fin-flex-patterns-stiffer-not-always-better': 'fin-flex-patterns-explained',
+    'fin-rake-explained': 'fin-rake-explained-tight-vs-sweeping-turns',
+    'fin-rake-explained-why-turns-feel-tight-or-sweeping': 'fin-rake-explained-tight-vs-sweeping-turns',
+    'machado-keel-fins-review': 'machado-keel-fins-review-worth-the-hype',
+}
+
 @app.route('/finsights/<slug>')
 def blog_post(slug):
     """Renders a specific blog post page."""
+    if slug in BLOG_SLUG_REDIRECTS:
+        return redirect(url_for('blog_post', slug=BLOG_SLUG_REDIRECTS[slug]), code=301)
+
     post = get_post_by_slug(slug)
     if not post:
         return render_template('404.html'), 404
