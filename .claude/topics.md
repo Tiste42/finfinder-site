@@ -70,6 +70,9 @@ Status legend: `[ ]` = available, `[x]` = published, `[~]` = in progress
 - [x] Pivot vs Flex Longboard Fins: Which Single Fin Suits Your Style
 - [x] Cutaway Longboard Fins: The Notch That Makes a Log Turn
 
+## Performance & Hydrodynamics
+- [x] Spinning Out: Why Your Fins Break Loose at Speed and How to Stop It
+
 ## Fin Systems & Compatibility
 - [x] Can You Put FCS Fins in a Futures Box? The Honest Answer
 - [x] FCS vs FCS II: The Dual-Tab to Single-Tab Switch, Explained
