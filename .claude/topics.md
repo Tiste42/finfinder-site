@@ -38,6 +38,7 @@ Status legend: `[ ]` = available, `[x]` = published, `[~]` = in progress
 - [x] Pipeline Fin Setups: What the Pros Ride When the Wave Can Kill You
 - [x] The WSL Equipment Rules: What Fins Are Actually Allowed in Competition?
 - [x] How Board Shapers Think About Fins: Interviews With the People Who Design Your Ride
+- [x] Simon Anderson Invented the Thruster Because Twin Fins Failed Him
 
 ## Practical Guides
 - [x] Traveling With Fins: TSA Rules, Packing Tricks, and What to Bring for Indo
