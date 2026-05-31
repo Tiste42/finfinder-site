@@ -8,4 +8,4 @@
 - [x] Fix indexing-critical issues that can be handled in the repo.
 - [x] Clean up any directly relevant security or deployment risks found during the review.
 - [x] Verify local routes and AI behavior.
-- [ ] Re-check live endpoints after deploy if this branch is pushed.
+- [x] Re-check live endpoints after deploy if this branch is pushed.
