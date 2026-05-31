@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}Fin Finder | Expert Surfboard Fin Knowledge{% endblock %}</title>
     <meta name="description" content="{% block description %}Fin Finder is your expert guide to surfboard fins. Learn about fin types, setups, and get personalized recommendations.{% endblock %}">
-    {% set canonical_url = url_for(request.endpoint or 'home', _external=True, **request.view_args) if request.endpoint else 'https://finfinder.ai/' %}
+    {% set canonical_url = site_url ~ request.path %}
     <link rel="canonical" href="{{ canonical_url }}">
     <link rel="sitemap" type="application/xml" href="https://finfinder.ai/sitemap.xml">
     
@@ -44,6 +44,7 @@
     <meta name="twitter:image" content="{% block twitter_image %}{{ url_for('static', filename='og-default.png', _external=True) }}{% endblock %}">
     <meta name="twitter:image:alt" content="{% block twitter_image_alt %}Fin Finder - Expert Surfboard Fin Recommendations{% endblock %}">
     {% endblock %}
+    {% block extra_head %}{% endblock %}
     
     <!-- Font Awesome - loaded async to not block render -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" media="print" onload="this.media='all'">
@@ -66,7 +67,6 @@
             };
         });
     </script>
-</head>
     <script>
         tailwind.config = {
             darkMode: 'class', // or 'media'

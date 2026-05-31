@@ -3,7 +3,7 @@ from google import genai
 from google.genai import types
 from PIL import Image
 
-API_KEY = "AIzaSyDBy5XHqNXqvWxR3HoAhLM6FjRiyyuCf4A"
+API_KEY = os.getenv("GEMINI_API_KEY")
 SLUG = "wave-period-fin-choice-swell-variable"
 OUT = os.path.join(os.path.dirname(__file__), "..", "static", f"{SLUG}.webp")
 

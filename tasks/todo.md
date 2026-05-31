@@ -1,7 +1,11 @@
-# FinFinder Search Console 404 Fix
+# FinFinder AI Outage and SEO Review
 
-- [x] Read the Search Console emails and identify the issue type.
-- [x] Scan internal blog links for routes that return 404.
-- [x] Add 301 redirects for confirmed old aliases.
-- [x] Verify local route status.
-- [x] Commit the completed fix without unrelated files.
+- [x] Confirm whether the public site is up.
+- [x] Confirm whether `/ask` is failing on the live site.
+- [x] Reproduce the AI failure locally with the existing Gemini configuration.
+- [x] Fix `/ask` so users get a useful response or a clear server-side fallback.
+- [x] Audit sitemap, robots, redirects, canonical URLs, metadata, schema, and internal links.
+- [x] Fix indexing-critical issues that can be handled in the repo.
+- [x] Clean up any directly relevant security or deployment risks found during the review.
+- [x] Verify local routes and AI behavior.
+- [ ] Re-check live endpoints after deploy if this branch is pushed.

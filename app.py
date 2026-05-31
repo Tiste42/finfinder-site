@@ -126,6 +126,10 @@ def get_related_posts(current_post, limit=3):
 def inject_now():
     return {'now': datetime.datetime.utcnow()}
 
+@app.context_processor
+def inject_site_url():
+    return {'site_url': SITE_URL}
+
 # --- Context Processor to inject active_page based on request path ---
 @app.context_processor
 def inject_active_page():
@@ -204,6 +208,116 @@ def format_ai_response(response_text):
     formatted = f'<div>{formatted}</div>'
     
     return formatted
+
+
+def build_fallback_recommendation(question, user_info=None):
+    """Build a deterministic recommendation when Gemini is unavailable."""
+    user_info = user_info or {}
+    question_lower = (question or '').lower()
+    board_type = user_info.get('board_type', '')
+    wave_conditions = user_info.get('wave_conditions', '')
+    weight = user_info.get('weight')
+    skill_level = user_info.get('skill_level')
+    fin_system = user_info.get('fin_system')
+    skill_phrase = skill_level or 'surfer'
+    if skill_phrase in {'beginner', 'intermediate', 'advanced', 'expert'}:
+        article = 'an' if skill_phrase[0].lower() in 'aeiou' else 'a'
+        skill_phrase = f"{article} {skill_phrase}"
+    weight_phrase = f"around {weight} pounds" if weight else "at your weight"
+
+    try:
+        weight_value = int(weight) if weight else None
+    except (TypeError, ValueError):
+        weight_value = None
+
+    if weight_value is None:
+        size_note = 'medium'
+    elif weight_value < 160:
+        size_note = 'small'
+    elif weight_value <= 180:
+        size_note = 'medium'
+    elif weight_value <= 200:
+        size_note = 'large'
+    else:
+        size_note = 'large to XL'
+
+    wants_longboard = board_type == 'longboard' or 'longboard' in question_lower
+    wants_twin = 'twin' in question_lower or board_type == 'fish'
+    small_waves = wave_conditions == 'small/weak' or any(term in question_lower for term in ['small', 'mushy', 'weak', 'slow'])
+    powerful_waves = wave_conditions == 'big/powerful' or any(term in question_lower for term in ['big', 'powerful', 'overhead', 'hollow', 'barrel'])
+
+    if wants_longboard:
+        research = (
+            f"Based on what you shared, start with a pivot-style single fin. "
+            f"It gives a longboard clean hold, easy trim, and enough turning response without getting too specialized."
+        )
+        recommendations = [
+            ('FCS Connect Glass Flex Single Fin', 'https://amzn.to/49zT5qd'),
+            ('Abahub 9/10 inch Single Fin', 'https://amzn.to/49wXdqL'),
+        ]
+        next_step = "If you tell me whether you care more about noseriding or turning, I can narrow the size and placement."
+    elif wants_twin and small_waves:
+        research = (
+            f"For small or mushy waves, a twin fin makes sense because it cuts drag and helps the board find speed early. "
+            f"At your size range, look around {size_note} unless your board is oversized."
+        )
+        recommendations = [
+            ('FCS II Power Twin + 1 PG', 'https://amzn.to/4qRwT1I'),
+            ('FT1 Honeycomb Twin Fin', 'https://amzn.to/3LyesAb'),
+            ('Ho Stevie! Surfboard Twin Keel', 'https://amzn.to/4jEmFiF'),
+        ]
+        next_step = "If you want more hold, run a twin plus trailer instead of a pure twin."
+    elif small_waves:
+        research = (
+            f"For {skill_phrase} {weight_phrase} in small or mushy surf, you want speed first. "
+            f"A medium quad will usually feel faster than a thruster, while a medium thruster stays more predictable."
+        )
+        recommendations = [
+            ('FCS 2 Pyzel PC Air Core Quad', 'https://amzn.to/4jAPY5Q'),
+            ('Ho Stevie! Quad HexCore FCS', 'https://amzn.to/3NhdOHO'),
+            ('Futures Fins AM1 Tech-Flex Medium Quad', 'https://amzn.to/4sDcnDF'),
+            ('Ho Stevie! Quad HexCore Futures', 'https://amzn.to/4byfoip'),
+        ]
+        next_step = "If your board only takes three fins, use a medium thruster with an upright template instead."
+    elif powerful_waves:
+        research = (
+            f"In bigger or more powerful surf, prioritize hold and confidence. "
+            f"A stiffer {size_note} thruster or quad with more base will hold a line better at speed."
+        )
+        recommendations = [
+            ('FCS II AM Performance Core Tri Fin Set', 'https://amzn.to/3Ls5NPM'),
+            ('Futures Fins JJ-2 Large TECHFLEX', 'https://amzn.to/4dZLkvD'),
+            ('FCS II Harley Mid Tri-Quad PC Large', 'https://amzn.to/4sEnbBx'),
+            ('Futures Fins F8 Honeycomb Quad', 'https://amzn.to/3Z7ZLHC'),
+        ]
+        next_step = "If the wave is hollow, lean quad. If you want more predictable vertical turns, lean thruster."
+    else:
+        research = (
+            f"When the details are still broad, a medium thruster is the safest all-around starting point. "
+            f"It balances drive, hold, and turning response across most shortboards and everyday surf."
+        )
+        recommendations = [
+            ('FCS 2 Performer PC Tri-Fin Set', 'https://amzn.to/4bgFEht'),
+            ('TOPWAYS Fiberglass Honeycomb G5', 'https://amzn.to/4bxAjSP'),
+            ('Futures Fins JJF Alpha Medium', 'https://amzn.to/3YyRBYd'),
+            ('Ho Stevie! Thruster HexCore', 'https://amzn.to/3StgcdW'),
+        ]
+        next_step = "Tell me your board type, fin box system, and usual waves and I can get more specific."
+
+    if fin_system == 'FCS':
+        recommendations = [item for item in recommendations if 'Futures' not in item[0] and 'FT1' not in item[0]]
+    elif fin_system == 'Futures':
+        recommendations = [item for item in recommendations if 'FCS' not in item[0] and 'TOPWAYS' not in item[0]]
+
+    recommendation_lines = '\n'.join(f"- **{name}** - {url}" for name, url in recommendations)
+    return (
+        "THE RESEARCH:\n"
+        f"{research}\n\n"
+        "HERE'S WHAT I RECOMMEND:\n"
+        f"{recommendation_lines}\n\n"
+        "WANT MORE SPECIFICITY?\n"
+        f"{next_step}"
+    )
 
 # --- Route Definitions ---
 @app.route('/')
@@ -384,10 +498,6 @@ Fin Finder is an expert surfboard fin resource providing AI-powered personalized
 @app.route('/ask', methods=['POST'])
 def ask():
     """Handles questions for the AI Fin Expert with conversation memory."""
-    if not model:
-        logging.error("Ask endpoint called but Gemini model is not initialized.")
-        return jsonify({'error': 'Generative model not initialized. Please check server logs and API key configuration.'}), 500
-    
     try:
         data = request.get_json()
         if not data:
@@ -483,6 +593,12 @@ def ask():
         
         logging.info(f"📝 SENDING TO AI - History length: {len(session['conversation_history'])} | AI responses so far: {ai_response_count} | User info keys: {list(session.get('user_info', {}).keys())}")
         
+        if not model:
+            logging.error("Ask endpoint called but Gemini model is not initialized. Returning fallback recommendation.")
+            answer = build_fallback_recommendation(question, session.get('user_info', {}))
+            session['conversation_history'].append(f"Assistant: {answer}")
+            return jsonify({'answer': format_ai_response(answer), 'fallback': True})
+
                 # Create enhanced prompt with conversation history and affiliate matrix
         prompt = f"""⚠️ MANDATORY RULES - YOU MUST FOLLOW THESE OR YOU FAIL:
 
@@ -759,8 +875,17 @@ Current question: {question}
         return jsonify({'answer': formatted_answer})
 
     except Exception as e:
-        logging.error(f"Error in /ask endpoint: {e}", exc_info=True)
-        return jsonify({'error': f'An internal error occurred: {str(e)}'}), 500
+        logging.error(f"Error in /ask endpoint. Returning fallback recommendation: {e}", exc_info=True)
+        try:
+            fallback_question = locals().get('question', '')
+            fallback_user_info = session.get('user_info', {}) if session else {}
+            answer = build_fallback_recommendation(fallback_question, fallback_user_info)
+            if 'conversation_history' in session:
+                session['conversation_history'].append(f"Assistant: {answer}")
+            return jsonify({'answer': format_ai_response(answer), 'fallback': True})
+        except Exception as fallback_error:
+            logging.error(f"Fallback recommendation failed: {fallback_error}", exc_info=True)
+            return jsonify({'error': 'Fin Finder is temporarily unavailable. Please try again shortly.'}), 503
     
 # --- Main Execution ---
 if __name__ == '__main__':
