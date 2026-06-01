@@ -5,5 +5,5 @@
 - [x] Crawl live sitemap URLs for status, canonical, title, meta, H1, schema, and internal-link issues.
 - [x] Audit blog metadata consistency.
 - [x] Fix low-risk repo-side issues found during the pass.
-- [ ] Run final local and live verification.
-- [ ] Summarize current site health and remaining improvements.
+- [x] Run final local and live verification.
+- [x] Summarize current site health and remaining improvements.
