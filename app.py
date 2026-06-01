@@ -1,6 +1,8 @@
 from flask import Flask, render_template, request, jsonify, redirect, url_for, session, Response, send_from_directory
 import google.generativeai as genai
 import os
+import time
+from pathlib import Path
 from dotenv import load_dotenv
 import logging
 import datetime
@@ -9,6 +11,36 @@ import json
 
 # --- Logging Setup ---
 logging.basicConfig(level=logging.INFO)
+
+BASE_DIR = Path(__file__).resolve().parent
+BLOG_POSTS_PATH = BASE_DIR / 'blog_posts.json'
+SITE_URL = "https://finfinder.ai"
+
+STATIC_ASSET_EXTENSIONS = ('.webp', '.jpg', '.jpeg', '.png', '.gif', '.mp4', '.mov', '.woff2', '.woff')
+CSS_JS_EXTENSIONS = ('.css', '.js')
+
+ACTIVE_PAGE_BY_PATH = {
+    '/': 'home',
+    '/recommender': 'recommender',
+    '/all-about-surfboard-fins': 'all_about_fins',
+    '/fin-setups': 'fin_setups',
+    '/fin-systems': 'fin_systems',
+    '/longboard-fins': 'longboard_fins',
+    '/fin-sizing-guide': 'fin_sizing_guide',
+    '/about': 'about',
+}
+
+SITEMAP_STATIC_PAGES = [
+    {'path': '/', 'changefreq': 'daily', 'priority': '1.0'},
+    {'path': '/recommender', 'changefreq': 'weekly', 'priority': '0.9'},
+    {'path': '/finsights', 'changefreq': 'weekly', 'priority': '0.9'},
+    {'path': '/all-about-surfboard-fins', 'changefreq': 'monthly', 'priority': '0.8'},
+    {'path': '/fin-setups', 'changefreq': 'monthly', 'priority': '0.8'},
+    {'path': '/fin-systems', 'changefreq': 'monthly', 'priority': '0.8'},
+    {'path': '/longboard-fins', 'changefreq': 'monthly', 'priority': '0.8'},
+    {'path': '/fin-sizing-guide', 'changefreq': 'monthly', 'priority': '0.8'},
+    {'path': '/about', 'changefreq': 'monthly', 'priority': '0.7'},
+]
 
 # --- Flask App Initialization ---
 app = Flask(__name__) 
@@ -22,10 +54,10 @@ def add_cache_headers(response):
     # Cache static files aggressively
     if request.path.startswith('/static/'):
         # Images, videos, fonts - cache for 1 year
-        if any(request.path.endswith(ext) for ext in ['.webp', '.jpg', '.jpeg', '.png', '.gif', '.mp4', '.mov', '.woff2', '.woff']):
+        if request.path.endswith(STATIC_ASSET_EXTENSIONS):
             response.headers['Cache-Control'] = 'public, max-age=31536000, immutable'
         # CSS/JS - cache for 1 week with revalidation
-        elif any(request.path.endswith(ext) for ext in ['.css', '.js']):
+        elif request.path.endswith(CSS_JS_EXTENSIONS):
             response.headers['Cache-Control'] = 'public, max-age=604800, stale-while-revalidate=86400'
     # Blog pages - cache for 1 hour
     elif request.path.startswith('/finsights'):
@@ -37,18 +69,13 @@ def robots_txt():
     return send_from_directory(app.static_folder, 'robots.txt')
 app.secret_key = os.environ.get('SECRET_KEY', os.urandom(24))
 
-# Define the base URL for your site
-SITE_URL = "https://finfinder.ai"
-
 # --- Load Environment Variables & Configure Gemini ---
 model = None # Initialize model as None
 try:
-    current_dir = os.getcwd()
-    logging.info(f"Current Working Directory: {current_dir}")
-    dotenv_path = os.path.join(current_dir, '.env')
+    dotenv_path = BASE_DIR / '.env'
     logging.info(f"Looking for .env file at: {dotenv_path}")
 
-    if os.path.exists(dotenv_path):
+    if dotenv_path.exists():
         load_dotenv(dotenv_path=dotenv_path, override=True)
         logging.info(f"Successfully loaded .env file from: {dotenv_path}")
     else:
@@ -75,13 +102,13 @@ except Exception as e:
 # In-memory cache for blog posts
 _blog_posts_cache = {
     'data': None,
+    'by_slug': {},
     'timestamp': 0
 }
 BLOG_CACHE_TTL = 300  # 5 minutes cache TTL
 
 def load_blog_posts():
     """Load blog posts from JSON file with caching"""
-    import time
     current_time = time.time()
     
     # Return cached data if still valid
@@ -89,13 +116,13 @@ def load_blog_posts():
         return _blog_posts_cache['data']
     
     try:
-        blog_posts_path = os.path.join(os.getcwd(), 'blog_posts.json')
-        if os.path.exists(blog_posts_path):
-            with open(blog_posts_path, 'r', encoding='utf-8') as f:
+        if BLOG_POSTS_PATH.exists():
+            with BLOG_POSTS_PATH.open('r', encoding='utf-8') as f:
                 data = json.load(f)
                 posts = data.get('posts', [])
                 # Update cache
                 _blog_posts_cache['data'] = posts
+                _blog_posts_cache['by_slug'] = {post.get('slug'): post for post in posts if post.get('slug')}
                 _blog_posts_cache['timestamp'] = current_time
                 return posts
         return []
@@ -105,11 +132,8 @@ def load_blog_posts():
 
 def get_post_by_slug(slug):
     """Get a specific blog post by slug"""
-    posts = load_blog_posts()
-    for post in posts:
-        if post.get('slug') == slug:
-            return post
-    return None
+    load_blog_posts()
+    return _blog_posts_cache['by_slug'].get(slug)
 
 def get_related_posts(current_post, limit=3):
     """Get related posts based on category"""
@@ -134,25 +158,9 @@ def inject_site_url():
 @app.context_processor
 def inject_active_page():
     """Injects the active_page variable into all templates based on the current route."""
-    if request.path == '/':
-        return {'active_page': 'home'}
-    elif request.path == '/recommender':
-        return {'active_page': 'recommender'}
-    elif request.path == '/all-about-surfboard-fins':
-        return {'active_page': 'all_about_fins'}
-    elif request.path == '/fin-setups':
-        return {'active_page': 'fin_setups'}
-    elif request.path == '/fin-systems':
-        return {'active_page': 'fin_systems'}
-    elif request.path == '/longboard-fins':
-        return {'active_page': 'longboard_fins'}
-    elif request.path == '/fin-sizing-guide':
-        return {'active_page': 'fin_sizing_guide'}
-    elif request.path == '/about':
-        return {'active_page': 'about'}
-    elif request.path == '/finsights' or request.path.startswith('/finsights/'):
+    if request.path == '/finsights' or request.path.startswith('/finsights/'):
         return {'active_page': 'finsights'}
-    return {'active_page': None}
+    return {'active_page': ACTIVE_PAGE_BY_PATH.get(request.path)}
 
 # --- Helper Function for AI Response Formatting ---
 def format_ai_response(response_text):
@@ -319,6 +327,94 @@ def build_fallback_recommendation(question, user_info=None):
         f"{next_step}"
     )
 
+
+def ensure_conversation_state():
+    """Make sure the chat session has the structures used by /ask."""
+    is_new_session = 'conversation_history' not in session
+    session.setdefault('conversation_history', [])
+    session.setdefault('user_info', {})
+    if is_new_session:
+        logging.info("New session: initialized conversation history and user info")
+    else:
+        logging.info(f"Existing session: {len(session.get('conversation_history', []))} messages in history")
+        logging.info(f"Stored user info: {session.get('user_info', {})}")
+    return session['conversation_history'], session['user_info']
+
+
+def update_user_info_from_question(question, user_info):
+    """Extract reusable recommendation context from the latest user question."""
+    question_lower = question.lower()
+
+    weight_match = re.search(r'(\d+)\s*(?:lbs?|pounds?|kg)', question_lower)
+    if weight_match:
+        user_info['weight'] = weight_match.group(1)
+        logging.info(f"Stored user weight: {weight_match.group(1)}")
+
+    if 'fcs' in question_lower and 'futures' not in question_lower:
+        user_info['fin_system'] = 'FCS'
+        logging.info("Stored fin system: FCS")
+    elif 'futures' in question_lower or 'future' in question_lower:
+        user_info['fin_system'] = 'Futures'
+        logging.info("Stored fin system: Futures")
+
+    if re.search(r'\b(beginner|beginning|just start|learning|new to)', question_lower):
+        user_info['skill_level'] = 'beginner'
+        logging.info("Stored skill level: beginner")
+    elif re.search(r'\b(intermediate|getting better|catching waves)', question_lower):
+        user_info['skill_level'] = 'intermediate'
+        logging.info("Stored skill level: intermediate")
+    elif re.search(r'\b(advanced|experienced|good surfer|barreled|barrels)', question_lower):
+        user_info['skill_level'] = 'advanced'
+        logging.info("Stored skill level: advanced")
+    elif re.search(r'\b(pro|professional|expert|airs?|boosting)', question_lower):
+        user_info['skill_level'] = 'pro'
+        logging.info("Stored skill level: pro")
+
+    if re.search(r'\b(shortboard|short board|performance board)', question_lower):
+        user_info['board_type'] = 'shortboard'
+        logging.info("Stored board type: shortboard")
+    elif re.search(r'\b(fish)\b', question_lower):
+        user_info['board_type'] = 'fish'
+        logging.info("Stored board type: fish")
+    elif re.search(r'\b(longboard|long board|noserider|nose rider)', question_lower):
+        user_info['board_type'] = 'longboard'
+        logging.info("Stored board type: longboard")
+    elif re.search(r'\b(hybrid|groveler)', question_lower):
+        user_info['board_type'] = 'hybrid'
+        logging.info("Stored board type: hybrid")
+    elif re.search(r'\b(mid.?length|funboard|fun board)', question_lower):
+        user_info['board_type'] = 'mid-length'
+        logging.info("Stored board type: mid-length")
+    elif re.search(r'\b(gun|big wave)', question_lower):
+        user_info['board_type'] = 'gun'
+        logging.info("Stored board type: gun")
+
+    if re.search(r'\b(small|weak|mushy|slow|1.?2.?ft|knee high)', question_lower):
+        user_info['wave_conditions'] = 'small/weak'
+        logging.info("Stored wave conditions: small/weak")
+    elif re.search(r'\b(big|large|powerful|overhead|heavy|barreling|hollow)', question_lower):
+        user_info['wave_conditions'] = 'big/powerful'
+        logging.info("Stored wave conditions: big/powerful")
+
+    session.modified = True
+    logging.info(f"Complete user info after extraction: {user_info}")
+    return user_info
+
+
+def append_chat_message(role, message):
+    """Append a chat message and mark nested session state as changed."""
+    session['conversation_history'].append(f"{role}: {message}")
+    session.modified = True
+
+
+def get_recent_conversation_context(limit=10):
+    return "\n".join(session.get('conversation_history', [])[-limit:])
+
+
+def count_ai_responses():
+    return len([msg for msg in session.get('conversation_history', []) if msg.startswith('Assistant:')])
+
+
 # --- Route Definitions ---
 @app.route('/')
 def home():
@@ -421,42 +517,42 @@ def blog_post(slug):
     related_posts = get_related_posts(post)
     return render_template('blog_post.html', post=post, related_posts=related_posts)
 
-# --- Sitemap Route ---
-@app.route('/sitemap.xml')
-def sitemap():
-    """Generates and serves the sitemap.xml file for SEO."""
-    # Use current date for static pages
-    current_date = datetime.datetime.now().strftime('%Y-%m-%d')
-    
+
+def build_sitemap_pages(current_date, blog_posts):
+    """Build sitemap entries from route metadata and blog post data."""
     pages = [
-        {'loc': f"{SITE_URL}/", 'lastmod': current_date, 'changefreq': 'daily', 'priority': '1.0'},
-        {'loc': f"{SITE_URL}/recommender", 'lastmod': current_date, 'changefreq': 'weekly', 'priority': '0.9'},
-        {'loc': f"{SITE_URL}/finsights", 'lastmod': current_date, 'changefreq': 'weekly', 'priority': '0.9'},
-        {'loc': f"{SITE_URL}/all-about-surfboard-fins", 'lastmod': current_date, 'changefreq': 'monthly', 'priority': '0.8'},
-        {'loc': f"{SITE_URL}/fin-setups", 'lastmod': current_date, 'changefreq': 'monthly', 'priority': '0.8'},
-        {'loc': f"{SITE_URL}/fin-systems", 'lastmod': current_date, 'changefreq': 'monthly', 'priority': '0.8'},
-        {'loc': f"{SITE_URL}/longboard-fins", 'lastmod': current_date, 'changefreq': 'monthly', 'priority': '0.8'},
-        {'loc': f"{SITE_URL}/fin-sizing-guide", 'lastmod': current_date, 'changefreq': 'monthly', 'priority': '0.8'},
-        {'loc': f"{SITE_URL}/about", 'lastmod': current_date, 'changefreq': 'monthly', 'priority': '0.7'},
+        {
+            'loc': f"{SITE_URL}{page['path']}",
+            'lastmod': current_date,
+            'changefreq': page['changefreq'],
+            'priority': page['priority'],
+        }
+        for page in SITEMAP_STATIC_PAGES
     ]
-    
-    # Add blog posts to sitemap
-    blog_posts = load_blog_posts()
+
     for post in blog_posts:
-        # Use post's date_modified or date_published, fallback to current date
         post_date = post.get('date_modified') or post.get('date_published') or post.get('date', current_date)
-        # Ensure date is in YYYY-MM-DD format
         if post_date and len(post_date) >= 10:
             post_date = post_date[:10]
         else:
             post_date = current_date
-        
+
         pages.append({
             'loc': f"{SITE_URL}/finsights/{post.get('slug')}",
             'lastmod': post_date,
             'changefreq': 'monthly',
             'priority': '0.7'
         })
+
+    return pages
+
+
+# --- Sitemap Route ---
+@app.route('/sitemap.xml')
+def sitemap():
+    """Generates and serves the sitemap.xml file for SEO."""
+    current_date = datetime.datetime.now().strftime('%Y-%m-%d')
+    pages = build_sitemap_pages(current_date, load_blog_posts())
 
     sitemap_xml = render_template('sitemap.xml', pages=pages)
     return Response(sitemap_xml, mimetype='application/xml')
@@ -511,95 +607,22 @@ def ask():
 
         logging.info(f"Received question for AI: {question}")
         
-        # Initialize or get conversation history
-        if 'conversation_history' not in session:
-            session['conversation_history'] = []
-            session['user_info'] = {}
-            logging.info("🔵 NEW SESSION: Initialized conversation history and user info")
-        else:
-            logging.info(f"🟢 EXISTING SESSION: {len(session.get('conversation_history', []))} messages in history")
-            logging.info(f"🟢 USER INFO STORED: {session.get('user_info', {})}")
-        
-        # Extract user information from the question
-        question_lower = question.lower()
-        
-        # Extract weight
-        weight_match = re.search(r'(\d+)\s*(?:lbs?|pounds?|kg)', question_lower)
-        if weight_match:
-            session['user_info']['weight'] = weight_match.group(1)
-            logging.info(f"Stored user weight: {weight_match.group(1)}")
-        
-        # Extract fin system (FCS or Futures)
-        if 'fcs' in question_lower and 'futures' not in question_lower:
-            session['user_info']['fin_system'] = 'FCS'
-            logging.info("Stored fin system: FCS")
-        elif 'futures' in question_lower or 'future' in question_lower:
-            session['user_info']['fin_system'] = 'Futures'
-            logging.info("Stored fin system: Futures")
-        
-        # Extract skill level
-        if re.search(r'\b(beginner|beginning|just start|learning|new to)', question_lower):
-            session['user_info']['skill_level'] = 'beginner'
-            logging.info("Stored skill level: beginner")
-        elif re.search(r'\b(intermediate|getting better|catching waves)', question_lower):
-            session['user_info']['skill_level'] = 'intermediate'
-            logging.info("Stored skill level: intermediate")
-        elif re.search(r'\b(advanced|experienced|good surfer|barreled|barrels)', question_lower):
-            session['user_info']['skill_level'] = 'advanced'
-            logging.info("Stored skill level: advanced")
-        elif re.search(r'\b(pro|professional|expert|airs?|boosting)', question_lower):
-            session['user_info']['skill_level'] = 'pro'
-            logging.info("Stored skill level: pro")
-        
-        # Extract board type
-        if re.search(r'\b(shortboard|short board|performance board)', question_lower):
-            session['user_info']['board_type'] = 'shortboard'
-            logging.info("Stored board type: shortboard")
-        elif re.search(r'\b(fish)\b', question_lower):
-            session['user_info']['board_type'] = 'fish'
-            logging.info("Stored board type: fish")
-        elif re.search(r'\b(longboard|long board|noserider|nose rider)', question_lower):
-            session['user_info']['board_type'] = 'longboard'
-            logging.info("Stored board type: longboard")
-        elif re.search(r'\b(hybrid|groveler)', question_lower):
-            session['user_info']['board_type'] = 'hybrid'
-            logging.info("Stored board type: hybrid")
-        elif re.search(r'\b(mid.?length|funboard|fun board)', question_lower):
-            session['user_info']['board_type'] = 'mid-length'
-            logging.info("Stored board type: mid-length")
-        elif re.search(r'\b(gun|big wave)', question_lower):
-            session['user_info']['board_type'] = 'gun'
-            logging.info("Stored board type: gun")
-        
-        # Extract wave conditions
-        if re.search(r'\b(small|weak|mushy|slow|1.?2.?ft|knee high)', question_lower):
-            session['user_info']['wave_conditions'] = 'small/weak'
-            logging.info("Stored wave conditions: small/weak")
-        elif re.search(r'\b(big|large|powerful|overhead|heavy|barreling|hollow)', question_lower):
-            session['user_info']['wave_conditions'] = 'big/powerful'
-            logging.info("Stored wave conditions: big/powerful")
-        
-        # Log complete user info after extraction
-        logging.info(f"📊 COMPLETE USER INFO AFTER EXTRACTION: {session.get('user_info', {})}")
-        
-        # Add current question to history
-        session['conversation_history'].append(f"User: {question}")
-        
-        # Build context from conversation history (last 10 messages)
-        conversation_context = "\n".join(session['conversation_history'][-10:])
-        
-        # Count how many AI responses already exist
-        ai_response_count = len([msg for msg in session.get('conversation_history', []) if msg.startswith('Assistant:')])
-        
-        logging.info(f"📝 SENDING TO AI - History length: {len(session['conversation_history'])} | AI responses so far: {ai_response_count} | User info keys: {list(session.get('user_info', {}).keys())}")
-        
+        conversation_history, user_info = ensure_conversation_state()
+        update_user_info_from_question(question, user_info)
+        append_chat_message("User", question)
+
+        conversation_context = get_recent_conversation_context()
+        ai_response_count = count_ai_responses()
+
+        logging.info(f"Sending to AI - History length: {len(conversation_history)} | AI responses so far: {ai_response_count} | User info keys: {list(user_info.keys())}")
+
         if not model:
             logging.error("Ask endpoint called but Gemini model is not initialized. Returning fallback recommendation.")
-            answer = build_fallback_recommendation(question, session.get('user_info', {}))
-            session['conversation_history'].append(f"Assistant: {answer}")
+            answer = build_fallback_recommendation(question, user_info)
+            append_chat_message("Assistant", answer)
             return jsonify({'answer': format_ai_response(answer), 'fallback': True})
 
-                # Create enhanced prompt with conversation history and affiliate matrix
+        # Create enhanced prompt with conversation history and affiliate matrix
         prompt = f"""⚠️ MANDATORY RULES - YOU MUST FOLLOW THESE OR YOU FAIL:
 
 1. EVERY SINGLE RESPONSE MUST INCLUDE PRODUCT LINKS - NO EXCEPTIONS
@@ -862,7 +885,7 @@ Current question: {question}
             answer += "\n\n🎯 HERE'S WHAT I RECOMMEND:\n\nFCS OPTIONS:\n🏆 **FCS 2 Performer PC Tri-Fin Set** - https://amzn.to/4bgFEht\n💰 **TOPWAYS Fiberglass Honeycomb G5** - https://amzn.to/4bxAjSP\n\nFUTURES OPTIONS:\n🏆 **Futures Fins JJF Alpha Medium** - https://amzn.to/3YyRBYd\n💰 **Ho Stevie! Thruster HexCore** - https://amzn.to/3StgcdW\n\nThese are versatile all-around fins that work for most surfers!"
         
         # Add AI response to history
-        session['conversation_history'].append(f"Assistant: {answer}")
+        append_chat_message("Assistant", answer)
         
         # Log session state after AI response
         logging.info(f"✅ SESSION UPDATED - Total messages: {len(session['conversation_history'])} | User info: {session.get('user_info', {})}")
@@ -881,7 +904,7 @@ Current question: {question}
             fallback_user_info = session.get('user_info', {}) if session else {}
             answer = build_fallback_recommendation(fallback_question, fallback_user_info)
             if 'conversation_history' in session:
-                session['conversation_history'].append(f"Assistant: {answer}")
+                append_chat_message("Assistant", answer)
             return jsonify({'answer': format_ai_response(answer), 'fallback': True})
         except Exception as fallback_error:
             logging.error(f"Fallback recommendation failed: {fallback_error}", exc_info=True)
