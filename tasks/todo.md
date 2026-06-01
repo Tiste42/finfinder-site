@@ -1,8 +1,9 @@
-# FinFinder Architecture Refactor
+# FinFinder Production Debug Review
 
-- [x] Reverse-engineer Flask routes, blog data flow, AI request flow, and SEO surfaces.
-- [x] Identify architecture, duplication, performance, scalability, and maintainability risks.
-- [x] Extract low-risk helpers and constants without changing public behavior.
-- [x] Add focused smoke tests for routes, redirects, SEO surfaces, and `/ask` fallback.
-- [x] Run syntax, unit, and route checks.
-- [x] Summarize clean architecture, critical risks, refactor strategy, and remaining work.
+- [x] Confirm local repo state matches deployed branch.
+- [x] Verify live endpoints and reproduce production-critical failure modes.
+- [x] Trace the AI, session, blog, sitemap, and template data flows.
+- [x] Identify root cause, edge cases, and robust fix.
+- [x] Implement production-ready code without changing intended behavior.
+- [x] Run local and live verification.
+- [ ] Summarize functionality, root cause, failure mode, edge cases, and fix.

@@ -1,4 +1,5 @@
 import os
+import secrets
 import unittest
 from unittest import mock
 
@@ -73,6 +74,31 @@ class FinFinderSmokeTests(unittest.TestCase):
     def test_ask_rejects_missing_question(self):
         response = self.client.post("/ask", json={})
         self.assertEqual(response.status_code, 400)
+
+    def test_ask_keeps_session_cookie_below_browser_limit(self):
+        class FakeModel:
+            def generate_content(self, prompt):
+                randomish_text = secrets.token_urlsafe(3500)
+
+                class FakeResponse:
+                    text = (
+                        f"THE RESEARCH:\n{randomish_text}\n\n"
+                        "HERE'S WHAT I RECOMMEND:\n"
+                        "**FCS 2 Performer PC Tri-Fin Set** - https://amzn.to/4bgFEht\n"
+                        "**Futures Fins JJF Alpha Medium** - https://amzn.to/3YyRBYd"
+                    )
+                    parts = []
+
+                return FakeResponse()
+
+        with mock.patch.object(finfinder_app, "model", FakeModel()):
+            for index in range(4):
+                response = self.client.post(
+                    "/ask",
+                    json={"question": f"I am 175 lbs on a shortboard in small waves. Follow-up {index}?"},
+                )
+                self.assertEqual(response.status_code, 200)
+                self.assertLess(len(response.headers.get("Set-Cookie", "")), 4093)
 
 
 if __name__ == "__main__":

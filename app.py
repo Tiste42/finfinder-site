@@ -6,6 +6,7 @@ from pathlib import Path
 from dotenv import load_dotenv
 import logging
 import datetime
+import hashlib
 import re
 import json
 
@@ -42,6 +43,41 @@ SITEMAP_STATIC_PAGES = [
     {'path': '/about', 'changefreq': 'monthly', 'priority': '0.7'},
 ]
 
+
+MAX_CONVERSATION_MESSAGES = 8
+MAX_SESSION_MESSAGE_CHARS = 700
+
+
+def load_environment():
+    """Load environment variables before app configuration uses them."""
+    dotenv_path = BASE_DIR / '.env'
+    logging.info(f"Looking for .env file at: {dotenv_path}")
+
+    if dotenv_path.exists():
+        load_dotenv(dotenv_path=dotenv_path, override=True)
+        logging.info(f"Successfully loaded .env file from: {dotenv_path}")
+    else:
+        logging.warning(f".env file not found at the specified path: {dotenv_path}. Attempting to load from default location.")
+        load_dotenv(override=True)
+
+
+def get_secret_key():
+    """Return a stable Flask session key with a safe production fallback."""
+    configured_secret = os.getenv('SECRET_KEY') or os.getenv('FLASK_SECRET_KEY')
+    if configured_secret:
+        return configured_secret
+
+    gemini_api_key = os.getenv('GEMINI_API_KEY')
+    if gemini_api_key:
+        logging.warning("SECRET_KEY is not configured. Deriving a stable session key from GEMINI_API_KEY; set SECRET_KEY in Render for cleaner separation.")
+        return hashlib.sha256(f"finfinder-session:{gemini_api_key}".encode("utf-8")).hexdigest()
+
+    logging.warning("SECRET_KEY and GEMINI_API_KEY are not configured. Using a random development-only session key.")
+    return os.urandom(24)
+
+
+load_environment()
+
 # --- Flask App Initialization ---
 app = Flask(__name__) 
 
@@ -67,21 +103,11 @@ def add_cache_headers(response):
 @app.route('/robots.txt')
 def robots_txt():
     return send_from_directory(app.static_folder, 'robots.txt')
-app.secret_key = os.environ.get('SECRET_KEY', os.urandom(24))
+app.secret_key = get_secret_key()
 
 # --- Load Environment Variables & Configure Gemini ---
 model = None # Initialize model as None
 try:
-    dotenv_path = BASE_DIR / '.env'
-    logging.info(f"Looking for .env file at: {dotenv_path}")
-
-    if dotenv_path.exists():
-        load_dotenv(dotenv_path=dotenv_path, override=True)
-        logging.info(f"Successfully loaded .env file from: {dotenv_path}")
-    else:
-        logging.warning(f".env file not found at the specified path: {dotenv_path}. Attempting to load from default location.")
-        load_dotenv(override=True) # Try loading from default location if specific path not found
-
     gemini_api_key = os.getenv("GEMINI_API_KEY")
     if not gemini_api_key:
         logging.error("GEMINI_API_KEY not found in environment variables after attempting to load .env.")
@@ -403,7 +429,12 @@ def update_user_info_from_question(question, user_info):
 
 def append_chat_message(role, message):
     """Append a chat message and mark nested session state as changed."""
-    session['conversation_history'].append(f"{role}: {message}")
+    compact_message = (message or '').strip()
+    if len(compact_message) > MAX_SESSION_MESSAGE_CHARS:
+        compact_message = f"{compact_message[:MAX_SESSION_MESSAGE_CHARS].rstrip()}..."
+
+    session['conversation_history'].append(f"{role}: {compact_message}")
+    session['conversation_history'] = session['conversation_history'][-MAX_CONVERSATION_MESSAGES:]
     session.modified = True
 
 
