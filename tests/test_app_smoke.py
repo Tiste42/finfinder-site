@@ -61,6 +61,13 @@ class FinFinderSmokeTests(unittest.TestCase):
         self.assertIn("https://finfinder.ai/finsights", body)
         self.assertIn("https://finfinder.ai/finsights/", body)
 
+    def test_discovery_files_have_short_cache_lifetime(self):
+        for path in ["/robots.txt", "/sitemap.xml", "/llms.txt"]:
+            with self.subTest(path=path):
+                response = self.client.get(path)
+                self.assertEqual(response.status_code, 200)
+                self.assertIn("max-age=3600", response.headers.get("Cache-Control", ""))
+
     def test_ask_falls_back_when_model_is_unavailable(self):
         with mock.patch.object(finfinder_app, "model", None):
             response = self.client.post("/ask", json={"question": "I am 175 lbs on a shortboard in small waves"})

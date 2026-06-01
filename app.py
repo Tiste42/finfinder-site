@@ -87,8 +87,10 @@ app.config['SEND_FILE_MAX_AGE_DEFAULT'] = 31536000  # 1 year for static files
 @app.after_request
 def add_cache_headers(response):
     """Add cache headers for better performance"""
+    if request.path in {'/robots.txt', '/sitemap.xml', '/llms.txt'}:
+        response.headers['Cache-Control'] = 'public, max-age=3600, stale-while-revalidate=86400'
     # Cache static files aggressively
-    if request.path.startswith('/static/'):
+    elif request.path.startswith('/static/'):
         # Images, videos, fonts - cache for 1 year
         if request.path.endswith(STATIC_ASSET_EXTENSIONS):
             response.headers['Cache-Control'] = 'public, max-age=31536000, immutable'
@@ -174,7 +176,7 @@ def get_related_posts(current_post, limit=3):
 # --- Context Processor to inject 'now' into all templates ---
 @app.context_processor
 def inject_now():
-    return {'now': datetime.datetime.utcnow()}
+    return {'now': datetime.datetime.now(datetime.UTC)}
 
 @app.context_processor
 def inject_site_url():

@@ -1,9 +1,9 @@
-# FinFinder Production Debug Review
+# FinFinder Production Health Audit
 
-- [x] Confirm local repo state matches deployed branch.
-- [x] Verify live endpoints and reproduce production-critical failure modes.
-- [x] Trace the AI, session, blog, sitemap, and template data flows.
-- [x] Identify root cause, edge cases, and robust fix.
-- [x] Implement production-ready code without changing intended behavior.
-- [x] Run local and live verification.
-- [x] Summarize functionality, root cause, failure mode, edge cases, and fix.
+- [x] Confirm branch state and local test baseline.
+- [x] Smoke-test live core pages and `/ask`.
+- [x] Crawl live sitemap URLs for status, canonical, title, meta, H1, schema, and internal-link issues.
+- [x] Audit blog metadata consistency.
+- [x] Fix low-risk repo-side issues found during the pass.
+- [ ] Run final local and live verification.
+- [ ] Summarize current site health and remaining improvements.
