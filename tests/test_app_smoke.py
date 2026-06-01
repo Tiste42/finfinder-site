@@ -68,11 +68,24 @@ class FinFinderSmokeTests(unittest.TestCase):
                 self.assertEqual(response.status_code, 200)
                 self.assertIn("max-age=3600", response.headers.get("Cache-Control", ""))
 
+    def test_health_endpoint_and_common_security_headers(self):
+        response = self.client.get("/healthz")
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response.get_json(), {"status": "ok"})
+        self.assertEqual(response.headers.get("Cache-Control"), "no-store")
+
+        response = self.client.get("/")
+        self.assertIn("max-age=600", response.headers.get("Cache-Control", ""))
+        self.assertEqual(response.headers.get("X-Content-Type-Options"), "nosniff")
+        self.assertEqual(response.headers.get("X-Frame-Options"), "SAMEORIGIN")
+        self.assertEqual(response.headers.get("Referrer-Policy"), "strict-origin-when-cross-origin")
+
     def test_ask_falls_back_when_model_is_unavailable(self):
         with mock.patch.object(finfinder_app, "model", None):
             response = self.client.post("/ask", json={"question": "I am 175 lbs on a shortboard in small waves"})
 
         self.assertEqual(response.status_code, 200)
+        self.assertEqual(response.headers.get("Cache-Control"), "no-store")
         payload = response.get_json()
         self.assertTrue(payload["fallback"])
         self.assertIn("amzn.to", payload["answer"])

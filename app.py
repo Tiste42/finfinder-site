@@ -43,6 +43,8 @@ SITEMAP_STATIC_PAGES = [
     {'path': '/about', 'changefreq': 'monthly', 'priority': '0.7'},
 ]
 
+PUBLIC_HTML_CACHE_PATHS = set(ACTIVE_PAGE_BY_PATH) | {'/finsights'}
+
 
 MAX_CONVERSATION_MESSAGES = 8
 MAX_SESSION_MESSAGE_CHARS = 700
@@ -86,9 +88,22 @@ app.config['SEND_FILE_MAX_AGE_DEFAULT'] = 31536000  # 1 year for static files
 
 @app.after_request
 def add_cache_headers(response):
-    """Add cache headers for better performance"""
+    """Add cache and security headers for production responses."""
+    response.headers.setdefault('X-Content-Type-Options', 'nosniff')
+    response.headers.setdefault('X-Frame-Options', 'SAMEORIGIN')
+    response.headers.setdefault('Referrer-Policy', 'strict-origin-when-cross-origin')
+    response.headers.setdefault('Permissions-Policy', 'camera=(), microphone=(), geolocation=()')
+
+    forwarded_proto = request.headers.get('X-Forwarded-Proto', request.scheme)
+    if forwarded_proto == 'https':
+        response.headers.setdefault('Strict-Transport-Security', 'max-age=31536000; includeSubDomains')
+
     if request.path in {'/robots.txt', '/sitemap.xml', '/llms.txt'}:
         response.headers['Cache-Control'] = 'public, max-age=3600, stale-while-revalidate=86400'
+    elif request.path in {'/ask', '/healthz'}:
+        response.headers['Cache-Control'] = 'no-store'
+    elif request.path in PUBLIC_HTML_CACHE_PATHS:
+        response.headers['Cache-Control'] = 'public, max-age=600, stale-while-revalidate=3600'
     # Cache static files aggressively
     elif request.path.startswith('/static/'):
         # Images, videos, fonts - cache for 1 year
@@ -105,6 +120,13 @@ def add_cache_headers(response):
 @app.route('/robots.txt')
 def robots_txt():
     return send_from_directory(app.static_folder, 'robots.txt')
+
+
+@app.route('/healthz')
+def healthz():
+    return jsonify({'status': 'ok'})
+
+
 app.secret_key = get_secret_key()
 
 # --- Load Environment Variables & Configure Gemini ---
