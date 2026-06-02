@@ -5,5 +5,5 @@
 - [x] Add browser cache headers for stable public HTML pages and no-store for `/ask`.
 - [x] Preload Gunicorn so app startup work completes before serving traffic.
 - [x] Run local tests and focused route/header audits.
-- [ ] Push to the live `main` branch.
-- [ ] Verify production after Render deploys.
+- [x] Push to the live `main` branch.
+- [x] Verify production after Render deploys.
