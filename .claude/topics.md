@@ -67,6 +67,7 @@ Status legend: `[ ]` = available, `[x]` = published, `[~]` = in progress
 ## Materials & Construction Deep Dives
 - [x] Wood Core Fins: Performance Gear or Pure Aesthetic?
 - [x] Recycled & Eco Fins: Real Performance or Just Green Marketing?
+- [x] FCS Fin Materials Explained: Why PC, PG, and Neo Glass Feel Nothing Alike
 
 ## Longboard-Specific
 - [x] Pivot vs Flex Longboard Fins: Which Single Fin Suits Your Style
