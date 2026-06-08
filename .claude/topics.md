@@ -80,3 +80,6 @@ Status legend: `[ ]` = available, `[x]` = published, `[~]` = in progress
 - [x] Can You Put FCS Fins in a Futures Box? The Honest Answer
 - [x] FCS vs FCS II: The Dual-Tab to Single-Tab Switch, Explained
 - [x] Beyond FCS and Futures: The Fin Box Systems Still Holding On (Bahne, Probox, Lokbox)
+
+## Technique & Stance
+- [x] Front Foot vs Back Foot: How Your Stance Picks Your Fins
