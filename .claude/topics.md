@@ -75,6 +75,7 @@ Status legend: `[ ]` = available, `[x]` = published, `[~]` = in progress
 
 ## Performance & Hydrodynamics
 - [x] Spinning Out: Why Your Fins Break Loose at Speed and How to Stop It
+- [x] Fin Drag Explained: Where Your Speed Goes
 
 ## Fin Systems & Compatibility
 - [x] Can You Put FCS Fins in a Futures Box? The Honest Answer
