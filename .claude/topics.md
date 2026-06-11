@@ -84,3 +84,6 @@ Status legend: `[ ]` = available, `[x]` = published, `[~]` = in progress
 
 ## Technique & Stance
 - [x] Front Foot vs Back Foot: How Your Stance Picks Your Fins
+
+## Buying & Marketplace (cont.)
+- [x] Stock Fins: Should You Keep the Ones That Came With Your Board?
