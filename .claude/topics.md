@@ -41,6 +41,7 @@ Status legend: `[ ]` = available, `[x]` = published, `[~]` = in progress
 - [x] Simon Anderson Invented the Thruster Because Twin Fins Failed Him
 - [x] Italo Ferreira's Fin Setup: The Gear Behind Surfing's Most Explosive Air Game
 - [x] Jack Robinson's Fin Setup: The Rake Template Behind Surfing's Best Barrels
+- [x] Ethan Ewing's Fin Setup: One Fiberglass Thruster for the Best Rail Surfer Alive
 
 ## Practical Guides
 - [x] Traveling With Fins: TSA Rules, Packing Tricks, and What to Bring for Indo
