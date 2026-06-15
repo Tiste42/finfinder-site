@@ -49,6 +49,7 @@ Status legend: `[ ]` = available, `[x]` = published, `[~]` = in progress
 - [x] Fin Maintenance 101: Cleaning, Storage, and When to Replace
 - [x] The Fin Quiver on a Budget: Building a Two-Set Arsenal for Under $200
 - [x] Switching From FCS to Futures (or Back): What You Need to Know
+- [x] How to Put Your Fins In Right: FCS II, Futures, and Why Yours Keep Falling Out
 
 ## Fin Systems & Construction
 - [x] Glass-On Fins vs Removable: The Old-School Debate That Still Matters
