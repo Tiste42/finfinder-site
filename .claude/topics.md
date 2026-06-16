@@ -93,3 +93,6 @@ Status legend: `[ ]` = available, `[x]` = published, `[~]` = in progress
 
 ## Buying & Marketplace (cont.)
 - [x] Stock Fins: Should You Keep the Ones That Came With Your Board?
+
+## Surf History & Origins
+- [x] Who Invented the Surfboard Fin? Tom Blake and the 1935 Junkyard Keel
