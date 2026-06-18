@@ -75,6 +75,7 @@ Status legend: `[ ]` = available, `[x]` = published, `[~]` = in progress
 ## Longboard-Specific
 - [x] Pivot vs Flex Longboard Fins: Which Single Fin Suits Your Style
 - [x] Cutaway Longboard Fins: The Notch That Makes a Log Turn
+- [x] Single Fin Box Position: Slide It Forward for Pivot, Back for Drive
 
 ## Performance & Hydrodynamics
 - [x] Spinning Out: Why Your Fins Break Loose at Speed and How to Stop It
