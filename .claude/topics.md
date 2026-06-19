@@ -57,6 +57,7 @@ Status legend: `[ ]` = available, `[x]` = published, `[~]` = in progress
 ## Fin Geometry Deep Dives
 - [x] Fin Foil Explained: The Cross-Section Nobody Looks At That Controls Everything
 - [x] Inside Foil: Why the Flat Side of Your Side Fins Isn't Flat
+- [x] Fin Area Explained: Why Square Inches Decide How Your Fins Hold or Let Go
 
 ## Big Wave & Specialty Setups
 - [x] Big Wave Fin Setups: What the Crew at Mavericks and Nazare Ride
