@@ -43,6 +43,7 @@ Status legend: `[ ]` = available, `[x]` = published, `[~]` = in progress
 - [x] Jack Robinson's Fin Setup: The Rake Template Behind Surfing's Best Barrels
 - [x] Ethan Ewing's Fin Setup: One Fiberglass Thruster for the Best Rail Surfer Alive
 - [x] Gabriel Medina's Fin Setup: Why a 3x World Champ Rides the Safest Template FCS Makes
+- [x] Griffin Colapinto's Fin Setup: Why He Rides Kolohe Andino's Signature Fin, Not His Own
 
 ## Practical Guides
 - [x] Traveling With Fins: TSA Rules, Packing Tricks, and What to Bring for Indo
