@@ -45,6 +45,7 @@ Status legend: `[ ]` = available, `[x]` = published, `[~]` = in progress
 - [x] Gabriel Medina's Fin Setup: Why a 3x World Champ Rides the Safest Template FCS Makes
 - [x] Griffin Colapinto's Fin Setup: Why He Rides Kolohe Andino's Signature Fin, Not His Own
 - [x] Caroline Marks' Fin Setup: What an Olympic Champ on a 5'4 Teaches About Fin Sizing
+- [x] Molly Picklum's Fin Setup: The Drive Behind Surfing's Heaviest Backhand
 
 ## Practical Guides
 - [x] Traveling With Fins: TSA Rules, Packing Tricks, and What to Bring for Indo
