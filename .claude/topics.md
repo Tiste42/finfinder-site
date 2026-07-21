@@ -46,6 +46,7 @@ Status legend: `[ ]` = available, `[x]` = published, `[~]` = in progress
 - [x] Griffin Colapinto's Fin Setup: Why He Rides Kolohe Andino's Signature Fin, Not His Own
 - [x] Caroline Marks' Fin Setup: What an Olympic Champ on a 5'4 Teaches About Fin Sizing
 - [x] Molly Picklum's Fin Setup: The Drive Behind Surfing's Heaviest Backhand
+- [x] Kelly Slater's Fin Setup: What the GOAT Rides and Why He Built His Own Fins
 
 ## Practical Guides
 - [x] Traveling With Fins: TSA Rules, Packing Tricks, and What to Bring for Indo
