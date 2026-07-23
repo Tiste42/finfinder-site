@@ -47,6 +47,7 @@ Status legend: `[ ]` = available, `[x]` = published, `[~]` = in progress
 - [x] Caroline Marks' Fin Setup: What an Olympic Champ on a 5'4 Teaches About Fin Sizing
 - [x] Molly Picklum's Fin Setup: The Drive Behind Surfing's Heaviest Backhand
 - [x] Kelly Slater's Fin Setup: What the GOAT Rides and Why He Built His Own Fins
+- [x] Carissa Moore's Fin Setup: Why the 5x Champ's Signature Fin Isn't the One She Won On
 
 ## Practical Guides
 - [x] Traveling With Fins: TSA Rules, Packing Tricks, and What to Bring for Indo
@@ -86,6 +87,9 @@ Status legend: `[ ]` = available, `[x]` = published, `[~]` = in progress
 ## Performance & Hydrodynamics
 - [x] Spinning Out: Why Your Fins Break Loose at Speed and How to Stop It
 - [x] Fin Drag Explained: Where Your Speed Goes
+
+## Conditions
+- [x] Fins for Choppy Onshore Surf: What to Ride When Wind Wrecks It
 
 ## Fin Systems & Compatibility
 - [x] Can You Put FCS Fins in a Futures Box? The Honest Answer
