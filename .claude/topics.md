@@ -48,6 +48,7 @@ Status legend: `[ ]` = available, `[x]` = published, `[~]` = in progress
 - [x] Molly Picklum's Fin Setup: The Drive Behind Surfing's Heaviest Backhand
 - [x] Kelly Slater's Fin Setup: What the GOAT Rides and Why He Built His Own Fins
 - [x] Carissa Moore's Fin Setup: Why the 5x Champ's Signature Fin Isn't the One She Won On
+- [x] Stephanie Gilmore's Fin Setup: The Drawn-Out Drive Behind Surfing's Most Stylish Champion
 
 ## Practical Guides
 - [x] Traveling With Fins: TSA Rules, Packing Tricks, and What to Bring for Indo
